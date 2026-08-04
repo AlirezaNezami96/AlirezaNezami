@@ -1,0 +1,92 @@
+{
+  "_comment": "Français - French Translation",
+  "nav": {
+    "about": "À propos",
+    "projects": "Projets",
+    "reviews": "Avis",
+    "contact": "Contact",
+    "bookCall": "Réserver un appel"
+  },
+  "hero": {
+    "eyebrow": "// ingénieur.mobile",
+    "headline1": "+9 ans natif",
+    "headline2": "Android.",
+    "headline3": "Déploiement",
+    "headline4": "multiplateforme.",
+    "subtitle": "Création d’applications mobiles haut de gamme avec Kotlin, Compose et Flutter.",
+    "bookCall": "Réserver un appel",
+    "seeWork": "Voir les projets"
+  },
+  "about": {
+    "tag": "// à propos",
+    "title": "Spécialiste Android natif devenu expert multiplateforme.",
+    "p1": "J’ai commencé à développer sur Android quand Kotlin était en bêta. En 9 ans, j’ai conçu des applications fintech, santé et logistique.",
+    "p2": "J’utilise Flutter pour offrir une expérience fluide et native sur iOS et Android sans compromis.",
+    "p3": "Discutons de votre projet si vous recherchez l’excellence technique.",
+    "stats": {
+      "years": "Années d’expérience",
+      "apps": "Applications créées",
+      "platforms": "Plateformes maîtrisées",
+      "users": "Utilisateurs touchés"
+    }
+  },
+  "projects": {
+    "tag": "// projets",
+    "title": "Projets sélectionnés",
+    "albertHealth": {
+      "title": "Albert Health",
+      "subtitle": "Compagnon santé IA — Android & iOS",
+      "desc": "Plateforme de suivi de santé intelligente avec intégration médicale."
+    },
+    "yoldaCarrier": {
+      "title": "Yolda Carrier",
+      "subtitle": "Plateforme logistique",
+      "desc": "Application de suivi de fret en temps réel développée en Kotlin."
+    },
+    "biletino": {
+      "title": "Biletino",
+      "subtitle": "Billetterie événementielle",
+      "desc": "Plateforme de réservation de billets avec validation hors-ligne."
+    },
+    "kolayHr": {
+      "title": "Kolay HR",
+      "subtitle": "Gestion RH entreprise",
+      "desc": "Application RH pour la gestion des congés et des notes de frais."
+    },
+    "fuudy": {
+      "title": "Fuudy",
+      "subtitle": "Livraison de repas gastronomiques",
+      "desc": "Livraison de repas haut de gamme avec suivi en direct."
+    },
+    "wegoPro": {
+      "title": "WegoPro",
+      "subtitle": "Voyages d’affaires & dépenses",
+      "desc": "Réservation de voyages d’affaires et numérisation de reçus."
+    },
+    "abcTrainerize": {
+      "title": "ABC Trainerize",
+      "subtitle": "Coaching sportif — +1M d’utilisateurs",
+      "desc": "Application leader mondiale de coaching sportif et suivi de fitness."
+    }
+  },
+  "reviews": {
+    "tag": "// avis",
+    "title": "Témoignages clients"
+  },
+  "resume": {
+    "tag": "// cv",
+    "title": "Curriculum Vitae",
+    "desc": "Découvrez mon parcours et mes compétences techniques.",
+    "downloadBtn": "Télécharger PDF",
+    "previewBtn": "Plein écran"
+  },
+  "contact": {
+    "tag": "// contact",
+    "title": "Créons un produit d’exception.",
+    "desc": "Réservez un appel de 30 minutes pour échanger.",
+    "bookTitle": "Réserver 30 minutes"
+  },
+  "footer": {
+    "rights": "Tous droits réservés."
+  }
+}

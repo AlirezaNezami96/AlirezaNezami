@@ -1,0 +1,92 @@
+{
+  "_comment": "Español - Spanish Translation",
+  "nav": {
+    "about": "Sobre mí",
+    "projects": "Proyectos",
+    "reviews": "Testimonios",
+    "contact": "Contacto",
+    "bookCall": "Reservar llamada"
+  },
+  "hero": {
+    "eyebrow": "// ingeniero.móvil",
+    "headline1": "+9 años nativo",
+    "headline2": "Android.",
+    "headline3": "Ahora creando",
+    "headline4": "multiplataforma.",
+    "subtitle": "Desarrollando aplicaciones móviles de alto nivel con Kotlin, Compose y Flutter.",
+    "bookCall": "Reservar llamada",
+    "seeWork": "Ver proyectos"
+  },
+  "about": {
+    "tag": "// sobre mí",
+    "title": "Especialista en Android nativo que dio el salto a multiplataforma.",
+    "p1": "Comencé a desarrollar para Android cuando Kotlin aún era una prueba beta. Durante más de 9 años he creado aplicaciones de fintech, salud y logística.",
+    "p2": "Incorporé Flutter para ofrecer experiencias nativas impecables tanto en Android como en iOS con una arquitectura limpia.",
+    "p3": "Me encanta trabajar con equipos que valoran la calidad del software. Hablemos.",
+    "stats": {
+      "years": "Años de experiencia",
+      "apps": "Apps publicadas",
+      "platforms": "Plataformas dominadas",
+      "users": "Usuarios alcanzados"
+    }
+  },
+  "projects": {
+    "tag": "// proyectos",
+    "title": "Trabajos destacados",
+    "albertHealth": {
+      "title": "Albert Health",
+      "subtitle": "Asistente de salud con IA — Android e iOS",
+      "desc": "Plataforma de monitoreo de salud con IA y seguimiento de constantes vitales en tiempo real."
+    },
+    "yoldaCarrier": {
+      "title": "Yolda Carrier",
+      "subtitle": "Plataforma de logística y carga",
+      "desc": "App nativa en Kotlin para seguimiento de carga en tiempo real y optimización de rutas."
+    },
+    "biletino": {
+      "title": "Biletino",
+      "subtitle": "Plataforma de entradas y eventos",
+      "desc": "Sistema de venta de entradas y validación digital offline."
+    },
+    "kolayHr": {
+      "title": "Kolay HR",
+      "subtitle": "Plataforma de gestión de RRHH",
+      "desc": "Gestión de vacaciones y gastos empresariales con alto rendimiento."
+    },
+    "fuudy": {
+      "title": "Fuudy",
+      "subtitle": "Entrega de comida gourmet",
+      "desc": "App de reparto para restaurantes de alta gama con seguimiento de repartidores."
+    },
+    "wegoPro": {
+      "title": "WegoPro",
+      "subtitle": "Gestión de viajes de negocios",
+      "desc": "Reserva de viajes corporativos y escaneo de recibos offline."
+    },
+    "abcTrainerize": {
+      "title": "ABC Trainerize",
+      "subtitle": "Plataforma de fitness — +1M usuarios",
+      "desc": "App global de entrenamiento personal y seguimiento de ejercicios."
+    }
+  },
+  "reviews": {
+    "tag": "// testimonios",
+    "title": "Lo que dicen mis clientes"
+  },
+  "resume": {
+    "tag": "// currículum",
+    "title": "Curriculum Vitae",
+    "desc": "Consulta mi experiencia técnica y proyectos.",
+    "downloadBtn": "Descargar PDF",
+    "previewBtn": "Ver en pantalla completa"
+  },
+  "contact": {
+    "tag": "// contacto",
+    "title": "Construyamos algo extraordinario.",
+    "desc": "Reserva una llamada de 30 minutos para analizar tu proyecto.",
+    "bookTitle": "Reservar llamada de 30 min"
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados."
+  }
+}

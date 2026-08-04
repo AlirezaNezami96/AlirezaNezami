@@ -1,22 +1,121 @@
 /**
  * ALIREZA NEZAMI PORTFOLIO — main.js
- * Orchestrates: Ripple, Lenis, GSAP animations, Three.js bg,
- * device tilt, magnetic buttons, typewriter, counter, marquee.
+ * Orchestrates: i18n, Theme Switcher, Ripple, Lenis, GSAP,
+ * Three.js hero bg (with IntersectionObserver loop pause), Swiper carousels.
  */
 
 'use strict';
 
-/* ─── UTILITY ─────────────────────────────────────── */
+/* ─── UTILITIES & DEVICE DETECT ───────────────────── */
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isCoarsePointer = window.matchMedia('(pointer: coarse)').matches || ('ontouchstart' in window);
 
 function qs(selector, root = document) { return root.querySelector(selector); }
 function qsa(selector, root = document) { return [...root.querySelectorAll(selector)]; }
 
-/* ─── RIPPLE ──────────────────────────────────────── */
+/* ─── THEME SYSTEM ────────────────────────────────── */
+let currentTheme = localStorage.getItem('an_portfolio_theme') || 
+  (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+
+function applyTheme(theme) {
+  currentTheme = theme;
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('an_portfolio_theme', theme);
+  
+  const icon = theme === 'light' ? '☀️' : '🌙';
+  qsa('.theme-icon').forEach(el => { el.textContent = icon; });
+
+  // Event to notify canvas renderers
+  window.dispatchEvent(new CustomEvent('themeChanged', { detail: { theme } }));
+}
+
+function initThemeSwitcher() {
+  applyTheme(currentTheme);
+  const btns = qsa('#theme-toggle, #theme-toggle-mobile');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      applyTheme(nextTheme);
+    });
+  });
+}
+
+/* ─── I18N SYSTEM ─────────────────────────────────── */
+const supportedLangs = ['en', 'fa', 'ar', 'es', 'fr', 'zh', 'hi', 'bn', 'ru', 'pt', 'ur'];
+const rtlLangs = ['fa', 'ar', 'ur'];
+
+let currentLang = localStorage.getItem('an_portfolio_lang') || getBestMatchLang();
+let i18nCache = {};
+
+function getBestMatchLang() {
+  const navLang = (navigator.language || 'en').toLowerCase().split('-')[0];
+  return supportedLangs.includes(navLang) ? navLang : 'en';
+}
+
+async function loadTranslations(lang) {
+  if (i18nCache[lang]) return i18nCache[lang];
+  try {
+    const res = await fetch(`assets/i18n/${lang}.json`);
+    const data = await res.json();
+    i18nCache[lang] = data;
+    return data;
+  } catch (e) {
+    console.warn(`Could not load i18n file for ${lang}, falling back to en:`, e);
+    if (lang !== 'en') return loadTranslations('en');
+    return null;
+  }
+}
+
+function getNestedValue(obj, path) {
+  return path.split('.').reduce((acc, key) => (acc && acc[key] !== undefined) ? acc[key] : null, obj);
+}
+
+async function applyLanguage(lang) {
+  const dict = await loadTranslations(lang);
+  if (!dict) return;
+
+  currentLang = lang;
+  localStorage.setItem('an_portfolio_lang', lang);
+
+  // Set HTML attributes
+  document.documentElement.setAttribute('lang', lang);
+  const isRTL = rtlLangs.includes(lang);
+  document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+
+  // Sync dropdown selectors
+  const langSelects = qsa('#lang-select');
+  langSelects.forEach(sel => { sel.value = lang; });
+
+  // Walk through data-i18n elements
+  qsa('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    const value = getNestedValue(dict, key);
+    if (value) {
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        el.placeholder = value;
+      } else {
+        el.textContent = value;
+      }
+    }
+  });
+}
+
+function initI18n() {
+  applyLanguage(currentLang);
+  const select = qs('#lang-select');
+  if (select) {
+    select.addEventListener('change', (e) => {
+      applyLanguage(e.target.value);
+    });
+  }
+}
+
+/* ─── RIPPLE CANVAS ───────────────────────────────── */
 (function initRipple() {
   if (prefersReducedMotion) return;
 
   const canvas = qs('#ripple-canvas');
+  if (!canvas) return;
   const ctx = canvas.getContext('2d');
   let W, H;
   const ripples = [];
@@ -42,11 +141,16 @@ function qsa(selector, root = document) { return [...root.querySelectorAll(selec
   };
   Ripple.prototype.draw = function () {
     if (this.dead) return;
+    const isLight = currentTheme === 'light';
+    const kotlinCol = isLight ? 'rgba(107,56,232,' : 'rgba(127,82,255,';
+    const flutterCol = isLight ? 'rgba(2,136,209,' : 'rgba(19,185,253,';
+
     const grd = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.r);
-    grd.addColorStop(0, `rgba(127,82,255,${this.alpha * 0.3})`);
-    grd.addColorStop(0.4, `rgba(127,82,255,${this.alpha})`);
-    grd.addColorStop(0.7, `rgba(19,185,253,${this.alpha * 0.8})`);
-    grd.addColorStop(1, 'rgba(19,185,253,0)');
+    grd.addColorStop(0, `${kotlinCol}${this.alpha * 0.3})`);
+    grd.addColorStop(0.4, `${kotlinCol}${this.alpha})`);
+    grd.addColorStop(0.7, `${flutterCol}${this.alpha * 0.8})`);
+    grd.addColorStop(1, `${flutterCol}0)`);
+
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
     ctx.strokeStyle = grd;
@@ -56,7 +160,6 @@ function qsa(selector, root = document) { return [...root.querySelectorAll(selec
 
   function spawnRipple(x, y) {
     ripples.push(new Ripple(x, y));
-    // keep array lean
     if (ripples.length > 20) ripples.splice(0, 5);
   }
 
@@ -79,21 +182,7 @@ function qsa(selector, root = document) { return [...root.querySelectorAll(selec
   document.addEventListener('touchstart', e => { const c = getCoords(e); spawnRipple(c.x, c.y); }, { passive: true });
 })();
 
-/* ─── WAIT FOR GSAP, LENIS, THREE ─────────────────── */
-function waitForLibs(cb) {
-  const maxWait = 5000;
-  const start = Date.now();
-  function check() {
-    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-      cb();
-    } else if (Date.now() - start < maxWait) {
-      setTimeout(check, 50);
-    }
-  }
-  check();
-}
-
-/* ─── THREE.JS HERO BACKGROUND ────────────────────── */
+/* ─── THREE.JS HERO BACKGROUND (WITH PAUSE OBSERVER) ── */
 function initHeroBg() {
   if (typeof THREE === 'undefined') return;
   const canvas = qs('#hero-bg');
@@ -111,14 +200,13 @@ function initHeroBg() {
   const camera = new THREE.PerspectiveCamera(60, W() / H(), 0.1, 100);
   camera.position.z = 4;
 
-  // Floating gradient blobs using simple geometry + shader
   const blobGeo = new THREE.PlaneGeometry(14, 14, 1, 1);
   const blobMat = new THREE.ShaderMaterial({
     transparent: true,
     uniforms: {
       uTime: { value: 0 },
-      uKotlin: { value: new THREE.Color(0x7F52FF) },
-      uFlutter: { value: new THREE.Color(0x13B9FD) },
+      uKotlin: { value: new THREE.Color(currentTheme === 'light' ? 0x6B38E8 : 0x7F52FF) },
+      uFlutter: { value: new THREE.Color(currentTheme === 'light' ? 0x0288D1 : 0x13B9FD) },
     },
     vertexShader: `
       varying vec2 vUv;
@@ -133,21 +221,13 @@ function initHeroBg() {
       uniform vec3 uFlutter;
       varying vec2 vUv;
 
-      float sdBlob(vec2 p, float t) {
-        float a = sin(t * 0.3 + p.x * 2.0) * 0.1;
-        float b = cos(t * 0.2 + p.y * 1.5) * 0.1;
-        return length(p + vec2(a, b)) - 0.4;
-      }
-
       void main() {
         vec2 uv = (vUv - 0.5) * 3.0;
 
-        // Blob 1 (kotlin)
         vec2 b1 = uv - vec2(sin(uTime * 0.15) * 0.8, cos(uTime * 0.12) * 0.5);
         float d1 = length(b1);
         float mask1 = 1.0 - smoothstep(0.4, 1.4, d1);
 
-        // Blob 2 (flutter)
         vec2 b2 = uv - vec2(-0.6 + cos(uTime * 0.1) * 0.5, sin(uTime * 0.18) * 0.4);
         float d2 = length(b2);
         float mask2 = 1.0 - smoothstep(0.3, 1.2, d2);
@@ -162,13 +242,33 @@ function initHeroBg() {
   const blob = new THREE.Mesh(blobGeo, blobMat);
   scene.add(blob);
 
-  let animFrame;
+  let isHeroVisible = true;
+  let animFrameId = null;
+
   function animate(t) {
-    animFrame = requestAnimationFrame(animate);
+    if (!isHeroVisible) return;
+    animFrameId = requestAnimationFrame(animate);
     blobMat.uniforms.uTime.value = t * 0.001;
     renderer.render(scene, camera);
   }
-  animate(0);
+
+  // IntersectionObserver to pause loop when hero is offscreen
+  const heroObserver = new IntersectionObserver(([entry]) => {
+    isHeroVisible = entry.isIntersecting;
+    if (isHeroVisible && !animFrameId) {
+      animate(performance.now());
+    } else if (!isHeroVisible && animFrameId) {
+      cancelAnimationFrame(animFrameId);
+      animFrameId = null;
+    }
+  }, { threshold: 0.05 });
+  heroObserver.observe(hero);
+
+  window.addEventListener('themeChanged', (e) => {
+    const isLight = e.detail.theme === 'light';
+    blobMat.uniforms.uKotlin.value.setHex(isLight ? 0x6B38E8 : 0x7F52FF);
+    blobMat.uniforms.uFlutter.value.setHex(isLight ? 0x0288D1 : 0x13B9FD);
+  });
 
   const resizeObs = new ResizeObserver(() => {
     renderer.setSize(W(), H());
@@ -176,17 +276,15 @@ function initHeroBg() {
     camera.updateProjectionMatrix();
   });
   resizeObs.observe(hero);
-  window.addEventListener('resize', () => {
-    renderer.setSize(W(), H());
-    camera.aspect = W() / H();
-    camera.updateProjectionMatrix();
-  });
 }
 
-/* ─── LENIS SMOOTH SCROLL ─────────────────────────── */
+/* ─── LENIS SMOOTH SCROLL (DISABLED ON TOUCH) ────── */
 function initLenis() {
-  if (typeof Lenis === 'undefined') return null;
-  const lenis = new Lenis({ lerp: 0.08, smoothWheel: true });
+  // Disable Lenis completely on coarse-pointer/touch devices
+  if (isCoarsePointer || typeof Lenis === 'undefined') return null;
+
+  // Faster, less floaty lerp on desktop (0.11)
+  const lenis = new Lenis({ lerp: 0.11, smoothWheel: true });
 
   function raf(time) {
     lenis.raf(time);
@@ -194,14 +292,12 @@ function initLenis() {
   }
   requestAnimationFrame(raf);
 
-  // Integrate with GSAP ScrollTrigger if available
   if (typeof ScrollTrigger !== 'undefined') {
     lenis.on('scroll', ScrollTrigger.update);
     gsap.ticker.add((time) => { lenis.raf(time * 1000); });
     gsap.ticker.lagSmoothing(0);
   }
 
-  // Smooth-scroll anchor links
   qsa('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const id = a.getAttribute('href');
@@ -209,11 +305,38 @@ function initLenis() {
       const target = qs(id);
       if (!target) return;
       e.preventDefault();
-      lenis.scrollTo(target, { offset: -72, duration: 1.2 });
+      lenis.scrollTo(target, { offset: -72, duration: 1.1 });
     });
   });
 
   return lenis;
+}
+
+/* ─── SWIPER CAROUSELS FOR PROJECTS ──────────────── */
+function initSwiperCarousels() {
+  if (typeof Swiper === 'undefined') return;
+
+  const projectSlugs = ['albert', 'yolda', 'biletino', 'kolay', 'fuudy', 'wegopro', 'trainerize'];
+  
+  projectSlugs.forEach((slug, idx) => {
+    const container = qs(`.swiper-${slug}`);
+    if (!container) return;
+
+    new Swiper(container, {
+      loop: true,
+      autoplay: {
+        delay: 3500 + (idx * 500), // Staggered delays so they don't animate in sync
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      },
+      pagination: {
+        el: container.querySelector('.swiper-pagination'),
+        clickable: true,
+      },
+      effect: 'slide',
+      speed: 600,
+    });
+  });
 }
 
 /* ─── NAV SCROLL BEHAVIOR ─────────────────────────── */
@@ -222,14 +345,12 @@ function initNav() {
   const hamburger = qs('#nav-hamburger');
   const mobileMenu = qs('#mobile-menu');
 
-  // Scroll state
   const observer = new IntersectionObserver(([entry]) => {
     nav.classList.toggle('scrolled', !entry.isIntersecting);
   }, { threshold: 0.1 });
   const hero = qs('#hero');
   if (hero) observer.observe(hero);
 
-  // Hamburger
   if (hamburger && mobileMenu) {
     hamburger.addEventListener('click', () => {
       const open = hamburger.classList.toggle('open');
@@ -288,7 +409,6 @@ function initGSAP() {
   gsap.registerPlugin(ScrollTrigger);
 
   if (!prefersReducedMotion) {
-    // Hero word reveal
     const words = qsa('.hero-headline .word');
     gsap.to(words, {
       opacity: 1,
@@ -299,7 +419,6 @@ function initGSAP() {
       delay: 0.3,
     });
 
-    // Scroll reveals
     qsa('.reveal-block').forEach(el => {
       ScrollTrigger.create({
         trigger: el,
@@ -318,7 +437,6 @@ function initGSAP() {
       });
     });
 
-    // Counter animation
     qsa('.stat-number').forEach(el => {
       const target = parseInt(el.dataset.target, 10);
       ScrollTrigger.create({
@@ -338,7 +456,6 @@ function initGSAP() {
       });
     });
   } else {
-    // Immediately show everything
     qsa('.reveal-block, .reveal-project').forEach(el => el.classList.add('visible'));
     qsa('.hero-headline .word').forEach(el => { el.style.opacity = 1; el.style.transform = 'none'; });
     qsa('.stat-number').forEach(el => { el.textContent = el.dataset.target; });
@@ -355,8 +472,6 @@ function initDeviceTilt() {
 
   let targetX = 0, targetY = 0;
   let currentX = 0, currentY = 0;
-
-  // Idle drift
   let idleAngle = 0;
 
   function animate() {
@@ -386,28 +501,9 @@ function initDeviceTilt() {
   });
 }
 
-/* ─── PROJECT CARD TILT ───────────────────────────── */
-function initProjectTilt() {
-  if (prefersReducedMotion) return;
-
-  qsa('.tilt-target').forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const rect = card.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2;
-      const cy = rect.top + rect.height / 2;
-      const rx = (e.clientY - cy) / (rect.height / 2) * -8;
-      const ry = (e.clientX - cx) / (rect.width / 2) * 8;
-      card.style.transform = `perspective(600px) rotateX(${rx}deg) rotateY(${ry}deg) scale(1.02)`;
-    });
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = 'perspective(600px) rotateX(0) rotateY(0) scale(1)';
-    });
-  });
-}
-
 /* ─── MAGNETIC BUTTONS ────────────────────────────── */
 function initMagnetic() {
-  if (prefersReducedMotion) return;
+  if (prefersReducedMotion || isCoarsePointer) return;
 
   qsa('.magnetic').forEach(btn => {
     btn.addEventListener('mousemove', e => {
@@ -434,25 +530,25 @@ function setFooterYear() {
   if (el) el.textContent = new Date().getFullYear();
 }
 
-/* ─── MARQUEE PAUSE ON HOVER (already CSS) ────────── */
-
 /* ─── INIT ────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   setFooterYear();
+  initThemeSwitcher();
+  initI18n();
   initNav();
   initTypewriter();
   initDeviceTilt();
-  initProjectTilt();
   initMagnetic();
 
-  // Init Three.js bg (non-critical)
   try { initHeroBg(); } catch (e) { /* graceful degradation */ }
-
-  // Init Lenis
   try { initLenis(); } catch (e) { /* graceful degradation */ }
+  try { initSwiperCarousels(); } catch (e) { /* graceful degradation */ }
 
-  // Init GSAP
-  waitForLibs(() => {
+  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
     try { initGSAP(); } catch (e) { /* graceful degradation */ }
-  });
+  } else {
+    setTimeout(() => {
+      try { initGSAP(); } catch (e) { /* fallback */ }
+    }, 500);
+  }
 });

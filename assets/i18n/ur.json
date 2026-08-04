@@ -1,0 +1,92 @@
+{
+  "_comment": "اردو - Urdu Translation (RTL)",
+  "nav": {
+    "about": "عن",
+    "projects": "پروجیکٹس",
+    "reviews": "رائے",
+    "contact": "رابطہ",
+    "bookCall": "کال بک کریں"
+  },
+  "hero": {
+    "eyebrow": "// mobile.engineer",
+    "headline1": "9+ years native",
+    "headline2": "Android.",
+    "headline3": "Now shipping",
+    "headline4": "cross-platform.",
+    "subtitle": "Building flagship mobile applications with Kotlin, Compose & Flutter.",
+    "bookCall": "Book a call",
+    "seeWork": "See the work"
+  },
+  "about": {
+    "tag": "// about",
+    "title": "The native Android specialist who crossed platforms — on purpose.",
+    "p1": "I started writing Android apps when Kotlin was still a beta experiment. Over nine years of shipping production software, I have built everything from fintech dashboards and healthcare trackers to logistics platforms and e-commerce apps — each one with the performance discipline and architecture depth that only comes from working close to the metal.",
+    "p2": "When Flutter matured enough to meet my standards, I added it to my toolkit. Not as a shortcut, but as a force multiplier: one carefully-crafted codebase, genuinely native experience on both platforms. The clients I work with don’t get a \"good enough\" cross-platform build — they get Android-quality thinking applied to every screen, on every OS.",
+    "p3": "I work best with founders and product teams who care about shipping software that feels right, not just software that technically ships. If that sounds like you, let’s talk.",
+    "stats": {
+      "years": "Years Experience",
+      "apps": "Apps Shipped",
+      "platforms": "Platforms Mastered",
+      "users": "Users Reached"
+    }
+  },
+  "projects": {
+    "tag": "// projects",
+    "title": "Selected Work",
+    "albertHealth": {
+      "title": "Albert Health",
+      "subtitle": "AI-powered health companion — Android & iOS",
+      "desc": "A comprehensive health monitoring platform with real-time vitals tracking, AI-driven health insights, and seamless physician integration. Led the full cross-platform development with Flutter, architecting a clean, scalable codebase that runs natively on both platforms without compromise."
+    },
+    "yoldaCarrier": {
+      "title": "Yolda Carrier",
+      "subtitle": "Logistics & freight management platform",
+      "desc": "A high-stakes logistics coordination app used by carriers across Turkey. Built the Android native version from the ground up using Kotlin and Jetpack Compose, handling real-time load tracking, route optimization integration, and push-notification workflows that run reliably at scale."
+    },
+    "biletino": {
+      "title": "Biletino",
+      "subtitle": "Event ticketing & digital pass engine",
+      "desc": "One of Turkey’s premier event discovery and ticketing platforms. Developed core mobile features focusing on frictionless checkout, offline digital ticket validation, and fast event search using modern reactive architecture."
+    },
+    "kolayHr": {
+      "title": "Kolay HR",
+      "subtitle": "Enterprise HR & workforce platform",
+      "desc": "A streamlined HR management mobile app serving thousands of employees. Architected key modules for leave requests, expense management, and push alerts with a heavy emphasis on UI polish and sub-second response times."
+    },
+    "fuudy": {
+      "title": "Fuudy",
+      "subtitle": "Gourmet food delivery & restaurant curation",
+      "desc": "Premium food delivery application connecting users with top-tier restaurants. Implemented interactive menus, real-time courier tracking, and smooth checkout flows with custom animations."
+    },
+    "wegoPro": {
+      "title": "WegoPro",
+      "subtitle": "Business travel & expense management",
+      "desc": "Corporate travel booking and expense reporting app used across APAC. Contributed to cross-platform mobile app development, integrating complex flight/hotel booking APIs and offline receipt scanning."
+    },
+    "abcTrainerize": {
+      "title": "ABC Trainerize",
+      "subtitle": "Fitness coaching platform – 1M+ users",
+      "desc": "One of the world’s leading fitness coaching platforms, connecting trainers with clients through structured workout plans, progress tracking, and in-app messaging. Worked on critical Android performance improvements, reducing app startup time and improving workout session reliability for a global user base exceeding one million active users."
+    }
+  },
+  "reviews": {
+    "tag": "// reviews",
+    "title": "What clients say."
+  },
+  "resume": {
+    "tag": "// resume",
+    "title": "Curriculum Vitae",
+    "desc": "Review my technical experience, architecture expertise, and production track record.",
+    "downloadBtn": "Download PDF",
+    "previewBtn": "View Full Screen"
+  },
+  "contact": {
+    "tag": "// contact",
+    "title": "Let’s build something extraordinary.",
+    "desc": "Have a new project, need senior Android/Flutter capacity, or want to audit an existing codebase? Schedule a call or drop me a line.",
+    "bookTitle": "Schedule a 30-min strategy call"
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  }
+}
