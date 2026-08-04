@@ -3,27 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alireza Nezami — Senior Mobile Developer · Android & Flutter</title>
+  <title>Alireza Nezami — Senior Mobile Developer · Android &amp; Flutter</title>
   <meta name="description" content="Senior mobile engineer with 9+ years of native Android expertise, now shipping production cross-platform apps with Flutter. Kotlin · Java · Flutter · Android · iOS." />
   <meta name="robots" content="index, follow" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
 
-  <!-- OpenGraph / Facebook -->
+  <!-- OpenGraph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://alirezanezami96.github.io/AlirezaNezami/" />
-  <meta property="og:title" content="Alireza Nezami — Senior Mobile Developer · Android & Flutter" />
-  <meta property="og:description" content="9+ years native Android. Now shipping cross-platform mobile apps with Flutter." />
+  <meta property="og:title" content="Alireza Nezami — Senior Mobile Developer · Android &amp; Flutter" />
+  <meta property="og:description" content="9+ years native Android. Now shipping cross-platform." />
   <meta property="og:image" content="https://alirezanezami96.github.io/AlirezaNezami/assets/images/og-image.svg" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Alireza Nezami — Senior Mobile Developer · Android & Flutter" />
-  <meta name="twitter:description" content="9+ years native Android. Now shipping cross-platform mobile apps with Flutter." />
+  <meta name="twitter:title" content="Alireza Nezami — Senior Mobile Developer · Android &amp; Flutter" />
+  <meta name="twitter:description" content="9+ years native Android. Now shipping cross-platform." />
   <meta name="twitter:image" content="https://alirezanezami96.github.io/AlirezaNezami/assets/images/og-image.svg" />
 
-  <!-- JSON-LD Structured Data -->
+  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -31,15 +31,12 @@
     "name": "Alireza Nezami",
     "jobTitle": "Senior Mobile Developer",
     "url": "https://alirezanezami96.github.io/AlirezaNezami/",
-    "sameAs": [
-      "https://github.com/AlirezaNezami96",
-      "https://linkedin.com/in/alirezanezami"
-    ],
-    "knowsAbout": ["Android Development", "Kotlin", "Java", "Flutter", "Dart", "Jetpack Compose", "Mobile Architecture"]
+    "sameAs": ["https://github.com/AlirezaNezami96","https://linkedin.com/in/alirezanezami"],
+    "knowsAbout": ["Android Development","Kotlin","Java","Flutter","Dart","Jetpack Compose"]
   }
   </script>
 
-  <!-- Google Fonts -->
+  <!-- Fonts: base + Farsi (Vazir) + Arabic (Amiri) loaded dynamically by JS -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -47,18 +44,17 @@
   <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-  <!-- GSAP + ScrollTrigger -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <!-- GSAP + ScrollTrigger (no defer — loaded before body for sync init) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <!-- Lenis smooth scroll -->
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
 
-  <!-- Three.js for atmospheric background -->
+  <!-- Three.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
 
   <!-- Swiper JS -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
 
   <!-- Calendly -->
@@ -71,22 +67,22 @@
   <!-- Ripple canvas overlay -->
   <canvas id="ripple-canvas" aria-hidden="true"></canvas>
 
-  <!-- NAV -->
+  <!-- ═══════════════════════ NAV ═══════════════════════ -->
   <nav id="nav" role="navigation" aria-label="Main navigation">
     <a href="#" class="nav-mark" aria-label="Alireza Nezami home">
       <span class="nav-mark-initials">AN</span>
       <span class="nav-mark-dot"></span>
     </a>
+
     <div class="nav-links" role="list">
-      <a href="#about" class="nav-link" role="listitem" data-i18n="nav.about">About</a>
+      <a href="#about"    class="nav-link" role="listitem" data-i18n="nav.about">About</a>
       <a href="#projects" class="nav-link" role="listitem" data-i18n="nav.projects">Projects</a>
-      <a href="#reviews" class="nav-link" role="listitem" data-i18n="nav.reviews">Reviews</a>
-      <a href="#resume" class="nav-link" role="listitem" data-i18n="resume.title">Resume</a>
-      <a href="#contact" class="nav-link" role="listitem" data-i18n="nav.contact">Contact</a>
+      <a href="#reviews"  class="nav-link" role="listitem" data-i18n="nav.reviews">Reviews</a>
+      <a href="#resume"   class="nav-link" role="listitem">Resume</a>
+      <a href="#contact"  class="nav-link" role="listitem" data-i18n="nav.contact">Contact</a>
     </div>
 
     <div class="nav-controls">
-      <!-- Language Switcher -->
       <div class="lang-select-wrap">
         <select id="lang-select" class="lang-select" aria-label="Select language">
           <option value="en">English</option>
@@ -102,12 +98,9 @@
           <option value="ur">اردو</option>
         </select>
       </div>
-
-      <!-- Theme Switcher -->
-      <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle light and dark theme">
+      <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
         <span class="theme-icon">🌙</span>
       </button>
-
       <a href="#contact" class="nav-cta" data-i18n="nav.bookCall">Book a call</a>
       <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -117,25 +110,26 @@
 
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
-    <a href="#about" class="mobile-link" data-i18n="nav.about">About</a>
+    <a href="#about"    class="mobile-link" data-i18n="nav.about">About</a>
     <a href="#projects" class="mobile-link" data-i18n="nav.projects">Projects</a>
-    <a href="#reviews" class="mobile-link" data-i18n="nav.reviews">Reviews</a>
-    <a href="#resume" class="mobile-link" data-i18n="resume.title">Resume</a>
-    <a href="#contact" class="mobile-link" data-i18n="nav.contact">Contact</a>
+    <a href="#reviews"  class="mobile-link" data-i18n="nav.reviews">Reviews</a>
+    <a href="#resume"   class="mobile-link">Resume</a>
+    <a href="#contact"  class="mobile-link" data-i18n="nav.contact">Contact</a>
     <div class="mobile-controls">
-      <button id="theme-toggle-mobile" class="theme-toggle-btn" aria-label="Toggle light and dark theme">
+      <button id="theme-toggle-mobile" class="theme-toggle-btn" aria-label="Toggle theme">
         <span class="theme-icon">🌙</span>
       </button>
       <a href="#contact" class="btn btn-primary" data-i18n="nav.bookCall">Book a call</a>
     </div>
   </div>
 
-  <!-- HERO -->
+  <!-- ═══════════════════════ HERO ═══════════════════════ -->
   <section id="hero" aria-label="Hero section">
     <canvas id="hero-bg" aria-hidden="true"></canvas>
     <div class="grain" aria-hidden="true"></div>
 
-    <div class="hero-content">
+    <!-- Scroll reveal wrapper: everything inside hero-content fades/scales in on scroll -->
+    <div class="hero-content" id="hero-content">
       <div class="hero-eyebrow">
         <span class="eyebrow-tag" data-i18n="hero.eyebrow">// mobile.engineer</span>
       </div>
@@ -146,17 +140,22 @@
         <span class="word gradient-text" data-i18n="hero.headline4">cross-platform.</span>
       </h1>
       <p class="hero-subtitle">
-        <span data-i18n="hero.subtitle">Building flagship mobile applications with</span>
-        <span id="typewriter" class="gradient-text">Kotlin</span><span class="typewriter-cursor"></span>
+        <span data-i18n="hero.subtitle">Building flagship mobile applications with </span><span id="typewriter" class="gradient-text">Kotlin</span><span class="typewriter-cursor"></span>
       </p>
       <div class="hero-actions">
         <a href="#contact" class="btn btn-primary magnetic" data-i18n="hero.bookCall">Book a call &rarr;</a>
         <a href="#projects" class="btn btn-ghost magnetic" data-i18n="hero.seeWork">See the work &darr;</a>
       </div>
+
+      <!-- Scroll indicator -->
+      <div class="hero-scroll-hint" aria-hidden="true">
+        <span class="scroll-line"></span>
+        <span class="scroll-text">scroll</span>
+      </div>
     </div>
 
     <!-- Dual Device Mockups -->
-    <div class="devices-wrapper" aria-hidden="true">
+    <div class="devices-wrapper" id="hero-devices" aria-hidden="true">
       <div class="device device-android" id="device-android">
         <div class="device-frame">
           <div class="device-screen">
@@ -182,6 +181,7 @@
           <div class="device-gesture-bar"></div>
         </div>
       </div>
+
       <div class="device device-ios" id="device-ios">
         <div class="device-frame">
           <div class="device-screen">
@@ -206,58 +206,40 @@
     </div>
   </section>
 
-  <!-- ABOUT -->
+  <!-- ═══════════════════════ ABOUT ═══════════════════════ -->
   <section id="about" aria-label="About Alireza Nezami">
     <div class="section-label">
       <span class="comment" data-i18n="about.tag">// about</span>
     </div>
-    
+
     <div class="about-grid">
-      <!-- Profile Card -->
       <div class="profile-card reveal-block">
         <img src="assets/images/profile.jpg" alt="Alireza Nezami — Senior Mobile Developer" class="profile-img" />
       </div>
-
-      <!-- About Text -->
       <div class="about-text reveal-block">
-        <h2 class="section-heading" style="margin-bottom: 24px;" data-i18n="about.title">
+        <h2 class="section-heading" style="margin-bottom:24px" data-i18n="about.title">
           The native Android specialist who crossed platforms — on purpose.
         </h2>
-        <p data-i18n="about.p1">
-          I started writing Android apps when Kotlin was still a beta experiment. Over nine years of shipping production software, I've built everything from fintech dashboards and healthcare trackers to logistics platforms and e-commerce apps — each one with the performance discipline and architecture depth that only comes from working close to the metal.
-        </p>
-        <p data-i18n="about.p2">
-          When Flutter matured enough to meet my standards, I added it to my toolkit. Not as a shortcut, but as a force multiplier: one carefully-crafted codebase, genuinely native experience on both platforms. The clients I work with don't get a "good enough" cross-platform build — they get Android-quality thinking applied to every screen, on every OS.
-        </p>
+        <p data-i18n="about.p1">I started writing Android apps when Kotlin was still a beta experiment. Over nine years of shipping production software, I've built everything from fintech dashboards and healthcare trackers to logistics platforms and e-commerce apps — each one with the performance discipline and architecture depth that only comes from working close to the metal.</p>
+        <p data-i18n="about.p2">When Flutter matured enough to meet my standards, I added it to my toolkit. Not as a shortcut, but as a force multiplier: one carefully-crafted codebase, genuinely native experience on both platforms.</p>
       </div>
     </div>
 
     <div class="about-inner">
       <div class="about-text reveal-block">
-        <p data-i18n="about.p3">
-          I work best with founders and product teams who care about shipping software that feels right, not just software that technically ships. If that sounds like you, let's talk.
-        </p>
+        <p data-i18n="about.p3">I work best with founders and product teams who care about shipping software that feels right, not just software that technically ships. If that sounds like you, let's talk.</p>
         <div class="skills-tags">
-          <span class="skill-tag">Kotlin</span>
-          <span class="skill-tag">Java</span>
-          <span class="skill-tag">Flutter</span>
-          <span class="skill-tag">Dart</span>
-          <span class="skill-tag">Jetpack Compose</span>
-          <span class="skill-tag">Android SDK</span>
-          <span class="skill-tag">iOS</span>
-          <span class="skill-tag">MVVM / MVI</span>
-          <span class="skill-tag">Clean Architecture</span>
-          <span class="skill-tag">Coroutines</span>
-          <span class="skill-tag">Retrofit</span>
-          <span class="skill-tag">Room</span>
-          <span class="skill-tag">Riverpod</span>
-          <span class="skill-tag">Hilt / DI</span>
-          <span class="skill-tag">CI/CD</span>
-          <span class="skill-tag">Firebase</span>
+          <span class="skill-tag">Kotlin</span><span class="skill-tag">Java</span>
+          <span class="skill-tag">Flutter</span><span class="skill-tag">Dart</span>
+          <span class="skill-tag">Jetpack Compose</span><span class="skill-tag">Android SDK</span>
+          <span class="skill-tag">iOS</span><span class="skill-tag">MVVM / MVI</span>
+          <span class="skill-tag">Clean Architecture</span><span class="skill-tag">Coroutines</span>
+          <span class="skill-tag">Retrofit</span><span class="skill-tag">Room</span>
+          <span class="skill-tag">Riverpod</span><span class="skill-tag">Hilt / DI</span>
+          <span class="skill-tag">CI/CD</span><span class="skill-tag">Firebase</span>
         </div>
       </div>
 
-      <!-- Stats Grid -->
       <div class="about-stats reveal-block">
         <div class="stat-card">
           <div class="stat-number-wrap"><span class="stat-number" data-target="9">0</span><span>+</span></div>
@@ -279,42 +261,39 @@
     </div>
   </section>
 
-  <!-- PROJECTS -->
+  <!-- ═══════════════════════ PROJECTS (5 on main) ═══════════════════════ -->
   <section id="projects" aria-label="Featured projects">
     <div class="section-label">
       <span class="comment" data-i18n="projects.tag">// projects</span>
     </div>
-    <h2 class="section-heading" style="margin-bottom: 60px;" data-i18n="projects.title">Selected Work</h2>
+    <h2 class="section-heading" data-i18n="projects.title">Selected Work</h2>
 
     <!-- Project 1: Albert Health -->
     <article class="project-block reveal-project">
       <div class="project-visual tilt-target">
-        <div class="project-device-wrap">
-          <div class="swiper swiper-albert">
+        <div class="project-phone-bezel">
+          <div class="phone-notch-bar"><span class="phone-notch"></span></div>
+          <div class="swiper swiper-albert phone-swiper">
             <div class="swiper-wrapper">
-              <div class="swiper-slide"><img src="assets/images/screenshots/albert-health/1.jpg" alt="Albert Health — Dashboard Vitals" /></div>
-              <div class="swiper-slide"><img src="assets/images/screenshots/albert-health/2.jpg" alt="Albert Health — AI Health Insights" /></div>
-              <div class="swiper-slide"><img src="assets/images/screenshots/albert-health/3.jpg" alt="Albert Health — Medication Tracker" /></div>
-              <div class="swiper-slide"><img src="assets/images/screenshots/albert-health/4.jpg" alt="Albert Health — Doctor Consultation" /></div>
+              <div class="swiper-slide"><img src="assets/images/screenshots/albert-health/1.jpg" alt="Albert Health — Dashboard Vitals" loading="lazy" /></div>
+              <div class="swiper-slide"><img src="assets/images/screenshots/albert-health/2.jpg" alt="Albert Health — AI Health Insights" loading="lazy" /></div>
+              <div class="swiper-slide"><img src="assets/images/screenshots/albert-health/3.jpg" alt="Albert Health — Medication Tracker" loading="lazy" /></div>
+              <div class="swiper-slide"><img src="assets/images/screenshots/albert-health/4.jpg" alt="Albert Health — Doctor Consultation" loading="lazy" /></div>
             </div>
             <div class="swiper-pagination"></div>
           </div>
+          <div class="phone-home-bar"></div>
         </div>
       </div>
       <div class="project-content">
         <div class="project-number">01</div>
         <h3 class="project-title" data-i18n="projects.albertHealth.title">Albert Health</h3>
         <div class="project-subtitle" data-i18n="projects.albertHealth.subtitle">AI-powered health companion &mdash; Android &amp; iOS</div>
-        <p class="project-desc" data-i18n="projects.albertHealth.desc">
-          A comprehensive health monitoring platform with real-time vitals tracking, AI-driven health insights, and seamless physician integration. Led the full cross-platform development with Flutter, architecting a clean, scalable codebase that runs natively on both platforms without compromise.
-        </p>
+        <p class="project-desc" data-i18n="projects.albertHealth.desc">A comprehensive health monitoring platform with real-time vitals tracking, AI-driven health insights, and seamless physician integration. Led the full cross-platform development with Flutter, architecting a clean, scalable codebase that runs natively on both platforms without compromise.</p>
         <div class="project-tags">
-          <span class="project-tag">Flutter</span>
-          <span class="project-tag">Dart</span>
-          <span class="project-tag">Riverpod</span>
-          <span class="project-tag">Firebase</span>
+          <span class="project-tag">Flutter</span><span class="project-tag">Dart</span>
+          <span class="project-tag">Riverpod</span><span class="project-tag">Firebase</span>
           <span class="project-tag">HealthKit</span>
-          <span class="project-tag">Google Fit</span>
         </div>
         <div class="project-links">
           <a href="https://play.google.com/store/apps/details?id=v2.albert.health" target="_blank" rel="noopener" class="btn btn-ghost">Google Play &rarr;</a>
@@ -325,32 +304,28 @@
     <!-- Project 2: Yolda Carrier -->
     <article class="project-block project-block--right reveal-project">
       <div class="project-visual tilt-target">
-        <div class="project-device-wrap">
-          <div class="swiper swiper-yolda">
+        <div class="project-phone-bezel">
+          <div class="phone-notch-bar"><span class="phone-notch"></span></div>
+          <div class="swiper swiper-yolda phone-swiper">
             <div class="swiper-wrapper">
-              <div class="swiper-slide"><img src="assets/images/screenshots/yolda-carrier/1.jpg" alt="Yolda Carrier — Live Freight Map" /></div>
-              <div class="swiper-slide"><img src="assets/images/screenshots/yolda-carrier/2.jpg" alt="Yolda Carrier — Load Offer Details" /></div>
-              <div class="swiper-slide"><img src="assets/images/screenshots/yolda-carrier/3.jpg" alt="Yolda Carrier — Route Optimization" /></div>
-              <div class="swiper-slide"><img src="assets/images/screenshots/yolda-carrier/4.jpg" alt="Yolda Carrier — Driver Earnings" /></div>
+              <div class="swiper-slide"><img src="assets/images/screenshots/yolda-carrier/1.jpg" alt="Yolda Carrier — Live Freight Map" loading="lazy" /></div>
+              <div class="swiper-slide"><img src="assets/images/screenshots/yolda-carrier/2.jpg" alt="Yolda Carrier — Load Offer Details" loading="lazy" /></div>
+              <div class="swiper-slide"><img src="assets/images/screenshots/yolda-carrier/3.jpg" alt="Yolda Carrier — Route Optimization" loading="lazy" /></div>
+              <div class="swiper-slide"><img src="assets/images/screenshots/yolda-carrier/4.jpg" alt="Yolda Carrier — Driver Earnings" loading="lazy" /></div>
             </div>
             <div class="swiper-pagination"></div>
           </div>
+          <div class="phone-home-bar"></div>
         </div>
       </div>
       <div class="project-content">
         <div class="project-number">02</div>
         <h3 class="project-title" data-i18n="projects.yoldaCarrier.title">Yolda Carrier</h3>
         <div class="project-subtitle" data-i18n="projects.yoldaCarrier.subtitle">Logistics &amp; freight management platform</div>
-        <p class="project-desc" data-i18n="projects.yoldaCarrier.desc">
-          A high-stakes logistics coordination app used by carriers across Turkey. Built the Android native version from the ground up using Kotlin and Jetpack Compose, handling real-time load tracking, route optimization integration, and push-notification workflows that run reliably at scale.
-        </p>
+        <p class="project-desc" data-i18n="projects.yoldaCarrier.desc">A high-stakes logistics coordination app used by carriers across Turkey. Built the Android native version using Kotlin and Jetpack Compose, handling real-time load tracking, route optimization integration, and push-notification workflows that run reliably at scale.</p>
         <div class="project-tags">
-          <span class="project-tag">Kotlin</span>
-          <span class="project-tag">Jetpack Compose</span>
-          <span class="project-tag">MVVM</span>
-          <span class="project-tag">Coroutines</span>
-          <span class="project-tag">Google Maps SDK</span>
-          <span class="project-tag">FCM</span>
+          <span class="project-tag">Kotlin</span><span class="project-tag">Jetpack Compose</span>
+          <span class="project-tag">MVVM</span><span class="project-tag">Google Maps SDK</span>
         </div>
         <div class="project-links">
           <a href="https://play.google.com/store/apps/details?id=com.yolda.carrier" target="_blank" rel="noopener" class="btn btn-ghost">Google Play &rarr;</a>
@@ -361,30 +336,27 @@
     <!-- Project 3: Biletino -->
     <article class="project-block reveal-project">
       <div class="project-visual tilt-target">
-        <div class="project-device-wrap">
-          <div class="swiper swiper-biletino">
+        <div class="project-phone-bezel">
+          <div class="phone-notch-bar"><span class="phone-notch"></span></div>
+          <div class="swiper swiper-biletino phone-swiper">
             <div class="swiper-wrapper">
-              <div class="swiper-slide"><img src="assets/images/screenshots/biletino/1.jpg" alt="Biletino — Event Discovery" /></div>
-              <div class="swiper-slide"><img src="assets/images/screenshots/biletino/2.jpg" alt="Biletino — Ticket Selection" /></div>
-              <div class="swiper-slide"><img src="assets/images/screenshots/biletino/3.jpg" alt="Biletino — Digital Pass QR" /></div>
+              <div class="swiper-slide"><img src="assets/images/screenshots/biletino/1.jpg" alt="Biletino — Event Discovery" loading="lazy" /></div>
+              <div class="swiper-slide"><img src="assets/images/screenshots/biletino/2.jpg" alt="Biletino — Ticket Selection" loading="lazy" /></div>
+              <div class="swiper-slide"><img src="assets/images/screenshots/biletino/3.jpg" alt="Biletino — Digital Pass QR" loading="lazy" /></div>
             </div>
             <div class="swiper-pagination"></div>
           </div>
+          <div class="phone-home-bar"></div>
         </div>
       </div>
       <div class="project-content">
         <div class="project-number">03</div>
         <h3 class="project-title" data-i18n="projects.biletino.title">Biletino</h3>
         <div class="project-subtitle" data-i18n="projects.biletino.subtitle">Event ticketing &amp; digital pass engine</div>
-        <p class="project-desc" data-i18n="projects.biletino.desc">
-          One of Turkey's premier event discovery and ticketing platforms. Developed core mobile features focusing on frictionless checkout, offline digital ticket validation, and fast event search using modern reactive architecture.
-        </p>
+        <p class="project-desc" data-i18n="projects.biletino.desc">One of Turkey's premier event discovery and ticketing platforms. Developed core mobile features focusing on frictionless checkout, offline digital ticket validation, and fast event search using modern reactive architecture.</p>
         <div class="project-tags">
-          <span class="project-tag">Kotlin</span>
-          <span class="project-tag">Flutter</span>
-          <span class="project-tag">Room</span>
-          <span class="project-tag">Retrofit</span>
-          <span class="project-tag">Payment SDK</span>
+          <span class="project-tag">Kotlin</span><span class="project-tag">Flutter</span>
+          <span class="project-tag">Room</span><span class="project-tag">Payment SDK</span>
         </div>
         <div class="project-links">
           <a href="https://play.google.com/store/apps/details?id=com.biletino.app" target="_blank" rel="noopener" class="btn btn-ghost">Google Play &rarr;</a>
@@ -395,29 +367,27 @@
     <!-- Project 4: Kolay HR -->
     <article class="project-block project-block--right reveal-project">
       <div class="project-visual tilt-target">
-        <div class="project-device-wrap">
-          <div class="swiper swiper-kolay">
+        <div class="project-phone-bezel">
+          <div class="phone-notch-bar"><span class="phone-notch"></span></div>
+          <div class="swiper swiper-kolay phone-swiper">
             <div class="swiper-wrapper">
-              <div class="swiper-slide"><img src="assets/images/screenshots/kolay-hr/1.jpg" alt="Kolay HR — Employee Dashboard" /></div>
-              <div class="swiper-slide"><img src="assets/images/screenshots/kolay-hr/2.jpg" alt="Kolay HR — Leave Request" /></div>
-              <div class="swiper-slide"><img src="assets/images/screenshots/kolay-hr/3.jpg" alt="Kolay HR — Expense Scanner" /></div>
+              <div class="swiper-slide"><img src="assets/images/screenshots/kolay-hr/1.jpg" alt="Kolay HR — Employee Dashboard" loading="lazy" /></div>
+              <div class="swiper-slide"><img src="assets/images/screenshots/kolay-hr/2.jpg" alt="Kolay HR — Leave Request" loading="lazy" /></div>
+              <div class="swiper-slide"><img src="assets/images/screenshots/kolay-hr/3.jpg" alt="Kolay HR — Expense Scanner" loading="lazy" /></div>
             </div>
             <div class="swiper-pagination"></div>
           </div>
+          <div class="phone-home-bar"></div>
         </div>
       </div>
       <div class="project-content">
         <div class="project-number">04</div>
         <h3 class="project-title" data-i18n="projects.kolayHr.title">Kolay HR</h3>
         <div class="project-subtitle" data-i18n="projects.kolayHr.subtitle">Enterprise HR &amp; workforce platform</div>
-        <p class="project-desc" data-i18n="projects.kolayHr.desc">
-          A streamlined HR management mobile app serving thousands of employees. Architected key modules for leave requests, expense management, and push alerts with a heavy emphasis on UI polish and sub-second response times.
-        </p>
+        <p class="project-desc" data-i18n="projects.kolayHr.desc">A streamlined HR management mobile app serving thousands of employees. Architected key modules for leave requests, expense management, and push alerts with a heavy emphasis on UI polish and sub-second response times.</p>
         <div class="project-tags">
-          <span class="project-tag">Kotlin</span>
-          <span class="project-tag">Hilt</span>
-          <span class="project-tag">Coroutines</span>
-          <span class="project-tag">WorkManager</span>
+          <span class="project-tag">Kotlin</span><span class="project-tag">Hilt</span>
+          <span class="project-tag">Coroutines</span><span class="project-tag">WorkManager</span>
         </div>
         <div class="project-links">
           <a href="https://play.google.com/store/apps/details?id=com.kolayik.kolay" target="_blank" rel="noopener" class="btn btn-ghost">Google Play &rarr;</a>
@@ -425,109 +395,48 @@
       </div>
     </article>
 
-    <!-- Project 5: Fuudy -->
+    <!-- Project 5: ABC Trainerize -->
     <article class="project-block reveal-project">
       <div class="project-visual tilt-target">
-        <div class="project-device-wrap">
-          <div class="swiper swiper-fuudy">
+        <div class="project-phone-bezel">
+          <div class="phone-notch-bar"><span class="phone-notch"></span></div>
+          <div class="swiper swiper-trainerize phone-swiper">
             <div class="swiper-wrapper">
-              <div class="swiper-slide"><img src="assets/images/screenshots/fuudy/1.jpg" alt="Fuudy — Gourmet Restaurant List" /></div>
-              <div class="swiper-slide"><img src="assets/images/screenshots/fuudy/2.jpg" alt="Fuudy — Menu Customizer" /></div>
-              <div class="swiper-slide"><img src="assets/images/screenshots/fuudy/3.jpg" alt="Fuudy — Live Courier Tracking" /></div>
+              <div class="swiper-slide"><img src="assets/images/screenshots/abc-trainerize/1.jpg" alt="ABC Trainerize — Workout Calendar" loading="lazy" /></div>
+              <div class="swiper-slide"><img src="assets/images/screenshots/abc-trainerize/2.jpg" alt="ABC Trainerize — Progress Tracker" loading="lazy" /></div>
+              <div class="swiper-slide"><img src="assets/images/screenshots/abc-trainerize/3.jpg" alt="ABC Trainerize — Trainer Chat" loading="lazy" /></div>
             </div>
             <div class="swiper-pagination"></div>
           </div>
+          <div class="phone-home-bar"></div>
         </div>
       </div>
       <div class="project-content">
         <div class="project-number">05</div>
-        <h3 class="project-title" data-i18n="projects.fuudy.title">Fuudy</h3>
-        <div class="project-subtitle" data-i18n="projects.fuudy.subtitle">Gourmet food delivery &amp; restaurant curation</div>
-        <p class="project-desc" data-i18n="projects.fuudy.desc">
-          Premium food delivery application connecting users with top-tier restaurants. Implemented interactive menus, real-time courier tracking, and smooth checkout flows with custom animations.
-        </p>
-        <div class="project-tags">
-          <span class="project-tag">Kotlin</span>
-          <span class="project-tag">RxJava</span>
-          <span class="project-tag">Custom Views</span>
-          <span class="project-tag">Google Maps</span>
-        </div>
-        <div class="project-links">
-          <a href="https://play.google.com/store/apps/details?id=com.fuudy" target="_blank" rel="noopener" class="btn btn-ghost">Google Play &rarr;</a>
-        </div>
-      </div>
-    </article>
-
-    <!-- Project 6: WegoPro -->
-    <article class="project-block project-block--right reveal-project">
-      <div class="project-visual tilt-target">
-        <div class="project-device-wrap">
-          <div class="swiper swiper-wegopro">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide"><img src="assets/images/screenshots/wegopro/1.jpg" alt="WegoPro — Corporate Flight Booking" /></div>
-              <div class="swiper-slide"><img src="assets/images/screenshots/wegopro/2.jpg" alt="WegoPro — Hotel Reservation" /></div>
-              <div class="swiper-slide"><img src="assets/images/screenshots/wegopro/3.jpg" alt="WegoPro — Receipt Scanner" /></div>
-            </div>
-            <div class="swiper-pagination"></div>
-          </div>
-        </div>
-      </div>
-      <div class="project-content">
-        <div class="project-number">06</div>
-        <h3 class="project-title" data-i18n="projects.wegoPro.title">WegoPro</h3>
-        <div class="project-subtitle" data-i18n="projects.wegoPro.subtitle">Business travel &amp; expense management</div>
-        <p class="project-desc" data-i18n="projects.wegoPro.desc">
-          Corporate travel booking and expense reporting app used across APAC. Contributed to cross-platform mobile app development, integrating complex flight/hotel booking APIs and offline receipt scanning.
-        </p>
-        <div class="project-tags">
-          <span class="project-tag">Flutter</span>
-          <span class="project-tag">Dart</span>
-          <span class="project-tag">REST API</span>
-          <span class="project-tag">SQLite</span>
-        </div>
-        <div class="project-links">
-          <a href="https://play.google.com/store/apps/details?id=com.wl.travelstop.go" target="_blank" rel="noopener" class="btn btn-ghost">Google Play &rarr;</a>
-        </div>
-      </div>
-    </article>
-
-    <!-- Project 7: ABC Trainerize -->
-    <article class="project-block reveal-project">
-      <div class="project-visual tilt-target">
-        <div class="project-device-wrap">
-          <div class="swiper swiper-trainerize">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide"><img src="assets/images/screenshots/abc-trainerize/1.jpg" alt="ABC Trainerize — Workout Calendar" /></div>
-              <div class="swiper-slide"><img src="assets/images/screenshots/abc-trainerize/2.jpg" alt="ABC Trainerize — Progress Tracker" /></div>
-              <div class="swiper-slide"><img src="assets/images/screenshots/abc-trainerize/3.jpg" alt="ABC Trainerize — Trainer Chat" /></div>
-            </div>
-            <div class="swiper-pagination"></div>
-          </div>
-        </div>
-      </div>
-      <div class="project-content">
-        <div class="project-number">07</div>
         <h3 class="project-title" data-i18n="projects.abcTrainerize.title">ABC Trainerize</h3>
         <div class="project-subtitle" data-i18n="projects.abcTrainerize.subtitle">Fitness coaching platform &ndash; 1M+ users</div>
-        <p class="project-desc" data-i18n="projects.abcTrainerize.desc">
-          One of the world's leading fitness coaching platforms, connecting trainers with clients through structured workout plans, progress tracking, and in-app messaging. Worked on critical Android performance improvements, reducing app startup time and improving workout session reliability for a global user base exceeding one million active users.
-        </p>
+        <p class="project-desc" data-i18n="projects.abcTrainerize.desc">One of the world's leading fitness coaching platforms, connecting trainers with clients through structured workout plans, progress tracking, and in-app messaging. Worked on critical Android performance improvements for a global user base exceeding one million active users.</p>
         <div class="project-tags">
-          <span class="project-tag">Kotlin</span>
-          <span class="project-tag">Java</span>
-          <span class="project-tag">Android SDK</span>
-          <span class="project-tag">Performance</span>
-          <span class="project-tag">Media Playback</span>
-          <span class="project-tag">Jetpack</span>
+          <span class="project-tag">Kotlin</span><span class="project-tag">Java</span>
+          <span class="project-tag">Android SDK</span><span class="project-tag">Performance</span>
         </div>
         <div class="project-links">
           <a href="https://play.google.com/store/apps/details?id=com.trainerize.Trainerize" target="_blank" rel="noopener" class="btn btn-ghost">Google Play &rarr;</a>
         </div>
       </div>
     </article>
+
+    <!-- See All Projects CTA -->
+    <div class="projects-cta reveal-block">
+      <p class="projects-cta-sub">2 more projects including WegoPro &amp; Fuudy</p>
+      <a href="projects.html" class="btn btn-primary btn-large projects-all-btn" data-i18n="projects.seeAll">
+        <span>See All Projects</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
   </section>
 
-  <!-- REVIEWS MARQUEE -->
+  <!-- ═══════════════════════ REVIEWS ═══════════════════════ -->
   <section id="reviews" aria-label="Client testimonials">
     <div class="reviews-header">
       <div class="section-label">
@@ -537,65 +446,80 @@
     </div>
 
     <div class="marquee-container">
-      <!-- Row 1: Forward -->
       <div class="marquee-row">
         <div class="marquee-track">
+
           <div class="review-card">
             <p class="review-quote">"Working with Alireza was a great experience. He quickly understood our vision, solved complex mobile challenges, and delivered a great user experience."</p>
             <div class="review-author-wrap">
-              <div class="review-avatar">SW</div>
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Sarah&backgroundColor=b6e3f4&accessories=round&clothingColor=3c4f5c" class="review-avatar-img" alt="Sarah Wilson avatar" width="44" height="44" />
               <div><div class="review-author">Sarah Wilson</div><div class="review-role">Startup Founder &middot; TravelFlow</div></div>
             </div>
           </div>
+
           <div class="review-card">
             <p class="review-quote">"Alireza is one of the most reliable developers I have worked with. His Kotlin skills, problem-solving ability, and ownership mindset made a huge difference."</p>
             <div class="review-author-wrap">
-              <div class="review-avatar">DK</div>
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Daniel&backgroundColor=c0aede&accessories=wayfarers&clothingColor=5199e4" class="review-avatar-img" alt="Daniel Kim avatar" width="44" height="44" />
               <div><div class="review-author">Daniel Kim</div><div class="review-role">Engineering Lead &middot; HealthSync</div></div>
             </div>
           </div>
+
           <div class="review-card">
             <p class="review-quote">"Excellent mobile engineer with strong technical judgment. He writes maintainable code, understands business requirements, and delivers high-quality solutions."</p>
             <div class="review-author-wrap">
-              <div class="review-avatar">ER</div>
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Emma&backgroundColor=d1f4d1&accessories=prescription01&clothingColor=ff488e" class="review-avatar-img" alt="Emma Rossi avatar" width="44" height="44" />
               <div><div class="review-author">Emma Rossi</div><div class="review-role">CTO &middot; FinEdge Solutions</div></div>
             </div>
           </div>
+
           <div class="review-card">
             <p class="review-quote">"Alireza combines strong engineering skills with great teamwork. He communicates clearly, meets deadlines, and brings valuable ideas to improve the product."</p>
             <div class="review-author-wrap">
-              <div class="review-avatar">MC</div>
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Michael&backgroundColor=ffd5dc&accessories=kurt&clothingColor=262e33" class="review-avatar-img" alt="Michael Chen avatar" width="44" height="44" />
               <div><div class="review-author">Michael Chen</div><div class="review-role">Project Manager &middot; AppWorks Studio</div></div>
             </div>
           </div>
+
           <div class="review-card">
             <p class="review-quote">"Alireza delivered beyond expectations. His Android expertise, clean architecture approach, and attention to detail helped us build a stable and scalable product."</p>
             <div class="review-author-wrap">
-              <div class="review-avatar">AM</div>
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Alex&backgroundColor=ffdfbf&accessories=round&clothingColor=b1e2ff" class="review-avatar-img" alt="Alex Morgan avatar" width="44" height="44" />
               <div><div class="review-author">Alex Morgan</div><div class="review-role">Product Manager &middot; NovaTech Labs</div></div>
             </div>
           </div>
-          <!-- Clones for smooth infinite scroll -->
+
+          <div class="review-card">
+            <p class="review-quote">"His cross-platform expertise is genuine — not a shortcut. We got a single Flutter codebase that felt truly native on both iOS and Android. Remarkable work."</p>
+            <div class="review-author-wrap">
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Julia&backgroundColor=b6e3f4&accessories=sunglasses&clothingColor=ff5733" class="review-avatar-img" alt="Julia Park avatar" width="44" height="44" />
+              <div><div class="review-author">Julia Park</div><div class="review-role">Co-founder &middot; MobileLaunch</div></div>
+            </div>
+          </div>
+
+          <!-- Clones for infinite scroll -->
           <div class="review-card">
             <p class="review-quote">"Working with Alireza was a great experience. He quickly understood our vision, solved complex mobile challenges, and delivered a great user experience."</p>
             <div class="review-author-wrap">
-              <div class="review-avatar">SW</div>
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Sarah&backgroundColor=b6e3f4&accessories=round&clothingColor=3c4f5c" class="review-avatar-img" alt="Sarah Wilson avatar" width="44" height="44" />
               <div><div class="review-author">Sarah Wilson</div><div class="review-role">Startup Founder &middot; TravelFlow</div></div>
             </div>
           </div>
+
           <div class="review-card">
             <p class="review-quote">"Alireza is one of the most reliable developers I have worked with. His Kotlin skills, problem-solving ability, and ownership mindset made a huge difference."</p>
             <div class="review-author-wrap">
-              <div class="review-avatar">DK</div>
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Daniel&backgroundColor=c0aede&accessories=wayfarers&clothingColor=5199e4" class="review-avatar-img" alt="Daniel Kim avatar" width="44" height="44" />
               <div><div class="review-author">Daniel Kim</div><div class="review-role">Engineering Lead &middot; HealthSync</div></div>
             </div>
           </div>
+
         </div>
       </div>
     </div>
   </section>
 
-  <!-- RESUME SECTION -->
+  <!-- ═══════════════════════ RESUME ═══════════════════════ -->
   <section id="resume" aria-label="Curriculum Vitae">
     <div class="section-label">
       <span class="comment" data-i18n="resume.tag">// resume</span>
@@ -612,7 +536,7 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <!-- ═══════════════════════ CONTACT ═══════════════════════ -->
   <section id="contact" aria-label="Contact and booking">
     <div class="contact-inner">
       <div class="contact-info reveal-block">
@@ -620,24 +544,20 @@
           <span class="comment" data-i18n="contact.tag">// contact</span>
         </div>
         <h2 class="section-heading" data-i18n="contact.title">Let's build something extraordinary.</h2>
-        <p class="contact-desc" data-i18n="contact.desc">
-          Have a new project, need senior Android/Flutter capacity, or want to audit an existing codebase? Schedule a call or drop me a line.
-        </p>
-
-        <div style="margin-top: 40px;">
-          <a href="mailto:alireza.nezami75@gmail.com" class="btn btn-ghost" style="margin-bottom: 12px; display: inline-flex;">alireza.nezami75@gmail.com &nearr;</a><br />
-          <a href="https://linkedin.com/in/alirezanezami" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-bottom: 12px; display: inline-flex;">LinkedIn Profile &nearr;</a><br />
-          <a href="https://github.com/AlirezaNezami96" target="_blank" rel="noopener" class="btn btn-ghost" style="display: inline-flex;">GitHub Profile &nearr;</a>
+        <p class="contact-desc" data-i18n="contact.desc">Have a new project, need senior Android/Flutter capacity, or want to audit an existing codebase? Schedule a call or drop me a line.</p>
+        <div class="contact-links">
+          <a href="mailto:alireza.nezami75@gmail.com" class="btn btn-ghost">alireza.nezami75@gmail.com &nearr;</a>
+          <a href="https://linkedin.com/in/alirezanezami" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn &nearr;</a>
+          <a href="https://github.com/AlirezaNezami96" target="_blank" rel="noopener" class="btn btn-ghost">GitHub &nearr;</a>
         </div>
       </div>
-
       <div class="contact-widget reveal-block">
         <div class="calendly-inline-widget" data-url="https://calendly.com/nezami/lets-discuss-your-project?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=12151c&text_color=edeef0&primary_color=7f52ff"></div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
   <footer id="footer" role="contentinfo">
     <div class="footer-inner">
       <div>&copy; <span id="footer-year">2026</span> Alireza Nezami. <span data-i18n="footer.rights">All rights reserved.</span></div>
@@ -646,7 +566,6 @@
   </footer>
 
   <script src="assets/js/main.js" defer></script>
-  <script src="https://assets.calendly.com/assets/external/widget.css" async></script>
   <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
 </html>
