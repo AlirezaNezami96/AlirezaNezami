@@ -458,68 +458,79 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   50% { transform: scaleY(1.5); opacity: 1; }
 }
 
-/* ─── APPLE SCROLL TRANSITIONS ───────────────────────── */
-/* IMPORTANT: CSS custom props cannot be used as <timing-function> tokens;
-   always write the cubic-bezier literal in transitions. */
+/* ─── SCROLL REVEALS ─────────────────────────────────── */
+/* Rule: ONLY the observed parent gets opacity:0 / transform.
+   Children are NEVER set to opacity:0 independently — that creates
+   a double-opacity compounding problem that makes content invisible
+   even after the parent becomes visible. */
 
 .reveal-block, .reveal-project {
   opacity: 0;
-  transform: translateY(48px);
+  transform: translateY(44px);
   transition:
-    opacity 0.85s cubic-bezier(0.16,1,0.3,1),
-    transform 0.85s cubic-bezier(0.16,1,0.3,1);
+    opacity 0.75s cubic-bezier(0.16,1,0.3,1),
+    transform 0.75s cubic-bezier(0.16,1,0.3,1);
+  will-change: opacity, transform;
 }
 .reveal-block.visible,
 .reveal-project.visible {
   opacity: 1;
   transform: translateY(0);
 }
+/* Stagger children of reveal-block */
 .reveal-block.visible > *:nth-child(1) { transition-delay: 0s; }
-.reveal-block.visible > *:nth-child(2) { transition-delay: 0.08s; }
-.reveal-block.visible > *:nth-child(3) { transition-delay: 0.16s; }
-.reveal-block.visible > *:nth-child(4) { transition-delay: 0.24s; }
+.reveal-block.visible > *:nth-child(2) { transition-delay: 0.07s; }
+.reveal-block.visible > *:nth-child(3) { transition-delay: 0.14s; }
+.reveal-block.visible > *:nth-child(4) { transition-delay: 0.21s; }
 
-/* Profile card entrance with scale */
+/* Profile card: scale entrance */
 .profile-card {
   opacity: 0;
-  transform: scale(0.92) translateY(30px);
-  transition: opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1);
+  transform: scale(0.93) translateY(24px);
+  transition: opacity 0.85s cubic-bezier(0.16,1,0.3,1), transform 0.85s cubic-bezier(0.16,1,0.3,1);
+  will-change: opacity, transform;
 }
 .profile-card.visible {
   opacity: 1;
   transform: scale(1) translateY(0);
 }
 
-/* Projects: left side slides from left, right side from right */
+/* Project blocks: slide visual from one side, content from other.
+   NOTE: NO opacity:0 on children — parent carries the opacity. */
 .project-block .project-visual {
-  opacity: 0; transform: translateX(-50px);
-  transition: opacity 0.85s cubic-bezier(0.16,1,0.3,1), transform 0.85s cubic-bezier(0.16,1,0.3,1);
+  transform: translateX(-44px);
+  transition: transform 0.75s cubic-bezier(0.16,1,0.3,1);
+  will-change: transform;
 }
-.project-block--right .project-visual {
-  transform: translateX(50px);
-}
+.project-block--right .project-visual { transform: translateX(44px); }
 .project-block .project-content {
-  opacity: 0; transform: translateX(50px);
-  transition: opacity 0.85s 0.12s cubic-bezier(0.16,1,0.3,1), transform 0.85s 0.12s cubic-bezier(0.16,1,0.3,1);
+  transform: translateX(44px);
+  transition: transform 0.75s 0.1s cubic-bezier(0.16,1,0.3,1);
+  will-change: transform;
 }
-.project-block--right .project-content {
-  transform: translateX(-50px);
-}
+.project-block--right .project-content { transform: translateX(-44px); }
 .reveal-project.visible .project-visual,
 .reveal-project.visible .project-content {
-  opacity: 1; transform: translateX(0);
+  transform: translateX(0);
 }
 
-/* Stat card pop-in */
+/* Stat cards pop */
 .stat-card {
-  opacity: 0; transform: scale(0.88);
-  transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1);
+  opacity: 0;
+  transform: scale(0.88);
+  transition: opacity 0.55s cubic-bezier(0.16,1,0.3,1), transform 0.55s cubic-bezier(0.16,1,0.3,1);
+  will-change: opacity, transform;
 }
-.about-stats.visible .stat-card:nth-child(1) { transition-delay: 0s; }
-.about-stats.visible .stat-card:nth-child(2) { transition-delay: 0.07s; }
-.about-stats.visible .stat-card:nth-child(3) { transition-delay: 0.14s; }
-.about-stats.visible .stat-card:nth-child(4) { transition-delay: 0.21s; }
 .about-stats.visible .stat-card { opacity: 1; transform: scale(1); }
+.about-stats.visible .stat-card:nth-child(1) { transition-delay: 0s; }
+.about-stats.visible .stat-card:nth-child(2) { transition-delay: 0.06s; }
+.about-stats.visible .stat-card:nth-child(3) { transition-delay: 0.12s; }
+.about-stats.visible .stat-card:nth-child(4) { transition-delay: 0.18s; }
+.stat-card.visible { opacity: 1; transform: scale(1); }
+
+
+
+
 
 /* Section heading underline sweep */
 .section-heading-wrap { position: relative; display: inline-block; }

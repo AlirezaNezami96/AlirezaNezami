@@ -1,7 +1,9 @@
 /**
- * ALIREZA NEZAMI PORTFOLIO — main.js v2
- * Orchestrates: Lenis scroll, GSAP hero reveal, IntersectionObserver reveals,
- * Three.js hero bg, Swiper, i18n, Theme, Ripple, Typewriter, Tilt, Magnetic.
+ * ALIREZA NEZAMI PORTFOLIO — main.js v3
+ * Key fixes:
+ *  - Hero text visible immediately (CSS fallback + GSAP enhances on DOMContentLoaded)
+ *  - Scroll reveals fire reliably (IO threshold 0, no rootMargin cut)
+ *  - No window.load dependency for critical-path UI
  */
 
 'use strict';
@@ -21,8 +23,7 @@ function applyTheme(theme) {
   currentTheme = theme;
   document.documentElement.setAttribute('data-theme', theme);
   localStorage.setItem('an_portfolio_theme', theme);
-  const icon = theme === 'light' ? '☀️' : '🌙';
-  qsa('.theme-icon').forEach(el => { el.textContent = icon; });
+  qsa('.theme-icon').forEach(el => { el.textContent = theme === 'light' ? '☀️' : '🌙'; });
   window.dispatchEvent(new CustomEvent('themeChanged', { detail: { theme } }));
 }
 
@@ -36,7 +37,6 @@ function initThemeSwitcher() {
 /* ─── I18N ───────────────────────────────────────────── */
 const supportedLangs = ['en', 'fa', 'ar', 'es', 'fr', 'zh', 'hi', 'bn', 'ru', 'pt', 'ur'];
 const rtlLangs = ['fa', 'ar', 'ur'];
-
 let currentLang = localStorage.getItem('an_portfolio_lang') || getBestMatchLang();
 let i18nCache = {};
 
@@ -67,23 +67,19 @@ async function applyLanguage(lang) {
   if (!dict) return;
   currentLang = lang;
   localStorage.setItem('an_portfolio_lang', lang);
-
   const isRTL = rtlLangs.includes(lang);
   document.documentElement.lang = lang;
   document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
-
   qsa('[data-i18n]').forEach(el => {
     const key = el.dataset.i18n;
     const val = getNestedValue(dict, key);
     if (val) el.textContent = val;
   });
-
-  /* Dynamic font loading for Farsi and Arabic */
-  if (lang === 'fa') loadFont('Vazirmatn', 'https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800&display=swap');
-  if (lang === 'ar') loadFont('Amiri', 'https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
+  if (lang === 'fa') loadFont('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800&display=swap');
+  if (lang === 'ar') loadFont('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
 }
 
-function loadFont(name, url) {
+function loadFont(url) {
   if (document.querySelector(`link[href="${url}"]`)) return;
   const link = document.createElement('link');
   link.rel = 'stylesheet'; link.href = url;
@@ -103,15 +99,13 @@ let lenis;
 
 function initLenis() {
   if (typeof Lenis === 'undefined') return;
-
   lenis = new Lenis({
-    lerp: isCoarsePointer ? 0.1 : 0.085,
+    lerp: isCoarsePointer ? 0.12 : 0.09,
     smoothWheel: !isCoarsePointer,
     touchMultiplier: 1.8,
     infinite: false,
   });
 
-  /* Connect to GSAP ticker if available */
   if (typeof gsap !== 'undefined') {
     gsap.ticker.add((time) => { lenis.raf(time * 1000); });
     gsap.ticker.lagSmoothing(0);
@@ -120,107 +114,91 @@ function initLenis() {
     requestAnimationFrame(raf);
   }
 
-  /* Scroll progress for nav */
   lenis.on('scroll', ({ scroll }) => {
-    const nav = qs('#nav');
-    if (nav) nav.classList.toggle('scrolled', scroll > 60);
+    qs('#nav')?.classList.toggle('scrolled', scroll > 60);
   });
 }
 
-/* ─── HERO SCROLL REVEAL (GSAP) ──────────────────────── */
+/* ─── HERO REVEAL ─────────────────────────────────────
+ * CRITICAL: Called on DOMContentLoaded — NOT window.load.
+ * window.load fires only after all images load, which can be
+ * 30–60s on slow connections. Hero text must be visible immediately.
+ * ─────────────────────────────────────────────────────── */
 function initHeroReveal() {
-  if (typeof gsap === 'undefined' || prefersReducedMotion) {
-    /* Fallback: just show everything */
-    qsa('.hero-headline .word, .hero-subtitle, .hero-actions').forEach(el => {
-      el.style.opacity = 1; el.style.transform = 'none';
-    });
+  /* Always make hero visible immediately, even without GSAP */
+  const heroEls = qsa('.hero-headline .word');
+  const heroSub  = qs('.hero-subtitle');
+  const heroAct  = qs('.hero-actions');
+
+  if (prefersReducedMotion || typeof gsap === 'undefined') {
+    heroEls.forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; });
+    if (heroSub) { heroSub.style.opacity = '1'; }
+    if (heroAct) { heroAct.style.opacity = '1'; }
     return;
   }
 
+  /* GSAP animates — but starts immediately at DOMContentLoaded */
   const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+  tl.to('.hero-headline .word', { opacity: 1, y: 0, duration: 0.9, stagger: 0.10 }, 0.05);
+  tl.to('.hero-subtitle', { opacity: 1, duration: 0.7 }, 0.45);
+  tl.to('.hero-actions', { opacity: 1, y: 0, duration: 0.6 }, 0.65);
 
-  /* Words fly up staggered */
-  tl.to('.hero-headline .word', {
-    opacity: 1, y: 0,
-    duration: 1.0, stagger: 0.12
-  }, 0);
-
-  /* Subtitle fades in */
-  tl.to('.hero-subtitle', { opacity: 1, duration: 0.8 }, 0.55);
-
-  /* CTAs slide up */
-  tl.to('.hero-actions', { opacity: 1, y: 0, duration: 0.7 }, 0.75);
-
-  /* ScrollTrigger: pin hero, fade out on scroll */
-  if (typeof ScrollTrigger !== 'undefined') {
+  /* Scroll-driven fade-out only after window.load (non-critical) */
+  window.addEventListener('load', () => {
+    if (typeof ScrollTrigger === 'undefined') return;
     gsap.to('#hero-content', {
-      opacity: 0,
-      y: -60,
-      ease: 'power2.in',
-      scrollTrigger: {
-        trigger: '#hero',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: 1.2,
-      }
+      opacity: 0, y: -50, ease: 'power2.in',
+      scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 1.2 }
     });
-
-    /* Parallax devices */
     gsap.to('#hero-devices', {
-      y: 80,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '#hero',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: 1.8,
-      }
+      y: 80, ease: 'none',
+      scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 1.8 }
     });
-  }
+    setTimeout(() => ScrollTrigger.refresh(), 300);
+  });
 }
 
-/* ─── SECTION REVEALS (IntersectionObserver) ─────────── */
+/* ─── SCROLL REVEALS (IntersectionObserver) ──────────
+ * Keep it simple: observe the article/section element,
+ * add .visible, CSS handles children via parent selector.
+ * No child opacity — parent opacity cascade does the work.
+ * ─────────────────────────────────────────────────────── */
 function initScrollReveals() {
-  const targets = qsa('.reveal-block, .reveal-project, .profile-card, .about-stats');
-
-  const obs = new IntersectionObserver((entries) => {
+  /* threshold:0 = trigger the INSTANT even 1px enters viewport */
+  const io = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        obs.unobserve(entry.target);
+        io.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+  }, { threshold: 0 });
 
-  targets.forEach(el => obs.observe(el));
+  qsa('.reveal-block, .reveal-project, .profile-card, .about-stats').forEach(el => io.observe(el));
 
-  /* Also observe stat cards individually for pop-in */
-  const statObs = new IntersectionObserver((entries) => {
+  /* Separate observer for stat cards */
+  const statIO = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        statObs.unobserve(entry.target);
+        statIO.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
-  qsa('.stat-card').forEach(el => statObs.observe(el));
+  }, { threshold: 0 });
+  qsa('.stat-card').forEach(el => statIO.observe(el));
 }
 
-/* ─── NAV & HAMBURGER ────────────────────────────────── */
+/* ─── NAV ────────────────────────────────────────────── */
 function initNav() {
-  const burger  = qs('#nav-hamburger');
-  const menu    = qs('#mobile-menu');
-  const navEl   = qs('#nav');
+  const burger = qs('#nav-hamburger');
+  const menu   = qs('#mobile-menu');
+  const navEl  = qs('#nav');
 
-  /* Check initial scroll */
-  if (window.scrollY > 60) navEl?.classList.add('scrolled');
-
-  /* If Lenis not init, fallback scroll listener */
-  if (!lenis) {
-    window.addEventListener('scroll', () => {
-      navEl?.classList.toggle('scrolled', window.scrollY > 60);
-    }, { passive: true });
-  }
+  /* Fallback scroll class if Lenis isn't ready */
+  window.addEventListener('scroll', () => {
+    navEl?.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+  navEl?.classList.toggle('scrolled', window.scrollY > 60);
 
   burger?.addEventListener('click', () => {
     const open = burger.getAttribute('aria-expanded') === 'true';
@@ -246,17 +224,12 @@ function initTypewriter() {
   if (!el) return;
   const words = ['Kotlin', 'Flutter', 'Jetpack Compose', 'Dart', 'Android SDK'];
   let i = 0, charIdx = 0, deleting = false;
-
   function tick() {
     const word = words[i % words.length];
-    if (deleting) {
-      el.textContent = word.slice(0, --charIdx);
-    } else {
-      el.textContent = word.slice(0, ++charIdx);
-    }
+    el.textContent = deleting ? word.slice(0, --charIdx) : word.slice(0, ++charIdx);
     let delay = deleting ? 40 : 90;
     if (!deleting && charIdx === word.length) { deleting = true; delay = 1400; }
-    else if (deleting && charIdx === 0) { deleting = false; i++; delay = 320; }
+    else if (deleting && charIdx === 0) { deleting = false; i++; delay = 300; }
     setTimeout(tick, delay);
   }
   tick();
@@ -264,24 +237,28 @@ function initTypewriter() {
 
 /* ─── STAT COUNTER ANIMATION ─────────────────────────── */
 function initStatCounters() {
-  const counters = qsa('.stat-number');
-  const obs = new IntersectionObserver((entries) => {
+  const io = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
       const el = entry.target;
       const target = parseInt(el.dataset.target, 10);
       let start = 0;
       const step = () => {
-        start += Math.ceil(target / 50);
+        start += Math.ceil(target / 40);
         if (start >= target) { el.textContent = target; return; }
         el.textContent = start;
         requestAnimationFrame(step);
       };
       requestAnimationFrame(step);
-      obs.unobserve(el);
+      io.unobserve(el);
     });
   }, { threshold: 0.5 });
-  counters.forEach(c => obs.observe(c));
+  qsa('.stat-number').forEach(c => io.observe(c));
+}
+
+/* ─── SKILL TAG ANIMATION ────────────────────────────── */
+function initSkillTags() {
+  qsa('.skill-tag').forEach((tag, i) => tag.style.setProperty('--i', i));
 }
 
 /* ─── TILT EFFECT ────────────────────────────────────── */
@@ -289,35 +266,13 @@ function initTilt() {
   if (isCoarsePointer || prefersReducedMotion) return;
   qsa('.tilt-target').forEach(el => {
     el.addEventListener('mousemove', e => {
-      const rect = el.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width  - 0.5;
-      const y = (e.clientY - rect.top)  / rect.height - 0.5;
-      el.style.transform = `perspective(900px) rotateY(${x * 12}deg) rotateX(${-y * 10}deg) scale(1.02)`;
+      const r = el.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width  - 0.5;
+      const y = (e.clientY - r.top)  / r.height - 0.5;
+      el.style.transform = `perspective(900px) rotateY(${x * 10}deg) rotateX(${-y * 8}deg) scale(1.02)`;
     });
-    el.addEventListener('mouseleave', () => {
-      el.style.transform = '';
-    });
+    el.addEventListener('mouseleave', () => { el.style.transform = ''; });
   });
-}
-
-/* ─── SKILL TAG ANIMATION ────────────────────────── */
-function initSkillTags() {
-  /* Stagger-animate the border via CSS custom prop --i already set in CSS.
-     For browsers not supporting @property, fall back to a pulsing border. */
-  const tags = qsa('.skill-tag');
-  tags.forEach((tag, i) => {
-    tag.style.setProperty('--i', i);
-  });
-
-  /* Intersection observer: when skills section is visible, activate all borders */
-  const skillsObs = new IntersectionObserver(([entry]) => {
-    if (entry.isIntersecting) {
-      qsa('.skill-tag').forEach(t => t.classList.add('border-active'));
-      skillsObs.disconnect();
-    }
-  }, { threshold: 0.1 });
-  const skillsWrap = qs('.skills-tags');
-  if (skillsWrap) skillsObs.observe(skillsWrap);
 }
 
 /* ─── MAGNETIC BUTTONS ───────────────────────────────── */
@@ -339,129 +294,108 @@ function initRipple() {
   const canvas = qs('#ripple-canvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
-  let ripples = [];
-  let W = window.innerWidth, H = window.innerHeight;
-
-  function resize() {
-    W = canvas.width  = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-  }
+  let ripples = [], W, H;
+  function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
   resize();
   window.addEventListener('resize', resize);
-
   document.addEventListener('click', e => {
     if (prefersReducedMotion) return;
-    ripples.push({ x: e.clientX, y: e.clientY, r: 0, maxR: 90, alpha: 0.6 });
+    ripples.push({ x: e.clientX, y: e.clientY, r: 0, alpha: 0.6 });
   });
-
-  function loop() {
+  (function loop() {
     ctx.clearRect(0, 0, W, H);
-    ripples = ripples.filter(rp => rp.alpha > 0);
+    ripples = ripples.filter(rp => rp.alpha > 0.01);
     ripples.forEach(rp => {
-      rp.r += 3;
-      rp.alpha -= 0.03;
-      ctx.beginPath();
-      ctx.arc(rp.x, rp.y, rp.r, 0, Math.PI * 2);
-      ctx.strokeStyle = `rgba(127,82,255,${rp.alpha})`;
-      ctx.lineWidth = 1.5;
-      ctx.stroke();
+      rp.r += 3; rp.alpha -= 0.025;
+      ctx.beginPath(); ctx.arc(rp.x, rp.y, rp.r, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(127,82,255,${rp.alpha})`; ctx.lineWidth = 1.5; ctx.stroke();
     });
     requestAnimationFrame(loop);
-  }
-  loop();
+  })();
 }
 
-/* ─── THREE.JS HERO BG ───────────────────────────────── */
+/* ─── THREE.JS HERO BG (deferred to load event) ─────── */
 function initHeroBg() {
   if (typeof THREE === 'undefined' || prefersReducedMotion) return;
-
   const canvas = qs('#hero-bg');
   if (!canvas) return;
 
   const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
-
   const scene  = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(70, 1, 0.1, 100);
   camera.position.z = 3;
 
-  /* Particle field */
-  const N = 700;
+  const N = 600;
   const pos = new Float32Array(N * 3);
   for (let i = 0; i < N * 3; i++) pos[i] = (Math.random() - 0.5) * 12;
   const geo = new THREE.BufferGeometry();
   geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-  const mat = new THREE.PointsMaterial({ color: 0x7F52FF, size: 0.04, transparent: true, opacity: 0.45 });
-  const points = new THREE.Points(geo, mat);
-  scene.add(points);
+  const mat = new THREE.PointsMaterial({ color: 0x7F52FF, size: 0.04, transparent: true, opacity: 0.4 });
+  scene.add(new THREE.Points(geo, mat));
 
-  let themeKotlin = 0x7F52FF;
   window.addEventListener('themeChanged', ({ detail }) => {
     mat.color.setHex(detail.theme === 'light' ? 0x6B38E8 : 0x7F52FF);
   });
 
   function resize() {
-    const w = canvas.offsetWidth || window.innerWidth;
-    const h = canvas.offsetHeight || window.innerHeight;
+    const w = window.innerWidth, h = window.innerHeight;
     renderer.setSize(w, h, false);
-    camera.aspect = w / h;
-    camera.updateProjectionMatrix();
+    camera.aspect = w / h; camera.updateProjectionMatrix();
   }
   resize();
   window.addEventListener('resize', resize);
 
-  /* Pause when off-screen */
   let paused = false;
-  const obs = new IntersectionObserver(([e]) => { paused = !e.isIntersecting; }, { threshold: 0 });
-  obs.observe(canvas);
+  new IntersectionObserver(([e]) => { paused = !e.isIntersecting; }, { threshold: 0 }).observe(canvas);
 
   let clock = 0;
-  function animate() {
+  (function animate() {
     requestAnimationFrame(animate);
     if (paused) return;
     clock += 0.003;
+    const points = scene.children[0];
     points.rotation.y = clock * 0.3;
     points.rotation.x = Math.sin(clock * 0.5) * 0.12;
     renderer.render(scene, camera);
-  }
-  animate();
+  })();
 }
 
 /* ─── SWIPER CAROUSELS ───────────────────────────────── */
 function initSwipers() {
   if (typeof Swiper === 'undefined') return;
-
-  const swiperConfigs = [
-    '.swiper-albert', '.swiper-yolda', '.swiper-biletino',
-    '.swiper-kolay', '.swiper-fuudy', '.swiper-wegopro', '.swiper-trainerize',
-  ];
-
-  swiperConfigs.forEach(sel => {
+  ['.swiper-albert', '.swiper-yolda', '.swiper-biletino',
+   '.swiper-kolay', '.swiper-fuudy', '.swiper-wegopro', '.swiper-trainerize']
+  .forEach(sel => {
     const el = qs(sel);
     if (!el) return;
     new Swiper(el, {
       loop: true,
       autoplay: { delay: 2800, disableOnInteraction: false, pauseOnMouseEnter: true },
       pagination: { el: el.querySelector('.swiper-pagination'), clickable: true },
-      effect: 'slide',
-      speed: 560,
+      speed: 500,
     });
   });
 }
 
-/* ─── YEAR FOOTER ────────────────────────────────────── */
+/* ─── YEAR ───────────────────────────────────────────── */
 function initYear() {
   const el = qs('#footer-year');
   if (el) el.textContent = new Date().getFullYear();
 }
 
-/* ─── BOOT ───────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════
+   BOOT — Critical path on DOMContentLoaded
+   Heavy non-critical things (Three.js, Lenis, Swiper)
+   deferred to window.load or requestIdleCallback.
+   ═══════════════════════════════════════════════════════ */
 function boot() {
   initThemeSwitcher();
   initLangSwitcher();
   initRipple();
   initNav();
   initTypewriter();
+  initHeroReveal();    /* ← moved here from window.load */
   initStatCounters();
   initScrollReveals();
   initSkillTags();
@@ -470,17 +404,11 @@ function boot() {
   initYear();
 }
 
-/* Wait for all deferred scripts */
 window.addEventListener('DOMContentLoaded', boot);
 
+/* Defer heavy 3D and smooth-scroll libs to after page is interactive */
 window.addEventListener('load', () => {
   initLenis();
-  initHeroReveal();
   initHeroBg();
   initSwipers();
-
-  /* Force ScrollTrigger refresh after Lenis is ready */
-  if (typeof ScrollTrigger !== 'undefined') {
-    setTimeout(() => ScrollTrigger.refresh(), 500);
-  }
 });

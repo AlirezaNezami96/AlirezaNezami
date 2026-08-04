@@ -10,6 +10,13 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
 
+  <!-- Resource hints: preconnect to all CDNs used -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+  <link rel="dns-prefetch" href="https://api.dicebear.com" />
+
   <!-- OpenGraph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://alirezanezami96.github.io/AlirezaNezami/" />
@@ -299,7 +306,7 @@
           <div class="phone-notch-bar"><span class="phone-notch"></span></div>
           <div class="swiper swiper-albert phone-swiper">
             <div class="swiper-wrapper">
-              <div class="swiper-slide"><img src="assets/images/screenshots/albert-health/1.jpg" alt="Albert Health — Dashboard Vitals" loading="lazy" /></div>
+              <div class="swiper-slide"><img src="assets/images/screenshots/albert-health/1.jpg" alt="Albert Health — Dashboard Vitals" loading="eager" fetchpriority="low" /></div>
               <div class="swiper-slide"><img src="assets/images/screenshots/albert-health/2.jpg" alt="Albert Health — AI Health Insights" loading="lazy" /></div>
               <div class="swiper-slide"><img src="assets/images/screenshots/albert-health/3.jpg" alt="Albert Health — Medication Tracker" loading="lazy" /></div>
               <div class="swiper-slide"><img src="assets/images/screenshots/albert-health/4.jpg" alt="Albert Health — Doctor Consultation" loading="lazy" /></div>
