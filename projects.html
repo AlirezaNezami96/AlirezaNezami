@@ -141,25 +141,14 @@
       width: 140%; height: 180%;
       background: radial-gradient(circle at center, rgba(127,82,255,0.08) 0%, transparent 70%);
     }
-    .proj-card-phone {
-      width: 160px;
-      background: #111118;
-      border-radius: 30px;
-      border: 2.5px solid rgba(255,255,255,0.14);
-      box-shadow:
-        0 0 0 1px rgba(0,0,0,0.5),
-        0 20px 50px rgba(0,0,0,0.5),
-        inset 0 1px 0 rgba(255,255,255,0.1);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
+    .proj-card-visual .slider-916 {
+      width: 180px;
+      aspect-ratio: 9 / 16;
+      border-radius: 12px;
+      box-shadow: 0 14px 35px rgba(0,0,0,0.4);
       position: relative;
       z-index: 1;
     }
-    .proj-card-phone .phone-notch-bar { padding: 7px 0 3px; }
-    .proj-card-phone .phone-notch { width: 60px; height: 14px; border-radius: 0 0 10px 10px; }
-    .proj-card-phone .phone-swiper { aspect-ratio: 9 / 16; }
-    .proj-card-phone .phone-home-bar { height: 16px; }
 
     /* Number badge */
     .proj-card-badge {
@@ -338,17 +327,13 @@
       <div class="proj-card" data-tags="flutter dart riverpod firebase">
         <div class="proj-card-visual">
           <span class="proj-card-badge">01</span>
-          <div class="proj-card-phone project-phone-bezel">
-            <div class="phone-notch-bar"><span class="phone-notch"></span></div>
-            <div class="swiper swiper-albert phone-swiper">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="assets/images/screenshots/albert-health/1.jpg" alt="Albert Health" loading="lazy" /></div>
-                <div class="swiper-slide"><img src="assets/images/screenshots/albert-health/2.jpg" alt="Albert Health" loading="lazy" /></div>
-                <div class="swiper-slide"><img src="assets/images/screenshots/albert-health/3.jpg" alt="Albert Health" loading="lazy" /></div>
-              </div>
-              <div class="swiper-pagination"></div>
+          <div class="swiper swiper-albert slider-916">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide"><img src="assets/images/screenshots/albert-health/1.jpg" alt="Albert Health" loading="lazy" /></div>
+              <div class="swiper-slide"><img src="assets/images/screenshots/albert-health/2.jpg" alt="Albert Health" loading="lazy" /></div>
+              <div class="swiper-slide"><img src="assets/images/screenshots/albert-health/3.jpg" alt="Albert Health" loading="lazy" /></div>
             </div>
-            <div class="phone-home-bar"></div>
+            <div class="swiper-pagination"></div>
           </div>
         </div>
         <div class="proj-card-body">
@@ -369,17 +354,13 @@
       <div class="proj-card" data-tags="kotlin jetpack compose mvvm coroutines">
         <div class="proj-card-visual">
           <span class="proj-card-badge">02</span>
-          <div class="proj-card-phone project-phone-bezel">
-            <div class="phone-notch-bar"><span class="phone-notch"></span></div>
-            <div class="swiper swiper-yolda phone-swiper">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="assets/images/screenshots/yolda-carrier/1.jpg" alt="Yolda Carrier" loading="lazy" /></div>
-                <div class="swiper-slide"><img src="assets/images/screenshots/yolda-carrier/2.jpg" alt="Yolda Carrier" loading="lazy" /></div>
-                <div class="swiper-slide"><img src="assets/images/screenshots/yolda-carrier/3.jpg" alt="Yolda Carrier" loading="lazy" /></div>
-              </div>
-              <div class="swiper-pagination"></div>
+          <div class="swiper swiper-yolda slider-916">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide"><img src="assets/images/screenshots/yolda-carrier/1.jpg" alt="Yolda Carrier" loading="lazy" /></div>
+              <div class="swiper-slide"><img src="assets/images/screenshots/yolda-carrier/2.jpg" alt="Yolda Carrier" loading="lazy" /></div>
+              <div class="swiper-slide"><img src="assets/images/screenshots/yolda-carrier/3.jpg" alt="Yolda Carrier" loading="lazy" /></div>
             </div>
-            <div class="phone-home-bar"></div>
+            <div class="swiper-pagination"></div>
           </div>
         </div>
         <div class="proj-card-body">
@@ -400,17 +381,13 @@
       <div class="proj-card" data-tags="kotlin flutter room retrofit payment">
         <div class="proj-card-visual">
           <span class="proj-card-badge">03</span>
-          <div class="proj-card-phone project-phone-bezel">
-            <div class="phone-notch-bar"><span class="phone-notch"></span></div>
-            <div class="swiper swiper-biletino phone-swiper">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="assets/images/screenshots/biletino/1.jpg" alt="Biletino" loading="lazy" /></div>
-                <div class="swiper-slide"><img src="assets/images/screenshots/biletino/2.jpg" alt="Biletino" loading="lazy" /></div>
-                <div class="swiper-slide"><img src="assets/images/screenshots/biletino/3.jpg" alt="Biletino" loading="lazy" /></div>
-              </div>
-              <div class="swiper-pagination"></div>
+          <div class="swiper swiper-biletino slider-916">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide"><img src="assets/images/screenshots/biletino/1.jpg" alt="Biletino" loading="lazy" /></div>
+              <div class="swiper-slide"><img src="assets/images/screenshots/biletino/2.jpg" alt="Biletino" loading="lazy" /></div>
+              <div class="swiper-slide"><img src="assets/images/screenshots/biletino/3.jpg" alt="Biletino" loading="lazy" /></div>
             </div>
-            <div class="phone-home-bar"></div>
+            <div class="swiper-pagination"></div>
           </div>
         </div>
         <div class="proj-card-body">
@@ -431,17 +408,13 @@
       <div class="proj-card" data-tags="kotlin hilt workmanager coroutines">
         <div class="proj-card-visual">
           <span class="proj-card-badge">04</span>
-          <div class="proj-card-phone project-phone-bezel">
-            <div class="phone-notch-bar"><span class="phone-notch"></span></div>
-            <div class="swiper swiper-kolay phone-swiper">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="assets/images/screenshots/kolay-hr/1.jpg" alt="Kolay HR" loading="lazy" /></div>
-                <div class="swiper-slide"><img src="assets/images/screenshots/kolay-hr/2.jpg" alt="Kolay HR" loading="lazy" /></div>
-                <div class="swiper-slide"><img src="assets/images/screenshots/kolay-hr/3.jpg" alt="Kolay HR" loading="lazy" /></div>
-              </div>
-              <div class="swiper-pagination"></div>
+          <div class="swiper swiper-kolay slider-916">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide"><img src="assets/images/screenshots/kolay-hr/1.jpg" alt="Kolay HR" loading="lazy" /></div>
+              <div class="swiper-slide"><img src="assets/images/screenshots/kolay-hr/2.jpg" alt="Kolay HR" loading="lazy" /></div>
+              <div class="swiper-slide"><img src="assets/images/screenshots/kolay-hr/3.jpg" alt="Kolay HR" loading="lazy" /></div>
             </div>
-            <div class="phone-home-bar"></div>
+            <div class="swiper-pagination"></div>
           </div>
         </div>
         <div class="proj-card-body">
@@ -462,17 +435,13 @@
       <div class="proj-card" data-tags="kotlin rxjava maps food">
         <div class="proj-card-visual">
           <span class="proj-card-badge">05</span>
-          <div class="proj-card-phone project-phone-bezel">
-            <div class="phone-notch-bar"><span class="phone-notch"></span></div>
-            <div class="swiper swiper-fuudy phone-swiper">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="assets/images/screenshots/fuudy/1.jpg" alt="Fuudy" loading="lazy" /></div>
-                <div class="swiper-slide"><img src="assets/images/screenshots/fuudy/2.jpg" alt="Fuudy" loading="lazy" /></div>
-                <div class="swiper-slide"><img src="assets/images/screenshots/fuudy/3.jpg" alt="Fuudy" loading="lazy" /></div>
-              </div>
-              <div class="swiper-pagination"></div>
+          <div class="swiper swiper-fuudy slider-916">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide"><img src="assets/images/screenshots/fuudy/1.jpg" alt="Fuudy" loading="lazy" /></div>
+              <div class="swiper-slide"><img src="assets/images/screenshots/fuudy/2.jpg" alt="Fuudy" loading="lazy" /></div>
+              <div class="swiper-slide"><img src="assets/images/screenshots/fuudy/3.jpg" alt="Fuudy" loading="lazy" /></div>
             </div>
-            <div class="phone-home-bar"></div>
+            <div class="swiper-pagination"></div>
           </div>
         </div>
         <div class="proj-card-body">
@@ -493,17 +462,13 @@
       <div class="proj-card" data-tags="flutter dart rest sqlite travel">
         <div class="proj-card-visual">
           <span class="proj-card-badge">06</span>
-          <div class="proj-card-phone project-phone-bezel">
-            <div class="phone-notch-bar"><span class="phone-notch"></span></div>
-            <div class="swiper swiper-wegopro phone-swiper">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="assets/images/screenshots/wegopro/1.jpg" alt="WegoPro" loading="lazy" /></div>
-                <div class="swiper-slide"><img src="assets/images/screenshots/wegopro/2.jpg" alt="WegoPro" loading="lazy" /></div>
-                <div class="swiper-slide"><img src="assets/images/screenshots/wegopro/3.jpg" alt="WegoPro" loading="lazy" /></div>
-              </div>
-              <div class="swiper-pagination"></div>
+          <div class="swiper swiper-wegopro slider-916">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide"><img src="assets/images/screenshots/wegopro/1.jpg" alt="WegoPro" loading="lazy" /></div>
+              <div class="swiper-slide"><img src="assets/images/screenshots/wegopro/2.jpg" alt="WegoPro" loading="lazy" /></div>
+              <div class="swiper-slide"><img src="assets/images/screenshots/wegopro/3.jpg" alt="WegoPro" loading="lazy" /></div>
             </div>
-            <div class="phone-home-bar"></div>
+            <div class="swiper-pagination"></div>
           </div>
         </div>
         <div class="proj-card-body">
@@ -524,17 +489,13 @@
       <div class="proj-card" data-tags="kotlin java android sdk performance">
         <div class="proj-card-visual">
           <span class="proj-card-badge">07</span>
-          <div class="proj-card-phone project-phone-bezel">
-            <div class="phone-notch-bar"><span class="phone-notch"></span></div>
-            <div class="swiper swiper-trainerize phone-swiper">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="assets/images/screenshots/abc-trainerize/1.jpg" alt="ABC Trainerize" loading="lazy" /></div>
-                <div class="swiper-slide"><img src="assets/images/screenshots/abc-trainerize/2.jpg" alt="ABC Trainerize" loading="lazy" /></div>
-                <div class="swiper-slide"><img src="assets/images/screenshots/abc-trainerize/3.jpg" alt="ABC Trainerize" loading="lazy" /></div>
-              </div>
-              <div class="swiper-pagination"></div>
+          <div class="swiper swiper-trainerize slider-916">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide"><img src="assets/images/screenshots/abc-trainerize/1.jpg" alt="ABC Trainerize" loading="lazy" /></div>
+              <div class="swiper-slide"><img src="assets/images/screenshots/abc-trainerize/2.jpg" alt="ABC Trainerize" loading="lazy" /></div>
+              <div class="swiper-slide"><img src="assets/images/screenshots/abc-trainerize/3.jpg" alt="ABC Trainerize" loading="lazy" /></div>
             </div>
-            <div class="phone-home-bar"></div>
+            <div class="swiper-pagination"></div>
           </div>
         </div>
         <div class="proj-card-body">
