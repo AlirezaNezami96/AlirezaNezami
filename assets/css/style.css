@@ -18,11 +18,11 @@
   --card-bg:      #12151C;
   --radius:       16px;
   --radius-sm:    10px;
-  --nav-h:        72px;
+  --nav-h:        80px;
   --section-pad:  clamp(80px, 10vw, 140px);
   --container:    1300px;
   --gutter:       clamp(24px, 5vw, 72px);
-  --ease-out:     cubic-bezier(0.16,1,0.3,1);
+  /* NOTE: custom props can't be used as transition timing-functions; use literal below */
   --dur:          0.55s;
 }
 
@@ -196,17 +196,26 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .nav-mark {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-family: 'Sora', sans-serif;
   font-weight: 800;
   font-size: 18px;
+  text-decoration: none;
 }
+/* Logo icon mark */
+.nav-logo-icon {
+  width: 38px; height: 38px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.nav-logo-icon svg { width: 38px; height: 38px; overflow: visible; }
 .nav-mark-initials {
   background: linear-gradient(135deg, var(--kotlin), var(--flutter));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: -0.02em;
+  font-size: 17px;
 }
 .nav-mark-dot {
   width: 6px; height: 6px;
@@ -221,17 +230,19 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .nav-links { display: flex; align-items: center; gap: 28px; }
 .nav-controls { display: flex; align-items: center; gap: 10px; }
 .nav-link {
-  font-size: 14px; font-weight: 500;
+  font-size: 16px; font-weight: 600;
   color: var(--text-muted);
-  transition: color var(--dur);
+  transition: color 0.3s ease;
   position: relative;
+  letter-spacing: -0.01em;
 }
 .nav-link::after {
   content: '';
-  position: absolute; bottom: -2px; left: 0;
-  width: 0; height: 1px;
+  position: absolute; bottom: -3px; left: 0;
+  width: 0; height: 2px;
   background: linear-gradient(90deg, var(--kotlin), var(--flutter));
-  transition: width var(--dur);
+  transition: width 0.35s cubic-bezier(0.16,1,0.3,1);
+  border-radius: 2px;
 }
 .nav-link:hover { color: var(--text); }
 .nav-link:hover::after { width: 100%; }
@@ -239,10 +250,11 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   background: transparent;
   border: 1px solid rgba(127,82,255,0.4);
   color: var(--kotlin);
-  padding: 9px 20px;
+  padding: 10px 22px;
   border-radius: 50px;
-  font-size: 14px; font-weight: 600;
-  transition: all var(--dur);
+  font-size: 15px; font-weight: 700;
+  transition: all 0.3s ease;
+  letter-spacing: -0.01em;
 }
 .nav-cta:hover {
   background: var(--kotlin);
@@ -447,20 +459,21 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 }
 
 /* ─── APPLE SCROLL TRANSITIONS ───────────────────────── */
-/* Section entrance: clip-path + opacity + translate */
+/* IMPORTANT: CSS custom props cannot be used as <timing-function> tokens;
+   always write the cubic-bezier literal in transitions. */
+
 .reveal-block, .reveal-project {
   opacity: 0;
   transform: translateY(48px);
   transition:
-    opacity 0.9s var(--ease-out),
-    transform 0.9s var(--ease-out);
+    opacity 0.85s cubic-bezier(0.16,1,0.3,1),
+    transform 0.85s cubic-bezier(0.16,1,0.3,1);
 }
 .reveal-block.visible,
 .reveal-project.visible {
   opacity: 1;
   transform: translateY(0);
 }
-/* Staggered children inside sections */
 .reveal-block.visible > *:nth-child(1) { transition-delay: 0s; }
 .reveal-block.visible > *:nth-child(2) { transition-delay: 0.08s; }
 .reveal-block.visible > *:nth-child(3) { transition-delay: 0.16s; }
@@ -470,7 +483,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .profile-card {
   opacity: 0;
   transform: scale(0.92) translateY(30px);
-  transition: opacity 1s var(--ease-out), transform 1s var(--ease-out);
+  transition: opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1);
 }
 .profile-card.visible {
   opacity: 1;
@@ -480,14 +493,14 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 /* Projects: left side slides from left, right side from right */
 .project-block .project-visual {
   opacity: 0; transform: translateX(-50px);
-  transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+  transition: opacity 0.85s cubic-bezier(0.16,1,0.3,1), transform 0.85s cubic-bezier(0.16,1,0.3,1);
 }
 .project-block--right .project-visual {
   transform: translateX(50px);
 }
 .project-block .project-content {
   opacity: 0; transform: translateX(50px);
-  transition: opacity 0.9s 0.12s var(--ease-out), transform 0.9s 0.12s var(--ease-out);
+  transition: opacity 0.85s 0.12s cubic-bezier(0.16,1,0.3,1), transform 0.85s 0.12s cubic-bezier(0.16,1,0.3,1);
 }
 .project-block--right .project-content {
   transform: translateX(-50px);
@@ -500,7 +513,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 /* Stat card pop-in */
 .stat-card {
   opacity: 0; transform: scale(0.88);
-  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+  transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1);
 }
 .about-stats.visible .stat-card:nth-child(1) { transition-delay: 0s; }
 .about-stats.visible .stat-card:nth-child(2) { transition-delay: 0.07s; }
@@ -552,7 +565,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   padding: 7px;
   background: linear-gradient(135deg, var(--kotlin), var(--flutter));
   box-shadow: 0 20px 50px rgba(127,82,255,0.3);
-  transition: transform var(--dur);
+  transition: transform 0.55s cubic-bezier(0.16,1,0.3,1);
 }
 .profile-card:hover { transform: translateY(-6px); }
 .profile-img {
@@ -570,10 +583,66 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .about-text p { color: var(--text-muted); font-size: clamp(1rem,1.5vw,1.1rem); line-height: 1.75; margin-bottom: 20px; }
 .about-text p:last-child { margin-bottom: 0; }
 .skills-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 36px; }
+
+/* ── Animated gradient border on skill tags ── */
+@property --skill-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes skill-border-spin {
+  to { --skill-angle: 360deg; }
+}
 .skill-tag {
   font-family: 'JetBrains Mono', monospace; font-size: 12px;
   color: var(--text-muted); background: var(--surface);
-  border: 1px solid var(--border); padding: 6px 14px; border-radius: 50px;
+  padding: 6px 14px; border-radius: 50px;
+  position: relative;
+  /* Animated conic-gradient border via box-shadow trick */
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  /* We'll overlay the border using ::before */
+}
+.skill-tag::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 50px;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--skill-angle),
+    #7F52FF 0%,
+    #13B9FD 25%,
+    #7F52FF 50%,
+    #13B9FD 75%,
+    #7F52FF 100%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: skill-border-spin 3s linear infinite;
+  animation-delay: calc(var(--i, 0) * -0.2s);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.skill-tag:hover::before,
+.skills-tags:hover .skill-tag::before,
+.skill-tag.border-active::before {
+  opacity: 1;
+}
+/* Always auto-animate — borders spin from moment section is visible */
+.skill-tag::before {
+  opacity: 1;  /* Always on — the gradient rotation is the interesting bit */
+}
+/* Dim non-hovered tags slightly so hovered one pops */
+.skills-tags:hover .skill-tag:not(:hover)::before {
+  opacity: 0.4;
+}
+/* Always-on for touch screens */
+@media (hover: none) {
+  .skill-tag::before { opacity: 1; }
 }
 .about-stats {
   display: grid; grid-template-columns: 1fr 1fr; gap: 16px;

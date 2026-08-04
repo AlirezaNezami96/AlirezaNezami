@@ -181,7 +181,7 @@ function initHeroReveal() {
 
 /* ─── SECTION REVEALS (IntersectionObserver) ─────────── */
 function initScrollReveals() {
-  const targets = qsa('.reveal-block, .reveal-project, .profile-card, .stat-card, .about-stats');
+  const targets = qsa('.reveal-block, .reveal-project, .profile-card, .about-stats');
 
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -190,9 +190,20 @@ function initScrollReveals() {
         obs.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
 
   targets.forEach(el => obs.observe(el));
+
+  /* Also observe stat cards individually for pop-in */
+  const statObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        statObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  qsa('.stat-card').forEach(el => statObs.observe(el));
 }
 
 /* ─── NAV & HAMBURGER ────────────────────────────────── */
@@ -287,6 +298,26 @@ function initTilt() {
       el.style.transform = '';
     });
   });
+}
+
+/* ─── SKILL TAG ANIMATION ────────────────────────── */
+function initSkillTags() {
+  /* Stagger-animate the border via CSS custom prop --i already set in CSS.
+     For browsers not supporting @property, fall back to a pulsing border. */
+  const tags = qsa('.skill-tag');
+  tags.forEach((tag, i) => {
+    tag.style.setProperty('--i', i);
+  });
+
+  /* Intersection observer: when skills section is visible, activate all borders */
+  const skillsObs = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) {
+      qsa('.skill-tag').forEach(t => t.classList.add('border-active'));
+      skillsObs.disconnect();
+    }
+  }, { threshold: 0.1 });
+  const skillsWrap = qs('.skills-tags');
+  if (skillsWrap) skillsObs.observe(skillsWrap);
 }
 
 /* ─── MAGNETIC BUTTONS ───────────────────────────────── */
@@ -433,6 +464,7 @@ function boot() {
   initTypewriter();
   initStatCounters();
   initScrollReveals();
+  initSkillTags();
   initTilt();
   initMagnetic();
   initYear();
