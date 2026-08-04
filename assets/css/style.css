@@ -345,51 +345,69 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   pointer-events: none; z-index: 1;
 }
 
-/* Hero devices */
-.devices-wrapper {
+/* ── 3D SPHERE HERO CONTAINER ── */
+.sphere-wrapper {
   position: absolute;
-  inset-inline-end: max(60px, calc((100vw - var(--container)) / 2 + 20px));
-  top: 50%; transform: translateY(-50%);
-  display: flex; align-items: center;
-  z-index: 2; perspective: 1200px;
+  inset-inline-end: max(40px, calc((100vw - var(--container)) / 2 + 20px));
+  top: 50%;
+  transform: translateY(-50%);
+  width: 440px;
+  height: 440px;
+  z-index: 2;
+  perspective: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.device { position: relative; will-change: transform; filter: drop-shadow(0 30px 60px rgba(0,0,0,0.5)); }
-.device-frame {
-  position: relative; border-radius: 36px; overflow: hidden;
-  background: #1a1a2e;
-  border: 2px solid rgba(255,255,255,0.12);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 0 0 1px rgba(0,0,0,0.5);
+#sphere-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
-.device-android { width: 200px; transform: rotate(-4deg) translateZ(20px); z-index: 2; margin-right: -24px; }
-.device-android .device-frame { padding: 12px 6px; }
-.device-ios { width: 180px; transform: rotate(4deg) translateZ(0px); z-index: 1; }
-.device-ios .device-frame { padding: 30px 6px 14px; }
-.device-screen { background: #0d0f17; border-radius: 24px; overflow: hidden; aspect-ratio: 9/19.5; position: relative; }
-.device-camera { position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 10px; height: 10px; border-radius: 50%; background: #000; z-index: 10; }
-.device-notch { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 90px; height: 22px; background: #0a0c10; border-radius: 0 0 16px 16px; z-index: 10; }
-.device-gesture-bar, .device-home-indicator { width: 80px; height: 4px; background: rgba(255,255,255,0.2); border-radius: 2px; margin: 6px auto; }
-.device-home-indicator { width: 100px; background: rgba(255,255,255,0.3); }
-
-/* UI inside devices */
-.screen-android, .screen-ios { width: 100%; height: 100%; padding: 6px; }
-.app-ui { background: linear-gradient(160deg,#0d1021 0%,#13163a 100%); border-radius: 18px; height: 100%; display: flex; flex-direction: column; overflow: hidden; gap: 4px; }
-.app-bar { display: flex; align-items: center; gap: 6px; padding: 8px 8px 4px; }
-.app-bar-icon { width: 20px; height: 20px; border-radius: 6px; background: linear-gradient(135deg,var(--kotlin),var(--flutter)); flex-shrink: 0; }
-.app-bar-title { flex: 1; height: 6px; border-radius: 3px; background: rgba(255,255,255,0.15); }
-.app-content { flex: 1; display: flex; flex-direction: column; gap: 4px; padding: 0 6px; }
-.app-card { border-radius: 10px; background: rgba(255,255,255,0.04); }
-.ac-1 { height: 55px; background: linear-gradient(135deg,rgba(127,82,255,0.2),rgba(19,185,253,0.15)); }
-.ac-2 { height: 35px; } .ac-3 { height: 30px; }
-.app-stats { display: flex; gap: 3px; }
-.stat-chip { flex: 1; height: 24px; border-radius: 6px; background: rgba(255,255,255,0.06); }
-.s1 { background: rgba(127,82,255,0.15); } .s3 { background: rgba(19,185,253,0.15); }
-.ios-ui { background: linear-gradient(160deg,#0a0f1e 0%,#0e1829 100%); }
-.ios-header { padding: 24px 10px 6px; }
-.ios-title { height: 8px; border-radius: 4px; background: rgba(255,255,255,0.7); width: 60%; margin-bottom: 6px; }
-.ios-subtitle { height: 5px; border-radius: 3px; background: rgba(255,255,255,0.2); width: 40%; }
-.ios-hero-card { margin: 4px 8px; height: 80px; border-radius: 14px; background: linear-gradient(135deg,rgba(19,185,253,0.3),rgba(127,82,255,0.3)); }
-.ios-list { padding: 4px 8px; display: flex; flex-direction: column; gap: 4px; }
-.ios-row { height: 30px; border-radius: 10px; background: rgba(255,255,255,0.05); }
+.css-sphere-container {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.webgl-disabled .css-sphere-container {
+  opacity: 1;
+}
+.css-sphere {
+  width: 180px;
+  height: 180px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotate-css-sphere 18s linear infinite;
+}
+@keyframes rotate-css-sphere {
+  from { transform: rotateY(0deg) rotateX(10deg); }
+  to   { transform: rotateY(360deg) rotateX(10deg); }
+}
+.sphere-card {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid rgba(127, 82, 255, 0.4);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  background: var(--surface-2);
+}
+.sphere-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card-1 { transform: rotateY(0deg) translateZ(190px); }
+.card-2 { transform: rotateY(72deg) translateZ(190px); }
+.card-3 { transform: rotateY(144deg) translateZ(190px); }
+.card-4 { transform: rotateY(216deg) translateZ(190px); }
+.card-5 { transform: rotateY(288deg) translateZ(190px); }
 
 /* Hero text */
 .hero-content {

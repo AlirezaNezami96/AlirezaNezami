@@ -406,9 +406,133 @@ function boot() {
 
 window.addEventListener('DOMContentLoaded', boot);
 
+/* ─── THREE.JS 3D SPHERE HERO ────────────────────────── */
+function init3DSphere() {
+  if (typeof THREE === 'undefined' || prefersReducedMotion) return;
+  const canvas = qs('#sphere-canvas');
+  const wrapper = qs('.sphere-wrapper');
+  if (!canvas || !wrapper) return;
+
+  let renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  } catch (e) {
+    document.documentElement.classList.add('webgl-disabled');
+    return;
+  }
+
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  const scene  = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
+  camera.position.z = 5.2;
+
+  /* Central pivot group for sphere rotation */
+  const sphereGroup = new THREE.Group();
+  scene.add(sphereGroup);
+
+  /* Load the 5 textures */
+  const textureLoader = new THREE.TextureLoader();
+  const imageUrls = [
+    'assets/images/3d/1.jpg',
+    'assets/images/3d/2.jpg',
+    'assets/images/3d/3.jpg',
+    'assets/images/3d/4.jpg',
+    'assets/images/3d/5.jpg'
+  ];
+
+  const cardRadius = 2.15;
+  const cardCount = imageUrls.length;
+
+  imageUrls.forEach((url, i) => {
+    textureLoader.load(url, (texture) => {
+      texture.generateMipmaps = true;
+
+      /* Rounded 3D panel mesh */
+      const geometry = new THREE.PlaneGeometry(1.35, 1.35, 16, 16);
+      const material = new THREE.MeshBasicMaterial({
+        map: texture,
+        side: THREE.DoubleSide,
+        transparent: true,
+        opacity: 0.96
+      });
+
+      const mesh = new THREE.Mesh(geometry, material);
+
+      /* Position panels around spherical Y ring with vertical bob */
+      const angle = (i / cardCount) * Math.PI * 2;
+      mesh.position.x = Math.sin(angle) * cardRadius;
+      mesh.position.z = Math.cos(angle) * cardRadius;
+      mesh.position.y = Math.sin(i * 1.5) * 0.25;
+
+      /* Face outwards from sphere center */
+      mesh.lookAt(0, mesh.position.y, 0);
+      mesh.rotation.y += Math.PI;
+
+      sphereGroup.add(mesh);
+    });
+  });
+
+  /* Glowing orbital ring particles */
+  const N = 120;
+  const ringPos = new Float32Array(N * 3);
+  for (let i = 0; i < N; i++) {
+    const angle = (i / N) * Math.PI * 2;
+    ringPos[i * 3]     = Math.sin(angle) * 2.35;
+    ringPos[i * 3 + 1] = (Math.random() - 0.5) * 0.35;
+    ringPos[i * 3 + 2] = Math.cos(angle) * 2.35;
+  }
+  const ringGeo = new THREE.BufferGeometry();
+  ringGeo.setAttribute('position', new THREE.BufferAttribute(ringPos, 3));
+  const ringMat = new THREE.PointsMaterial({
+    color: 0x13B9FD,
+    size: 0.05,
+    transparent: true,
+    opacity: 0.75
+  });
+  const ringPoints = new THREE.Points(ringGeo, ringMat);
+  sphereGroup.add(ringPoints);
+
+  function resize() {
+    const w = wrapper.clientWidth || 440;
+    const h = wrapper.clientHeight || 440;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  /* Interactive Mouse Tilt Parallax */
+  let mouseX = 0, mouseY = 0;
+  document.addEventListener('mousemove', (e) => {
+    mouseX = (e.clientX / window.innerWidth - 0.5) * 0.4;
+    mouseY = (e.clientY / window.innerHeight - 0.5) * 0.4;
+  });
+
+  let paused = false;
+  new IntersectionObserver(([e]) => { paused = !e.isIntersecting; }, { threshold: 0 }).observe(wrapper);
+
+  let clock = 0;
+  (function animate() {
+    requestAnimationFrame(animate);
+    if (paused) return;
+    clock += 0.008;
+
+    /* Continuous 3D Y-rotation (sphere turning) */
+    sphereGroup.rotation.y = clock * 0.5 + mouseX;
+    sphereGroup.rotation.x = Math.sin(clock * 0.4) * 0.12 - mouseY * 0.5;
+
+    ringPoints.rotation.y = -clock * 0.8;
+
+    renderer.render(scene, camera);
+  })();
+}
+
 /* Defer heavy 3D and smooth-scroll libs to after page is interactive */
 window.addEventListener('load', () => {
   initLenis();
   initHeroBg();
+  init3DSphere();
   initSwipers();
 });
