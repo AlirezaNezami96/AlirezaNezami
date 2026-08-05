@@ -73,7 +73,7 @@ async function applyLanguage(lang) {
   qsa('[data-i18n]').forEach(el => {
     const key = el.dataset.i18n;
     const val = getNestedValue(dict, key);
-    if (val) el.textContent = val;
+    if (val) el.innerHTML = val;
   });
   if (lang === 'fa') loadFont('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800&display=swap');
   if (lang === 'ar') loadFont('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
@@ -314,28 +314,89 @@ function initRipple() {
   })();
 }
 
-/* ─── THREE.JS HERO BG (deferred to load event) ─────── */
+/* ─── HERO VIDEO YO-YO LOOP (Forward & Reverse) ───────── */
+function initHeroVideoYoYo() {
+  const video = qs('#hero-video');
+  if (!video) return;
+
+  video.removeAttribute('loop');
+  let isReversing = false;
+  let lastTime = null;
+
+  function step(now) {
+    if (!lastTime) lastTime = now;
+    const delta = Math.min((now - lastTime) / 1000, 0.1);
+    lastTime = now;
+
+    if (isReversing) {
+      if (video.currentTime > 0.08) {
+        video.currentTime = Math.max(0, video.currentTime - delta * 1.0);
+      } else {
+        video.currentTime = 0;
+        isReversing = false;
+        video.play().catch(() => {});
+      }
+    } else {
+      if (video.duration && video.currentTime >= video.duration - 0.12) {
+        video.pause();
+        isReversing = true;
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
+  video.addEventListener('play', () => { isReversing = false; });
+  requestAnimationFrame(step);
+}
+
+/* ─── THREE.JS HERO BG (Glowing Round Stars) ───────────── */
+function createStarTexture() {
+  const canvas = document.createElement('canvas');
+  canvas.width = 64; canvas.height = 64;
+  const ctx = canvas.getContext('2d');
+  const grad = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
+  grad.addColorStop(0, 'rgba(255, 255, 255, 1)');
+  grad.addColorStop(0.25, 'rgba(165, 130, 255, 0.95)');
+  grad.addColorStop(0.55, 'rgba(19, 185, 253, 0.4)');
+  grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+  ctx.fillStyle = grad;
+  ctx.beginPath(); ctx.arc(32, 32, 32, 0, Math.PI * 2); ctx.fill();
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.needsUpdate = true;
+  return texture;
+}
+
 function initHeroBg() {
   if (typeof THREE === 'undefined' || prefersReducedMotion) return;
   const canvas = qs('#hero-bg');
   if (!canvas) return;
 
-  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   const scene  = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(70, 1, 0.1, 100);
   camera.position.z = 3;
 
-  const N = 600;
+  const N = 400;
   const pos = new Float32Array(N * 3);
   for (let i = 0; i < N * 3; i++) pos[i] = (Math.random() - 0.5) * 12;
   const geo = new THREE.BufferGeometry();
   geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-  const mat = new THREE.PointsMaterial({ color: 0x7F52FF, size: 0.04, transparent: true, opacity: 0.4 });
+
+  const starTex = createStarTexture();
+  const mat = new THREE.PointsMaterial({
+    color: 0xffffff,
+    size: 0.35,
+    map: starTex,
+    transparent: true,
+    opacity: 0.75,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false
+  });
   scene.add(new THREE.Points(geo, mat));
 
   window.addEventListener('themeChanged', ({ detail }) => {
-    mat.color.setHex(detail.theme === 'light' ? 0x6B38E8 : 0x7F52FF);
+    mat.color.setHex(detail.theme === 'light' ? 0x9B68FF : 0xffffff);
   });
 
   function resize() {
@@ -355,8 +416,8 @@ function initHeroBg() {
     if (paused) return;
     clock += 0.003;
     const points = scene.children[0];
-    points.rotation.y = clock * 0.3;
-    points.rotation.x = Math.sin(clock * 0.5) * 0.12;
+    points.rotation.y = clock * 0.25;
+    points.rotation.x = Math.sin(clock * 0.4) * 0.1;
     renderer.render(scene, camera);
   })();
 }
@@ -395,7 +456,8 @@ function boot() {
   initRipple();
   initNav();
   initTypewriter();
-  initHeroReveal();    /* ← moved here from window.load */
+  initHeroReveal();
+  initHeroVideoYoYo();
   initStatCounters();
   initScrollReveals();
   initSkillTags();
@@ -407,132 +469,9 @@ function boot() {
 window.addEventListener('DOMContentLoaded', boot);
 
 /* ─── THREE.JS 3D SPHERE HERO ────────────────────────── */
-function init3DSphere() {
-  if (typeof THREE === 'undefined' || prefersReducedMotion) return;
-  const canvas = qs('#sphere-canvas');
-  const wrapper = qs('.sphere-wrapper');
-  if (!canvas || !wrapper) return;
-
-  let renderer;
-  try {
-    renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-  } catch (e) {
-    document.documentElement.classList.add('webgl-disabled');
-    return;
-  }
-
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-  const scene  = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
-  camera.position.z = 5.2;
-
-  /* Central pivot group for sphere rotation */
-  const sphereGroup = new THREE.Group();
-  scene.add(sphereGroup);
-
-  /* Load the 5 textures */
-  const textureLoader = new THREE.TextureLoader();
-  const imageUrls = [
-    'assets/images/3d/1.jpg',
-    'assets/images/3d/2.jpg',
-    'assets/images/3d/3.jpg',
-    'assets/images/3d/4.jpg',
-    'assets/images/3d/5.jpg'
-  ];
-
-  const cardRadius = 2.15;
-  const cardCount = imageUrls.length;
-
-  imageUrls.forEach((url, i) => {
-    textureLoader.load(url, (texture) => {
-      texture.generateMipmaps = true;
-
-      /* Rounded 3D panel mesh */
-      const geometry = new THREE.PlaneGeometry(1.35, 1.35, 16, 16);
-      const material = new THREE.MeshBasicMaterial({
-        map: texture,
-        side: THREE.DoubleSide,
-        transparent: true,
-        opacity: 0.96
-      });
-
-      const mesh = new THREE.Mesh(geometry, material);
-
-      /* Position panels around spherical Y ring with vertical bob */
-      const angle = (i / cardCount) * Math.PI * 2;
-      mesh.position.x = Math.sin(angle) * cardRadius;
-      mesh.position.z = Math.cos(angle) * cardRadius;
-      mesh.position.y = Math.sin(i * 1.5) * 0.25;
-
-      /* Face outwards from sphere center */
-      mesh.lookAt(0, mesh.position.y, 0);
-      mesh.rotation.y += Math.PI;
-
-      sphereGroup.add(mesh);
-    });
-  });
-
-  /* Glowing orbital ring particles */
-  const N = 120;
-  const ringPos = new Float32Array(N * 3);
-  for (let i = 0; i < N; i++) {
-    const angle = (i / N) * Math.PI * 2;
-    ringPos[i * 3]     = Math.sin(angle) * 2.35;
-    ringPos[i * 3 + 1] = (Math.random() - 0.5) * 0.35;
-    ringPos[i * 3 + 2] = Math.cos(angle) * 2.35;
-  }
-  const ringGeo = new THREE.BufferGeometry();
-  ringGeo.setAttribute('position', new THREE.BufferAttribute(ringPos, 3));
-  const ringMat = new THREE.PointsMaterial({
-    color: 0x13B9FD,
-    size: 0.05,
-    transparent: true,
-    opacity: 0.75
-  });
-  const ringPoints = new THREE.Points(ringGeo, ringMat);
-  sphereGroup.add(ringPoints);
-
-  function resize() {
-    const w = wrapper.clientWidth || 440;
-    const h = wrapper.clientHeight || 440;
-    renderer.setSize(w, h, false);
-    camera.aspect = w / h;
-    camera.updateProjectionMatrix();
-  }
-  resize();
-  window.addEventListener('resize', resize);
-
-  /* Interactive Mouse Tilt Parallax */
-  let mouseX = 0, mouseY = 0;
-  document.addEventListener('mousemove', (e) => {
-    mouseX = (e.clientX / window.innerWidth - 0.5) * 0.4;
-    mouseY = (e.clientY / window.innerHeight - 0.5) * 0.4;
-  });
-
-  let paused = false;
-  new IntersectionObserver(([e]) => { paused = !e.isIntersecting; }, { threshold: 0 }).observe(wrapper);
-
-  let clock = 0;
-  (function animate() {
-    requestAnimationFrame(animate);
-    if (paused) return;
-    clock += 0.008;
-
-    /* Continuous 3D Y-rotation (sphere turning) */
-    sphereGroup.rotation.y = clock * 0.5 + mouseX;
-    sphereGroup.rotation.x = Math.sin(clock * 0.4) * 0.12 - mouseY * 0.5;
-
-    ringPoints.rotation.y = -clock * 0.8;
-
-    renderer.render(scene, camera);
-  })();
-}
-
 /* Defer heavy 3D and smooth-scroll libs to after page is interactive */
 window.addEventListener('load', () => {
   initLenis();
   initHeroBg();
-  init3DSphere();
   initSwipers();
 });

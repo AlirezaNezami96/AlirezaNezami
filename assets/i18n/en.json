@@ -19,10 +19,10 @@
   },
   "about": {
     "tag": "// about",
-    "title": "The native Android specialist who crossed platforms — on purpose.",
-    "p1": "I started writing Android apps when Kotlin was still a beta experiment. Over nine years of shipping production software, I have built everything from fintech dashboards and healthcare trackers to logistics platforms and e-commerce apps — each one with the performance discipline and architecture depth that only comes from working close to the metal.",
-    "p2": "When Flutter matured enough to meet my standards, I added it to my toolkit. Not as a shortcut, but as a force multiplier: one carefully-crafted codebase, genuinely native experience on both platforms. The clients I work with don’t get a \"good enough\" cross-platform build — they get Android-quality thinking applied to every screen, on every OS.",
-    "p3": "I work best with founders and product teams who care about shipping software that feels right, not just software that technically ships. If that sounds like you, let’s talk.",
+    "title": "The <strong>native Android specialist</strong> who crossed platforms &mdash; <span class=\"gradient-text\"><u>on purpose</u></span>.",
+    "p1": "I started writing Android apps when <strong>Kotlin</strong> was still a beta experiment. Over <u>nine years of shipping production software</u>, I've built everything from <strong>fintech dashboards</strong> and <strong>healthcare trackers</strong> to <strong>logistics platforms</strong> and <strong>e-commerce apps</strong> &mdash; each one with the <span class=\"gradient-text\">performance discipline and architecture depth</span> that only comes from working close to the metal.",
+    "p2": "When <strong>Flutter</strong> matured enough to meet my standards, I added it to my toolkit. Not as a shortcut, but as a <u>force multiplier</u>: one carefully-crafted codebase, <span class=\"gradient-text\">genuinely native experience</span> on both platforms.",
+    "p3": "I work best with <strong>founders</strong> and <strong>product teams</strong> who care about shipping software that <u>feels right</u>, not just software that technically ships. If that sounds like you, let's talk.",
     "stats": {
       "years": "Years Experience",
       "apps": "Apps Shipped",
