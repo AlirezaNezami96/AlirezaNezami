@@ -1,92 +1,93 @@
 {
   "_comment": "Português - Portuguese Translation",
   "nav": {
-    "about": "Sobre",
+    "about": "Sobre mim",
     "projects": "Projetos",
-    "reviews": "Avaliações",
+    "reviews": "Depoimentos",
     "contact": "Contato",
-    "bookCall": "Agendar chamada"
+    "bookCall": "Agendar reunião"
   },
   "hero": {
     "eyebrow": "// mobile.engineer",
-    "headline1": "9+ years native",
-    "headline2": "Android.",
-    "headline3": "Now shipping",
-    "headline4": "cross-platform.",
-    "subtitle": "Building flagship mobile applications with Kotlin, Compose & Flutter.",
-    "bookCall": "Book a call",
-    "seeWork": "See the work"
+    "headline1": "+9 anos em Android",
+    "headline2": "nativo.",
+    "headline3": "Agora criando",
+    "headline4": "multiplataforma.",
+    "subtitle": "Desenvolvendo aplicativos móveis de alto nível com Kotlin, Compose e Flutter.",
+    "bookCall": "Agendar reunião",
+    "seeWork": "Ver trabalhos"
   },
   "about": {
-    "tag": "// about",
-    "title": "The native Android specialist who crossed platforms — on purpose.",
-    "p1": "I started writing Android apps when Kotlin was still a beta experiment. Over nine years of shipping production software, I have built everything from fintech dashboards and healthcare trackers to logistics platforms and e-commerce apps — each one with the performance discipline and architecture depth that only comes from working close to the metal.",
-    "p2": "When Flutter matured enough to meet my standards, I added it to my toolkit. Not as a shortcut, but as a force multiplier: one carefully-crafted codebase, genuinely native experience on both platforms. The clients I work with don’t get a \"good enough\" cross-platform build — they get Android-quality thinking applied to every screen, on every OS.",
-    "p3": "I work best with founders and product teams who care about shipping software that feels right, not just software that technically ships. If that sounds like you, let’s talk.",
+    "tag": "// sobre mim",
+    "title": "O <strong>especialista em Android nativo</strong> que migrou para <span class=\"gradient-text\"><u>multiplataforma por escolha</u></span>.",
+    "p1": "Comecei a desenvolver para Android quando o <strong>Kotlin</strong> ainda era um projeto beta. Ao longo de <u>mais de 9 anos lançando software de grande escala em produção</u>, criei desde <strong>dashboards fintech</strong> e <strong>plataformas de saúde</strong> até <strong>sistemas de logística</strong> e <strong>aplicativos de e-commerce</strong> &mdash; cada um projetado com <span class=\"gradient-text\">rigor de performance e arquitetura robusta</span>.",
+    "p2": "Quando o <strong>Flutter</strong> atingiu a maturidade exigida pelos meus padrões, adicionei-o ao meu arsenal. Não como um atalho, mas como um <u>multiplicador de resultados</u>: um código-fonte refinado que entrega uma <span class=\"gradient-text\">experiência genuinamente nativa</span> em ambas as plataformas.",
+    "p3": "Trabalho melhor com <strong>fundadores</strong> e <strong>equipes de produto</strong> comprometidos em entregar software que <u>funcione com excelência</u>. Se esse é o seu objetivo, vamos conversar.",
     "stats": {
-      "years": "Years Experience",
-      "apps": "Apps Shipped",
-      "platforms": "Platforms Mastered",
-      "users": "Users Reached"
+      "years": "Anos de Experiência",
+      "apps": "Apps Lançados",
+      "platforms": "Plataformas Dominadas",
+      "users": "Usuários Alcançados"
     }
   },
   "projects": {
-    "tag": "// projects",
-    "title": "Selected Work",
+    "tag": "// projetos",
+    "title": "Trabalhos Selecionados",
+    "seeAll": "Ver todos os projetos",
     "albertHealth": {
       "title": "Albert Health",
-      "subtitle": "AI-powered health companion — Android & iOS",
-      "desc": "A comprehensive health monitoring platform with real-time vitals tracking, AI-driven health insights, and seamless physician integration. Led the full cross-platform development with Flutter, architecting a clean, scalable codebase that runs natively on both platforms without compromise."
+      "subtitle": "Assistente de saúde com IA — Android e iOS",
+      "desc": "Plataforma completa de monitoramento de saúde com acompanhamento de vitais em tempo real e insights por IA. Liderança no desenvolvimento Flutter."
     },
     "yoldaCarrier": {
       "title": "Yolda Carrier",
-      "subtitle": "Logistics & freight management platform",
-      "desc": "A high-stakes logistics coordination app used by carriers across Turkey. Built the Android native version from the ground up using Kotlin and Jetpack Compose, handling real-time load tracking, route optimization integration, and push-notification workflows that run reliably at scale."
+      "subtitle": "Plataforma logística e gestão de fretes",
+      "desc": "App de coordenação logística usado por transportadores na Turquia. Criado do zero em Kotlin nativo e Jetpack Compose."
     },
     "biletino": {
       "title": "Biletino",
-      "subtitle": "Event ticketing & digital pass engine",
-      "desc": "One of Turkey’s premier event discovery and ticketing platforms. Developed core mobile features focusing on frictionless checkout, offline digital ticket validation, and fast event search using modern reactive architecture."
+      "subtitle": "Motor de ingressos e passes digitais",
+      "desc": "Uma das principais plataformas de eventos da Turquia. Desenvolvimento do fluxo de compra rápido e validação de ingressos QR offline."
     },
     "kolayHr": {
       "title": "Kolay HR",
-      "subtitle": "Enterprise HR & workforce platform",
-      "desc": "A streamlined HR management mobile app serving thousands of employees. Architected key modules for leave requests, expense management, and push alerts with a heavy emphasis on UI polish and sub-second response times."
+      "subtitle": "Plataforma corporativa de RH",
+      "desc": "Aplicativo de RH para milhares de funcionários. Arquitetura para pedidos de folga, despesas e alertas em tempo real."
     },
     "fuudy": {
       "title": "Fuudy",
-      "subtitle": "Gourmet food delivery & restaurant curation",
-      "desc": "Premium food delivery application connecting users with top-tier restaurants. Implemented interactive menus, real-time courier tracking, and smooth checkout flows with custom animations."
+      "subtitle": "Entrega de comida gourmet",
+      "desc": "App de entrega de comida gourmet. Implementação de cardápios interativos, rastreamento de entregadores e animações personalizadas."
     },
     "wegoPro": {
       "title": "WegoPro",
-      "subtitle": "Business travel & expense management",
-      "desc": "Corporate travel booking and expense reporting app used across APAC. Contributed to cross-platform mobile app development, integrating complex flight/hotel booking APIs and offline receipt scanning."
+      "subtitle": "Gestão de viagens corporativas e despesas",
+      "desc": "App de reserva de viagens empresariais usado na APAC. Contribuição no desenvolvimento multiplataforma e integração de APIs de voos e hotéis."
     },
     "abcTrainerize": {
       "title": "ABC Trainerize",
-      "subtitle": "Fitness coaching platform – 1M+ users",
-      "desc": "One of the world’s leading fitness coaching platforms, connecting trainers with clients through structured workout plans, progress tracking, and in-app messaging. Worked on critical Android performance improvements, reducing app startup time and improving workout session reliability for a global user base exceeding one million active users."
+      "subtitle": "Plataforma de fitness — +1M de usuários",
+      "desc": "Uma das maiores plataformas de fitness do mundo. Otimização de performance nativa Android para mais de 1 milhão de usuários ativos."
     }
   },
   "reviews": {
-    "tag": "// reviews",
-    "title": "What clients say."
+    "tag": "// depoimentos",
+    "title": "O que dizem os clientes."
   },
   "resume": {
-    "tag": "// resume",
+    "tag": "// currículo",
     "title": "Curriculum Vitae",
-    "desc": "Review my technical experience, architecture expertise, and production track record.",
-    "downloadBtn": "Download PDF",
-    "previewBtn": "View Full Screen"
+    "desc": "Confira minha experiência técnica, arquitetura e histórico de projetos.",
+    "downloadBtn": "Baixar PDF",
+    "previewBtn": "Ver em Tela Cheia"
   },
   "contact": {
-    "tag": "// contact",
-    "title": "Let’s build something extraordinary.",
-    "desc": "Have a new project, need senior Android/Flutter capacity, or want to audit an existing codebase? Schedule a call or drop me a line.",
-    "bookTitle": "Schedule a 30-min strategy call"
+    "tag": "// contato",
+    "title": "Vamos construir algo extraordinário.",
+    "desc": "Tem um novo projeto ou precisa de capacidade sênior em Android/Flutter? Agende uma reunião.",
+    "bookTitle": "Agendar reunião estratégica de 30 min"
   },
   "footer": {
-    "rights": "All rights reserved."
+    "rights": "Todos os direitos reservados."
   }
 }

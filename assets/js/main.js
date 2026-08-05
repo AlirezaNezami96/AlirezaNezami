@@ -349,15 +349,15 @@ function initHeroVideoYoYo() {
   requestAnimationFrame(step);
 }
 
-/* ─── THREE.JS HERO BG (Glowing Round Stars) ───────────── */
+/* ─── THREE.JS HERO BG (Subtle Soft Stars) ───────────── */
 function createStarTexture() {
   const canvas = document.createElement('canvas');
   canvas.width = 64; canvas.height = 64;
   const ctx = canvas.getContext('2d');
   const grad = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
-  grad.addColorStop(0, 'rgba(255, 255, 255, 1)');
-  grad.addColorStop(0.25, 'rgba(165, 130, 255, 0.95)');
-  grad.addColorStop(0.55, 'rgba(19, 185, 253, 0.4)');
+  grad.addColorStop(0, 'rgba(255, 255, 255, 0.7)');
+  grad.addColorStop(0.3, 'rgba(165, 130, 255, 0.4)');
+  grad.addColorStop(0.6, 'rgba(19, 185, 253, 0.15)');
   grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
   ctx.fillStyle = grad;
   ctx.beginPath(); ctx.arc(32, 32, 32, 0, Math.PI * 2); ctx.fill();
@@ -377,7 +377,7 @@ function initHeroBg() {
   const camera = new THREE.PerspectiveCamera(70, 1, 0.1, 100);
   camera.position.z = 3;
 
-  const N = 400;
+  const N = 350;
   const pos = new Float32Array(N * 3);
   for (let i = 0; i < N * 3; i++) pos[i] = (Math.random() - 0.5) * 12;
   const geo = new THREE.BufferGeometry();
@@ -386,10 +386,10 @@ function initHeroBg() {
   const starTex = createStarTexture();
   const mat = new THREE.PointsMaterial({
     color: 0xffffff,
-    size: 0.35,
+    size: 0.18,
     map: starTex,
     transparent: true,
-    opacity: 0.75,
+    opacity: 0.35,
     blending: THREE.AdditiveBlending,
     depthWrite: false
   });

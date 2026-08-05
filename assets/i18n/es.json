@@ -19,15 +19,15 @@
   },
   "about": {
     "tag": "// sobre mí",
-    "title": "Especialista en Android nativo que dio el salto a multiplataforma.",
-    "p1": "Comencé a desarrollar para Android cuando Kotlin aún era una prueba beta. Durante más de 9 años he creado aplicaciones de fintech, salud y logística.",
-    "p2": "Incorporé Flutter para ofrecer experiencias nativas impecables tanto en Android como en iOS con una arquitectura limpia.",
-    "p3": "Me encanta trabajar con equipos que valoran la calidad del software. Hablemos.",
+    "title": "El <strong>especialista en Android nativo</strong> que dio el salto a <span class=\"gradient-text\"><u>multiplataforma a propósito</u></span>.",
+    "p1": "Comencé a desarrollar aplicaciones Android cuando <strong>Kotlin</strong> era aún una versión beta. A lo largo de <u>más de 9 años publicando software en producción</u>, he construido desde <strong>paneles de control fintech</strong> y <strong>aplicaciones de salud</strong> hasta <strong>plataformas logísticas</strong> y <strong>comercio electrónico</strong> &mdash; todo con la <span class=\"gradient-text\">disciplina de rendimiento y arquitectura profunda</span> que solo se obtiene trabajando cerca del código nativo.",
+    "p2": "Cuando <strong>Flutter</strong> maduró lo suficiente para cumplir con mis estándares, lo incorporé a mi kit de herramientas. No como un atajo, sino como un <u>multiplicador de eficiencia</u>: un código base cuidadosamente diseñado que ofrece una <span class=\"gradient-text\">experiencia genuinamente nativa</span> en iOS y Android.",
+    "p3": "Trabajo mejor con <strong>fundadores</strong> y <strong>equipos de producto</strong> que se preocupan por lanzar software que <u>se sienta perfecto</u> para el usuario. Si buscas esa calidad, hablemos.",
     "stats": {
-      "years": "Años de experiencia",
-      "apps": "Apps publicadas",
-      "platforms": "Plataformas dominadas",
-      "users": "Usuarios alcanzados"
+      "years": "Años de Experiencia",
+      "apps": "Apps Publicadas",
+      "platforms": "Plataformas Dominadas",
+      "users": "Usuarios Alcanzados"
     }
   },
   "projects": {

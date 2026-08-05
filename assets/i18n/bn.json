@@ -1,92 +1,93 @@
 {
   "_comment": "বাংলা - Bengali Translation",
   "nav": {
-    "about": "সম্পর্কে",
-    "projects": "প্রকল্প",
+    "about": "আমার সম্পর্কে",
+    "projects": "প্রজেক্টস",
     "reviews": "মতামত",
     "contact": "যোগাযোগ",
     "bookCall": "কল বুক করুন"
   },
   "hero": {
     "eyebrow": "// mobile.engineer",
-    "headline1": "9+ years native",
-    "headline2": "Android.",
-    "headline3": "Now shipping",
-    "headline4": "cross-platform.",
-    "subtitle": "Building flagship mobile applications with Kotlin, Compose & Flutter.",
-    "bookCall": "Book a call",
-    "seeWork": "See the work"
+    "headline1": "৯+ বছরের নেটিভ",
+    "headline2": "অ্যান্ড্রয়েড অভিজ্ঞতা।",
+    "headline3": "এখন ডেভেলপ করছি",
+    "headline4": "ক্রস-প্ল্যাটফর্ম।",
+    "subtitle": "Kotlin, Compose এবং Flutter ব্যবহার করে বিশ্বমানের মোবাইল অ্যাপস তৈরি।",
+    "bookCall": "কল বুক করুন",
+    "seeWork": "কাজগুলো দেখুন"
   },
   "about": {
-    "tag": "// about",
-    "title": "The native Android specialist who crossed platforms — on purpose.",
-    "p1": "I started writing Android apps when Kotlin was still a beta experiment. Over nine years of shipping production software, I have built everything from fintech dashboards and healthcare trackers to logistics platforms and e-commerce apps — each one with the performance discipline and architecture depth that only comes from working close to the metal.",
-    "p2": "When Flutter matured enough to meet my standards, I added it to my toolkit. Not as a shortcut, but as a force multiplier: one carefully-crafted codebase, genuinely native experience on both platforms. The clients I work with don’t get a \"good enough\" cross-platform build — they get Android-quality thinking applied to every screen, on every OS.",
-    "p3": "I work best with founders and product teams who care about shipping software that feels right, not just software that technically ships. If that sounds like you, let’s talk.",
+    "tag": "// আমার সম্পর্কে",
+    "title": "নিবেদিতপ্রাণ <strong>নেটিভ অ্যান্ড্রয়েড স্পেশালিস্ট</strong> যিনি সুনির্দিষ্ট পরিকল্পনা নিয়ে <span class=\"gradient-text\"><u>ক্রস-প্ল্যাটফর্মে</u></span> প্রসারিত হয়েছেন।",
+    "p1": "আমি তখন থেকে অ্যান্ড্রয়েড অ্যাপ্লিকেশন তৈরি করছি যখন <strong>Kotlin</strong> একটি বেটা পরীক্ষা ছিল। <u>৯+ বছরের প্রডাকশন সফ্টওয়্যার তৈরির অভিজ্ঞতায়</u>, আমি <strong>ফিনটেক ড্যাশবোর্ড</strong>, <strong>হেলথকেয়ার ট্র্যাকার</strong>, <strong>লজিস্টিকস প্ল্যাটফর্ম</strong> এবং <strong>ই-কমার্স অ্যাপ</strong> সহ সবকিছু তৈরি করেছি &mdash; প্রতিটিতে সেরা <span class=\"gradient-text\">পারফরম্যান্স এবং আর্কিটেকচার কাঠামোর গভীরতা</span> বজায় রেখে।",
+    "p2": "যখন <strong>Flutter</strong> আমার উচ্চ মান পূরণ করতে সক্ষম হয়, আমি এটি ব্যবহার শুরু করি। কোনো শর্টকাট হিসেবে নয়, বরং <u>দক্ষতা বহুগুণ বাড়ানোর মাধ্যম</u> হিসেবে: একই উন্নত কোডবেস যা দুটি প্ল্যাটফর্মেই <span class=\"gradient-text\">একদম আসল নেটিভ পারফরম্যান্স</span> প্রদান করে।",
+    "p3": "আমি এমন <strong>প্রতিষ্ঠাতা</strong> এবং <strong>প্রোডাক্ট টিমগুলোর</strong> সাথে কাজ করতে পছন্দ করি যারা ব্যবহারকারীর <u>অভিজ্ঞতাকে সর্বোচ্চ গুরুত্ব দেয়</u>। আপনি যদি একই লক্ষ্য রাখেন, চলুন কথা বলি।",
     "stats": {
-      "years": "Years Experience",
-      "apps": "Apps Shipped",
-      "platforms": "Platforms Mastered",
-      "users": "Users Reached"
+      "years": "বছরের অভিজ্ঞতা",
+      "apps": "টি সাকসেসফুল অ্যাপস",
+      "platforms": "টি মূল প্ল্যাটফর্ম",
+      "users": "সক্রিয় ব্যবহারকারী"
     }
   },
   "projects": {
-    "tag": "// projects",
-    "title": "Selected Work",
+    "tag": "// প্রজেক্টস",
+    "title": "নির্বাচিত প্রজেক্টস",
+    "seeAll": "সব প্রজেক্ট দেখুন",
     "albertHealth": {
       "title": "Albert Health",
-      "subtitle": "AI-powered health companion — Android & iOS",
-      "desc": "A comprehensive health monitoring platform with real-time vitals tracking, AI-driven health insights, and seamless physician integration. Led the full cross-platform development with Flutter, architecting a clean, scalable codebase that runs natively on both platforms without compromise."
+      "subtitle": "এআই চালিত স্বাস্থ্য সহকারী — Android ও iOS",
+      "desc": "রিয়েল-টাইম স্বাস্থ্য ট্র্যাকিং এবং এআই স্বাস্থ্য বিশ্লেষণ সংবলিত একটি সমন্বিত ডিজিটাল হেলথ প্ল্যাটফর্ম। Flutter দিয়ে নির্মিত।"
     },
     "yoldaCarrier": {
       "title": "Yolda Carrier",
-      "subtitle": "Logistics & freight management platform",
-      "desc": "A high-stakes logistics coordination app used by carriers across Turkey. Built the Android native version from the ground up using Kotlin and Jetpack Compose, handling real-time load tracking, route optimization integration, and push-notification workflows that run reliably at scale."
+      "subtitle": "লজিস্টিকস ও ফ্রেইট প্ল্যাটফর্ম",
+      "desc": "তুর্কি ক্যুরিয়ারদের জন্য নির্মিত আধুনিক লজিস্টিকস অ্যাপ। নেটিভ Kotlin এবং Jetpack Compose দ্বারা তৈরি।"
     },
     "biletino": {
       "title": "Biletino",
-      "subtitle": "Event ticketing & digital pass engine",
-      "desc": "One of Turkey’s premier event discovery and ticketing platforms. Developed core mobile features focusing on frictionless checkout, offline digital ticket validation, and fast event search using modern reactive architecture."
+      "subtitle": "ইভেন্ট টিকিট ও ডিজিটাল পাস ইনজিন",
+      "desc": "তুরস্কের অন্যতম শীর্ষ ইভেন্ট টিকিট প্ল্যাটফর্ম। দ্রুত পেমেন্ট ও অফলাইন কিউআর টিকিট ভ্যালিডেশন সিস্টেম।"
     },
     "kolayHr": {
       "title": "Kolay HR",
-      "subtitle": "Enterprise HR & workforce platform",
-      "desc": "A streamlined HR management mobile app serving thousands of employees. Architected key modules for leave requests, expense management, and push alerts with a heavy emphasis on UI polish and sub-second response times."
+      "subtitle": "এন্টারপ্রাইজ এইচআর প্ল্যাটফর্ম",
+      "desc": "হাজার হাজার কর্মচারীদের ব্যবহৃত এইচআর অ্যাপ। ছুটি আবেদন এবং খরচ ব্যবস্থাপনার নির্ভরযোগ্য আর্কিটেকচার।"
     },
     "fuudy": {
       "title": "Fuudy",
-      "subtitle": "Gourmet food delivery & restaurant curation",
-      "desc": "Premium food delivery application connecting users with top-tier restaurants. Implemented interactive menus, real-time courier tracking, and smooth checkout flows with custom animations."
+      "subtitle": "প্রিমিয়াম ফুড ডেলিভারি অ্যাপ",
+      "desc": "প্রিমিয়াম ফুড ডেলিভারি সার্ভিস। ইন্টারেক্টিভ মেনু ও লাইভ ডেলিভারি ট্র্যাকিং ফিচার সম্বলিত।"
     },
     "wegoPro": {
       "title": "WegoPro",
-      "subtitle": "Business travel & expense management",
-      "desc": "Corporate travel booking and expense reporting app used across APAC. Contributed to cross-platform mobile app development, integrating complex flight/hotel booking APIs and offline receipt scanning."
+      "subtitle": "বিজনেস ট্রাভেল ও এক্সপেন্স ম্যানেজমেন্ট",
+      "desc": "এশিয়া প্যাসিফিক অঞ্চলের কর্পোরেট ট্রাভেল বুকিং অ্যাপ। ফ্লাইট ও হোটেল বুকিং এপিআই ইন্টিগ্রেশন।"
     },
     "abcTrainerize": {
       "title": "ABC Trainerize",
-      "subtitle": "Fitness coaching platform – 1M+ users",
-      "desc": "One of the world’s leading fitness coaching platforms, connecting trainers with clients through structured workout plans, progress tracking, and in-app messaging. Worked on critical Android performance improvements, reducing app startup time and improving workout session reliability for a global user base exceeding one million active users."
+      "subtitle": "ফিটনেস প্ল্যাটফর্ম – ১০ লাখ+ ব্যবহারকারী",
+      "desc": "বিশ্বের অন্যতম শীর্ষ ফিটনেস অ্যাপ। অ্যান্ড্রয়েড পারফরম্যান্স অপটিমাইজেশনের মাধ্যমে অ্যাপ স্টার্টআপ টাইম কমিয়ে ১০ লাখ+ ব্যবহারকারীর নির্ভরযোগ্যতা বৃদ্ধি করা হয়েছে।"
     }
   },
   "reviews": {
-    "tag": "// reviews",
-    "title": "What clients say."
+    "tag": "// মতামত",
+    "title": "ক্লায়েন্টরা যা বলেন।"
   },
   "resume": {
-    "tag": "// resume",
-    "title": "Curriculum Vitae",
-    "desc": "Review my technical experience, architecture expertise, and production track record.",
-    "downloadBtn": "Download PDF",
-    "previewBtn": "View Full Screen"
+    "tag": "// সিভি",
+    "title": "সিভি / রেজুমে",
+    "desc": "আমার অভিজ্ঞতা ও সফল প্রজেক্টের হিস্ট্রি পর্যালোচনা করুন।",
+    "downloadBtn": "PDF ডাউনলোড করুন",
+    "previewBtn": "ফুল স্ক্রিনে দেখুন"
   },
   "contact": {
-    "tag": "// contact",
-    "title": "Let’s build something extraordinary.",
-    "desc": "Have a new project, need senior Android/Flutter capacity, or want to audit an existing codebase? Schedule a call or drop me a line.",
-    "bookTitle": "Schedule a 30-min strategy call"
+    "tag": "// যোগাযোগ",
+    "title": "আসুন অসাধারণ কিছু তৈরি করি।",
+    "desc": "নতুন প্রজেক্ট বা অভিজ্ঞ অ্যান্ডয়েড/ফ্লাটার ডেভেলপার প্রয়োজন? মিটিং শিডিউল করুন।",
+    "bookTitle": "৩০ মিনিটের স্ট্র্যাটেজি কল শিডিউল করুন"
   },
   "footer": {
-    "rights": "All rights reserved."
+    "rights": "সর্বস্বত্ব সংরক্ষিত।"
   }
 }

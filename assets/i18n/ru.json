@@ -18,16 +18,16 @@
     "seeWork": "See the work"
   },
   "about": {
-    "tag": "// about",
-    "title": "The native Android specialist who crossed platforms — on purpose.",
-    "p1": "I started writing Android apps when Kotlin was still a beta experiment. Over nine years of shipping production software, I have built everything from fintech dashboards and healthcare trackers to logistics platforms and e-commerce apps — each one with the performance discipline and architecture depth that only comes from working close to the metal.",
-    "p2": "When Flutter matured enough to meet my standards, I added it to my toolkit. Not as a shortcut, but as a force multiplier: one carefully-crafted codebase, genuinely native experience on both platforms. The clients I work with don’t get a \"good enough\" cross-platform build — they get Android-quality thinking applied to every screen, on every OS.",
-    "p3": "I work best with founders and product teams who care about shipping software that feels right, not just software that technically ships. If that sounds like you, let’s talk.",
+    "tag": "// обо мне",
+    "title": "<strong>Эксперт по нативной Android-разработке</strong>, осознанно перешедший на <span class=\"gradient-text\"><u>кроссплатформу</u></span>.",
+    "p1": "Я начал разрабатывать приложения под Android, когда <strong>Kotlin</strong> был ещё в стадии бета-тестирования. За <u>более чем 9 лет запуска коммерческих продуктов</u> я создал всё: от <strong>финтех-панелей</strong> и <strong>медицинских сервисов</strong> до <strong>логистических систем</strong> и <strong>e-commerce приложений</strong> &mdash; каждое из них спроектировано с <span class=\"gradient-text\">высочайшей производительностью и глубокой архитектурой</span>.",
+    "p2": "Когда платформа <strong>Flutter</strong> достигла уровня моих стандартов, я включил её в свой арсенал. Не как компромисс, а как <u>мощный мультипликатор эффективности</u>: единая продуманная база кода с <span class=\"gradient-text\">подлинно нативным ощущением</span> на iOS и Android.",
+    "p3": "Я продуктивно сотрудничаю с <strong>основателями</strong> и <strong>продуктовыми командами</strong>, для которых важно качество исполнения и <u>безупречный пользовательский опыт</u>. Если вам близок такой подход &mdash; давайте обсудим проект.",
     "stats": {
-      "years": "Years Experience",
-      "apps": "Apps Shipped",
-      "platforms": "Platforms Mastered",
-      "users": "Users Reached"
+      "years": "Лет Опыта",
+      "apps": "Запущенных Проектов",
+      "platforms": "Платформы в Совершенстве",
+      "users": "Активных Пользователей"
     }
   },
   "projects": {

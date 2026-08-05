@@ -19,15 +19,15 @@
   },
   "about": {
     "tag": "// à propos",
-    "title": "Spécialiste Android natif devenu expert multiplateforme.",
-    "p1": "J’ai commencé à développer sur Android quand Kotlin était en bêta. En 9 ans, j’ai conçu des applications fintech, santé et logistique.",
-    "p2": "J’utilise Flutter pour offrir une expérience fluide et native sur iOS et Android sans compromis.",
-    "p3": "Discutons de votre projet si vous recherchez l’excellence technique.",
+    "title": "Le <strong>spécialiste Android natif</strong> venu au <span class=\"gradient-text\"><u>multiplateforme sur mesure</u></span>.",
+    "p1": "J'ai commencé à développer sur Android lorsque <strong>Kotlin</strong> n'était qu'une bêta expérimentale. Au cours de <u>plus de 9 ans de livraison de logiciels en production</u>, j'ai tout conçu : des <strong>tableaux de bord fintech</strong> et <strong>outils de santé</strong> aux <strong>plateformes logistiques</strong> et <strong>applications e-commerce</strong> &mdash; avec la <span class=\"gradient-text\">rigueur d'optimisation et la maturité architecturale</span> propre au développement natif au plus près du système.",
+    "p2": "Lorsque <strong>Flutter</strong> a atteint une maturité conforme à mes exigences, je l'ai intégré à mon arsenal. Non comme un raccourci, mais comme un <u>multiplicateur de valeur</u> : un code source unique soigneusement bâti pour une <span class=\"gradient-text\">expérience authentiquement native</span> sur iOS et Android.",
+    "p3": "Je collabore idéalement avec des <strong>fondateurs</strong> et des <strong>équipes produit</strong> exigeants sur l'expérience utilisateur qui <u>fait la différence</u>. Si cela correspond à vos ambitions, échangeons.",
     "stats": {
-      "years": "Années d’expérience",
-      "apps": "Applications créées",
-      "platforms": "Plateformes maîtrisées",
-      "users": "Utilisateurs touchés"
+      "years": "Années d’Expérience",
+      "apps": "Apps Déployées",
+      "platforms": "Plateformes Maîtrisées",
+      "users": "Utilisateurs Atteints"
     }
   },
   "projects": {
