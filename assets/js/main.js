@@ -289,7 +289,7 @@ function initMagnetic() {
   });
 }
 
-/* ─── RIPPLE CANVAS ──────────────────────────────────── */
+/* ─── LIQUID RIPPLE DISPLACEMENT WAVE ──────────────────── */
 function initRipple() {
   const canvas = qs('#ripple-canvas');
   if (!canvas) return;
@@ -298,20 +298,69 @@ function initRipple() {
   function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
   resize();
   window.addEventListener('resize', resize);
+
+  const dispMap = qs('#liquid-glass-filter feDisplacementMap');
+
   document.addEventListener('click', e => {
     if (prefersReducedMotion) return;
-    ripples.push({ x: e.clientX, y: e.clientY, r: 0, alpha: 0.6 });
-  });
-  (function loop() {
-    ctx.clearRect(0, 0, W, H);
-    ripples = ripples.filter(rp => rp.alpha > 0.01);
-    ripples.forEach(rp => {
-      rp.r += 3; rp.alpha -= 0.025;
-      ctx.beginPath(); ctx.arc(rp.x, rp.y, rp.r, 0, Math.PI * 2);
-      ctx.strokeStyle = `rgba(127,82,255,${rp.alpha})`; ctx.lineWidth = 1.5; ctx.stroke();
+    ripples.push({
+      x: e.clientX,
+      y: e.clientY,
+      r: 4,
+      maxR: 110,
+      startTime: performance.now(),
+      duration: 700
     });
+  });
+
+  (function loop(now) {
+    ctx.clearRect(0, 0, W, H);
+    let activeDisplacement = 0;
+
+    ripples = ripples.filter(rp => {
+      const elapsed = now - rp.startTime;
+      const progress = Math.min(elapsed / rp.duration, 1);
+      if (progress >= 1) return false;
+
+      // Ease out cubic
+      const ease = 1 - Math.pow(1 - progress, 3);
+      rp.r = 4 + ease * (rp.maxR - 4);
+      const alpha = Math.sin((1 - progress) * Math.PI * 0.5) * 0.7;
+      const ringWidth = 8 + (1 - progress) * 14;
+
+      // Spectral liquid gradient
+      const grad = ctx.createRadialGradient(rp.x, rp.y, Math.max(0, rp.r - ringWidth), rp.x, rp.y, rp.r + ringWidth * 0.5);
+      grad.addColorStop(0, `rgba(127, 82, 255, 0)`);
+      grad.addColorStop(0.4, `rgba(127, 82, 255, ${alpha * 0.65})`);
+      grad.addColorStop(0.7, `rgba(19, 185, 253, ${alpha * 0.85})`);
+      grad.addColorStop(1, `rgba(255, 255, 255, 0)`);
+
+      // Refraction ring
+      ctx.beginPath();
+      ctx.arc(rp.x, rp.y, rp.r, 0, Math.PI * 2);
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = ringWidth;
+      ctx.stroke();
+
+      // Inner liquid sheen
+      ctx.beginPath();
+      ctx.arc(rp.x, rp.y, Math.max(0, rp.r - ringWidth * 0.5), 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(19, 185, 253, ${alpha * 0.08})`;
+      ctx.fill();
+
+      if (dispMap) {
+        activeDisplacement = Math.max(activeDisplacement, (1 - progress) * 12);
+      }
+
+      return true;
+    });
+
+    if (dispMap) {
+      dispMap.setAttribute('scale', 5 + activeDisplacement);
+    }
+
     requestAnimationFrame(loop);
-  })();
+  })(performance.now());
 }
 
 /* ─── HERO VIDEO YO-YO LOOP (Forward & Reverse) ───────── */

@@ -256,6 +256,28 @@
 </head>
 <body>
 
+  <!-- Liquid Glass Background Orbs -->
+  <div class="liquid-orbs" aria-hidden="true">
+    <div class="orb orb-kotlin"></div>
+    <div class="orb orb-flutter"></div>
+    <div class="orb orb-amber"></div>
+  </div>
+
+  <!-- SVG Refraction Filter for Liquid Glass Tier 2 -->
+  <svg style="display: none; position: absolute;" aria-hidden="true">
+    <defs>
+      <filter id="liquid-glass-filter" x="-20%" y="-20%" width="140%" height="140%" filterUnits="objectBoundingBox">
+        <feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="2" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="G" result="displaced" />
+        <feSpecularLighting in="noise" surfaceScale="2.5" specularConstant="1.2" specularExponent="35" lighting-color="#ffffff" result="specular">
+          <fePointLight x="-500" y="-500" z="400" />
+        </feSpecularLighting>
+        <feComposite in="specular" in2="SourceGraphic" operator="in" result="specularCut" />
+        <feBlend in="specularCut" in2="displaced" mode="screen" />
+      </filter>
+    </defs>
+  </svg>
+
   <!-- Ripple canvas -->
   <canvas id="ripple-canvas" aria-hidden="true"></canvas>
 
