@@ -231,8 +231,12 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   position: relative;
   overflow: hidden;
   white-space: nowrap;
-  backdrop-filter: blur(16px) saturate(150%);
-  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+.btn > * {
+  position: relative;
+  z-index: 2;
 }
 .btn::before {
   content: '';
@@ -240,19 +244,27 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   inset: 0;
   opacity: 0;
   transition: opacity var(--dur) var(--ease-out);
+  z-index: 1;
 }
 .btn-primary {
-  background: linear-gradient(135deg, rgba(127, 82, 255, 0.88), rgba(19, 185, 253, 0.88));
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 8px 25px rgba(127, 82, 255, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  background: linear-gradient(135deg, rgba(127, 82, 255, 0.92), rgba(19, 185, 253, 0.92));
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 8px 28px rgba(127, 82, 255, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+.btn-primary * {
+  color: #ffffff !important;
 }
 .btn-primary::before {
   background: linear-gradient(135deg, var(--kotlin), var(--flutter));
 }
 .btn-primary:hover {
-  box-shadow: 0 12px 35px rgba(127, 82, 255, 0.55), 0 0 50px rgba(19, 185, 253, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  color: #ffffff !important;
+  box-shadow: 0 14px 40px rgba(127, 82, 255, 0.6), 0 0 55px rgba(19, 185, 253, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.7);
   transform: translateY(-2px) scale(1.02);
+}
+.btn-primary:hover * {
+  color: #ffffff !important;
 }
 .btn-primary:hover::before { opacity: 1; }
 .btn-ghost {
@@ -262,10 +274,10 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   box-shadow: var(--glass-shadow);
 }
 .btn-ghost:hover {
-  background: rgba(var(--surface-rgb), 0.7);
+  background: rgba(var(--surface-rgb), 0.65);
   color: var(--text);
   border-color: var(--border-hover);
-  box-shadow: 0 8px 30px rgba(127, 82, 255, 0.35);
+  box-shadow: 0 10px 32px rgba(127, 82, 255, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 .btn-large { padding: 18px 44px; font-size: 17px; }
 .magnetic { will-change: transform; }
@@ -652,9 +664,13 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 }
 .skill-tag {
   font-family: 'JetBrains Mono', monospace; font-size: 12px;
-  color: var(--text); background: var(--surface);
+  color: var(--text);
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px) saturate(170%);
+  -webkit-backdrop-filter: blur(16px) saturate(170%);
   padding: 8px 16px; border-radius: 50px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
   position: relative;
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   animation: skill-glow-pulse 3.6s ease-in-out infinite;
@@ -721,13 +737,17 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 
 .project-visual {
   display: flex; align-items: center; justify-content: center;
-  background: var(--surface); border: 1px solid var(--border);
+  background: rgba(var(--surface-rgb), 0.35);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
   border-radius: var(--radius); padding: 32px 20px;
   min-height: 520px;
-  transition: border-color var(--dur);
+  transition: border-color var(--dur), box-shadow var(--dur);
   overflow: hidden;
 }
-.project-visual:hover { border-color: var(--border-hover); }
+.project-visual:hover { border-color: var(--border-hover); box-shadow: 0 20px 50px rgba(127,82,255,0.25); }
 
 /* ── 9:16 Swiper Slider (Taller screenshot frame) ── */
 .slider-916 {
@@ -736,16 +756,18 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   aspect-ratio: 9 / 18.5;
   max-height: 520px;
   border-radius: var(--radius);
-  border: 1px solid var(--border);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25);
   overflow: hidden;
   position: relative;
-  background: var(--surface-2);
+  background: rgba(var(--surface-rgb), 0.4);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
   transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 .slider-916:hover {
   border-color: var(--border-hover);
-  box-shadow: 0 24px 60px rgba(127, 82, 255, 0.3);
+  box-shadow: 0 24px 60px rgba(127, 82, 255, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.4);
   transform: translateY(-2px);
 }
 .slider-916 .swiper-wrapper {
@@ -803,20 +825,23 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .projects-cta-sub { font-size: 14px; color: var(--text-muted); }
 
 /* ─── REVIEWS ────────────────────────────────────────── */
-#reviews { padding: var(--section-pad) 0; overflow: hidden; }
+/* ─── REVIEWS ────────────────────────────────────────── */
+#reviews { padding: var(--section-pad) 0; overflow: hidden; background: transparent; }
 .reviews-header { max-width: var(--container); margin: 0 auto 60px; padding: 0 var(--gutter); }
-.marquee-container { display: flex; flex-direction: column; gap: 24px; width: 100%; }
-.marquee-row { display: flex; overflow: hidden; user-select: none; width: 100%; }
+.marquee-container { display: flex; flex-direction: column; gap: 24px; width: 100%; background: transparent; }
+.marquee-row { display: flex; overflow: hidden; user-select: none; width: 100%; background: transparent; }
 
 .marquee-track-left {
   display: flex; gap: 24px; width: max-content;
   animation: marquee-left 40s linear infinite;
   will-change: transform;
+  background: transparent;
 }
 .marquee-track-right {
   display: flex; gap: 24px; width: max-content;
   animation: marquee-right 40s linear infinite;
   will-change: transform;
+  background: transparent;
 }
 .marquee-row:hover .marquee-track-left,
 .marquee-row:hover .marquee-track-right {
@@ -891,37 +916,44 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .contact-desc { color: var(--text-muted); font-size: 16px; line-height: 1.7; margin-bottom: 32px; }
 .contact-links { display: flex; flex-direction: column; gap: 16px; }
 
-@keyframes button-stroke-glow {
-  0%, 100% {
-    border-color: rgba(127, 82, 255, 0.35);
-    box-shadow: 0 0 8px rgba(127, 82, 255, 0.2), inset 0 0 10px rgba(127, 82, 255, 0.05);
+@keyframes button-stroke-glow-vertical {
+  0% {
+    border-color: rgba(127, 82, 255, 0.25);
+    box-shadow: 0 0 6px rgba(127, 82, 255, 0.1);
     transform: translateY(0);
   }
-  50% {
+  12% {
     border-color: var(--flutter);
-    box-shadow: 0 0 20px rgba(19, 185, 253, 0.65), 0 0 32px rgba(127, 82, 255, 0.45), inset 0 0 15px rgba(19, 185, 253, 0.15);
-    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 0 24px rgba(19, 185, 253, 0.75), 0 0 38px rgba(127, 82, 255, 0.5), inset 0 0 16px rgba(19, 185, 253, 0.2);
+    transform: translateY(-4px) scale(1.025);
+  }
+  28%, 100% {
+    border-color: rgba(127, 82, 255, 0.25);
+    box-shadow: 0 0 6px rgba(127, 82, 255, 0.1);
+    transform: translateY(0);
   }
 }
 
 .contact-links .btn {
-  border: 1px solid var(--border);
+  border: 1px solid var(--glass-border);
   position: relative;
-  animation: button-stroke-glow 3.6s ease-in-out infinite;
+  animation: button-stroke-glow-vertical 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
-  background: var(--surface);
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
   justify-content: flex-start;
   padding: 14px 22px;
 }
 
 .contact-links .btn:nth-child(1) { animation-delay: 0s; }
-.contact-links .btn:nth-child(2) { animation-delay: 0.45s; }
-.contact-links .btn:nth-child(3) { animation-delay: 0.9s; }
+.contact-links .btn:nth-child(2) { animation-delay: 1.5s; }
+.contact-links .btn:nth-child(3) { animation-delay: 3.0s; }
 
 .contact-links .btn:hover {
   animation-play-state: paused;
   border-color: var(--kotlin);
-  box-shadow: 0 0 25px rgba(127, 82, 255, 0.8), 0 0 42px rgba(19, 185, 253, 0.55);
+  box-shadow: 0 0 25px rgba(127, 82, 255, 0.8), 0 0 42px rgba(19, 185, 253, 0.55), inset 0 0 15px rgba(255, 255, 255, 0.3);
   transform: translateY(-4px) scale(1.03);
 }
 
