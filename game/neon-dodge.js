@@ -461,9 +461,6 @@ canvas.addEventListener("touchend", () => { touchTarget = null; });
 canvas.addEventListener("touchcancel", () => { touchTarget = null; });
 
 // ═══════════════════════════════════════════════════════════════
-//  LEADERBOARD RENDERING  (textContent only — XSS-safe)
-// ═══════════════════════════════════════════════════════════════
-// ═══════════════════════════════════════════════════════════════
 //  LEADERBOARD RENDERING & CONTEXT FETCHING
 // ═══════════════════════════════════════════════════════════════
 function formatLeaderboardTime(ms) {
@@ -476,15 +473,49 @@ function formatLeaderboardTime(ms) {
   return `${totalSec.toFixed(1)}s`;
 }
 
-async function fetchLeaderboardData(myScoreMs) {
-  const top10Promise = fetchTopScores(10);
+async function fetchLeaderboardFullData(myScoreMs = null) {
+  try {
+    const top10Promise = fetchTopScores(10);
+    const countPromise = fetch(`${SUPABASE_URL}/rest/v1/leaderboard?select=id`, {
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+        'Prefer': 'count=exact',
+        'Range-Unit': 'items',
+        'Range': '0-0'
+      }
+    });
 
-  let rank = null;
-  let contextRows = [];
+    const [top10, countRes] = await Promise.all([top10Promise, countPromise]);
 
-  if (myScoreMs !== null) {
-    try {
-      const countRes = await fetch(`${SUPABASE_URL}/rest/v1/leaderboard?score=gt.${myScoreMs}&select=id`, {
+    let totalCount = top10 ? top10.length : 0;
+    const contentRange = countRes.headers.get('content-range');
+    if (contentRange) {
+      totalCount = parseInt(contentRange.split('/')[1] || `${totalCount}`, 10);
+    }
+
+    // Fetch Last 5 lowest scores
+    let last5 = [];
+    if (totalCount > 10) {
+      const last5Res = await fetch(
+        `${SUPABASE_URL}/rest/v1/leaderboard?select=name,score,created_at&order=score.asc,created_at.desc&limit=5`,
+        {
+          headers: {
+            'apikey': SUPABASE_ANON_KEY,
+            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+          }
+        }
+      );
+      if (last5Res.ok) {
+        const rawLast5 = await last5Res.json();
+        last5 = rawLast5.reverse();
+      }
+    }
+
+    // Calculate user rank if score provided
+    let userRank = null;
+    if (myScoreMs !== null) {
+      const rankRes = await fetch(`${SUPABASE_URL}/rest/v1/leaderboard?score=gt.${myScoreMs}&select=id`, {
         headers: {
           'apikey': SUPABASE_ANON_KEY,
           'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
@@ -493,40 +524,23 @@ async function fetchLeaderboardData(myScoreMs) {
           'Range': '0-0'
         }
       });
-      const contentRange = countRes.headers.get('content-range');
-      if (contentRange) {
-        const totalHigher = parseInt(contentRange.split('/')[1] || '0', 10);
-        rank = totalHigher + 1;
+      const rankRange = rankRes.headers.get('content-range');
+      if (rankRange) {
+        userRank = parseInt(rankRange.split('/')[1] || '0', 10) + 1;
       }
-
-      if (rank && rank > 10) {
-        const offset = Math.max(0, rank - 2);
-        const contextRes = await fetch(
-          `${SUPABASE_URL}/rest/v1/leaderboard?select=name,score,created_at&order=score.desc,created_at.asc&offset=${offset}&limit=3`,
-          {
-            headers: {
-              'apikey': SUPABASE_ANON_KEY,
-              'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
-            }
-          }
-        );
-        if (contextRes.ok) {
-          contextRows = await contextRes.json();
-        }
-      }
-    } catch (e) {
-      console.warn("Rank context fetch error:", e);
     }
-  }
 
-  const top10 = await top10Promise;
-  return { top10, rank, contextRows };
+    return { top10, last5, totalCount, userRank };
+  } catch (err) {
+    console.warn("Leaderboard fetch error:", err);
+    return { top10: [], last5: [], totalCount: 0, userRank: null };
+  }
 }
 
-function renderLeaderboard(data, myScore, isNewSubmission = false) {
+function renderLeaderboardTable(data, myScore = null, isNewSubmission = false) {
   leaderboardList.innerHTML = "";
 
-  const { top10, rank, contextRows } = data || { top10: [], rank: null, contextRows: [] };
+  const { top10 = [], last5 = [], totalCount = 0, userRank = null } = data || {};
 
   if (!top10 || top10.length === 0) {
     const empty = document.createElement("p");
@@ -550,32 +564,54 @@ function renderLeaderboard(data, myScore, isNewSubmission = false) {
   table.appendChild(thead);
 
   const tbody = document.createElement("tbody");
-  let targetSubmittedRow = null;
+  let targetSmashRow = null;
 
-  // 1. Render Top 10 (ranks 1..10)
+  // 1. Render Top 10 (Ranks #1..#10)
   top10.forEach((row, i) => {
     const tr = createLeaderboardRow(row, i + 1, myScore, isNewSubmission);
-    if (tr.classList.contains("is-newly-submitted")) {
-      targetSubmittedRow = tr;
-    }
+    if (tr.classList.contains("is-newly-submitted")) targetSmashRow = tr;
     tbody.appendChild(tr);
   });
 
-  // 2. If user rank > 10, render Ellipsis Row + Context Rows (e.g. 299, 300, 301)
-  if (rank && rank > 10 && contextRows && contextRows.length > 0) {
-    const trEllipsis = document.createElement("tr");
-    trEllipsis.className = "lb-table-row lb-ellipsis-row";
-    const skippedCount = Math.max(0, rank - 11);
-    trEllipsis.innerHTML = `<td colspan="3" class="td-ellipsis">• • • ${skippedCount} player records below • • •</td>`;
-    tbody.appendChild(trEllipsis);
+  // 2. Render Ellipsis & Last 5 if total > 10
+  if (totalCount > 10) {
+    const last5StartRank = totalCount - last5.length + 1;
+    const isUserInMiddle = userRank && userRank > 10 && userRank < last5StartRank;
 
-    const startRank = Math.max(11, rank - 1);
-    contextRows.forEach((row, idx) => {
-      const currentRank = startRank + idx;
+    if (isUserInMiddle) {
+      // Ellipsis 1: Top 10 to User Row
+      const el1 = document.createElement("tr");
+      el1.className = "lb-table-row lb-ellipsis-row";
+      const countAbove = userRank - 11;
+      el1.innerHTML = `<td colspan="3" class="td-ellipsis">• • • ${countAbove} player records above • • •</td>`;
+      tbody.appendChild(el1);
+
+      // User Row
+      const submittedName = nameInput.value.trim() || "Player";
+      const userTr = createLeaderboardRow({ name: submittedName, score: myScore }, userRank, myScore, isNewSubmission);
+      if (userTr.classList.contains("is-newly-submitted")) targetSmashRow = userTr;
+      tbody.appendChild(userTr);
+
+      // Ellipsis 2: User Row to Last 5
+      const el2 = document.createElement("tr");
+      el2.className = "lb-table-row lb-ellipsis-row";
+      const countBelow = last5StartRank - userRank - 1;
+      el2.innerHTML = `<td colspan="3" class="td-ellipsis">• • • ${countBelow} player records below • • •</td>`;
+      tbody.appendChild(el2);
+    } else {
+      // Single Ellipsis: Top 10 to Last 5
+      const el = document.createElement("tr");
+      el.className = "lb-table-row lb-ellipsis-row";
+      const middleCount = Math.max(0, last5StartRank - 11);
+      el.innerHTML = `<td colspan="3" class="td-ellipsis">• • • ${middleCount} player records • • •</td>`;
+      tbody.appendChild(el);
+    }
+
+    // Render Last 5 (Ranks #1575..#1579)
+    last5.forEach((row, i) => {
+      const currentRank = last5StartRank + i;
       const tr = createLeaderboardRow(row, currentRank, myScore, isNewSubmission);
-      if (tr.classList.contains("is-newly-submitted")) {
-        targetSubmittedRow = tr;
-      }
+      if (tr.classList.contains("is-newly-submitted")) targetSmashRow = tr;
       tbody.appendChild(tr);
     });
   }
@@ -583,11 +619,12 @@ function renderLeaderboard(data, myScore, isNewSubmission = false) {
   table.appendChild(tbody);
   leaderboardList.appendChild(table);
 
-  // Smooth scroll down to submitted row with smashing effect
-  if (isNewSubmission && targetSubmittedRow) {
+  // Trigger Smashing Impact Animation + Auto-Scroll
+  if (isNewSubmission && targetSmashRow) {
+    targetSmashRow.classList.add("smash-impact-active");
     setTimeout(() => {
-      targetSubmittedRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 200);
+      targetSmashRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 180);
   }
 }
 
@@ -683,8 +720,8 @@ submitBtn.addEventListener("click", async () => {
     statusMsg.className   = "success";
 
     if (leaderboardPanel) leaderboardPanel.style.display = "block";
-    const data = await fetchLeaderboardData(scoreMs);
-    renderLeaderboard(data, scoreMs, true);
+    const data = await fetchLeaderboardFullData(scoreMs);
+    renderLeaderboardTable(data, scoreMs, true);
   } catch (err) {
     console.warn("Leaderboard error:", err);
     statusMsg.textContent =
@@ -713,12 +750,11 @@ async function initStartScreen() {
 
   // Fetch & render leaderboard data immediately
   try {
-    const data = await fetchLeaderboardData(null);
+    const data = await fetchLeaderboardFullData(null);
+    renderLeaderboardTable(data, null, false);
     if (data && data.top10 && data.top10.length > 0) {
-      renderLeaderboard(data, null, false);
       updateRecordBanner(data.top10[0].name, data.top10[0].score);
     } else {
-      renderLeaderboard({ top10: [] }, null, false);
       updateRecordBanner("Alireza Nezami", 176000);
     }
   } catch (err) {

@@ -519,31 +519,35 @@ main {
 }
 
 /* Smashing Impact Effect on Submitted Row */
-.lb-table-row.is-newly-submitted {
-  animation: row-smash-enter 0.85s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+.lb-table-row.is-newly-submitted,
+.lb-table-row.smash-impact-active {
+  animation: smash-drop-impact 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
   position: relative;
-  z-index: 5;
+  z-index: 10;
   border: 1px solid var(--flutter, #13B9FD) !important;
-  background: rgba(19, 185, 253, 0.18) !important;
+  background: rgba(19, 185, 253, 0.25) !important;
 }
 
-@keyframes row-smash-enter {
+@keyframes smash-drop-impact {
   0% {
-    transform: scale(1.6) translateY(-24px);
+    transform: scale(2.2) translateY(-40px);
     opacity: 0;
-    box-shadow: 0 0 60px rgba(19, 185, 253, 0.95), 0 0 90px rgba(127, 82, 255, 0.85);
+    box-shadow: 0 0 80px rgba(19, 185, 253, 1), 0 0 120px rgba(127, 82, 255, 1);
+    filter: brightness(2);
   }
-  50% {
-    transform: scale(0.95) translateY(2px);
-    box-shadow: 0 0 40px rgba(19, 185, 253, 0.85), inset 0 0 20px rgba(19, 185, 253, 0.4);
+  40% {
+    transform: scale(0.92) translateY(4px);
+    opacity: 1;
+    box-shadow: 0 0 50px rgba(19, 185, 253, 0.9), inset 0 0 30px rgba(19, 185, 253, 0.6);
   }
-  75% {
-    transform: scale(1.04);
+  70% {
+    transform: scale(1.05) translateY(-1px);
+    box-shadow: 0 0 35px rgba(127, 82, 255, 0.6);
   }
   100% {
     transform: scale(1) translateY(0);
     opacity: 1;
-    box-shadow: 0 0 30px rgba(127, 82, 255, 0.45), inset 0 0 15px rgba(19, 185, 253, 0.3);
+    box-shadow: 0 0 25px rgba(127, 82, 255, 0.5), inset 0 0 15px rgba(19, 185, 253, 0.35);
   }
 }
 
