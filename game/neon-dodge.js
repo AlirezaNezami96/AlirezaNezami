@@ -464,7 +464,7 @@ canvas.addEventListener("touchcancel", () => { touchTarget = null; });
 //  LEADERBOARD RENDERING  (textContent only — XSS-safe)
 // ═══════════════════════════════════════════════════════════════
 // ═══════════════════════════════════════════════════════════════
-//  LEADERBOARD RENDERING (Structured Liquid Glass Table)
+//  LEADERBOARD RENDERING & CONTEXT FETCHING
 // ═══════════════════════════════════════════════════════════════
 function formatLeaderboardTime(ms) {
   const totalSec = ms / 1000;
@@ -476,10 +476,59 @@ function formatLeaderboardTime(ms) {
   return `${totalSec.toFixed(1)}s`;
 }
 
-function renderLeaderboard(rows, myScore) {
+async function fetchLeaderboardData(myScoreMs) {
+  const top10Promise = fetchTopScores(10);
+
+  let rank = null;
+  let contextRows = [];
+
+  if (myScoreMs !== null) {
+    try {
+      const countRes = await fetch(`${SUPABASE_URL}/rest/v1/leaderboard?score=gt.${myScoreMs}&select=id`, {
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+          'Prefer': 'count=exact',
+          'Range-Unit': 'items',
+          'Range': '0-0'
+        }
+      });
+      const contentRange = countRes.headers.get('content-range');
+      if (contentRange) {
+        const totalHigher = parseInt(contentRange.split('/')[1] || '0', 10);
+        rank = totalHigher + 1;
+      }
+
+      if (rank && rank > 10) {
+        const offset = Math.max(0, rank - 2);
+        const contextRes = await fetch(
+          `${SUPABASE_URL}/rest/v1/leaderboard?select=name,score,created_at&order=score.desc,created_at.asc&offset=${offset}&limit=3`,
+          {
+            headers: {
+              'apikey': SUPABASE_ANON_KEY,
+              'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+            }
+          }
+        );
+        if (contextRes.ok) {
+          contextRows = await contextRes.json();
+        }
+      }
+    } catch (e) {
+      console.warn("Rank context fetch error:", e);
+    }
+  }
+
+  const top10 = await top10Promise;
+  return { top10, rank, contextRows };
+}
+
+function renderLeaderboard(data, myScore, isNewSubmission = false) {
   leaderboardList.innerHTML = "";
 
-  if (!rows || rows.length === 0) {
+  const { top10, rank, contextRows } = data || { top10: [], rank: null, contextRows: [] };
+
+  if (!top10 || top10.length === 0) {
     const empty = document.createElement("p");
     empty.textContent = "No scores yet — be the first!";
     empty.style.cssText = "text-align:center;color:var(--text-muted,#8A8F98);font-size:0.85rem;padding:16px 0";
@@ -501,69 +550,107 @@ function renderLeaderboard(rows, myScore) {
   table.appendChild(thead);
 
   const tbody = document.createElement("tbody");
+  let targetSubmittedRow = null;
 
-  rows.forEach((row, i) => {
-    const tr = document.createElement("tr");
-    tr.className = "lb-table-row";
-
-    const rankNum = i + 1;
-    if (rankNum === 1) tr.classList.add("rank-first");
-    if (rankNum === 2) tr.classList.add("rank-second");
-    if (rankNum === 3) tr.classList.add("rank-third");
-
-    // Highlight if this is the player's just-submitted score or Alireza Nezami
-    if ((myScore !== null && Math.abs(row.score - myScore) < 10) || row.name === "Alireza Nezami") {
-      tr.classList.add("is-mine");
+  // 1. Render Top 10 (ranks 1..10)
+  top10.forEach((row, i) => {
+    const tr = createLeaderboardRow(row, i + 1, myScore, isNewSubmission);
+    if (tr.classList.contains("is-newly-submitted")) {
+      targetSubmittedRow = tr;
     }
-
-    // Rank Cell
-    const tdRank = document.createElement("td");
-    tdRank.className = "td-rank";
-    const badge = document.createElement("div");
-
-    if (rankNum === 1) {
-      badge.className = "lb-badge lb-badge-gold";
-      badge.innerHTML = `<span class="lb-crown">👑</span> <span class="lb-rank-num">#1</span>`;
-    } else if (rankNum === 2) {
-      badge.className = "lb-badge lb-badge-silver";
-      badge.innerHTML = `<span class="lb-medal">🥈</span> <span class="lb-rank-num">#2</span>`;
-    } else if (rankNum === 3) {
-      badge.className = "lb-badge lb-badge-bronze";
-      badge.innerHTML = `<span class="lb-medal">🥉</span> <span class="lb-rank-num">#3</span>`;
-    } else {
-      badge.className = "lb-badge lb-badge-normal";
-      badge.textContent = `#${rankNum}`;
-    }
-    tdRank.appendChild(badge);
-
-    // Name Cell
-    const tdName = document.createElement("td");
-    tdName.className = "td-name";
-    const nameSpan = document.createElement("span");
-    nameSpan.className = "lb-name-text";
-    nameSpan.textContent = row.name; // textContent — XSS safe
-    tdName.appendChild(nameSpan);
-
-    if (row.name === "Alireza Nezami") {
-      const devTag = document.createElement("span");
-      devTag.className = "lb-dev-tag";
-      devTag.textContent = "DEV";
-      tdName.appendChild(devTag);
-    }
-
-    // Score Cell
-    const tdScore = document.createElement("td");
-    tdScore.className = "td-score";
-    tdScore.textContent = formatLeaderboardTime(row.score);
-
-    tr.appendChild(tdRank);
-    tr.appendChild(tdName);
-    tr.appendChild(tdScore);
     tbody.appendChild(tr);
   });
 
+  // 2. If user rank > 10, render Ellipsis Row + Context Rows (e.g. 299, 300, 301)
+  if (rank && rank > 10 && contextRows && contextRows.length > 0) {
+    const trEllipsis = document.createElement("tr");
+    trEllipsis.className = "lb-table-row lb-ellipsis-row";
+    const skippedCount = Math.max(0, rank - 11);
+    trEllipsis.innerHTML = `<td colspan="3" class="td-ellipsis">• • • ${skippedCount} player records below • • •</td>`;
+    tbody.appendChild(trEllipsis);
+
+    const startRank = Math.max(11, rank - 1);
+    contextRows.forEach((row, idx) => {
+      const currentRank = startRank + idx;
+      const tr = createLeaderboardRow(row, currentRank, myScore, isNewSubmission);
+      if (tr.classList.contains("is-newly-submitted")) {
+        targetSubmittedRow = tr;
+      }
+      tbody.appendChild(tr);
+    });
+  }
+
   table.appendChild(tbody);
   leaderboardList.appendChild(table);
+
+  // Smooth scroll down to submitted row with smashing effect
+  if (isNewSubmission && targetSubmittedRow) {
+    setTimeout(() => {
+      targetSubmittedRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 200);
+  }
+}
+
+function createLeaderboardRow(row, rankNum, myScore, isNewSubmission) {
+  const tr = document.createElement("tr");
+  tr.className = "lb-table-row";
+
+  if (rankNum === 1) tr.classList.add("rank-first");
+  if (rankNum === 2) tr.classList.add("rank-second");
+  if (rankNum === 3) tr.classList.add("rank-third");
+
+  const isMyMatch = (myScore !== null && Math.abs(row.score - myScore) < 10) || row.name === "Alireza Nezami";
+  if (isMyMatch) {
+    tr.classList.add("is-mine");
+    if (isNewSubmission && Math.abs(row.score - myScore) < 10) {
+      tr.classList.add("is-newly-submitted");
+    }
+  }
+
+  // Rank Cell
+  const tdRank = document.createElement("td");
+  tdRank.className = "td-rank";
+  const badge = document.createElement("div");
+
+  if (rankNum === 1) {
+    badge.className = "lb-badge lb-badge-gold";
+    badge.innerHTML = `<span class="lb-crown">👑</span> <span class="lb-rank-num">#1</span>`;
+  } else if (rankNum === 2) {
+    badge.className = "lb-badge lb-badge-silver";
+    badge.innerHTML = `<span class="lb-medal">🥈</span> <span class="lb-rank-num">#2</span>`;
+  } else if (rankNum === 3) {
+    badge.className = "lb-badge lb-badge-bronze";
+    badge.innerHTML = `<span class="lb-medal">🥉</span> <span class="lb-rank-num">#3</span>`;
+  } else {
+    badge.className = "lb-badge lb-badge-normal";
+    badge.textContent = `#${rankNum}`;
+  }
+  tdRank.appendChild(badge);
+
+  // Name Cell
+  const tdName = document.createElement("td");
+  tdName.className = "td-name";
+  const nameSpan = document.createElement("span");
+  nameSpan.className = "lb-name-text";
+  nameSpan.textContent = row.name;
+  tdName.appendChild(nameSpan);
+
+  if (row.name === "Alireza Nezami") {
+    const devTag = document.createElement("span");
+    devTag.className = "lb-dev-tag";
+    devTag.textContent = "DEV";
+    tdName.appendChild(devTag);
+  }
+
+  // Score Cell
+  const tdScore = document.createElement("td");
+  tdScore.className = "td-score";
+  tdScore.textContent = formatLeaderboardTime(row.score);
+
+  tr.appendChild(tdRank);
+  tr.appendChild(tdName);
+  tr.appendChild(tdScore);
+  return tr;
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -595,34 +682,18 @@ submitBtn.addEventListener("click", async () => {
     statusMsg.textContent = "Score submitted! 🎉";
     statusMsg.className   = "success";
 
-    const rows = await fetchTopScores(10);
-    renderLeaderboard(rows, scoreMs);
-    leaderboardPanel.hidden = false;
+    if (leaderboardPanel) leaderboardPanel.style.display = "block";
+    const data = await fetchLeaderboardData(scoreMs);
+    renderLeaderboard(data, scoreMs, true);
   } catch (err) {
     console.warn("Leaderboard error:", err);
     statusMsg.textContent =
       `Leaderboard's taking a nap — your score was still ${(scoreMs / 1000).toFixed(1)}s!`;
     statusMsg.className = "error";
-    submitBtn.disabled  = false; // let them retry
+    submitBtn.disabled  = false;
   }
 });
 
-// ═══════════════════════════════════════════════════════════════
-//  UTILITY
-// ═══════════════════════════════════════════════════════════════
-function hexToRgba(hex, alpha) {
-  // Handles #RRGGBB and #RGB
-  hex = hex.replace("#", "");
-  if (hex.length === 3) hex = hex.split("").map(c => c + c).join("");
-  const r = parseInt(hex.substring(0, 2), 16);
-  const g = parseInt(hex.substring(2, 4), 16);
-  const b = parseInt(hex.substring(4, 6), 16);
-  return `rgba(${r},${g},${b},${alpha})`;
-}
-
-// ═══════════════════════════════════════════════════════════════
-//  INIT — start screen setup
-// ═══════════════════════════════════════════════════════════════
 function updateRecordBanner(name, scoreMs) {
   const holderName = document.getElementById("record-holder-name");
   const holderScore = document.getElementById("record-holder-score");
@@ -640,23 +711,19 @@ async function initStartScreen() {
   ctx.fillStyle = getCSSVar("--bg", "#0A0C10");
   ctx.fillRect(0, 0, ARENA_SIZE, ARENA_SIZE);
 
-  // Fetch & render top 10 leaderboard table immediately
+  // Fetch & render leaderboard data immediately
   try {
-    const rows = await fetchTopScores(10);
-    if (rows && rows.length > 0) {
-      renderLeaderboard(rows, null);
-      updateRecordBanner(rows[0].name, rows[0].score);
-      startHighscore.textContent =
-        `Beat the high score: ${rows[0].name} — ${formatLeaderboardTime(rows[0].score)}`;
+    const data = await fetchLeaderboardData(null);
+    if (data && data.top10 && data.top10.length > 0) {
+      renderLeaderboard(data, null, false);
+      updateRecordBanner(data.top10[0].name, data.top10[0].score);
     } else {
-      renderLeaderboard([], null);
+      renderLeaderboard({ top10: [] }, null, false);
       updateRecordBanner("Alireza Nezami", 176000);
-      startHighscore.textContent = "No scores yet — be the first!";
     }
   } catch (err) {
     console.warn("Leaderboard load error:", err);
     updateRecordBanner("Alireza Nezami", 176000);
-    startHighscore.textContent = "";
   }
 }
 

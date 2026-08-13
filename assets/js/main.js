@@ -569,36 +569,28 @@ function initChallengeArrow() {
 
     // Start: Bottom-Center of Challenge Box
     const startX = boxRect.left + boxRect.width / 2;
-    const startY = boxRect.bottom - 4;
+    const startY = boxRect.bottom + 2;
 
-    // Target: Bottom-Center of Game 🎮 Nav Link
+    // Target: Just under the bottom edge of Game 🎮 Nav Link (does NOT enter top bar)
     const targetX = linkRect.left + linkRect.width / 2;
-    const targetY = linkRect.bottom + 6;
+    const targetY = linkRect.bottom + 4;
 
     svg.setAttribute('width', window.innerWidth);
     svg.setAttribute('height', window.innerHeight);
 
-    // Deflections & Twists:
-    // 1. Swoop down-right from bottom-center
-    const c1x = startX + 45;
-    const c1y = startY + 30;
+    // Clean, elegant sweep: starts at bottom-center, sweeps left, and arcs straight UP to under Game tab
+    const control1X = startX - (startX - targetX) * 0.75;
+    const control1Y = startY + 28;
 
-    // 2. Twist midpoint to the right of the challenge box
-    const midX = Math.max(boxRect.right + 30, startX + 60);
-    const midY = boxRect.top + boxRect.height * 0.35;
+    const control2X = targetX;
+    const control2Y = startY - (startY - targetY) * 0.35;
 
-    // 3. Curve up & left towards the Game tab
-    const c3x = midX + 15;
-    const c3y = targetY + (startY - targetY) * 0.45;
-    const c4x = targetX + (midX - targetX) * 0.5;
-    const c4y = targetY + 12;
-
-    const lineD = `M ${startX} ${startY} Q ${c1x} ${c1y}, ${midX} ${midY} C ${c3x} ${c3y}, ${c4x} ${c4y}, ${targetX} ${targetY}`;
+    const lineD = `M ${startX} ${startY} C ${control1X} ${control1Y}, ${control2X} ${control2Y}, ${targetX} ${targetY}`;
     pathLine.setAttribute('d', lineD);
 
-    // Calculate Arrowhead angle at target point
-    const headAngle = Math.atan2(targetY - c4y, targetX - c4x);
-    const headLen = 11;
+    // Arrowhead pointing UP directly into the bottom of Game tab
+    const headAngle = Math.atan2(targetY - control2Y, targetX - control2X);
+    const headLen = 10;
     const angle1 = headAngle - Math.PI / 6;
     const angle2 = headAngle + Math.PI / 6;
 
