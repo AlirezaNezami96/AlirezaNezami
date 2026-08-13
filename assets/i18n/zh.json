@@ -8,7 +8,7 @@
     "bookCall": "预约通话"
   },
   "hero": {
-    "eyebrow": "// mobile.engineer",
+    "eyebrow": "mobile.engineer",
     "headline1": "9+ years native",
     "headline2": "Android.",
     "headline3": "Now shipping",
@@ -18,7 +18,7 @@
     "seeWork": "See the work"
   },
   "about": {
-    "tag": "// 关于我",
+    "tag": "关于我",
     "title": "从<strong>原生 Android 专家</strong>到精通<span class=\"gradient-text\"><u>跨平台开发的移动架构师</u></span>。",
     "p1": "早在 <strong>Kotlin</strong> 仍处于 Beta 阶段时，我就开始编写 Android 原生应用。在<u>超过 9 年的高并发生产环境软件交付经验</u>中，我从零构建过<strong>金融科技仪表盘</strong>、<strong>数字医疗与健康追踪系统</strong>、<strong>大型物流调度平台</strong>以及<strong>高流量电商应用</strong> &mdash; 每一款应用都遵循着近乎苛刻的<span class=\"gradient-text\">高性能优化与极致底层架构标准</span>。",
     "p2": "当 <strong>Flutter</strong> 足够成熟并达到我的严苛标准时，我将其纳入了核心技术栈。这不是为了偷捷径，而是作为<u>效率与品质的乘数</u>：一套精雕细琢的单代码库，在 iOS 与 Android 双平台上提供<span class=\"gradient-text\">真正的原生级极致流畅体验</span>。",
@@ -31,7 +31,7 @@
     }
   },
   "projects": {
-    "tag": "// projects",
+    "tag": "projects",
     "title": "Selected Work",
     "albertHealth": {
       "title": "Albert Health",
@@ -70,18 +70,18 @@
     }
   },
   "reviews": {
-    "tag": "// reviews",
+    "tag": "reviews",
     "title": "What clients say."
   },
   "resume": {
-    "tag": "// resume",
+    "tag": "resume",
     "title": "技术沉淀与经验蓝图 — 我的个人简历",
     "desc": "Review my technical experience, architecture expertise, and production track record.",
     "downloadBtn": "Download PDF",
     "previewBtn": "View Full Screen"
   },
   "contact": {
-    "tag": "// contact",
+    "tag": "contact",
     "title": "Let’s build something extraordinary.",
     "desc": "Have a new project, need senior Android/Flutter capacity, or want to audit an existing codebase? Schedule a call or drop me a line.",
     "bookTitle": "Schedule a 30-min strategy call"

@@ -8,7 +8,7 @@
     "bookCall": "Записаться на звонок"
   },
   "hero": {
-    "eyebrow": "// mobile.engineer",
+    "eyebrow": "mobile.engineer",
     "headline1": "9+ years native",
     "headline2": "Android.",
     "headline3": "Now shipping",
@@ -18,7 +18,7 @@
     "seeWork": "See the work"
   },
   "about": {
-    "tag": "// обо мне",
+    "tag": "обо мне",
     "title": "<strong>Эксперт по нативной Android-разработке</strong>, осознанно перешедший на <span class=\"gradient-text\"><u>кроссплатформу</u></span>.",
     "p1": "Я начал разрабатывать приложения под Android, когда <strong>Kotlin</strong> был ещё в стадии бета-тестирования. За <u>более чем 9 лет запуска коммерческих продуктов</u> я создал всё: от <strong>финтех-панелей</strong> и <strong>медицинских сервисов</strong> до <strong>логистических систем</strong> и <strong>e-commerce приложений</strong> &mdash; каждое из них спроектировано с <span class=\"gradient-text\">высочайшей производительностью и глубокой архитектурой</span>.",
     "p2": "Когда платформа <strong>Flutter</strong> достигла уровня моих стандартов, я включил её в свой арсенал. Не как компромисс, а как <u>мощный мультипликатор эффективности</u>: единая продуманная база кода с <span class=\"gradient-text\">подлинно нативным ощущением</span> на iOS и Android.",
@@ -31,7 +31,7 @@
     }
   },
   "projects": {
-    "tag": "// projects",
+    "tag": "projects",
     "title": "Selected Work",
     "albertHealth": {
       "title": "Albert Health",
@@ -70,18 +70,18 @@
     }
   },
   "reviews": {
-    "tag": "// reviews",
+    "tag": "reviews",
     "title": "What clients say."
   },
   "resume": {
-    "tag": "// resume",
+    "tag": "resume",
     "title": "Опыт и достижения — Моё резюме",
     "desc": "Review my technical experience, architecture expertise, and production track record.",
     "downloadBtn": "Download PDF",
     "previewBtn": "View Full Screen"
   },
   "contact": {
-    "tag": "// contact",
+    "tag": "contact",
     "title": "Let’s build something extraordinary.",
     "desc": "Have a new project, need senior Android/Flutter capacity, or want to audit an existing codebase? Schedule a call or drop me a line.",
     "bookTitle": "Schedule a 30-min strategy call"

@@ -8,7 +8,7 @@
     "bookCall": "Agendar reunião"
   },
   "hero": {
-    "eyebrow": "// mobile.engineer",
+    "eyebrow": "mobile.engineer",
     "headline1": "+9 anos em Android",
     "headline2": "nativo.",
     "headline3": "Agora criando",
@@ -18,7 +18,7 @@
     "seeWork": "Ver trabalhos"
   },
   "about": {
-    "tag": "// sobre mim",
+    "tag": "sobre mim",
     "title": "O <strong>especialista em Android nativo</strong> que migrou para <span class=\"gradient-text\"><u>multiplataforma por escolha</u></span>.",
     "p1": "Comecei a desenvolver para Android quando o <strong>Kotlin</strong> ainda era um projeto beta. Ao longo de <u>mais de 9 anos lançando software de grande escala em produção</u>, criei desde <strong>dashboards fintech</strong> e <strong>plataformas de saúde</strong> até <strong>sistemas de logística</strong> e <strong>aplicativos de e-commerce</strong> &mdash; cada um projetado com <span class=\"gradient-text\">rigor de performance e arquitetura robusta</span>.",
     "p2": "Quando o <strong>Flutter</strong> atingiu a maturidade exigida pelos meus padrões, adicionei-o ao meu arsenal. Não como um atalho, mas como um <u>multiplicador de resultados</u>: um código-fonte refinado que entrega uma <span class=\"gradient-text\">experiência genuinamente nativa</span> em ambas as plataformas.",
@@ -31,7 +31,7 @@
     }
   },
   "projects": {
-    "tag": "// projetos",
+    "tag": "projetos",
     "title": "Trabalhos Selecionados",
     "seeAll": "Ver todos os projetos",
     "albertHealth": {
@@ -71,18 +71,18 @@
     }
   },
   "reviews": {
-    "tag": "// depoimentos",
+    "tag": "depoimentos",
     "title": "O que dizem os clientes."
   },
   "resume": {
-    "tag": "// currículo",
+    "tag": "currículo",
     "title": "Trajetória & Impacto — Veja meu Currículo",
     "desc": "Confira minha experiência técnica, arquitetura e histórico de projetos.",
     "downloadBtn": "Baixar PDF",
     "previewBtn": "Ver em Tela Cheia"
   },
   "contact": {
-    "tag": "// contato",
+    "tag": "contato",
     "title": "Vamos construir algo extraordinário.",
     "desc": "Tem um novo projeto ou precisa de capacidade sênior em Android/Flutter? Agende uma reunião.",
     "bookTitle": "Agendar reunião estratégica de 30 min"

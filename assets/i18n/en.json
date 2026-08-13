@@ -8,7 +8,7 @@
     "bookCall": "Book a call"
   },
   "hero": {
-    "eyebrow": "// mobile.engineer",
+    "eyebrow": "mobile.engineer",
     "headline1": "9+ years native",
     "headline2": "Android.",
     "headline3": "Now shipping",
@@ -18,7 +18,7 @@
     "seeWork": "See the work"
   },
   "about": {
-    "tag": "// about",
+    "tag": "about",
     "title": "The <strong>native Android specialist</strong> who crossed platforms &mdash; <span class=\"gradient-text\"><u>on purpose</u></span>.",
     "p1": "I started writing Android apps when <strong>Kotlin</strong> was still a beta experiment. Over <u>nine years of shipping production software</u>, I've built everything from <strong>fintech dashboards</strong> and <strong>healthcare trackers</strong> to <strong>logistics platforms</strong> and <strong>e-commerce apps</strong> &mdash; each one with the <span class=\"gradient-text\">performance discipline and architecture depth</span> that only comes from working close to the metal.",
     "p2": "When <strong>Flutter</strong> matured enough to meet my standards, I added it to my toolkit. Not as a shortcut, but as a <u>force multiplier</u>: one carefully-crafted codebase, <span class=\"gradient-text\">genuinely native experience</span> on both platforms.",
@@ -31,7 +31,7 @@
     }
   },
   "projects": {
-    "tag": "// projects",
+    "tag": "projects",
     "title": "Selected Work",
     "albertHealth": {
       "title": "Albert Health",
@@ -70,18 +70,18 @@
     }
   },
   "reviews": {
-    "tag": "// reviews",
+    "tag": "reviews",
     "title": "What clients say."
   },
   "resume": {
-    "tag": "// resume",
+    "tag": "resume",
     "title": "Track Record & Blueprint — Here is My Resume",
     "desc": "Review my technical experience, architecture expertise, and production track record.",
     "downloadBtn": "Download PDF",
     "previewBtn": "View Full Screen"
   },
   "contact": {
-    "tag": "// contact",
+    "tag": "contact",
     "title": "Let’s build something extraordinary.",
     "desc": "Have a new project, need senior Android/Flutter capacity, or want to audit an existing codebase? Schedule a call or drop me a line.",
     "bookTitle": "Schedule a 30-min strategy call"

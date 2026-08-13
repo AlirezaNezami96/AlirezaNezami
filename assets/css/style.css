@@ -1075,7 +1075,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   font-weight: 600;
   cursor: pointer;
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-  animation: phone-vibrate-ring 6s infinite ease-in-out;
+  animation: phone-vibrate-ring 4s infinite ease-in-out;
 }
 
 .ai-widget-toggle-btn:hover {
@@ -1100,7 +1100,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   border-radius: 20px;
   padding: 18px 20px;
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
-  animation: ai-card-glow-pulse 5s infinite ease-in-out;
+  animation: ai-card-glow-pulse 4s infinite ease-in-out;
 }
 
 .ai-floating-card:hover {

@@ -8,7 +8,7 @@
     "bookCall": "Reservar llamada"
   },
   "hero": {
-    "eyebrow": "// ingeniero.móvil",
+    "eyebrow": "ingeniero.móvil",
     "headline1": "+9 años nativo",
     "headline2": "Android.",
     "headline3": "Ahora creando",
@@ -18,7 +18,7 @@
     "seeWork": "Ver proyectos"
   },
   "about": {
-    "tag": "// sobre mí",
+    "tag": "sobre mí",
     "title": "El <strong>especialista en Android nativo</strong> que dio el salto a <span class=\"gradient-text\"><u>multiplataforma a propósito</u></span>.",
     "p1": "Comencé a desarrollar aplicaciones Android cuando <strong>Kotlin</strong> era aún una versión beta. A lo largo de <u>más de 9 años publicando software en producción</u>, he construido desde <strong>paneles de control fintech</strong> y <strong>aplicaciones de salud</strong> hasta <strong>plataformas logísticas</strong> y <strong>comercio electrónico</strong> &mdash; todo con la <span class=\"gradient-text\">disciplina de rendimiento y arquitectura profunda</span> que solo se obtiene trabajando cerca del código nativo.",
     "p2": "Cuando <strong>Flutter</strong> maduró lo suficiente para cumplir con mis estándares, lo incorporé a mi kit de herramientas. No como un atajo, sino como un <u>multiplicador de eficiencia</u>: un código base cuidadosamente diseñado que ofrece una <span class=\"gradient-text\">experiencia genuinamente nativa</span> en iOS y Android.",
@@ -31,7 +31,7 @@
     }
   },
   "projects": {
-    "tag": "// proyectos",
+    "tag": "proyectos",
     "title": "Trabajos destacados",
     "albertHealth": {
       "title": "Albert Health",
@@ -70,18 +70,18 @@
     }
   },
   "reviews": {
-    "tag": "// testimonios",
+    "tag": "testimonios",
     "title": "Lo que dicen mis clientes"
   },
   "resume": {
-    "tag": "// currículum",
+    "tag": "currículum",
     "title": "Trayectoria e Impacto — Aquí está mi CV",
     "desc": "Consulta mi experiencia técnica y proyectos.",
     "downloadBtn": "Descargar PDF",
     "previewBtn": "Ver en pantalla completa"
   },
   "contact": {
-    "tag": "// contacto",
+    "tag": "contacto",
     "title": "Construyamos algo extraordinario.",
     "desc": "Reserva una llamada de 30 minutos para analizar tu proyecto.",
     "bookTitle": "Reservar llamada de 30 min"
