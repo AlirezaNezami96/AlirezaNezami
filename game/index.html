@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neon Dodge — Alireza Nezami</title>
+  <meta name="description"
+    content="Neon Dodge: a fast-paced arcade dodger built into Alireza Nezami's portfolio. Dodge neon obstacles, survive as long as you can, and compete on the global leaderboard." />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Favicon (same as main site) -->
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+
+  <!-- OpenGraph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://alirezanezami96.github.io/game/" />
+  <meta property="og:title"       content="Neon Dodge — Alireza Nezami" />
+  <meta property="og:description" content="Dodge neon obstacles & compete on the global leaderboard." />
+
+  <!-- Fonts: same as main portfolio -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+
+  <!-- Main portfolio CSS (provides :root design tokens) -->
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <!-- Game-specific styles -->
+  <link rel="stylesheet" href="neon-dodge.css" />
+</head>
+
+<body>
+
+  <!-- Background orbs — same visual identity as main site -->
+  <div class="liquid-orbs" aria-hidden="true">
+    <div class="orb orb-kotlin"></div>
+    <div class="orb orb-flutter"></div>
+  </div>
+
+  <!-- ═══════════════════════ NAV ═══════════════════════ -->
+  <nav id="nav" role="navigation" aria-label="Main navigation">
+    <a href="../" class="nav-mark" aria-label="Alireza Nezami home">
+      <span class="nav-logo-icon" aria-hidden="true">
+        <svg viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="logoGrad" x1="0" y1="0" x2="38" y2="38" gradientUnits="userSpaceOnUse">
+              <stop offset="0%"   stop-color="#7F52FF" />
+              <stop offset="100%" stop-color="#13B9FD" />
+            </linearGradient>
+          </defs>
+          <rect x="9"  y="3"  width="20" height="32" rx="4" stroke="url(#logoGrad)" stroke-width="2" fill="none" />
+          <rect x="12" y="8"  width="14" height="20" rx="2" fill="url(#logoGrad)" opacity="0.15" />
+          <line x1="13" y1="13" x2="20" y2="13" stroke="url(#logoGrad)" stroke-width="1.5" stroke-linecap="round" />
+          <line x1="13" y1="17" x2="23" y2="17" stroke="url(#logoGrad)" stroke-width="1.5" stroke-linecap="round" />
+          <line x1="13" y1="21" x2="18" y2="21" stroke="url(#logoGrad)" stroke-width="1.5" stroke-linecap="round" />
+          <line x1="16" y1="31" x2="22" y2="31" stroke="url(#logoGrad)" stroke-width="2" stroke-linecap="round" />
+          <circle cx="31" cy="7" r="4" fill="#7F52FF" opacity="0.9" />
+          <path d="M29.5 7L31 5L32.5 7L31 9Z" fill="white" opacity="0.9" />
+        </svg>
+      </span>
+      <span class="nav-mark-initials">Alireza</span>
+      <span class="nav-mark-dot"></span>
+    </a>
+
+    <div class="nav-links" role="list">
+      <a href="../#about"    class="nav-link" role="listitem">About</a>
+      <a href="../#projects" class="nav-link" role="listitem">Projects</a>
+      <a href="../#reviews"  class="nav-link" role="listitem">Reviews</a>
+      <a href="../#resume"   class="nav-link" role="listitem">Resume</a>
+      <a href="../#contact"  class="nav-link" role="listitem">Contact</a>
+      <a href="../game/"     class="nav-link active" role="listitem">Game 🎮</a>
+    </div>
+
+    <a href="../#contact" class="nav-cta">Book a call</a>
+  </nav>
+
+  <!-- ═══════════════════════ MAIN ═══════════════════════ -->
+  <main>
+
+    <!-- Page header -->
+    <header class="game-header">
+      <p class="game-eyebrow">// neon_dodge.canvas</p>
+      <h1 class="game-title">Neon Dodge</h1>
+      <p class="game-subtitle">Survive the neon swarm. How long can you last?</p>
+    </header>
+
+    <!-- Game shell — all three screens live inside here -->
+    <div id="game-shell">
+
+      <!-- ── START SCREEN ── -->
+      <div id="screen-start" role="main" aria-label="Start screen">
+        <p class="start-title">Neon Dodge</p>
+
+        <p class="start-instructions">
+          <strong>Desktop:</strong> WASD or Arrow keys to move<br />
+          <strong>Mobile:</strong> Touch &amp; drag anywhere on the arena
+        </p>
+
+        <p id="start-highscore" aria-live="polite"></p>
+
+        <button id="btn-play" class="btn btn-primary btn-full" aria-label="Play Neon Dodge">
+          Play →
+        </button>
+      </div>
+
+      <!-- ── PLAYING SCREEN ── -->
+      <div id="screen-playing" role="main" aria-label="Playing screen">
+        <div id="canvas-wrapper">
+          <canvas
+            id="game-canvas"
+            role="img"
+            aria-label="Neon Dodge game arena"
+          ></canvas>
+          <div id="live-score" aria-live="off" aria-atomic="true">0.0s</div>
+        </div>
+      </div>
+
+      <!-- ── GAME OVER SCREEN ── -->
+      <div id="screen-gameover" role="main" aria-label="Game over screen">
+
+        <p class="gameover-title">Game Over</p>
+        <p id="final-score-display" aria-label="Your final score">0.0s</p>
+
+        <div class="submit-row">
+          <label for="player-name-input">Your name (for the leaderboard)</label>
+          <input
+            type="text"
+            id="player-name-input"
+            maxlength="20"
+            placeholder="Enter your name…"
+            autocomplete="nickname"
+            spellcheck="false"
+            aria-required="true"
+          />
+        </div>
+
+        <div class="action-row">
+          <button id="btn-submit"     class="btn btn-primary"  aria-label="Submit score and view leaderboard">Submit &amp; View Leaderboard</button>
+          <button id="btn-play-again" class="btn btn-ghost"    aria-label="Play again without submitting">Play Again</button>
+        </div>
+
+        <p id="status-msg" aria-live="polite"></p>
+
+        <!-- Leaderboard — hidden until after successful submit -->
+        <div id="leaderboard-panel" hidden>
+          <div class="divider"></div>
+          <p class="leaderboard-title">// global leaderboard — top 10</p>
+          <div id="leaderboard-list" role="list" aria-label="Leaderboard"></div>
+        </div>
+
+      </div>
+      <!-- /screen-gameover -->
+
+    </div>
+    <!-- /game-shell -->
+
+  </main>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer id="footer" role="contentinfo">
+    <a href="../">← Back to portfolio</a>
+    &nbsp;·&nbsp;
+    <span>© <span id="footer-year">2026</span> Alireza Nezami</span>
+  </footer>
+
+  <!-- config.js must load BEFORE the game so SUPABASE_URL / SUPABASE_ANON_KEY are defined -->
+  <script src="config.js"></script>
+  <script src="neon-dodge.js" defer></script>
+
+</body>
+
+</html>
