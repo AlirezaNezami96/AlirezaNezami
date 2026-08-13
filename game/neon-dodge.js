@@ -462,41 +462,107 @@ canvas.addEventListener("touchcancel", () => { touchTarget = null; });
 // ═══════════════════════════════════════════════════════════════
 //  LEADERBOARD RENDERING  (textContent only — XSS-safe)
 // ═══════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════
+//  LEADERBOARD RENDERING (Structured Liquid Glass Table)
+// ═══════════════════════════════════════════════════════════════
+function formatLeaderboardTime(ms) {
+  const totalSec = ms / 1000;
+  if (totalSec >= 60) {
+    const mins = Math.floor(totalSec / 60);
+    const secs = (totalSec % 60).toFixed(1);
+    return `${mins}m ${secs}s`;
+  }
+  return `${totalSec.toFixed(1)}s`;
+}
+
 function renderLeaderboard(rows, myScore) {
   leaderboardList.innerHTML = "";
 
   if (!rows || rows.length === 0) {
     const empty = document.createElement("p");
     empty.textContent = "No scores yet — be the first!";
-    empty.style.cssText = "text-align:center;color:var(--text-muted,#8A8F98);font-size:0.85rem;padding:8px 0";
+    empty.style.cssText = "text-align:center;color:var(--text-muted,#8A8F98);font-size:0.85rem;padding:16px 0";
     leaderboardList.appendChild(empty);
     return;
   }
 
+  const table = document.createElement("table");
+  table.className = "lb-table";
+
+  const thead = document.createElement("thead");
+  thead.innerHTML = `
+    <tr>
+      <th class="th-rank">Rank</th>
+      <th class="th-name">Player</th>
+      <th class="th-score">Time Survived</th>
+    </tr>
+  `;
+  table.appendChild(thead);
+
+  const tbody = document.createElement("tbody");
+
   rows.forEach((row, i) => {
-    const div = document.createElement("div");
-    div.className = "lb-row";
+    const tr = document.createElement("tr");
+    tr.className = "lb-table-row";
 
-    // Highlight if this is the player's just-submitted score
-    if (myScore !== null && row.score === myScore) div.classList.add("is-mine");
+    const rankNum = i + 1;
+    if (rankNum === 1) tr.classList.add("rank-first");
+    if (rankNum === 2) tr.classList.add("rank-second");
+    if (rankNum === 3) tr.classList.add("rank-third");
 
-    const rankEl = document.createElement("span");
-    rankEl.className = "lb-rank";
-    rankEl.textContent = i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : `#${i + 1}`;
+    // Highlight if this is the player's just-submitted score or Alireza Nezami
+    if ((myScore !== null && Math.abs(row.score - myScore) < 10) || row.name === "Alireza Nezami") {
+      tr.classList.add("is-mine");
+    }
 
-    const nameEl = document.createElement("span");
-    nameEl.className = "lb-name";
-    nameEl.textContent = row.name; // textContent — safe, no innerHTML
+    // Rank Cell
+    const tdRank = document.createElement("td");
+    tdRank.className = "td-rank";
+    const badge = document.createElement("div");
 
-    const scoreEl = document.createElement("span");
-    scoreEl.className = "lb-score";
-    scoreEl.textContent = (row.score / 1000).toFixed(1) + "s";
+    if (rankNum === 1) {
+      badge.className = "lb-badge lb-badge-gold";
+      badge.innerHTML = `<span class="lb-crown">👑</span> <span class="lb-rank-num">#1</span>`;
+    } else if (rankNum === 2) {
+      badge.className = "lb-badge lb-badge-silver";
+      badge.innerHTML = `<span class="lb-medal">🥈</span> <span class="lb-rank-num">#2</span>`;
+    } else if (rankNum === 3) {
+      badge.className = "lb-badge lb-badge-bronze";
+      badge.innerHTML = `<span class="lb-medal">🥉</span> <span class="lb-rank-num">#3</span>`;
+    } else {
+      badge.className = "lb-badge lb-badge-normal";
+      badge.textContent = `#${rankNum}`;
+    }
+    tdRank.appendChild(badge);
 
-    div.appendChild(rankEl);
-    div.appendChild(nameEl);
-    div.appendChild(scoreEl);
-    leaderboardList.appendChild(div);
+    // Name Cell
+    const tdName = document.createElement("td");
+    tdName.className = "td-name";
+    const nameSpan = document.createElement("span");
+    nameSpan.className = "lb-name-text";
+    nameSpan.textContent = row.name; // textContent — XSS safe
+    tdName.appendChild(nameSpan);
+
+    if (row.name === "Alireza Nezami") {
+      const devTag = document.createElement("span");
+      devTag.className = "lb-dev-tag";
+      devTag.textContent = "DEV";
+      tdName.appendChild(devTag);
+    }
+
+    // Score Cell
+    const tdScore = document.createElement("td");
+    tdScore.className = "td-score";
+    tdScore.textContent = formatLeaderboardTime(row.score);
+
+    tr.appendChild(tdRank);
+    tr.appendChild(tdName);
+    tr.appendChild(tdScore);
+    tbody.appendChild(tr);
   });
+
+  table.appendChild(tbody);
+  leaderboardList.appendChild(table);
 }
 
 // ═══════════════════════════════════════════════════════════════

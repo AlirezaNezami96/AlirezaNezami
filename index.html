@@ -196,6 +196,35 @@
     <canvas id="hero-bg" aria-hidden="true"></canvas>
     <div class="grain" aria-hidden="true"></div>
 
+    <!-- Top-Right Game Challenge Box & Vector Arrow -->
+    <div class="hero-game-challenge" id="hero-game-challenge">
+      <div class="challenge-arrow-wrap" aria-hidden="true">
+        <svg class="challenge-arrow-svg" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path class="arrow-line-path" d="M 15 50 C 45 45, 75 30, 80 8" stroke="url(#arrowGrad)" stroke-width="2.5" stroke-linecap="round"/>
+          <path class="arrow-head-path" d="M 72 14 L 80 8 L 84 18" stroke="url(#arrowGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <defs>
+            <linearGradient id="arrowGrad" x1="0" y1="50" x2="80" y2="8" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#13B9FD" />
+              <stop offset="100%" stop-color="#7F52FF" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <div class="challenge-card">
+        <div class="challenge-badge">
+          <span class="challenge-badge-icon">🎮</span>
+          <span>CHALLENGE OFFER</span>
+        </div>
+        <p class="challenge-text">
+          If you beat me at this game, I will build you a <strong>free mobile app</strong>! 🚀
+        </p>
+        <a href="game/" class="challenge-btn">
+          Play Neon Dodge &rarr;
+        </a>
+      </div>
+    </div>
+
     <!-- Scroll reveal wrapper: hero text -->
     <div class="hero-content" id="hero-content">
       <div class="hero-eyebrow">
