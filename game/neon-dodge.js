@@ -68,7 +68,6 @@ const screenGameover = document.getElementById("screen-gameover");
 const canvas         = document.getElementById("game-canvas");
 const ctx            = canvas.getContext("2d");
 const liveScore      = document.getElementById("live-score");
-const startHighscore = document.getElementById("start-highscore");
 const finalScoreEl   = document.getElementById("final-score-display");
 const nameInput      = document.getElementById("player-name-input");
 const submitBtn      = document.getElementById("btn-submit");

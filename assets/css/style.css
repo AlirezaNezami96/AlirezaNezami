@@ -255,19 +255,22 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 14px 28px;
-  border-radius: 50px;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 28px;
+  border-radius: 999px;
   font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
   font-weight: 600;
-  font-size: 15px;
-  transition: all var(--dur) var(--ease-out);
   cursor: pointer;
+  border: none;
+  text-decoration: none;
+  transition: transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out), color var(--dur) var(--ease-out);
   position: relative;
   overflow: hidden;
+  isolation: isolate;
   white-space: nowrap;
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  letter-spacing: 0.02em;
 }
 .btn > * {
   position: relative;
@@ -279,7 +282,8 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   inset: 0;
   opacity: 0;
   transition: opacity var(--dur) var(--ease-out);
-  z-index: 1;
+  z-index: -1;
+  pointer-events: none;
 }
 .btn-primary {
   background: linear-gradient(135deg, rgba(127, 82, 255, 0.92), rgba(19, 185, 253, 0.92));
@@ -287,7 +291,10 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   border: 1px solid rgba(255, 255, 255, 0.35);
   box-shadow: 0 8px 28px rgba(127, 82, 255, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.45);
 }
-.btn-primary * {
+.btn-primary,
+.btn-primary *,
+.btn-primary:link,
+.btn-primary:visited {
   color: #ffffff !important;
 }
 .btn-primary::before {
