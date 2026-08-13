@@ -512,6 +512,35 @@ function initAIWidget() {
       widget.classList.remove('collapsed');
     });
   }
+
+  // Copy prompt to clipboard on click as fallback for platforms like Gemini that don't auto-fill query params
+  const targetPrompt = "I am considering Alireza Nezami to work with as a freelancer; summarize the key points from this portfolio. https://alirezanezami96.github.io/AlirezaNezami/";
+  
+  const aiButtons = document.querySelectorAll('.ai-floating-widget .ai-pill-btn');
+  aiButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(targetPrompt).then(() => {
+          showAIToast("Prompt copied to clipboard! (Paste with Cmd+V / Ctrl+V)");
+        }).catch(() => {});
+      }
+    });
+  });
+}
+
+function showAIToast(message) {
+  let toast = document.getElementById('ai-toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'ai-toast';
+    toast.className = 'ai-toast-notification';
+    document.body.appendChild(toast);
+  }
+  toast.textContent = message;
+  toast.classList.add('show');
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 3500);
 }
 
 function boot() {
