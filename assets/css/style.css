@@ -548,20 +548,20 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 
 .arrow-line-path,
 .arrow-head-path {
-  stroke-dasharray: 240;
-  stroke-dashoffset: 240;
-  animation: draw-vector-arrow 3.2s infinite ease-in-out;
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: draw-vector-arrow 3.5s infinite ease-in-out;
 }
 
 @keyframes draw-vector-arrow {
   0% {
-    stroke-dashoffset: 240;
+    stroke-dashoffset: 600;
     opacity: 0;
   }
   15% {
     opacity: 1;
   }
-  45%, 75% {
+  50%, 75% {
     stroke-dashoffset: 0;
     opacity: 1;
   }
