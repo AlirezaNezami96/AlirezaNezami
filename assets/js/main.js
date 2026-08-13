@@ -499,6 +499,21 @@ function initYear() {
    Heavy non-critical things (Three.js, Lenis, Swiper)
    deferred to window.load or requestIdleCallback.
    ═══════════════════════════════════════════════════════ */
+function initAIWidget() {
+  const widget = document.getElementById('ai-floating-widget');
+  const closeBtn = document.getElementById('ai-widget-close');
+  const toggleBtn = document.getElementById('ai-widget-toggle');
+
+  if (widget && closeBtn && toggleBtn) {
+    closeBtn.addEventListener('click', () => {
+      widget.classList.add('collapsed');
+    });
+    toggleBtn.addEventListener('click', () => {
+      widget.classList.remove('collapsed');
+    });
+  }
+}
+
 function boot() {
   initThemeSwitcher();
   initLangSwitcher();
@@ -512,6 +527,7 @@ function boot() {
   initSkillTags();
   initTilt();
   initMagnetic();
+  initAIWidget();
   initYear();
 }
 
