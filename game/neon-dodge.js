@@ -77,6 +77,10 @@ const leaderboardPanel = document.getElementById("leaderboard-panel");
 const leaderboardList  = document.getElementById("leaderboard-list");
 const statusMsg        = document.getElementById("status-msg");
 const gameShell        = document.getElementById("game-shell");
+const failOverlay      = document.getElementById("fail-overlay");
+const failEmoji        = document.getElementById("fail-emoji");
+const failHeadline     = document.getElementById("fail-headline");
+const failScoreSub     = document.getElementById("fail-score-sub");
 
 // ═══════════════════════════════════════════════════════════════
 //  CANVAS SIZING  (square, DPR-aware)
@@ -178,6 +182,10 @@ function initGame() {
 //  START GAME
 // ═══════════════════════════════════════════════════════════════
 function startGame() {
+  initAudio();
+  clearTimeout(failTimer);
+  if (failOverlay) failOverlay.classList.remove("active");
+
   currentState = State.PLAYING;
   showScreen("screen-playing");
   if (leaderboardPanel) leaderboardPanel.style.display = "none";
@@ -408,6 +416,192 @@ function render() {
 }
 
 // ═══════════════════════════════════════════════════════════════
+//  FUNNY FAIL SOUND (Web Audio API) & REMARK GENERATOR
+// ═══════════════════════════════════════════════════════════════
+let audioCtx = null;
+let highestRecordMs = 176000;
+let failTimer = null;
+
+function initAudio() {
+  if (!audioCtx) {
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    if (AudioCtx) audioCtx = new AudioCtx();
+  }
+  if (audioCtx && audioCtx.state === "suspended") {
+    audioCtx.resume();
+  }
+}
+
+function playFailSound() {
+  try {
+    initAudio();
+    if (!audioCtx) return;
+
+    const now = audioCtx.currentTime;
+
+    // Cartoon pitch-drop wah-wah slide
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    const filter = audioCtx.createBiquadFilter();
+
+    osc.type = "sawtooth";
+    osc.frequency.setValueAtTime(400, now);
+    osc.frequency.exponentialRampToValueAtTime(75, now + 0.65);
+
+    filter.type = "lowpass";
+    filter.frequency.setValueAtTime(1400, now);
+    filter.frequency.exponentialRampToValueAtTime(160, now + 0.65);
+
+    // Pitch wobble LFO
+    const lfo = audioCtx.createOscillator();
+    const lfoGain = audioCtx.createGain();
+    lfo.frequency.value = 14;
+    lfoGain.gain.value = 45;
+    lfo.connect(osc.frequency);
+    lfo.start(now);
+    lfo.stop(now + 0.65);
+
+    gain.gain.setValueAtTime(0.3, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.65);
+
+    osc.connect(filter);
+    filter.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    osc.start(now);
+    osc.stop(now + 0.65);
+
+    // Comic "boing" accent after 0.22s
+    setTimeout(() => {
+      try {
+        if (!audioCtx) return;
+        const now2 = audioCtx.currentTime;
+        const osc2 = audioCtx.createOscillator();
+        const gain2 = audioCtx.createGain();
+
+        osc2.type = "sine";
+        osc2.frequency.setValueAtTime(150, now2);
+        osc2.frequency.exponentialRampToValueAtTime(520, now2 + 0.12);
+        osc2.frequency.exponentialRampToValueAtTime(45, now2 + 0.38);
+
+        gain2.gain.setValueAtTime(0.35, now2);
+        gain2.gain.exponentialRampToValueAtTime(0.001, now2 + 0.38);
+
+        osc2.connect(gain2);
+        gain2.connect(audioCtx.destination);
+
+        osc2.start(now2);
+        osc2.stop(now2 + 0.38);
+      } catch (e) {}
+    }, 220);
+
+  } catch (err) {
+    console.warn("Fail sound error:", err);
+  }
+}
+
+const FUNNY_NAMES = [
+  "PixelDodger",
+  "LagMaster",
+  "CloseCallHero",
+  "CyberEvader",
+  "SneezeRunner",
+  "GlitchSeeker",
+  "TurboReflexes",
+  "AlmostBeatAlireza",
+  "QuantumBouncer",
+  "NeonNinja",
+  "PanicSwiper",
+  "ByteCrusher",
+  "MatrixEscaper",
+  "AppHunter"
+];
+
+function getRandomFunnyName() {
+  const index = Math.floor(Math.random() * FUNNY_NAMES.length);
+  const tag = Math.floor(Math.random() * 900) + 100;
+  return `${FUNNY_NAMES[index]}_${tag}`;
+}
+
+function getFunnyRemark(scoreMs) {
+  const formatted = formatLeaderboardTime(scoreMs);
+
+  if (scoreMs >= highestRecordMs) {
+    return {
+      emoji: "🏆",
+      headline: "NEW HIGH SCORE! 🏆",
+      sub: `UNBELIEVABLE! You survived ${formatted}! Contact Alireza for your free app! 📱`
+    };
+  }
+
+  const ratio = scoreMs / highestRecordMs;
+
+  if (ratio >= 0.85) {
+    const msgs = [
+      "Ooooooh, that was SO CLOSE! 😱",
+      "SO CLOSE! Alireza felt that sweat! 💦",
+      "Just a few seconds away! Heart rate 180 BPM! 🫀"
+    ];
+    return {
+      emoji: "😱",
+      headline: msgs[Math.floor(Math.random() * msgs.length)],
+      sub: `You survived ${formatted}! Almost beat Alireza's record!`
+    };
+  }
+
+  if (ratio >= 0.5) {
+    const msgs = [
+      "Not bad at all! Alireza is getting nervous... 😅",
+      "Great run! You're cooking now! 🔥",
+      "Solid reflexes! Almost reached the top tier! ⚡"
+    ];
+    return {
+      emoji: "🔥",
+      headline: msgs[Math.floor(Math.random() * msgs.length)],
+      sub: `Time survived: ${formatted}`
+    };
+  }
+
+  if (scoreMs >= 15000) {
+    const msgs = [
+      "Getting warm! Keep training those reflexes ⚡",
+      "Not terrible! You survived the first wave 🌊",
+      "Decent dodge! Alireza is still relaxed though 😏"
+    ];
+    return {
+      emoji: "⚡",
+      headline: msgs[Math.floor(Math.random() * msgs.length)],
+      sub: `Time survived: ${formatted}`
+    };
+  }
+
+  if (scoreMs >= 5000) {
+    const msgs = [
+      "Ouch! Did a pixel sneeze on you? 🤧",
+      "That obstacle had a personal vendetta against you! 🎯",
+      "Maybe next time! 🚀"
+    ];
+    return {
+      emoji: "🤧",
+      headline: msgs[Math.floor(Math.random() * msgs.length)],
+      sub: `Time survived: ${formatted}`
+    };
+  }
+
+  const msgs = [
+    "Blinked and missed it! ⚡",
+    "Did you trip over the start button? 😂",
+    "Fastest fail in the West! 🤠",
+    "Maybe next time! 🚀"
+  ];
+  return {
+    emoji: "💀",
+    headline: msgs[Math.floor(Math.random() * msgs.length)],
+    sub: `Time survived: ${formatted}`
+  };
+}
+
+// ═══════════════════════════════════════════════════════════════
 //  END GAME
 // ═══════════════════════════════════════════════════════════════
 function endGame() {
@@ -415,20 +609,41 @@ function endGame() {
   cancelAnimationFrame(rafId);
   rafId = null;
 
-  // One last full-opacity render so the player can see where they died
+  // Final frame freeze render
   ctx.fillStyle = hexToRgba(bgColor(), 1);
   ctx.fillRect(0, 0, ARENA_SIZE, ARENA_SIZE);
   render();
 
-  finalScoreEl.textContent = (survivalMs / 1000).toFixed(1) + "s";
-  nameInput.value = "";
-  statusMsg.textContent = "";
-  statusMsg.className = "";
-  if (leaderboardPanel) leaderboardPanel.style.display = "block";
-  submitBtn.disabled = false;
+  // Play funny synthesized fail sound
+  playFailSound();
 
-  showScreen("screen-gameover");
-  nameInput.focus();
+  const scoreMs = Math.round(survivalMs);
+  const remark = getFunnyRemark(scoreMs);
+
+  if (failEmoji) failEmoji.textContent = remark.emoji;
+  if (failHeadline) failHeadline.textContent = remark.headline;
+  if (failScoreSub) failScoreSub.textContent = remark.sub;
+
+  // Show fast fade-in overlay over game canvas
+  if (failOverlay) failOverlay.classList.add("active");
+
+  clearTimeout(failTimer);
+  failTimer = setTimeout(() => {
+    if (failOverlay) failOverlay.classList.remove("active");
+
+    finalScoreEl.textContent = formatLeaderboardTime(scoreMs);
+
+    // Auto-generate funny editable name
+    nameInput.value = getRandomFunnyName();
+    statusMsg.textContent = "";
+    statusMsg.className = "";
+    if (leaderboardPanel) leaderboardPanel.style.display = "block";
+    submitBtn.disabled = false;
+
+    showScreen("screen-gameover");
+    nameInput.focus();
+    nameInput.select();
+  }, 3000);
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -743,6 +958,7 @@ submitBtn.addEventListener("click", async () => {
 });
 
 function updateRecordBanner(name, scoreMs) {
+  if (scoreMs && scoreMs > 0) highestRecordMs = scoreMs;
   const holderName = document.getElementById("record-holder-name");
   const holderScore = document.getElementById("record-holder-score");
   if (holderName) holderName.textContent = name;
