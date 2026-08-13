@@ -86,6 +86,10 @@
     "desc": "Have a new project, need senior Android/Flutter capacity, or want to audit an existing codebase? Schedule a call or drop me a line.",
     "bookTitle": "Schedule a 30-min strategy call"
   },
+  "ai": {
+    "title": "Ask AI for a summary of Alireza Nezami",
+    "subtitle": "Select an AI platform below to generate an instant executive summary of Alireza's portfolio & background:"
+  },
   "footer": {
     "rights": "All rights reserved."
   }

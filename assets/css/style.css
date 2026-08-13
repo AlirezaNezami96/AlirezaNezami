@@ -1010,6 +1010,150 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   border: 1px solid var(--border);
 }
 
+/* ─── ASK AI SUMMARY CARD ────────────────────────────────── */
+.ai-summary-container {
+  max-width: var(--container);
+  margin: 56px auto 0;
+  padding: 0;
+}
+
+.ai-summary-card {
+  background: linear-gradient(135deg, rgba(14, 23, 42, 0.94) 0%, rgba(24, 20, 54, 0.96) 50%, rgba(10, 16, 32, 0.98) 100%);
+  backdrop-filter: blur(24px) saturate(170%);
+  -webkit-backdrop-filter: blur(24px) saturate(170%);
+  border: 1px solid rgba(127, 82, 255, 0.35);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius);
+  padding: clamp(28px, 4vw, 44px);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+[data-theme="light"] .ai-summary-card {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.96) 0%, rgba(15, 23, 42, 0.98) 100%);
+  border: 1px solid rgba(107, 56, 232, 0.35);
+  box-shadow: 0 16px 48px rgba(15, 23, 42, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.ai-summary-card::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(127, 82, 255, 0.25) 0%, rgba(19, 185, 253, 0.08) 50%, transparent 70%);
+  pointer-events: none;
+}
+
+.ai-summary-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.ai-summary-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(127, 82, 255, 0.15);
+  border: 1px solid rgba(127, 82, 255, 0.3);
+  flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(127, 82, 255, 0.2);
+}
+
+.ai-summary-header-text {
+  flex: 1;
+}
+
+.ai-summary-title {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(1.25rem, 2.5vw, 1.65rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.25;
+  margin-bottom: 6px;
+}
+
+.ai-summary-subtitle {
+  font-size: 0.925rem;
+  color: #94A3B8;
+  line-height: 1.5;
+}
+
+/* Vertical Stack of White Rounded Pill Buttons */
+.ai-platform-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ai-pill-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  background: #FFFFFF;
+  color: #0F172A !important;
+  border-radius: 999px;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.975rem;
+  font-weight: 600;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.2s;
+  cursor: pointer;
+}
+
+.ai-pill-btn:hover {
+  background: #FFFFFF;
+  transform: translateY(-2px) scale(1.006);
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.25), 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.ai-pill-btn:active {
+  transform: translateY(0) scale(0.99);
+}
+
+.ai-pill-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ai-pill-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+}
+
+.ai-pill-name {
+  color: #0F172A;
+  font-size: 0.975rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.ai-pill-arrow {
+  font-size: 1.1rem;
+  color: #64748B;
+  font-weight: 700;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.ai-pill-btn:hover .ai-pill-arrow {
+  color: #0F172A;
+  transform: translate(2px, -2px);
+}
+
 /* ─── FOOTER ─────────────────────────────────────────── */
 #footer { border-top: 1px solid var(--border); padding: 40px var(--gutter); }
 .footer-inner {
