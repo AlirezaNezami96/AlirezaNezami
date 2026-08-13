@@ -535,6 +535,35 @@ main {
   border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.16));
   box-shadow: var(--glass-shadow, 0 16px 40px rgba(0, 0, 0, 0.4));
   border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ambient Table Shimmer Sweep Beam */
+.leaderboard-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 42%,
+    rgba(255, 255, 255, 0.03) 47%,
+    rgba(255, 255, 255, 0.14) 50%,
+    rgba(255, 255, 255, 0.03) 53%,
+    transparent 58%
+  );
+  transform: rotate(25deg);
+  animation: table-shimmer-sweep 7s infinite ease-in-out;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes table-shimmer-sweep {
+  0% { transform: translateX(-100%) rotate(25deg); }
+  35%, 100% { transform: translateX(100%) rotate(25deg); }
 }
 
 .leaderboard-title {
@@ -687,6 +716,61 @@ main {
 .td-name {
   color: var(--text, #EDEEF0);
   font-weight: 600;
+}
+
+/* Top 3 Player Name Shimmer Gradient Texts (Gold, Silver, Bronze) */
+.rank-first .lb-name-text {
+  font-weight: 800;
+  font-size: 0.95rem;
+  background: linear-gradient(110deg, #FFE066 0%, #FFF8D6 25%, #D4AF37 50%, #FFF0A6 75%, #AA771C 100%);
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent !important;
+  animation: gold-text-shimmer 3s linear infinite;
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+}
+
+@keyframes gold-text-shimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 250% center; }
+}
+
+.rank-second .lb-name-text {
+  font-weight: 700;
+  font-size: 0.92rem;
+  background: linear-gradient(110deg, #FFFFFF 0%, #E8E8E8 25%, #A8B2C1 50%, #FFFFFF 75%, #8892A0 100%);
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent !important;
+  animation: silver-text-shimmer 3.5s linear infinite;
+  filter: drop-shadow(0 0 8px rgba(220, 220, 220, 0.4));
+}
+
+@keyframes silver-text-shimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 250% center; }
+}
+
+.rank-third .lb-name-text {
+  font-weight: 700;
+  font-size: 0.92rem;
+  background: linear-gradient(110deg, #F4A460 0%, #FFD2A6 25%, #CD7F32 50%, #FFC89B 75%, #8B4513 100%);
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent !important;
+  animation: bronze-text-shimmer 4s linear infinite;
+  filter: drop-shadow(0 0 8px rgba(205, 127, 50, 0.4));
+}
+
+@keyframes bronze-text-shimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 250% center; }
 }
 
 .lb-dev-tag {
