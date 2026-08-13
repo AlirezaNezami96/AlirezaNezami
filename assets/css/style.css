@@ -1013,12 +1013,13 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 /* ─── FLOATING GLASS ASK AI WIDGET ──────────────────────── */
 .ai-floating-widget {
   position: fixed;
-  bottom: 24px;
-  left: 24px;
-  z-index: 999;
+  bottom: 32px;
+  left: 32px;
+  z-index: 1100; /* above nav (1000) and ripple canvas, below mobile menu (9999) */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  gap: 10px; /* gap between toggle btn and card when both visible */
 }
 
 /* Collapsed Toggle Button */
@@ -1182,8 +1183,11 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 
 @media (max-width: 600px) {
   .ai-floating-widget {
-    bottom: 16px;
+    bottom: 20px;
     left: 16px;
+  }
+  .ai-floating-card {
+    width: min(290px, calc(100vw - 32px));
   }
 }
 
