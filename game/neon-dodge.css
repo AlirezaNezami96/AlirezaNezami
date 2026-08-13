@@ -266,6 +266,29 @@ main {
   text-shadow: 0 0 12px rgba(127,82,255,0.7);
   pointer-events: none;
   white-space: nowrap;
+  transition: color 0.2s;
+}
+
+/* 10-Second Milestone Timer Pop Animation */
+#live-score.timer-pop-10s {
+  animation: timer-pop-bounce 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+@keyframes timer-pop-bounce {
+  0% {
+    transform: translateX(-50%) scale(1);
+  }
+  40% {
+    transform: translateX(-50%) scale(1.7);
+    color: #FFE066;
+    text-shadow: 0 0 25px rgba(255, 224, 102, 0.95), 0 0 45px rgba(19, 185, 253, 0.85);
+  }
+  75% {
+    transform: translateX(-50%) scale(0.92);
+  }
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
 }
 
 /* ─── Funny Fail Overlay ───────────────────────────────────────── */
@@ -539,7 +562,7 @@ main {
   overflow: hidden;
 }
 
-/* Ambient Table Shimmer Sweep Beam */
+/* Ambient Table Shimmer Sweep Beam (Runs 2 times on load then stops) */
 .leaderboard-container::before {
   content: '';
   position: absolute;
@@ -556,14 +579,15 @@ main {
     transparent 58%
   );
   transform: rotate(25deg);
-  animation: table-shimmer-sweep 7s infinite ease-in-out;
+  animation: table-shimmer-sweep 2.2s 2 ease-in-out forwards;
   pointer-events: none;
   z-index: 1;
 }
 
 @keyframes table-shimmer-sweep {
-  0% { transform: translateX(-100%) rotate(25deg); }
-  35%, 100% { transform: translateX(100%) rotate(25deg); }
+  0% { transform: translateX(-100%) rotate(25deg); opacity: 1; }
+  85% { transform: translateX(100%) rotate(25deg); opacity: 1; }
+  100% { transform: translateX(100%) rotate(25deg); opacity: 0; }
 }
 
 .leaderboard-title {

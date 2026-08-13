@@ -175,7 +175,9 @@ function initGame() {
   touchTarget = null;
   survivalMs  = 0;
   lastSpawnTime = 0;
+  lastMilestone10s = 0;
   liveScore.textContent = "0.0s";
+  if (liveScore) liveScore.classList.remove("timer-pop-10s");
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -211,6 +213,7 @@ function loop(now) {
   survivalMs = now - startTime;
 
   update(dt, survivalMs);
+  check10SecMilestone(survivalMs);
   render();
 
   liveScore.textContent = (survivalMs / 1000).toFixed(1) + "s";
@@ -330,6 +333,7 @@ function spawnObstacle(elapsed) {
   const shape = obstacles.length % 2 === 0 ? "square" : "triangle";
 
   obstacles.push({ x: ox, y: oy, dx: dx / len, dy: dy / len, shape });
+  playSpawnSound();
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -416,11 +420,12 @@ function render() {
 }
 
 // ═══════════════════════════════════════════════════════════════
-//  FUNNY FAIL SOUND (Web Audio API) & REMARK GENERATOR
+//  FUNNY SOUND EFFECTS & REMARK GENERATOR
 // ═══════════════════════════════════════════════════════════════
 let audioCtx = null;
 let highestRecordMs = 176000;
 let failTimer = null;
+let lastMilestone10s = 0;
 
 function initAudio() {
   if (!audioCtx) {
@@ -429,6 +434,84 @@ function initAudio() {
   }
   if (audioCtx && audioCtx.state === "suspended") {
     audioCtx.resume();
+  }
+}
+
+function playSpawnSound() {
+  try {
+    if (!audioCtx) return;
+    const now = audioCtx.currentTime;
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+
+    osc.type = "sine";
+    const baseFreq = 500 + Math.random() * 120;
+    osc.frequency.setValueAtTime(baseFreq, now);
+    osc.frequency.exponentialRampToValueAtTime(baseFreq * 1.75, now + 0.04);
+
+    gain.gain.setValueAtTime(0.06, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.045);
+
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    osc.start(now);
+    osc.stop(now + 0.045);
+  } catch (e) {}
+}
+
+function playCheerSound() {
+  try {
+    initAudio();
+    if (!audioCtx) return;
+
+    const now = audioCtx.currentTime;
+    const freqs = [523.25, 659.25, 783.99, 1046.50];
+
+    freqs.forEach((f, i) => {
+      const startTime = now + i * 0.07;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+
+      osc.type = i === 3 ? "triangle" : "sine";
+      osc.frequency.setValueAtTime(f, startTime);
+
+      if (i === 3) {
+        const lfo = audioCtx.createOscillator();
+        const lfoGain = audioCtx.createGain();
+        lfo.frequency.value = 16;
+        lfoGain.gain.value = 30;
+        lfo.connect(osc.frequency);
+        lfo.start(startTime);
+        lfo.stop(startTime + 0.35);
+      }
+
+      gain.gain.setValueAtTime(0.2, startTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, startTime + (i === 3 ? 0.35 : 0.12));
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      osc.start(startTime);
+      osc.stop(startTime + (i === 3 ? 0.35 : 0.12));
+    });
+  } catch (e) {}
+}
+
+function check10SecMilestone(ms) {
+  const sec = Math.floor(ms / 1000);
+  if (sec > 0 && sec % 10 === 0 && sec !== lastMilestone10s) {
+    lastMilestone10s = sec;
+    trigger10SecCheer();
+  }
+}
+
+function trigger10SecCheer() {
+  playCheerSound();
+  if (liveScore) {
+    liveScore.classList.remove("timer-pop-10s");
+    void liveScore.offsetWidth;
+    liveScore.classList.add("timer-pop-10s");
   }
 }
 
