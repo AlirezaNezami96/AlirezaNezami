@@ -82,13 +82,13 @@ const gameShell        = document.getElementById("game-shell");
 // ═══════════════════════════════════════════════════════════════
 //  CANVAS SIZING  (square, DPR-aware)
 // ═══════════════════════════════════════════════════════════════
-let ARENA_SIZE = 480; // logical CSS px — recalculated on resize
+let ARENA_SIZE = 800; // logical CSS px — recalculated on resize
 
 function resizeCanvas() {
   const dpr = window.devicePixelRatio || 1;
-  // Available width: shell width (which is min(90vw, 70vh, 560px) via CSS)
+  // Available width: shell width (which is min(94vw, 85vh, 880px) via CSS)
   const shellW = gameShell.getBoundingClientRect().width;
-  ARENA_SIZE   = Math.max(260, Math.min(shellW, 560));
+  ARENA_SIZE   = Math.max(300, Math.min(shellW, 880));
 
   canvas.style.width  = ARENA_SIZE + "px";
   canvas.style.height = ARENA_SIZE + "px";
@@ -631,17 +631,20 @@ async function initStartScreen() {
   ctx.fillStyle = getCSSVar("--bg", "#0A0C10");
   ctx.fillRect(0, 0, ARENA_SIZE, ARENA_SIZE);
 
-  // Fetch top-1 teaser (graceful degradation)
+  // Fetch & render top 10 leaderboard table immediately
   try {
-    const top = await fetchTopOne();
-    if (top) {
+    const rows = await fetchTopScores(10);
+    if (rows && rows.length > 0) {
+      renderLeaderboard(rows, null);
       startHighscore.textContent =
-        `Beat the high score: ${top.name} — ${(top.score / 1000).toFixed(1)}s`;
+        `Beat the high score: ${rows[0].name} — ${formatLeaderboardTime(rows[0].score)}`;
     } else {
+      renderLeaderboard([], null);
       startHighscore.textContent = "No scores yet — be the first!";
     }
-  } catch {
-    startHighscore.textContent = ""; // silent fail
+  } catch (err) {
+    console.warn("Leaderboard load error:", err);
+    startHighscore.textContent = "";
   }
 }
 

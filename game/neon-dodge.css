@@ -153,13 +153,13 @@ main {
   margin-inline: auto;
 }
 
-/* ─── Game shell ──────────────────────────────────────────────── */
+/* ─── Game shell (2x bigger container) ───────────────────────── */
 #game-shell {
   position: relative;
-  width: min(90vw, 70vh, 560px);
-  max-width: 560px;
-  min-width: 260px;
-  /* height set by JS to match canvas */
+  width: min(94vw, 85vh, 880px);
+  max-width: 880px;
+  min-width: 300px;
+  margin: 0 auto;
 }
 
 /* All three game panels stack in the same grid cell */
@@ -393,13 +393,27 @@ main {
   width: 100%;
   margin-top: 4px;
 }
+.leaderboard-container {
+  width: min(94vw, 880px);
+  max-width: 880px;
+  margin: 40px auto 0;
+  padding: 24px 28px;
+  background: var(--glass-bg, rgba(18, 21, 28, 0.42));
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.16));
+  box-shadow: var(--glass-shadow, 0 16px 40px rgba(0, 0, 0, 0.4));
+  border-radius: 20px;
+}
+
 .leaderboard-title {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.78rem;
-  color: var(--text-muted, #8A8F98);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text, #EDEEF0);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
   text-align: center;
 }
 /* ─── Leaderboard Structured Table ───────────────────────────── */

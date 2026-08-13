@@ -81,7 +81,6 @@
 
     <!-- Page header -->
     <header class="game-header">
-      <p class="game-eyebrow">neon_dodge.canvas</p>
       <h1 class="game-title">Neon Dodge</h1>
       <p class="game-subtitle">Survive the neon swarm. How long can you last?</p>
     </header>
@@ -137,24 +136,24 @@
         </div>
 
         <div class="action-row">
-          <button id="btn-submit"     class="btn btn-primary"  aria-label="Submit score and view leaderboard">Submit &amp; View Leaderboard</button>
+          <button id="btn-submit"     class="btn btn-primary"  aria-label="Submit score and view leaderboard">Submit Score</button>
           <button id="btn-play-again" class="btn btn-ghost"    aria-label="Play again without submitting">Play Again</button>
         </div>
 
         <p id="status-msg" aria-live="polite"></p>
-
-        <!-- Leaderboard — hidden until after successful submit -->
-        <div id="leaderboard-panel" hidden>
-          <div class="divider"></div>
-          <p class="leaderboard-title">// global leaderboard — top 10</p>
-          <div id="leaderboard-list" role="list" aria-label="Leaderboard"></div>
-        </div>
 
       </div>
       <!-- /screen-gameover -->
 
     </div>
     <!-- /game-shell -->
+
+    <!-- Global Leaderboard Panel (Always Visible) -->
+    <div id="leaderboard-panel" class="leaderboard-container">
+      <div class="divider"></div>
+      <p class="leaderboard-title">Global Leaderboard — Top Players</p>
+      <div id="leaderboard-list" role="list" aria-label="Leaderboard"></div>
+    </div>
 
   </main>
 
