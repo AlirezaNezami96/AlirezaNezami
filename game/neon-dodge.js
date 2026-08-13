@@ -181,6 +181,7 @@ function initGame() {
 function startGame() {
   currentState = State.PLAYING;
   showScreen("screen-playing");
+  if (leaderboardPanel) leaderboardPanel.style.display = "none";
   initGame();
 
   lastTime  = performance.now();
@@ -412,7 +413,7 @@ function endGame() {
   nameInput.value = "";
   statusMsg.textContent = "";
   statusMsg.className = "";
-  leaderboardPanel.hidden = true;
+  if (leaderboardPanel) leaderboardPanel.style.display = "block";
   submitBtn.disabled = false;
 
   showScreen("screen-gameover");
@@ -622,9 +623,17 @@ function hexToRgba(hex, alpha) {
 // ═══════════════════════════════════════════════════════════════
 //  INIT — start screen setup
 // ═══════════════════════════════════════════════════════════════
+function updateRecordBanner(name, scoreMs) {
+  const holderName = document.getElementById("record-holder-name");
+  const holderScore = document.getElementById("record-holder-score");
+  if (holderName) holderName.textContent = name;
+  if (holderScore) holderScore.textContent = formatLeaderboardTime(scoreMs);
+}
+
 async function initStartScreen() {
   showScreen("screen-start");
   currentState = State.START;
+  if (leaderboardPanel) leaderboardPanel.style.display = "block";
 
   // Draw the arena in idle state so it's not blank
   resizeCanvas();
@@ -636,14 +645,17 @@ async function initStartScreen() {
     const rows = await fetchTopScores(10);
     if (rows && rows.length > 0) {
       renderLeaderboard(rows, null);
+      updateRecordBanner(rows[0].name, rows[0].score);
       startHighscore.textContent =
         `Beat the high score: ${rows[0].name} — ${formatLeaderboardTime(rows[0].score)}`;
     } else {
       renderLeaderboard([], null);
+      updateRecordBanner("Alireza Nezami", 176000);
       startHighscore.textContent = "No scores yet — be the first!";
     }
   } catch (err) {
     console.warn("Leaderboard load error:", err);
+    updateRecordBanner("Alireza Nezami", 176000);
     startHighscore.textContent = "";
   }
 }

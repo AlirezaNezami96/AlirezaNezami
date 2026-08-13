@@ -543,6 +543,68 @@ function showAIToast(message) {
   }, 3500);
 }
 
+function initChallengeArrow() {
+  const gameLink = document.getElementById('nav-game-link');
+  const challengeBox = document.getElementById('hero-game-challenge');
+  const svg = document.getElementById('challenge-arrow-svg');
+  const pathLine = document.getElementById('arrow-line-path');
+  const pathHead = document.getElementById('arrow-head-path');
+
+  if (!gameLink || !challengeBox || !svg || !pathLine || !pathHead) return;
+
+  function updateArrow() {
+    if (window.innerWidth < 768) {
+      svg.style.display = 'none';
+      return;
+    }
+
+    const linkRect = gameLink.getBoundingClientRect();
+    const boxRect = challengeBox.getBoundingClientRect();
+
+    if (boxRect.bottom < 0 || boxRect.top > window.innerHeight) {
+      svg.style.display = 'none';
+      return;
+    }
+    svg.style.display = 'block';
+
+    const startX = boxRect.left + boxRect.width * 0.4;
+    const startY = boxRect.top + 4;
+    const targetX = linkRect.left + linkRect.width / 2;
+    const targetY = linkRect.bottom + 6;
+
+    svg.setAttribute('width', window.innerWidth);
+    svg.setAttribute('height', window.innerHeight);
+
+    const dy = targetY - startY;
+    const dx = targetX - startX;
+
+    const control1X = startX + dx * 0.1;
+    const control1Y = startY + dy * 0.5;
+    const control2X = targetX - dx * 0.1;
+    const control2Y = targetY - dy * 0.5;
+
+    const lineD = `M ${startX} ${startY} C ${control1X} ${control1Y}, ${control2X} ${control2Y}, ${targetX} ${targetY}`;
+    pathLine.setAttribute('d', lineD);
+
+    const headAngle = Math.atan2(targetY - control2Y, targetX - control2X);
+    const headLen = 10;
+    const angle1 = headAngle - Math.PI / 6;
+    const angle2 = headAngle + Math.PI / 6;
+
+    const p1X = targetX - headLen * Math.cos(angle1);
+    const p1Y = targetY - headLen * Math.sin(angle1);
+    const p2X = targetX - headLen * Math.cos(angle2);
+    const p2Y = targetY - headLen * Math.sin(angle2);
+
+    const headD = `M ${p1X} ${p1Y} L ${targetX} ${targetY} L ${p2X} ${p2Y}`;
+    pathHead.setAttribute('d', headD);
+  }
+
+  updateArrow();
+  window.addEventListener('resize', updateArrow);
+  window.addEventListener('scroll', updateArrow, { passive: true });
+}
+
 function boot() {
   initThemeSwitcher();
   initLangSwitcher();
@@ -557,6 +619,7 @@ function boot() {
   initTilt();
   initMagnetic();
   initAIWidget();
+  initChallengeArrow();
   initYear();
 }
 
