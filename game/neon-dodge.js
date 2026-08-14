@@ -197,6 +197,10 @@ function startGame() {
   startTime = performance.now();
   cancelAnimationFrame(rafId);
   rafId = requestAnimationFrame(loop);
+
+  if (typeof window.trackEvent === 'function') {
+    window.trackEvent('game_start', { game_name: 'Neon Dodge' });
+  }
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -513,6 +517,9 @@ function trigger10SecCheer() {
     void liveScore.offsetWidth;
     liveScore.classList.add("timer-pop-10s");
   }
+  if (typeof window.trackEvent === 'function') {
+    window.trackEvent('game_milestone', { milestone_seconds: lastMilestone10s });
+  }
 }
 
 function playFailSound() {
@@ -709,6 +716,14 @@ function endGame() {
 
   // Show fast fade-in overlay over game canvas
   if (failOverlay) failOverlay.classList.add("active");
+
+  if (typeof window.trackEvent === 'function') {
+    window.trackEvent('game_over', {
+      survival_sec: Number((scoreMs / 1000).toFixed(1)),
+      score_ms: scoreMs,
+      obstacle_count: obstacles.length
+    });
+  }
 
   clearTimeout(failTimer);
   failTimer = setTimeout(() => {
@@ -1004,7 +1019,10 @@ function createLeaderboardRow(row, rankNum, myScore, isNewSubmission) {
 // ═══════════════════════════════════════════════════════════════
 playBtn.addEventListener("click", () => startGame());
 
-playAgainBtn.addEventListener("click", () => startGame());
+playAgainBtn.addEventListener("click", () => {
+  if (typeof window.trackEvent === 'function') window.trackEvent('game_play_again');
+  startGame();
+});
 
 submitBtn.addEventListener("click", async () => {
   const rawName = nameInput.value;
@@ -1025,6 +1043,9 @@ submitBtn.addEventListener("click", async () => {
 
   try {
     await submitScore(name, scoreMs);
+    if (typeof window.trackEvent === 'function') {
+      window.trackEvent('game_score_submit', { score_ms: scoreMs, player_name: name });
+    }
     statusMsg.textContent = "Score submitted! 🎉";
     statusMsg.className   = "success";
 
