@@ -161,6 +161,30 @@
 [lang="ar"] p, [lang="ar"] span, [lang="ar"] a {
   font-family: 'Amiri', 'Georgia', serif !important;
 }
+/* Urdu font override */
+[lang="ur"] body,
+[lang="ur"] h1, [lang="ur"] h2, [lang="ur"] h3,
+[lang="ur"] p, [lang="ur"] span, [lang="ur"] a {
+  font-family: 'Noto Nastaliq Urdu', 'Vazirmatn', 'Amiri', 'Inter', sans-serif !important;
+}
+/* Hindi font override */
+[lang="hi"] body,
+[lang="hi"] h1, [lang="hi"] h2, [lang="hi"] h3,
+[lang="hi"] p, [lang="hi"] span, [lang="hi"] a {
+  font-family: 'Noto Sans Devanagari', 'Inter', sans-serif !important;
+}
+/* Bengali font override */
+[lang="bn"] body,
+[lang="bn"] h1, [lang="bn"] h2, [lang="bn"] h3,
+[lang="bn"] p, [lang="bn"] span, [lang="bn"] a {
+  font-family: 'Noto Sans Bengali', 'Inter', sans-serif !important;
+}
+/* Chinese font override */
+[lang="zh"] body,
+[lang="zh"] h1, [lang="zh"] h2, [lang="zh"] h3,
+[lang="zh"] p, [lang="zh"] span, [lang="zh"] a {
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif !important;
+}
 
 /* ─── RESET ──────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }

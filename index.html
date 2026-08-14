@@ -138,9 +138,9 @@
       <a href="#about" class="nav-link" role="listitem" data-i18n="nav.about">About</a>
       <a href="#projects" class="nav-link" role="listitem" data-i18n="nav.projects">Projects</a>
       <a href="#reviews" class="nav-link" role="listitem" data-i18n="nav.reviews">Reviews</a>
-      <a href="#resume" class="nav-link" role="listitem">Resume</a>
+      <a href="#resume" class="nav-link" role="listitem" data-i18n="nav.resume">Resume</a>
       <a href="#contact" class="nav-link" role="listitem" data-i18n="nav.contact">Contact</a>
-      <a href="game/" class="nav-link" id="nav-game-link" role="listitem" style="color:var(--kotlin);font-weight:600">Game 🎮</a>
+      <a href="game/" class="nav-link" id="nav-game-link" role="listitem" style="color:var(--kotlin);font-weight:600" data-i18n="nav.game">Game 🎮</a>
     </div>
 
     <div class="nav-controls">
@@ -180,9 +180,9 @@
     <a href="#about" class="mobile-link" data-i18n="nav.about">About</a>
     <a href="#projects" class="mobile-link" data-i18n="nav.projects">Projects</a>
     <a href="#reviews" class="mobile-link" data-i18n="nav.reviews">Reviews</a>
-    <a href="#resume" class="mobile-link">Resume</a>
+    <a href="#resume" class="mobile-link" data-i18n="nav.resume">Resume</a>
     <a href="#contact" class="mobile-link" data-i18n="nav.contact">Contact</a>
-    <a href="game/" class="mobile-link" style="color:var(--kotlin);font-weight:600">Game 🎮</a>
+    <a href="game/" class="mobile-link" style="color:var(--kotlin);font-weight:600" data-i18n="nav.game">Game 🎮</a>
     <div class="mobile-controls">
       <button id="theme-toggle-mobile" class="theme-toggle-btn" aria-label="Toggle theme">
         <span class="theme-icon">🌙</span>
@@ -213,12 +213,12 @@
       <div class="challenge-card">
         <div class="challenge-badge">
           <span class="challenge-badge-icon">🎮</span>
-          <span>CHALLENGE OFFER</span>
+          <span data-i18n="hero.challengeBadge">CHALLENGE OFFER</span>
         </div>
-        <p class="challenge-text">
+        <p class="challenge-text" data-i18n="hero.challengeText">
           If you beat me at this game, I will build you a <strong>free mobile app</strong>! 🚀
         </p>
-        <a href="game/" class="challenge-btn">
+        <a href="game/" class="challenge-btn" data-i18n="hero.challengeBtn">
           Play Neon Dodge &rarr;
         </a>
       </div>
@@ -247,7 +247,7 @@
       <!-- Scroll indicator -->
       <div class="hero-scroll-hint" aria-hidden="true">
         <span class="scroll-line"></span>
-        <span class="scroll-text">scroll</span>
+        <span class="scroll-text" data-i18n="hero.scroll">scroll</span>
       </div>
     </div>
 
@@ -364,7 +364,7 @@
         </div>
         <div class="project-links">
           <a href="https://play.google.com/store/apps/details?id=v2.albert.health" target="_blank" rel="noopener"
-            class="btn btn-ghost">Google Play &rarr;</a>
+            class="btn btn-ghost" data-i18n="projects.googlePlay">Google Play &rarr;</a>
         </div>
       </div>
     </article>
@@ -400,7 +400,7 @@
         </div>
         <div class="project-links">
           <a href="https://play.google.com/store/apps/details?id=com.yolda.carrier" target="_blank" rel="noopener"
-            class="btn btn-ghost">Google Play &rarr;</a>
+            class="btn btn-ghost" data-i18n="projects.googlePlay">Google Play &rarr;</a>
         </div>
       </div>
     </article>
@@ -434,7 +434,7 @@
         </div>
         <div class="project-links">
           <a href="https://play.google.com/store/apps/details?id=com.biletino.app" target="_blank" rel="noopener"
-            class="btn btn-ghost">Google Play &rarr;</a>
+            class="btn btn-ghost" data-i18n="projects.googlePlay">Google Play &rarr;</a>
         </div>
       </div>
     </article>
@@ -467,7 +467,7 @@
         </div>
         <div class="project-links">
           <a href="https://play.google.com/store/apps/details?id=com.kolayik.kolay" target="_blank" rel="noopener"
-            class="btn btn-ghost">Google Play &rarr;</a>
+            class="btn btn-ghost" data-i18n="projects.googlePlay">Google Play &rarr;</a>
         </div>
       </div>
     </article>
@@ -502,16 +502,16 @@
         </div>
         <div class="project-links">
           <a href="https://play.google.com/store/apps/details?id=com.trainerize.Trainerize" target="_blank"
-            rel="noopener" class="btn btn-ghost">Google Play &rarr;</a>
+            rel="noopener" class="btn btn-ghost" data-i18n="projects.googlePlay">Google Play &rarr;</a>
         </div>
       </div>
     </article>
 
     <!-- See All Projects CTA -->
     <div class="projects-cta reveal-block">
-      <p class="projects-cta-sub">2 more projects including WegoPro &amp; Fuudy</p>
-      <a href="projects.html" class="btn btn-primary btn-large projects-all-btn" data-i18n="projects.seeAll">
-        <span>See All Projects</span>
+      <p class="projects-cta-sub" data-i18n="projects.ctaSub">2 more projects including WegoPro &amp; Fuudy</p>
+      <a href="projects.html" class="btn btn-primary btn-large projects-all-btn">
+        <span data-i18n="projects.seeAll">See All Projects</span>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M5 12h14M12 5l7 7-7 7" />
@@ -540,7 +540,7 @@
         <div class="marquee-track-left">
           <!-- Slide 1 -->
           <div class="review-card">
-            <p class="review-quote">"Alireza is one of the <strong>most reliable developers</strong> I have worked with.
+            <p class="review-quote" data-i18n="reviews.r1">"Alireza is one of the <strong>most reliable developers</strong> I have worked with.
               His <u>Kotlin skills</u>, problem-solving ability, and <span class="gradient-text">ownership
                 mindset</span> made a huge difference."</p>
             <div class="review-author">
@@ -548,13 +548,13 @@
                 alt="Daniel Kim" class="review-avatar" loading="lazy" />
               <div>
                 <div class="author-name">Daniel Kim</div>
-                <div class="author-role">Engineering Lead &middot; HealthSync</div>
+                <div class="author-role" data-i18n="reviews.r1_role">Engineering Lead &middot; HealthSync</div>
               </div>
             </div>
           </div>
           <!-- Slide 2 -->
           <div class="review-card">
-            <p class="review-quote">"Excellent mobile engineer with <strong>strong technical judgment</strong>. He
+            <p class="review-quote" data-i18n="reviews.r2">"Excellent mobile engineer with <strong>strong technical judgment</strong>. He
               writes <u>maintainable code</u>, understands business goals, and <span class="gradient-text">delivers
                 high-quality solutions</span>."</p>
             <div class="review-author">
@@ -562,13 +562,13 @@
                 alt="Emma Rossi" class="review-avatar" loading="lazy" />
               <div>
                 <div class="author-name">Emma Rossi</div>
-                <div class="author-role">CTO &middot; FinEdge Solutions</div>
+                <div class="author-role" data-i18n="reviews.r2_role">CTO &middot; FinEdge Solutions</div>
               </div>
             </div>
           </div>
           <!-- Slide 3 -->
           <div class="review-card">
-            <p class="review-quote">"Working with Alireza was a <strong>great experience</strong>. He quickly understood
+            <p class="review-quote" data-i18n="reviews.r3">"Working with Alireza was a <strong>great experience</strong>. He quickly understood
               our vision, <u>solved complex mobile challenges</u>, and delivered an <span class="gradient-text">outstanding
                 user experience</span>."</p>
             <div class="review-author">
@@ -576,13 +576,13 @@
                 alt="Sarah Wilson" class="review-avatar" loading="lazy" />
               <div>
                 <div class="author-name">Sarah Wilson</div>
-                <div class="author-role">Startup Founder &middot; TravelFlow</div>
+                <div class="author-role" data-i18n="reviews.r3_role">Startup Founder &middot; TravelFlow</div>
               </div>
             </div>
           </div>
           <!-- Duplicate Slide 1 for Seamless Loop -->
           <div class="review-card">
-            <p class="review-quote">"Alireza is one of the <strong>most reliable developers</strong> I have worked with.
+            <p class="review-quote" data-i18n="reviews.r1">"Alireza is one of the <strong>most reliable developers</strong> I have worked with.
               His <u>Kotlin skills</u>, problem-solving ability, and <span class="gradient-text">ownership
                 mindset</span> made a huge difference."</p>
             <div class="review-author">
@@ -590,13 +590,13 @@
                 alt="Daniel Kim" class="review-avatar" loading="lazy" />
               <div>
                 <div class="author-name">Daniel Kim</div>
-                <div class="author-role">Engineering Lead &middot; HealthSync</div>
+                <div class="author-role" data-i18n="reviews.r1_role">Engineering Lead &middot; HealthSync</div>
               </div>
             </div>
           </div>
           <!-- Duplicate Slide 2 -->
           <div class="review-card">
-            <p class="review-quote">"Excellent mobile engineer with <strong>strong technical judgment</strong>. He
+            <p class="review-quote" data-i18n="reviews.r2">"Excellent mobile engineer with <strong>strong technical judgment</strong>. He
               writes <u>maintainable code</u>, understands business goals, and <span class="gradient-text">delivers
                 high-quality solutions</span>."</p>
             <div class="review-author">
@@ -604,13 +604,13 @@
                 alt="Emma Rossi" class="review-avatar" loading="lazy" />
               <div>
                 <div class="author-name">Emma Rossi</div>
-                <div class="author-role">CTO &middot; FinEdge Solutions</div>
+                <div class="author-role" data-i18n="reviews.r2_role">CTO &middot; FinEdge Solutions</div>
               </div>
             </div>
           </div>
           <!-- Duplicate Slide 3 -->
           <div class="review-card">
-            <p class="review-quote">"Working with Alireza was a <strong>great experience</strong>. He quickly understood
+            <p class="review-quote" data-i18n="reviews.r3">"Working with Alireza was a <strong>great experience</strong>. He quickly understood
               our vision, <u>solved complex mobile challenges</u>, and delivered an <span class="gradient-text">outstanding
                 user experience</span>."</p>
             <div class="review-author">
@@ -618,7 +618,7 @@
                 alt="Sarah Wilson" class="review-avatar" loading="lazy" />
               <div>
                 <div class="author-name">Sarah Wilson</div>
-                <div class="author-role">Startup Founder &middot; TravelFlow</div>
+                <div class="author-role" data-i18n="reviews.r3_role">Startup Founder &middot; TravelFlow</div>
               </div>
             </div>
           </div>
@@ -630,7 +630,7 @@
         <div class="marquee-track-right">
           <!-- Slide 4 -->
           <div class="review-card">
-            <p class="review-quote">"His <strong>cross-platform expertise</strong> is genuine. We got a single
+            <p class="review-quote" data-i18n="reviews.r4">"His <strong>cross-platform expertise</strong> is genuine. We got a single
               <u>Flutter codebase</u> that felt <span class="gradient-text">truly native on both iOS and Android</span>.
               Remarkable work."</p>
             <div class="review-author">
@@ -638,13 +638,13 @@
                 alt="Julia Park" class="review-avatar" loading="lazy" />
               <div>
                 <div class="author-name">Julia Park</div>
-                <div class="author-role">Co-founder &middot; MobileLaunch</div>
+                <div class="author-role" data-i18n="reviews.r4_role">Co-founder &middot; MobileLaunch</div>
               </div>
             </div>
           </div>
           <!-- Slide 5 -->
           <div class="review-card">
-            <p class="review-quote">"Alireza combines <strong>strong engineering skills</strong> with great teamwork. He
+            <p class="review-quote" data-i18n="reviews.r5">"Alireza combines <strong>strong engineering skills</strong> with great teamwork. He
               <u>communicates clearly</u>, meets deadlines, and <span class="gradient-text">brings valuable product
                 ideas</span>."</p>
             <div class="review-author">
@@ -652,13 +652,13 @@
                 alt="Michael Chen" class="review-avatar" loading="lazy" />
               <div>
                 <div class="author-name">Michael Chen</div>
-                <div class="author-role">Project Manager &middot; AppWorks Studio</div>
+                <div class="author-role" data-i18n="reviews.r5_role">Project Manager &middot; AppWorks Studio</div>
               </div>
             </div>
           </div>
           <!-- Slide 6 -->
           <div class="review-card">
-            <p class="review-quote">"Alireza <strong>delivered beyond expectations</strong>. His <u>Android
+            <p class="review-quote" data-i18n="reviews.r6">"Alireza <strong>delivered beyond expectations</strong>. His <u>Android
                 expertise</u>, clean architecture approach, and <span class="gradient-text">attention to detail</span>
               helped us build a stable product."</p>
             <div class="review-author">
@@ -666,13 +666,13 @@
                 alt="Alex Morgan" class="review-avatar" loading="lazy" />
               <div>
                 <div class="author-name">Alex Morgan</div>
-                <div class="author-role">Product Manager &middot; NovaTech Labs</div>
+                <div class="author-role" data-i18n="reviews.r6_role">Product Manager &middot; NovaTech Labs</div>
               </div>
             </div>
           </div>
           <!-- Duplicate Slide 4 -->
           <div class="review-card">
-            <p class="review-quote">"His <strong>cross-platform expertise</strong> is genuine. We got a single
+            <p class="review-quote" data-i18n="reviews.r4">"His <strong>cross-platform expertise</strong> is genuine. We got a single
               <u>Flutter codebase</u> that felt <span class="gradient-text">truly native on both iOS and Android</span>.
               Remarkable work."</p>
             <div class="review-author">
@@ -680,13 +680,13 @@
                 alt="Julia Park" class="review-avatar" loading="lazy" />
               <div>
                 <div class="author-name">Julia Park</div>
-                <div class="author-role">Co-founder &middot; MobileLaunch</div>
+                <div class="author-role" data-i18n="reviews.r4_role">Co-founder &middot; MobileLaunch</div>
               </div>
             </div>
           </div>
           <!-- Duplicate Slide 5 -->
           <div class="review-card">
-            <p class="review-quote">"Alireza combines <strong>strong engineering skills</strong> with great teamwork. He
+            <p class="review-quote" data-i18n="reviews.r5">"Alireza combines <strong>strong engineering skills</strong> with great teamwork. He
               <u>communicates clearly</u>, meets deadlines, and <span class="gradient-text">brings valuable product
                 ideas</span>."</p>
             <div class="review-author">
@@ -694,13 +694,13 @@
                 alt="Michael Chen" class="review-avatar" loading="lazy" />
               <div>
                 <div class="author-name">Michael Chen</div>
-                <div class="author-role">Project Manager &middot; AppWorks Studio</div>
+                <div class="author-role" data-i18n="reviews.r5_role">Project Manager &middot; AppWorks Studio</div>
               </div>
             </div>
           </div>
           <!-- Duplicate Slide 6 -->
           <div class="review-card">
-            <p class="review-quote">"Alireza <strong>delivered beyond expectations</strong>. His <u>Android
+            <p class="review-quote" data-i18n="reviews.r6">"Alireza <strong>delivered beyond expectations</strong>. His <u>Android
                 expertise</u>, clean architecture approach, and <span class="gradient-text">attention to detail</span>
               helped us build a stable product."</p>
             <div class="review-author">
@@ -708,7 +708,7 @@
                 alt="Alex Morgan" class="review-avatar" loading="lazy" />
               <div>
                 <div class="author-name">Alex Morgan</div>
-                <div class="author-role">Product Manager &middot; NovaTech Labs</div>
+                <div class="author-role" data-i18n="reviews.r6_role">Product Manager &middot; NovaTech Labs</div>
               </div>
             </div>
           </div>
@@ -740,7 +740,7 @@
             <polyline points="15 3 21 3 21 9" />
             <line x1="10" y1="14" x2="21" y2="3" />
           </svg>
-          Google Drive Resume &nearr;
+          <span data-i18n="resume.gDrive">Google Drive Resume &nearr;</span>
         </a>
         <a href="assets/resume/alireza-nezami-resume.pdf" download class="btn btn-ghost"
           data-i18n="resume.downloadBtn">Download PDF &darr;</a>
@@ -755,10 +755,10 @@
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
             <polyline points="14 2 14 8 20 8" />
           </svg>
-          <span>Alireza_Nezami_Resume.pdf &mdash; Interactive Preview</span>
+          <span data-i18n="resume.previewTitle">Alireza_Nezami_Resume.pdf &mdash; Interactive Preview</span>
         </div>
         <a href="https://drive.google.com/file/d/1qmrJt3QdpTDFwT5Glkd-qbUmryf7Clse/view?usp=sharing" target="_blank"
-          rel="noopener" class="rph-link">
+          rel="noopener" class="rph-link" data-i18n="resume.openDrive">
           Open in Google Drive &nearr;
         </a>
       </div>
@@ -817,7 +817,7 @@
     <div class="footer-inner">
       <div>&copy; <span id="footer-year">2026</span> Alireza Nezami. <span data-i18n="footer.rights">All rights
           reserved.</span></div>
-      <div>Designed &amp; Engineered with Kotlin-level precision.</div>
+      <div data-i18n="footer.tagline">Designed &amp; Engineered with Kotlin-level precision.</div>
     </div>
   </footer>
 
@@ -826,7 +826,7 @@
     <!-- Collapsed Toggle Button -->
     <button id="ai-widget-toggle" class="ai-widget-toggle-btn" aria-label="Open AI summary widget">
       <span class="ai-toggle-sparkle">✨</span>
-      <span>Ask AI Summary</span>
+      <span data-i18n="ai.buttonText">Ask AI Summary</span>
     </button>
 
     <!-- Floating Glass Card -->
@@ -834,11 +834,11 @@
       <div class="ai-floating-header">
         <div class="ai-floating-title-group">
           <span class="ai-header-sparkle">✨</span>
-          <h3 class="ai-floating-title">Ask AI for a summary</h3>
+          <h3 class="ai-floating-title" data-i18n="ai.cardTitle">Ask AI for a summary</h3>
         </div>
         <button id="ai-widget-close" class="ai-widget-close-btn" aria-label="Minimize AI summary widget">&times;</button>
       </div>
-      <p class="ai-floating-subtitle">Select an AI model to generate a summary of Alireza's portfolio:</p>
+      <p class="ai-floating-subtitle" data-i18n="ai.cardSubtitle">Select an AI model to generate a summary of Alireza's portfolio:</p>
 
       <div class="ai-platform-stack">
         <!-- ChatGPT -->

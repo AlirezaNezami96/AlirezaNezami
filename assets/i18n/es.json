@@ -4,89 +4,123 @@
     "about": "Sobre mí",
     "projects": "Proyectos",
     "reviews": "Testimonios",
+    "resume": "Currículum",
     "contact": "Contacto",
+    "game": "Juego 🎮",
     "bookCall": "Reservar llamada"
   },
   "hero": {
+    "challengeBadge": "OFERTA DE RETO",
+    "challengeText": "¡Si me ganas en este juego, te desarrollaré una <strong>aplicación móvil gratis</strong>! 🚀",
+    "challengeBtn": "Jugar Neon Dodge &rarr;",
     "eyebrow": "ingeniero.móvil",
     "headline1": "+9 años nativo",
     "headline2": "Android.",
-    "headline3": "Ahora creando",
+    "headline3": "Ahora lanzando",
     "headline4": "multiplataforma.",
-    "subtitle": "Desarrollando aplicaciones móviles de alto nivel con Kotlin, Compose y Flutter.",
-    "bookCall": "Reservar llamada",
-    "seeWork": "Ver proyectos"
+    "subtitle": "Creando aplicaciones móviles insignia con ",
+    "bookCall": "Reservar llamada &rarr;",
+    "seeWork": "Ver proyectos &darr;",
+    "scroll": "desplazar"
   },
   "about": {
     "tag": "sobre mí",
-    "title": "El <strong>especialista en Android nativo</strong> que dio el salto a <span class=\"gradient-text\"><u>multiplataforma a propósito</u></span>.",
-    "p1": "Comencé a desarrollar aplicaciones Android cuando <strong>Kotlin</strong> era aún una versión beta. A lo largo de <u>más de 9 años publicando software en producción</u>, he construido desde <strong>paneles de control fintech</strong> y <strong>aplicaciones de salud</strong> hasta <strong>plataformas logísticas</strong> y <strong>comercio electrónico</strong> &mdash; todo con la <span class=\"gradient-text\">disciplina de rendimiento y arquitectura profunda</span> que solo se obtiene trabajando cerca del código nativo.",
-    "p2": "Cuando <strong>Flutter</strong> maduró lo suficiente para cumplir con mis estándares, lo incorporé a mi kit de herramientas. No como un atajo, sino como un <u>multiplicador de eficiencia</u>: un código base cuidadosamente diseñado que ofrece una <span class=\"gradient-text\">experiencia genuinamente nativa</span> en iOS y Android.",
-    "p3": "Trabajo mejor con <strong>fundadores</strong> y <strong>equipos de producto</strong> que se preocupan por lanzar software que <u>se sienta perfecto</u> para el usuario. Si buscas esa calidad, hablemos.",
+    "title": "El <strong>especialista en Android nativo</strong> que expandió a multiplataforma &mdash; <span class=\"gradient-text\"><u>con propósito</u></span>.",
+    "p1": "Comencé a programar apps para Android cuando <strong>Kotlin</strong> todavía era un experimento en beta. A lo largo de <u>nueve años publicando software en producción</u>, he desarrollado desde <strong>dashboards fintech</strong> y <strong>monitores de salud</strong> hasta <strong>plataformas de logística</strong> y <strong>comercio electrónico</strong> &mdash; cada una con el <span class=\"gradient-text\">rigor de rendimiento y arquitectura sólida</span> que solo se obtiene trabajando cerca del metal.",
+    "p2": "Cuando <strong>Flutter</strong> maduró lo suficiente para cumplir mis estándares, lo incorporé a mis herramientas. No como un atajo, sino como un <u>multiplicador de impacto</u>: una sola base de código con <span class=\"gradient-text\">experiencia genuinamente nativa</span> en ambas plataformas.",
+    "p3": "Trabajo mejor con <strong>fundadores</strong> y <strong>equipos de producto</strong> que se preocupan por crear software que <u>se sienta perfecto</u>, no solo que funcione técnicamente.",
     "stats": {
-      "years": "Años de Experiencia",
-      "apps": "Apps Publicadas",
-      "platforms": "Plataformas Dominadas",
-      "users": "Usuarios Alcanzados"
+      "years": "AÑOS DE EXPERIENCIA",
+      "apps": "APPS PUBLICADAS",
+      "platforms": "PLATAFORMAS DOMINADAS",
+      "users": "USUARIOS ALCANZADOS"
     }
   },
   "projects": {
     "tag": "proyectos",
-    "title": "Trabajos destacados",
+    "title": "Trabajo Seleccionado",
+    "ctaSub": "2 proyectos más incluyendo WegoPro y Fuudy",
+    "seeAll": "Ver Todos los Proyectos",
+    "googlePlay": "Google Play &rarr;",
+    "heroTitle": "7 aplicaciones.<br><span>Millones de usuarios.</span>",
+    "heroSub": "Desde salud hasta logística, fintech hasta fitness — cada una construida con calidad nativa.",
+    "filterAll": "Todos los Proyectos",
+    "statApps": "APPS EN PRODUCCIÓN",
+    "statUsers": "USUARIOS ALCANZADOS",
+    "statPlatforms": "PLATAFORMAS",
     "albertHealth": {
       "title": "Albert Health",
-      "subtitle": "Asistente de salud con IA — Android e iOS",
-      "desc": "Plataforma de monitoreo de salud con IA y seguimiento de constantes vitales en tiempo real."
+      "subtitle": "Asistente de salud con IA — Android & iOS",
+      "desc": "Plataforma integral de monitoreo de salud con seguimiento de signos vitales en tiempo real, análisis mediante IA e integración médica. Lideré el desarrollo multiplataforma completo con Flutter, estructurando una arquitectura escalable y limpia."
     },
     "yoldaCarrier": {
       "title": "Yolda Carrier",
-      "subtitle": "Plataforma de logística y carga",
-      "desc": "App nativa en Kotlin para seguimiento de carga en tiempo real y optimización de rutas."
+      "subtitle": "Plataforma de gestión logística y carga",
+      "desc": "Aplicación de coordinación logística de alta exigencia utilizada por transportistas en Turquía. Construida en Android nativo usando Kotlin y Jetpack Compose para seguimiento de carga en tiempo real y optimización de rutas."
     },
     "biletino": {
       "title": "Biletino",
-      "subtitle": "Plataforma de entradas y eventos",
-      "desc": "Sistema de venta de entradas y validación digital offline."
+      "subtitle": "Motor de venta de entradas y pases digitales",
+      "desc": "Una de las plataformas líderes de venta de entradas en Turquía con pago ágil, validación de tickets offline y búsqueda rápida de eventos con arquitectura reactiva."
     },
     "kolayHr": {
       "title": "Kolay HR",
-      "subtitle": "Plataforma de gestión de RRHH",
-      "desc": "Gestión de vacaciones y gastos empresariales con alto rendimiento."
+      "subtitle": "Plataforma empresarial de recursos humanos",
+      "desc": "Aplicación móvil de gestión de personal que atiende a miles de empleados, optimizando solicitudes de permisos, reembolsos de gastos y notificaciones push."
     },
     "fuudy": {
       "title": "Fuudy",
-      "subtitle": "Entrega de comida gourmet",
-      "desc": "App de reparto para restaurantes de alta gama con seguimiento de repartidores."
+      "subtitle": "Delivery gourmet y selección de restaurantes",
+      "desc": "Aplicación de entrega de comida premium con menús interactivos, seguimiento de repartidores en tiempo real y transacciones fluidas."
     },
     "wegoPro": {
       "title": "WegoPro",
-      "subtitle": "Gestión de viajes de negocios",
-      "desc": "Reserva de viajes corporativos y escaneo de recibos offline."
+      "subtitle": "Gestión de viajes de negocios y gastos",
+      "desc": "Plataforma corporativa de reserva de viajes y reporte de gastos utilizada en toda la región APAC con escaneo de recibos offline."
     },
     "abcTrainerize": {
       "title": "ABC Trainerize",
-      "subtitle": "Plataforma de fitness — +1M usuarios",
-      "desc": "App global de entrenamiento personal y seguimiento de ejercicios."
+      "subtitle": "Plataforma de entrenamiento fitness – +1M usuarios",
+      "desc": "Una de las plataformas de entrenamiento líderes a nivel mundial. Trabajé en mejoras críticas de rendimiento en Android para una base global que supera el millón de usuarios activos."
     }
   },
   "reviews": {
-    "tag": "testimonios",
-    "title": "Lo que dicen mis clientes"
+    "tag": "// testimonios",
+    "title": "Lo que dicen los clientes.",
+    "r1": "\"Alireza es uno de los <strong>desarrolladores más confiables</strong> con los que he colaborado. Su <u>dominio de Kotlin</u>, capacidad de resolución de problemas y <span class=\\\"gradient-text\\\">sentido de compromiso</span> marcaron una gran diferencia.\"",
+    "r1_role": "Líder de Ingeniería &middot; HealthSync",
+    "r2": "\"Excelente ingeniero móvil con <strong>sólido criterio técnico</strong>. Escribe <u>código limpio y mantenible</u>, comprende las metas del negocio y <span class=\\\"gradient-text\\\">entrega soluciones de alto nivel</span>.\"",
+    "r2_role": "CTO &middot; FinEdge Solutions",
+    "r3": "\"Trabajar con Alireza fue una <strong>gran experiencia</strong>. Comprendió nuestra visión rápidamente, <u>resolvió retos móviles complejos</u> y brindó una <span class=\\\"gradient-text\\\">experiencia de usuario excepcional</span>.\"",
+    "r3_role": "Fundadora de Startup &middot; TravelFlow",
+    "r4": "\"Su <strong>experiencia multiplataforma es genuina</strong>. Obtuvimos una sola <u>base de código en Flutter</u> que se siente <span class=\\\"gradient-text\\\">verdaderamente nativa tanto en iOS como en Android</span>. Trabajo notable.\"",
+    "r4_role": "Cofundadora &middot; MobileLaunch",
+    "r5": "\"Alireza combina <strong>sólidas habilidades de ingeniería</strong> con un gran trabajo en equipo. <u>Se comunica con total claridad</u>, cumple plazos y <span class=\\\"gradient-text\\\">aporta valiosas ideas de producto</span>.\"",
+    "r5_role": "Gerente de Proyectos &middot; AppWorks Studio",
+    "r6": "\"Alireza <strong>superó todas las expectativas</strong>. Su <u>experiencia en Android</u>, enfoque de arquitectura limpia y <span class=\\\"gradient-text\\\">atención al detalle</span> nos ayudaron a construir un producto sumamente estable.\"",
+    "r6_role": "Product Manager &middot; NovaTech Labs"
   },
   "resume": {
     "tag": "currículum",
-    "title": "Trayectoria e Impacto — Aquí está mi CV",
-    "desc": "Consulta mi experiencia técnica y proyectos.",
-    "downloadBtn": "Descargar PDF",
-    "previewBtn": "Ver en pantalla completa"
+    "title": "Trayectoria y Logros — Mi Currículum",
+    "desc": "Revisa mi experiencia técnica, arquitectura de software y trayectoria en producción.",
+    "gDrive": "Currículum en Google Drive &nearr;",
+    "downloadBtn": "Descargar PDF &darr;",
+    "previewTitle": "Vista previa interactiva del CV de Alireza Nezami",
+    "openDrive": "Abrir en Google Drive &nearr;"
   },
   "contact": {
     "tag": "contacto",
     "title": "Construyamos algo extraordinario.",
-    "desc": "Reserva una llamada de 30 minutos para analizar tu proyecto.",
-    "bookTitle": "Reservar llamada de 30 min"
+    "desc": "¿Tienes un nuevo proyecto o necesitas experiencia senior en Android/Flutter? Agenda una llamada o envíame un mensaje."
+  },
+  "ai": {
+    "buttonText": "Resumen con IA",
+    "cardTitle": "Pedir resumen a la IA",
+    "cardSubtitle": "Elige un modelo de IA para generar un resumen ejecutivo del portafolio y trayectoria de Alireza:"
   },
   "footer": {
-    "rights": "Todos los derechos reservados."
+    "rights": "Todos los derechos reservados.",
+    "tagline": "Diseñado e implementado con precisión al nivel de Kotlin."
   }
 }

@@ -1,92 +1,126 @@
 {
   "_comment": "中文 - Chinese Translation",
   "nav": {
-    "about": "关于",
-    "projects": "项目",
-    "reviews": "评价",
-    "contact": "联系",
-    "bookCall": "预约通话"
+    "about": "关于我",
+    "projects": "精选项目",
+    "reviews": "客户评价",
+    "resume": "个人简历",
+    "contact": "联系我",
+    "game": "互动游戏 🎮",
+    "bookCall": "预约咨询"
   },
   "hero": {
-    "eyebrow": "mobile.engineer",
-    "headline1": "9+ years native",
-    "headline2": "Android.",
-    "headline3": "Now shipping",
-    "headline4": "cross-platform.",
-    "subtitle": "Building flagship mobile applications with Kotlin, Compose & Flutter.",
-    "bookCall": "Book a call",
-    "seeWork": "See the work"
+    "challengeBadge": "挑战特惠",
+    "challengeText": "如果你在这款游戏中击败我的纪录，我将为你<strong>免费开发一款移动应用</strong>！🚀",
+    "challengeBtn": "体验 Neon Dodge &rarr;",
+    "eyebrow": "高级移动架构师",
+    "headline1": "9年+ 原生",
+    "headline2": "Android 沉淀。",
+    "headline3": "现已全面拓展",
+    "headline4": "跨平台架构。",
+    "subtitle": "专注于使用 Kotlin、Compose 与 Flutter 构建旗舰级移动应用：",
+    "bookCall": "预约咨询 &rarr;",
+    "seeWork": "查看精选作品 &darr;",
+    "scroll": "向下滚动"
   },
   "about": {
     "tag": "关于我",
-    "title": "从<strong>原生 Android 专家</strong>到精通<span class=\"gradient-text\"><u>跨平台开发的移动架构师</u></span>。",
-    "p1": "早在 <strong>Kotlin</strong> 仍处于 Beta 阶段时，我就开始编写 Android 原生应用。在<u>超过 9 年的高并发生产环境软件交付经验</u>中，我从零构建过<strong>金融科技仪表盘</strong>、<strong>数字医疗与健康追踪系统</strong>、<strong>大型物流调度平台</strong>以及<strong>高流量电商应用</strong> &mdash; 每一款应用都遵循着近乎苛刻的<span class=\"gradient-text\">高性能优化与极致底层架构标准</span>。",
-    "p2": "当 <strong>Flutter</strong> 足够成熟并达到我的严苛标准时，我将其纳入了核心技术栈。这不是为了偷捷径，而是作为<u>效率与品质的乘数</u>：一套精雕细琢的单代码库，在 iOS 与 Android 双平台上提供<span class=\"gradient-text\">真正的原生级极致流畅体验</span>。",
-    "p3": "我最擅长与重视产品品质、追求<u>极佳用户体验</u>的<strong>创始人</strong>及<strong>高端产品团队</strong>深度合作。如果您正在寻找兼具技术深度与产品思维的顶级移动端专家，欢迎预约沟通。",
+    "title": "从 <strong>Android 原生架构专家</strong> 到全能<span class=\"gradient-text\"><u>跨平台专家</u></span>。",
+    "p1": "在 <strong>Kotlin</strong> 还处于测试版时，我就开始了 Android 原生开发。在 <u>9 年+ 商业软件交付历程</u>中，我打造了涵盖<strong>金融科技控制台</strong>、<strong>智能医疗健康系统</strong>、<strong>大型物流调度</strong>与<strong>电商应用</strong>等众多系统 &mdash; 始终坚持<span class=\"gradient-text\">极致性能与稳健架构</span>。",
+    "p2": "当 <strong>Flutter</strong> 达到我对工程品质的要求时，我将其纳入技术体系。不仅为了提升效率，更是为了在双平台实现<span class=\"gradient-text\">真正原生的流畅体验</span>。",
+    "p3": "我热衷于与重视<strong>产品质感与卓越体验</strong>的创始人及团队深度合作。让我们共同打造出色的产品。",
     "stats": {
-      "years": "年行业经验",
-      "apps": "款上线应用",
-      "platforms": "大核心平台精通",
-      "users": "覆盖活跃用户"
+      "years": "年工程经验",
+      "apps": "款上线产品",
+      "platforms": "大主力平台",
+      "users": "万+ 触达用户"
     }
   },
   "projects": {
-    "tag": "projects",
-    "title": "Selected Work",
+    "tag": "精选作品",
+    "title": "精选项目",
+    "ctaSub": "包括 WegoPro 与 Fuudy 等更多项目",
+    "seeAll": "查看全部项目",
+    "googlePlay": "Google Play 商店 &rarr;",
+    "heroTitle": "7 款旗舰应用。<br><span>数百万活跃用户。</span>",
+    "heroSub": "涵盖医疗、物流、企业级 HR 及健身领域 — 均以原生级品质精心构建。",
+    "filterAll": "全部项目",
+    "statApps": "款商业应用",
+    "statUsers": "活跃用户量",
+    "statPlatforms": "支持平台",
     "albertHealth": {
       "title": "Albert Health",
-      "subtitle": "AI-powered health companion — Android & iOS",
-      "desc": "A comprehensive health monitoring platform with real-time vitals tracking, AI-driven health insights, and seamless physician integration. Led the full cross-platform development with Flutter, architecting a clean, scalable codebase that runs natively on both platforms without compromise."
+      "subtitle": "AI 驱动的智能健康伴侣 — Android & iOS",
+      "desc": "全方位健康监测系统，支持实时生理指标跟踪、AI 辅助分析及线上医生诊疗。使用 Flutter 全权主导跨平台开发，构建简洁高扩展性的原生架构。"
     },
     "yoldaCarrier": {
       "title": "Yolda Carrier",
-      "subtitle": "Logistics & freight management platform",
-      "desc": "A high-stakes logistics coordination app used by carriers across Turkey. Built the Android native version from the ground up using Kotlin and Jetpack Compose, handling real-time load tracking, route optimization integration, and push-notification workflows that run reliably at scale."
+      "subtitle": "智能物流与货运协同管理系统",
+      "desc": "服务于全土耳其承运商的关键物流调度系统。基于 Kotlin 与 Jetpack Compose 从零开发 Android 原生版本，实现精准货源跟踪与路线优化。"
     },
     "biletino": {
       "title": "Biletino",
-      "subtitle": "Event ticketing & digital pass engine",
-      "desc": "One of Turkey’s premier event discovery and ticketing platforms. Developed core mobile features focusing on frictionless checkout, offline digital ticket validation, and fast event search using modern reactive architecture."
+      "subtitle": "大型活动票务与数字通行引擎",
+      "desc": "土耳其知名票务平台，专注于极速结算、离线数字电子票验票以及响应式架构的高性能搜索。"
     },
     "kolayHr": {
       "title": "Kolay HR",
-      "subtitle": "Enterprise HR & workforce platform",
-      "desc": "A streamlined HR management mobile app serving thousands of employees. Architected key modules for leave requests, expense management, and push alerts with a heavy emphasis on UI polish and sub-second response times."
+      "subtitle": "企业级全流程人力资源管理平台",
+      "desc": "服务数万名企业员工的移动 HR 应用，优化请假审批、费用报销及实时推送通知，拥有亚秒级的极致响应速度。"
     },
     "fuudy": {
       "title": "Fuudy",
-      "subtitle": "Gourmet food delivery & restaurant curation",
-      "desc": "Premium food delivery application connecting users with top-tier restaurants. Implemented interactive menus, real-time courier tracking, and smooth checkout flows with custom animations."
+      "subtitle": "高端美食品鉴与外卖送达系统",
+      "desc": "精选高端餐厅的品质外送平台，包含交互式菜单、骑手实时定位跟踪与流畅动画结算流。"
     },
     "wegoPro": {
       "title": "WegoPro",
-      "subtitle": "Business travel & expense management",
-      "desc": "Corporate travel booking and expense reporting app used across APAC. Contributed to cross-platform mobile app development, integrating complex flight/hotel booking APIs and offline receipt scanning."
+      "subtitle": "企业商旅预订与费用报销平台",
+      "desc": "覆盖亚太地区的企业差旅平台，参与跨平台移动开发，集成复杂机票酒店预订及离线发票扫描。"
     },
     "abcTrainerize": {
       "title": "ABC Trainerize",
-      "subtitle": "Fitness coaching platform – 1M+ users",
-      "desc": "One of the world’s leading fitness coaching platforms, connecting trainers with clients through structured workout plans, progress tracking, and in-app messaging. Worked on critical Android performance improvements, reducing app startup time and improving workout session reliability for a global user base exceeding one million active users."
+      "subtitle": "全球顶级健身教练协同平台 – 100万+ 用户",
+      "desc": "全球领先的健身平台，主导 Android 关键性能调优，大幅缩短启动时间，为百万全球活跃用户提供极高稳定性。"
     }
   },
   "reviews": {
-    "tag": "reviews",
-    "title": "What clients say."
+    "tag": "// 评价",
+    "title": "客户与合作伙伴评价。",
+    "r1": "\"Alireza 是我合作过<strong>最值得信赖的开发者</strong>之一。他精湛的 <u>Kotlin 功底</u>、出色的解决问题能力与<span class=\\\"gradient-text\\\">极强的敬业责任心</span>为项目带来巨大价值。\"",
+    "r1_role": "技术研发主管 &middot; HealthSync",
+    "r2": "\"具备<strong>卓越技术判断力</strong>的高级工程师。编写的<u>代码架构清晰易维护</u>，深入理解商业目标并<span class=\\\"gradient-text\\\">稳定交付高质量方案</span>。\"",
+    "r2_role": "首席技术官 CTO &middot; FinEdge Solutions",
+    "r3": "\"与 Alireza 的合作是<strong>非常愉悦的体验</strong>。他能快速理解产品构想，<u>攻克高难度移动技术瓶颈</u>，并呈现了<span class=\\\"gradient-text\\\">出色的用户体验</span>。\"",
+    "r3_role": "创业公司创始人 &middot; TravelFlow",
+    "r4": "\"他的<strong>跨平台技术功底极其扎实</strong>。我们获得了单一的 <u>Flutter 代码库</u>，在 <span class=\\\"gradient-text\\\">iOS 和 Android 两个系统上都能展现真正的原生体验</span>。令人惊叹。\"",
+    "r4_role": "联合创始人 &middot; MobileLaunch",
+    "r5": "\"Alireza 将<strong>高超的工程能力</strong>与团队合作精神完美结合。他<u>沟通严谨清晰</u>，按时交付，并<span class=\\\"gradient-text\\\">提出极具价值的产品架构建议</span>。\"",
+    "r5_role": "项目总监 &middot; AppWorks Studio",
+    "r6": "\"Alireza 的表现<strong>远超预期</strong>。他在 <u>Android 架构设计</u>上的深厚沉淀和对<span class=\\\"gradient-text\\\">细节的苛求</span>帮助我们打造了极其稳固的产品。\"",
+    "r6_role": "产品负责人 &middot; NovaTech Labs"
   },
   "resume": {
-    "tag": "resume",
-    "title": "技术沉淀与经验蓝图 — 我的个人简历",
-    "desc": "Review my technical experience, architecture expertise, and production track record.",
-    "downloadBtn": "Download PDF",
-    "previewBtn": "View Full Screen"
+    "tag": "简历",
+    "title": "专业履历与工程蓝图 — 个人简历",
+    "desc": "查看我的核心技术栈、软件架构体系及商业产品交付履历。",
+    "gDrive": "在 Google Drive 查看 &nearr;",
+    "downloadBtn": "下载 PDF 简历 &darr;",
+    "previewTitle": "Alireza Nezami 个人简历交互预览",
+    "openDrive": "在 Google Drive 打开 &nearr;"
   },
   "contact": {
-    "tag": "contact",
-    "title": "Let’s build something extraordinary.",
-    "desc": "Have a new project, need senior Android/Flutter capacity, or want to audit an existing codebase? Schedule a call or drop me a line.",
-    "bookTitle": "Schedule a 30-min strategy call"
+    "tag": "联系我",
+    "title": "让我们携手打造非凡产品。",
+    "desc": "无论是全新产品开发、高级 Android/Flutter 技术支持还是代码架构审计，随时欢迎与我交流。"
+  },
+  "ai": {
+    "buttonText": "AI 智能总结",
+    "cardTitle": "让 AI 快速为您总结",
+    "cardSubtitle": "选择以下 AI 大模型，一键生成关于 Alireza 技术背景与项目的专业摘要："
   },
   "footer": {
-    "rights": "All rights reserved."
+    "rights": "版权所有，保留所有权利。",
+    "tagline": "以 Kotlin 级别的严谨与精准精心构建。"
   }
 }

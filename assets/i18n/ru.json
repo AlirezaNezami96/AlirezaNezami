@@ -4,89 +4,123 @@
     "about": "Обо мне",
     "projects": "Проекты",
     "reviews": "Отзывы",
+    "resume": "Резюме",
     "contact": "Контакты",
-    "bookCall": "Записаться на звонок"
+    "game": "Игра 🎮",
+    "bookCall": "Записаться"
   },
   "hero": {
-    "eyebrow": "mobile.engineer",
-    "headline1": "9+ years native",
-    "headline2": "Android.",
-    "headline3": "Now shipping",
-    "headline4": "cross-platform.",
-    "subtitle": "Building flagship mobile applications with Kotlin, Compose & Flutter.",
-    "bookCall": "Book a call",
-    "seeWork": "See the work"
+    "challengeBadge": "СПЕЦИАЛЬНЫЙ ЧЕЛЛЕНДЖ",
+    "challengeText": "Если вы побьете мой рекорд в этой игре, я разработаю для вас <strong>бесплатное мобильное приложение</strong>! 🚀",
+    "challengeBtn": "Сыграть в Neon Dodge &rarr;",
+    "eyebrow": "ведущий.мобильный.инженер",
+    "headline1": "9+ лет в нативной",
+    "headline2": "разработке Android.",
+    "headline3": "Создаю решения",
+    "headline4": "кроссплатформенно.",
+    "subtitle": "Разработка флагманских мобильных приложений на ",
+    "bookCall": "Записаться на звонок &rarr;",
+    "seeWork": "Смотреть проекты &darr;",
+    "scroll": "прокрутить"
   },
   "about": {
     "tag": "обо мне",
-    "title": "<strong>Эксперт по нативной Android-разработке</strong>, осознанно перешедший на <span class=\"gradient-text\"><u>кроссплатформу</u></span>.",
-    "p1": "Я начал разрабатывать приложения под Android, когда <strong>Kotlin</strong> был ещё в стадии бета-тестирования. За <u>более чем 9 лет запуска коммерческих продуктов</u> я создал всё: от <strong>финтех-панелей</strong> и <strong>медицинских сервисов</strong> до <strong>логистических систем</strong> и <strong>e-commerce приложений</strong> &mdash; каждое из них спроектировано с <span class=\"gradient-text\">высочайшей производительностью и глубокой архитектурой</span>.",
-    "p2": "Когда платформа <strong>Flutter</strong> достигла уровня моих стандартов, я включил её в свой арсенал. Не как компромисс, а как <u>мощный мультипликатор эффективности</u>: единая продуманная база кода с <span class=\"gradient-text\">подлинно нативным ощущением</span> на iOS и Android.",
-    "p3": "Я продуктивно сотрудничаю с <strong>основателями</strong> и <strong>продуктовыми командами</strong>, для которых важно качество исполнения и <u>безупречный пользовательский опыт</u>. Если вам близок такой подход &mdash; давайте обсудим проект.",
+    "title": "Специалист по <strong>нативному Android</strong>, осознанно освоивший <span class=\"gradient-text\"><u>кроссплатформу</u></span>.",
+    "p1": "Я начал разрабатывать приложения для Android, когда <strong>Kotlin</strong> еще был на стадии бета-тестирования. За <u>более чем девять лет работы в продакшене</u> я создал всё: от <strong>финтех-дашбордов</strong> и <strong>медицинских трекеров</strong> до <strong>логистических платформ</strong> и <strong>e-commerce</strong> &mdash; каждый проект с <span class=\"gradient-text\">высочайшей производительностью и глубокой архитектурой</span>.",
+    "p2": "Когда <strong>Flutter</strong> достиг зрелости, я добавил его в свой стек. Не для экономии времени, а как <u>мощный множитель эффективности</u>: единая кодовая база с <span class=\"gradient-text\">по-настоящему нативным откликом</span> на обеих платформах.",
+    "p3": "Я лучше всего взаимодействую с <strong>основателями</strong> и <strong>продуктовыми командами</strong>, которые стремятся выпускать <u>безупречные продукты</u>.",
     "stats": {
-      "years": "Лет Опыта",
-      "apps": "Запущенных Проектов",
-      "platforms": "Платформы в Совершенстве",
-      "users": "Активных Пользователей"
+      "years": "ЛЕТ ОПЫТА",
+      "apps": "ВЫПУЩЕННЫХ ПРИЛОЖЕНИЙ",
+      "platforms": "ОСНОВНЫХ ПЛАТФОРМЫ",
+      "users": "ПОЛЬЗОВАТЕЛЕЙ В МИРЕ"
     }
   },
   "projects": {
-    "tag": "projects",
-    "title": "Selected Work",
+    "tag": "проекты",
+    "title": "Избранные Проекты",
+    "ctaSub": "Еще 2 проекта, включая WegoPro и Fuudy",
+    "seeAll": "Смотреть Все Проекты",
+    "googlePlay": "Google Play &rarr;",
+    "heroTitle": "7 приложений.<br><span>Миллионы пользователей.</span>",
+    "heroSub": "От медицины до логистики, от финтеха до фитнеса — каждое приложение с нативным качеством.",
+    "filterAll": "Все Проекты",
+    "statApps": "ПРИЛОЖЕНИЙ В ПРОДАКШЕНЕ",
+    "statUsers": "АКТИВНЫХ ПОЛЬЗОВАТЕЛЕЙ",
+    "statPlatforms": "ПЛАТФОРМЫ",
     "albertHealth": {
       "title": "Albert Health",
-      "subtitle": "AI-powered health companion — Android & iOS",
-      "desc": "A comprehensive health monitoring platform with real-time vitals tracking, AI-driven health insights, and seamless physician integration. Led the full cross-platform development with Flutter, architecting a clean, scalable codebase that runs natively on both platforms without compromise."
+      "subtitle": "ИИ-помощник по здоровью — Android и iOS",
+      "desc": "Комплексная медицинская платформа с мониторингом жизненных показателей в реальном времени, аналитикой ИИ и интеграцией с врачами. Руководил полной разработкой на Flutter с чистой и масштабируемой архитектурой."
     },
     "yoldaCarrier": {
       "title": "Yolda Carrier",
-      "subtitle": "Logistics & freight management platform",
-      "desc": "A high-stakes logistics coordination app used by carriers across Turkey. Built the Android native version from the ground up using Kotlin and Jetpack Compose, handling real-time load tracking, route optimization integration, and push-notification workflows that run reliably at scale."
+      "subtitle": "Платформа логистики и управления грузоперевозками",
+      "desc": "Приложение для координации грузоперевозок в Турции. Создано на нативном Android (Kotlin и Jetpack Compose) с онлайн-отслеживанием грузов и оптимизацией маршрутов."
     },
     "biletino": {
       "title": "Biletino",
-      "subtitle": "Event ticketing & digital pass engine",
-      "desc": "One of Turkey’s premier event discovery and ticketing platforms. Developed core mobile features focusing on frictionless checkout, offline digital ticket validation, and fast event search using modern reactive architecture."
+      "subtitle": "Сервис продажи билетов и электронных пропусков",
+      "desc": "Одна из ведущих платформ для покупки билетов на мероприятия в Турции с быстрой оплатой и офлайн-валидацией билетов."
     },
     "kolayHr": {
       "title": "Kolay HR",
-      "subtitle": "Enterprise HR & workforce platform",
-      "desc": "A streamlined HR management mobile app serving thousands of employees. Architected key modules for leave requests, expense management, and push alerts with a heavy emphasis on UI polish and sub-second response times."
+      "subtitle": "Корпоративная HR-платформа для бизнеса",
+      "desc": "Мобильное приложение для управления отпусками и расходами для тысяч сотрудников с мгновенным откликом интерфейса."
     },
     "fuudy": {
       "title": "Fuudy",
-      "subtitle": "Gourmet food delivery & restaurant curation",
-      "desc": "Premium food delivery application connecting users with top-tier restaurants. Implemented interactive menus, real-time courier tracking, and smooth checkout flows with custom animations."
+      "subtitle": "Премиальная доставка еды из ресторанов",
+      "desc": "Сервис доставки еды премиум-класса с интерактивным меню, онлайн-трекингом курьеров и плавной анимацией оплаты."
     },
     "wegoPro": {
       "title": "WegoPro",
-      "subtitle": "Business travel & expense management",
-      "desc": "Corporate travel booking and expense reporting app used across APAC. Contributed to cross-platform mobile app development, integrating complex flight/hotel booking APIs and offline receipt scanning."
+      "subtitle": "Управление командировками и расходами",
+      "desc": "Корпоративное приложение для бронирования поездок и отчетности по расходам, используемое в Азиатско-Тихоокеанском регионе."
     },
     "abcTrainerize": {
       "title": "ABC Trainerize",
-      "subtitle": "Fitness coaching platform – 1M+ users",
-      "desc": "One of the world’s leading fitness coaching platforms, connecting trainers with clients through structured workout plans, progress tracking, and in-app messaging. Worked on critical Android performance improvements, reducing app startup time and improving workout session reliability for a global user base exceeding one million active users."
+      "subtitle": "Платформа для фитнес-тренеров – 1M+ пользователей",
+      "desc": "Мировой лидер в сфере фитнес-коучинга. Провёл оптимизацию производительности Android для глобальной аудитории свыше 1 миллиона активных пользователей."
     }
   },
   "reviews": {
-    "tag": "reviews",
-    "title": "What clients say."
+    "tag": "// отзывы",
+    "title": "Что говорят клиенты и коллеги.",
+    "r1": "\"Алиреза — один из <strong>самых надежных разработчиков</strong>, с которыми мне доводилось работать. Его <u>глубокое знание Kotlin</u> и <span class=\\\"gradient-text\\\">высокая ответственность</span> сыграли решающую роль.\"",
+    "r1_role": "Технический директор &middot; HealthSync",
+    "r2": "\"Превосходный мобильный инженер с <strong>отличным техническим чутьем</strong>. Он пишет <u>поддерживаемый чистый код</u> и <span class=\\\"gradient-text\\\">создает первоклассные решения</span>.\"",
+    "r2_role": "CTO &middot; FinEdge Solutions",
+    "r3": "\"Работать с Алирезой было <strong>настоящим удовольствием</strong>. Он быстро понял наше видение, <u>решил сложные мобильные задачи</u> и обеспечил <span class=\\\"gradient-text\\\">превосходный пользовательский опыт</span>.\"",
+    "r3_role": "Основатель стартапа &middot; TravelFlow",
+    "r4": "\"Его <strong>кроссплатформенная экспертиза безупречна</strong>. Мы получили единую <u>кодовую базу Flutter</u>, которая ощущается <span class=\\\"gradient-text\\\">абсолютно нативно на iOS и Android</span>. Замечательная работа.\"",
+    "r4_role": "Сооснователь &middot; MobileLaunch",
+    "r5": "\"Алиреза сочетает <strong>выдающиеся инженерные навыки</strong> с отличной командной работой. Он <u>ясно формулирует мысли</u>, соблюдает дедлайны и <span class=\\\"gradient-text\\\">предлагает ценные продуктовые идеи</span>.\"",
+    "r5_role": "Руководитель проектов &middot; AppWorks Studio",
+    "r6": "\"Алиреза <strong>превзошел все ожидания</strong>. Его <u>экспертиза в Android</u>, чистая архитектура и <span class=\\\"gradient-text\\\">внимание к деталям</span> помогли нам создать стабильный продукт.\"",
+    "r6_role": "Продуктовый менеджер &middot; NovaTech Labs"
   },
   "resume": {
-    "tag": "resume",
-    "title": "Опыт и достижения — Моё резюме",
-    "desc": "Review my technical experience, architecture expertise, and production track record.",
-    "downloadBtn": "Download PDF",
-    "previewBtn": "View Full Screen"
+    "tag": "резюме",
+    "title": "Профессиональный опыт и достижения — Резюме",
+    "desc": "Ознакомьтесь с моим техническим стеком, опытом в архитектуре и историей запущенных продуктов.",
+    "gDrive": "Резюме в Google Drive &nearr;",
+    "downloadBtn": "Скачать PDF &darr;",
+    "previewTitle": "Интерактивный просмотр резюме Алирезы Низами",
+    "openDrive": "Открыть в Google Drive &nearr;"
   },
   "contact": {
-    "tag": "contact",
-    "title": "Let’s build something extraordinary.",
-    "desc": "Have a new project, need senior Android/Flutter capacity, or want to audit an existing codebase? Schedule a call or drop me a line.",
-    "bookTitle": "Schedule a 30-min strategy call"
+    "tag": "контакты",
+    "title": "Давайте создадим нечто выдающееся.",
+    "desc": "Планируете новый проект или вам нужен опытный Android/Flutter эксперт? Запишитесь на звонок или напишите мне."
+  },
+  "ai": {
+    "buttonText": "ИИ-резюме",
+    "cardTitle": "Запросить резюме у ИИ",
+    "cardSubtitle": "Выберите модель ИИ для мгновенного формирования сводки по опыту и проектам Алирезы:"
   },
   "footer": {
-    "rights": "All rights reserved."
+    "rights": "Все права защищены.",
+    "tagline": "Спроектировано и разработано с точностью уровня Kotlin."
   }
 }

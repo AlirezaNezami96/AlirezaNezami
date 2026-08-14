@@ -4,18 +4,24 @@
     "about": "About",
     "projects": "Projects",
     "reviews": "Reviews",
+    "resume": "Resume",
     "contact": "Contact",
+    "game": "Game 🎮",
     "bookCall": "Book a call"
   },
   "hero": {
+    "challengeBadge": "CHALLENGE OFFER",
+    "challengeText": "If you beat me at this game, I will build you a <strong>free mobile app</strong>! 🚀",
+    "challengeBtn": "Play Neon Dodge &rarr;",
     "eyebrow": "mobile.engineer",
     "headline1": "9+ years native",
     "headline2": "Android.",
     "headline3": "Now shipping",
     "headline4": "cross-platform.",
-    "subtitle": "Building flagship mobile applications with Kotlin, Compose & Flutter.",
-    "bookCall": "Book a call",
-    "seeWork": "See the work"
+    "subtitle": "Building flagship mobile applications with ",
+    "bookCall": "Book a call &rarr;",
+    "seeWork": "See the work &darr;",
+    "scroll": "scroll"
   },
   "about": {
     "tag": "about",
@@ -24,15 +30,24 @@
     "p2": "When <strong>Flutter</strong> matured enough to meet my standards, I added it to my toolkit. Not as a shortcut, but as a <u>force multiplier</u>: one carefully-crafted codebase, <span class=\"gradient-text\">genuinely native experience</span> on both platforms.",
     "p3": "I work best with <strong>founders</strong> and <strong>product teams</strong> who care about shipping software that <u>feels right</u>, not just software that technically ships. If that sounds like you, let's talk.",
     "stats": {
-      "years": "Years Experience",
-      "apps": "Apps Shipped",
-      "platforms": "Platforms Mastered",
-      "users": "Users Reached"
+      "years": "YEARS EXPERIENCE",
+      "apps": "APPS SHIPPED",
+      "platforms": "PLATFORMS MASTERED",
+      "users": "USERS REACHED"
     }
   },
   "projects": {
     "tag": "projects",
     "title": "Selected Work",
+    "ctaSub": "2 more projects including WegoPro & Fuudy",
+    "seeAll": "See All Projects",
+    "googlePlay": "Google Play &rarr;",
+    "heroTitle": "7 apps.<br><span>Millions of users.</span>",
+    "heroSub": "From healthcare to logistics, fintech to fitness — each one built with native-grade quality.",
+    "filterAll": "All Projects",
+    "statApps": "PRODUCTION APPS",
+    "statUsers": "USERS REACHED",
+    "statPlatforms": "PLATFORMS",
     "albertHealth": {
       "title": "Albert Health",
       "subtitle": "AI-powered health companion — Android & iOS",
@@ -41,12 +56,12 @@
     "yoldaCarrier": {
       "title": "Yolda Carrier",
       "subtitle": "Logistics & freight management platform",
-      "desc": "A high-stakes logistics coordination app used by carriers across Turkey. Built the Android native version from the ground up using Kotlin and Jetpack Compose, handling real-time load tracking, route optimization integration, and push-notification workflows that run reliably at scale."
+      "desc": "A high-stakes logistics coordination app used by carriers across Turkey. Built the Android native version using Kotlin and Jetpack Compose, handling real-time load tracking, route optimization integration, and push-notification workflows that run reliably at scale."
     },
     "biletino": {
       "title": "Biletino",
       "subtitle": "Event ticketing & digital pass engine",
-      "desc": "One of Turkey’s premier event discovery and ticketing platforms. Developed core mobile features focusing on frictionless checkout, offline digital ticket validation, and fast event search using modern reactive architecture."
+      "desc": "One of Turkey's premier event discovery and ticketing platforms. Developed core mobile features focusing on frictionless checkout, offline digital ticket validation, and fast event search using modern reactive architecture."
     },
     "kolayHr": {
       "title": "Kolay HR",
@@ -66,31 +81,46 @@
     "abcTrainerize": {
       "title": "ABC Trainerize",
       "subtitle": "Fitness coaching platform – 1M+ users",
-      "desc": "One of the world’s leading fitness coaching platforms, connecting trainers with clients through structured workout plans, progress tracking, and in-app messaging. Worked on critical Android performance improvements, reducing app startup time and improving workout session reliability for a global user base exceeding one million active users."
+      "desc": "One of the world's leading fitness coaching platforms, connecting trainers with clients through structured workout plans, progress tracking, and in-app messaging. Worked on critical Android performance improvements for a global user base exceeding one million active users."
     }
   },
   "reviews": {
-    "tag": "reviews",
-    "title": "What clients say."
+    "tag": "// reviews",
+    "title": "What clients say.",
+    "r1": "\"Alireza is one of the <strong>most reliable developers</strong> I have worked with. His <u>Kotlin skills</u>, problem-solving ability, and <span class=\\\"gradient-text\\\">ownership mindset</span> made a huge difference.\"",
+    "r1_role": "Engineering Lead &middot; HealthSync",
+    "r2": "\"Excellent mobile engineer with <strong>strong technical judgment</strong>. He writes <u>maintainable code</u>, understands business goals, and <span class=\\\"gradient-text\\\">delivers high-quality solutions</span>.\"",
+    "r2_role": "CTO &middot; FinEdge Solutions",
+    "r3": "\"Working with Alireza was a <strong>great experience</strong>. He quickly understood our vision, <u>solved complex mobile challenges</u>, and delivered an <span class=\\\"gradient-text\\\">outstanding user experience</span>.\"",
+    "r3_role": "Startup Founder &middot; TravelFlow",
+    "r4": "\"His <strong>cross-platform expertise</strong> is genuine. We got a single <u>Flutter codebase</u> that felt <span class=\\\"gradient-text\\\">truly native on both iOS and Android</span>. Remarkable work.\"",
+    "r4_role": "Co-founder &middot; MobileLaunch",
+    "r5": "\"Alireza combines <strong>strong engineering skills</strong> with great teamwork. He <u>communicates clearly</u>, meets deadlines, and <span class=\\\"gradient-text\\\">brings valuable product ideas</span>.\"",
+    "r5_role": "Project Manager &middot; AppWorks Studio",
+    "r6": "\"Alireza <strong>delivered beyond expectations</strong>. His <u>Android expertise</u>, clean architecture approach, and <span class=\\\"gradient-text\\\">attention to detail</span> helped us build a stable product.\"",
+    "r6_role": "Product Manager &middot; NovaTech Labs"
   },
   "resume": {
     "tag": "resume",
-    "title": "Track Record & Blueprint — Here is My Resume",
-    "desc": "Review my technical experience, architecture expertise, and production track record.",
-    "downloadBtn": "Download PDF",
-    "previewBtn": "View Full Screen"
+    "title": "Curriculum Vitae",
+    "desc": "Senior Mobile Engineer (Kotlin &middot; Java &middot; Jetpack Compose &middot; Flutter). 9+ years shipping production software to 1M+ active users.",
+    "gDrive": "Google Drive Resume &nearr;",
+    "downloadBtn": "Download PDF &darr;",
+    "previewTitle": "Alireza_Nezami_Resume.pdf &mdash; Interactive Preview",
+    "openDrive": "Open in Google Drive &nearr;"
   },
   "contact": {
     "tag": "contact",
-    "title": "Let’s build something extraordinary.",
-    "desc": "Have a new project, need senior Android/Flutter capacity, or want to audit an existing codebase? Schedule a call or drop me a line.",
-    "bookTitle": "Schedule a 30-min strategy call"
+    "title": "Let's build something extraordinary.",
+    "desc": "Have a new project, need senior Android/Flutter capacity, or want to audit an existing codebase? Schedule a call or drop me a line."
   },
   "ai": {
-    "title": "Ask AI for a summary of Alireza Nezami",
-    "subtitle": "Select an AI platform below to generate an instant executive summary of Alireza's portfolio & background:"
+    "buttonText": "Ask AI Summary",
+    "cardTitle": "Ask AI for a summary",
+    "cardSubtitle": "Select an AI model to generate a summary of Alireza's portfolio:"
   },
   "footer": {
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "tagline": "Designed & Engineered with Kotlin-level precision."
   }
 }

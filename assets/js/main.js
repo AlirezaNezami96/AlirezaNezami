@@ -48,7 +48,9 @@ function getBestMatchLang() {
 async function loadTranslations(lang) {
   if (i18nCache[lang]) return i18nCache[lang];
   try {
-    const res = await fetch(`assets/i18n/${lang}.json`);
+    const isSubdir = window.location.pathname.includes('/game/') || window.location.pathname.includes('/projects/');
+    const basePath = isSubdir ? '../assets/i18n/' : 'assets/i18n/';
+    const res = await fetch(`${basePath}${lang}.json`);
     const data = await res.json();
     i18nCache[lang] = data;
     return data;
@@ -70,13 +72,25 @@ async function applyLanguage(lang) {
   const isRTL = rtlLangs.includes(lang);
   document.documentElement.lang = lang;
   document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
+  
   qsa('[data-i18n]').forEach(el => {
     const key = el.dataset.i18n;
     const val = getNestedValue(dict, key);
     if (val) el.innerHTML = val;
   });
+
+  // Sync all select elements
+  qsa('.lang-select, #lang-select').forEach(sel => {
+    if (sel) sel.value = lang;
+  });
+
+  // Load language-optimized typography
   if (lang === 'fa') loadFont('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800&display=swap');
   if (lang === 'ar') loadFont('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
+  if (lang === 'ur') loadFont('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap');
+  if (lang === 'hi') loadFont('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&display=swap');
+  if (lang === 'bn') loadFont('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&display=swap');
+  if (lang === 'zh') loadFont('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600;700&display=swap');
 }
 
 function loadFont(url) {
@@ -88,10 +102,10 @@ function loadFont(url) {
 
 function initLangSwitcher() {
   applyLanguage(currentLang);
-  const sel = qs('#lang-select');
-  if (!sel) return;
-  sel.value = currentLang;
-  sel.addEventListener('change', () => applyLanguage(sel.value));
+  qsa('.lang-select, #lang-select').forEach(sel => {
+    sel.value = currentLang;
+    sel.addEventListener('change', () => applyLanguage(sel.value));
+  });
 }
 
 /* ─── LENIS SMOOTH SCROLL ────────────────────────────── */

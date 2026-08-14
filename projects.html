@@ -316,9 +316,9 @@
     </a>
     <div class="nav-links" role="list">
       <a href="index.html" class="nav-link">← Home</a>
-      <a href="index.html#about" class="nav-link">About</a>
-      <a href="index.html#reviews" class="nav-link">Reviews</a>
-      <a href="index.html#contact" class="nav-link">Contact</a>
+      <a href="index.html#about" class="nav-link" data-i18n="nav.about">About</a>
+      <a href="index.html#reviews" class="nav-link" data-i18n="nav.reviews">Reviews</a>
+      <a href="index.html#contact" class="nav-link" data-i18n="nav.contact">Contact</a>
     </div>
     <div class="nav-controls">
       <div class="lang-select-wrap">
@@ -340,7 +340,7 @@
       <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
         <span class="theme-icon">🌙</span>
       </button>
-      <a href="index.html#contact" class="nav-cta">Book a call</a>
+      <a href="index.html#contact" class="nav-cta" data-i18n="nav.bookCall">Book a call</a>
     </div>
   </nav>
 
@@ -348,13 +348,13 @@
   <section id="projects-hero">
     <div class="hero-inner">
       <div class="projects-hero-label section-label">
-        <span class="comment">// all.projects</span>
+        <span class="comment" data-i18n="projects.tag">// all.projects</span>
       </div>
-      <h1 class="projects-hero-title">
+      <h1 class="projects-hero-title" data-i18n="projects.heroTitle">
         7 apps.<br>
         <span>Millions of users.</span>
       </h1>
-      <p class="projects-hero-sub">From healthcare to logistics, fintech to fitness — each one built with native-grade quality.</p>
+      <p class="projects-hero-sub" data-i18n="projects.heroSub">From healthcare to logistics, fintech to fitness — each one built with native-grade quality.</p>
     </div>
     <!-- Decorative rings -->
     <div class="orbit-ring" style="width:600px;height:600px;right:-200px;top:-300px;"></div>
@@ -366,10 +366,10 @@
 
     <!-- Stats -->
     <div class="projects-stats">
-      <div class="ps-item"><span class="ps-val">7</span><span class="ps-label">PRODUCTION APPS</span></div>
-      <div class="ps-item"><span class="ps-val">1M+</span><span class="ps-label">USERS REACHED</span></div>
-      <div class="ps-item"><span class="ps-val">9+</span><span class="ps-label">YEARS EXPERIENCE</span></div>
-      <div class="ps-item"><span class="ps-val">2</span><span class="ps-label">PLATFORMS: ANDROID &amp; iOS</span></div>
+      <div class="ps-item"><span class="ps-val">7</span><span class="ps-label" data-i18n="projects.statApps">PRODUCTION APPS</span></div>
+      <div class="ps-item"><span class="ps-val">1M+</span><span class="ps-label" data-i18n="about.stats.users">USERS REACHED</span></div>
+      <div class="ps-item"><span class="ps-val">9+</span><span class="ps-label" data-i18n="about.stats.years">YEARS EXPERIENCE</span></div>
+      <div class="ps-item"><span class="ps-val">2</span><span class="ps-label" data-i18n="about.stats.platforms">PLATFORMS MASTERED</span></div>
     </div>
 
     <!-- Filter -->
@@ -397,15 +397,15 @@
           </div>
         </div>
         <div class="proj-card-body">
-          <div class="proj-card-title">Albert Health</div>
-          <div class="proj-card-sub">AI-powered health companion · Android &amp; iOS</div>
-          <p class="proj-card-desc">Real-time vitals tracking, AI-driven health insights, and seamless physician integration. Built end-to-end with Flutter using Riverpod and Firebase.</p>
+          <div class="proj-card-title" data-i18n="projects.albertHealth.title">Albert Health</div>
+          <div class="proj-card-sub" data-i18n="projects.albertHealth.subtitle">AI-powered health companion · Android &amp; iOS</div>
+          <p class="proj-card-desc" data-i18n="projects.albertHealth.desc">Real-time vitals tracking, AI-driven health insights, and seamless physician integration. Built end-to-end with Flutter using Riverpod and Firebase.</p>
           <div class="proj-card-tags">
             <span class="project-tag">Flutter</span><span class="project-tag">Dart</span>
             <span class="project-tag">Riverpod</span><span class="project-tag">Firebase</span><span class="project-tag">HealthKit</span>
           </div>
-          <a href="https://play.google.com/store/apps/details?id=v2.albert.health" target="_blank" rel="noopener" class="proj-card-link">
-            Google Play <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <a href="https://play.google.com/store/apps/details?id=v2.albert.health" target="_blank" rel="noopener" class="proj-card-link" data-i18n="projects.googlePlay">
+            Google Play &rarr;
           </a>
         </div>
       </div>
@@ -424,15 +424,15 @@
           </div>
         </div>
         <div class="proj-card-body">
-          <div class="proj-card-title">Yolda Carrier</div>
-          <div class="proj-card-sub">Logistics &amp; freight platform · Android</div>
-          <p class="proj-card-desc">High-stakes logistics coordination app for carriers across Turkey. Native Kotlin + Jetpack Compose with real-time freight map and load tracking.</p>
+          <div class="proj-card-title" data-i18n="projects.yoldaCarrier.title">Yolda Carrier</div>
+          <div class="proj-card-sub" data-i18n="projects.yoldaCarrier.subtitle">Logistics &amp; freight platform · Android</div>
+          <p class="proj-card-desc" data-i18n="projects.yoldaCarrier.desc">High-stakes logistics coordination app for carriers across Turkey. Native Kotlin + Jetpack Compose with real-time freight map and load tracking.</p>
           <div class="proj-card-tags">
             <span class="project-tag">Kotlin</span><span class="project-tag">Jetpack Compose</span>
             <span class="project-tag">MVVM</span><span class="project-tag">Google Maps SDK</span>
           </div>
-          <a href="https://play.google.com/store/apps/details?id=com.yolda.carrier" target="_blank" rel="noopener" class="proj-card-link">
-            Google Play <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <a href="https://play.google.com/store/apps/details?id=com.yolda.carrier" target="_blank" rel="noopener" class="proj-card-link" data-i18n="projects.googlePlay">
+            Google Play &rarr;
           </a>
         </div>
       </div>
@@ -451,15 +451,15 @@
           </div>
         </div>
         <div class="proj-card-body">
-          <div class="proj-card-title">Biletino</div>
-          <div class="proj-card-sub">Event ticketing &amp; digital pass · Android &amp; iOS</div>
-          <p class="proj-card-desc">Turkey's leading event discovery platform. Frictionless checkout, offline QR ticket validation, and fast event search with modern reactive architecture.</p>
+          <div class="proj-card-title" data-i18n="projects.biletino.title">Biletino</div>
+          <div class="proj-card-sub" data-i18n="projects.biletino.subtitle">Event ticketing &amp; digital pass · Android &amp; iOS</div>
+          <p class="proj-card-desc" data-i18n="projects.biletino.desc">Turkey's leading event discovery platform. Frictionless checkout, offline QR ticket validation, and fast event search with modern reactive architecture.</p>
           <div class="proj-card-tags">
             <span class="project-tag">Kotlin</span><span class="project-tag">Flutter</span>
             <span class="project-tag">Room</span><span class="project-tag">Payment SDK</span>
           </div>
-          <a href="https://play.google.com/store/apps/details?id=com.biletino.app" target="_blank" rel="noopener" class="proj-card-link">
-            Google Play <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <a href="https://play.google.com/store/apps/details?id=com.biletino.app" target="_blank" rel="noopener" class="proj-card-link" data-i18n="projects.googlePlay">
+            Google Play &rarr;
           </a>
         </div>
       </div>
@@ -478,15 +478,15 @@
           </div>
         </div>
         <div class="proj-card-body">
-          <div class="proj-card-title">Kolay HR</div>
-          <div class="proj-card-sub">Enterprise HR &amp; workforce · Android</div>
-          <p class="proj-card-desc">Streamlined HR mobile app for thousands of employees. Leave requests, expense management, and push alerts — all with sub-second performance.</p>
+          <div class="proj-card-title" data-i18n="projects.kolayHr.title">Kolay HR</div>
+          <div class="proj-card-sub" data-i18n="projects.kolayHr.subtitle">Enterprise HR &amp; workforce · Android</div>
+          <p class="proj-card-desc" data-i18n="projects.kolayHr.desc">Streamlined HR mobile app for thousands of employees. Leave requests, expense management, and push alerts — all with sub-second performance.</p>
           <div class="proj-card-tags">
             <span class="project-tag">Kotlin</span><span class="project-tag">Hilt</span>
             <span class="project-tag">Coroutines</span><span class="project-tag">WorkManager</span>
           </div>
-          <a href="https://play.google.com/store/apps/details?id=com.kolayik.kolay" target="_blank" rel="noopener" class="proj-card-link">
-            Google Play <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <a href="https://play.google.com/store/apps/details?id=com.kolayik.kolay" target="_blank" rel="noopener" class="proj-card-link" data-i18n="projects.googlePlay">
+            Google Play &rarr;
           </a>
         </div>
       </div>
@@ -505,15 +505,15 @@
           </div>
         </div>
         <div class="proj-card-body">
-          <div class="proj-card-title">Fuudy</div>
-          <div class="proj-card-sub">Gourmet food delivery · Android</div>
-          <p class="proj-card-desc">Premium food delivery with interactive menus, real-time courier tracking, and smooth checkout flows. Custom animations throughout for a premium feel.</p>
+          <div class="proj-card-title" data-i18n="projects.fuudy.title">Fuudy</div>
+          <div class="proj-card-sub" data-i18n="projects.fuudy.subtitle">Gourmet food delivery · Android</div>
+          <p class="proj-card-desc" data-i18n="projects.fuudy.desc">Premium food delivery with interactive menus, real-time courier tracking, and smooth checkout flows. Custom animations throughout for a premium feel.</p>
           <div class="proj-card-tags">
             <span class="project-tag">Kotlin</span><span class="project-tag">RxJava</span>
             <span class="project-tag">Custom Views</span><span class="project-tag">Google Maps</span>
           </div>
-          <a href="https://play.google.com/store/apps/details?id=com.fuudy" target="_blank" rel="noopener" class="proj-card-link">
-            Google Play <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <a href="https://play.google.com/store/apps/details?id=com.fuudy" target="_blank" rel="noopener" class="proj-card-link" data-i18n="projects.googlePlay">
+            Google Play &rarr;
           </a>
         </div>
       </div>
@@ -532,15 +532,15 @@
           </div>
         </div>
         <div class="proj-card-body">
-          <div class="proj-card-title">WegoPro</div>
-          <div class="proj-card-sub">Business travel &amp; expense · Android &amp; iOS</div>
-          <p class="proj-card-desc">Corporate travel booking and expense reporting across APAC. Complex flight/hotel booking API integration and offline receipt scanning with Flutter.</p>
+          <div class="proj-card-title" data-i18n="projects.wegoPro.title">WegoPro</div>
+          <div class="proj-card-sub" data-i18n="projects.wegoPro.subtitle">Business travel &amp; expense · Android &amp; iOS</div>
+          <p class="proj-card-desc" data-i18n="projects.wegoPro.desc">Corporate travel booking and expense reporting across APAC. Complex flight/hotel booking API integration and offline receipt scanning with Flutter.</p>
           <div class="proj-card-tags">
             <span class="project-tag">Flutter</span><span class="project-tag">Dart</span>
             <span class="project-tag">REST API</span><span class="project-tag">SQLite</span>
           </div>
-          <a href="https://play.google.com/store/apps/details?id=com.wl.travelstop.go" target="_blank" rel="noopener" class="proj-card-link">
-            Google Play <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <a href="https://play.google.com/store/apps/details?id=com.wl.travelstop.go" target="_blank" rel="noopener" class="proj-card-link" data-i18n="projects.googlePlay">
+            Google Play &rarr;
           </a>
         </div>
       </div>
@@ -559,15 +559,15 @@
           </div>
         </div>
         <div class="proj-card-body">
-          <div class="proj-card-title">ABC Trainerize</div>
-          <div class="proj-card-sub">Fitness coaching · 1M+ users · Android</div>
-          <p class="proj-card-desc">World's leading fitness coaching platform. Critical Android performance improvements reducing startup time and improving reliability for 1M+ active users.</p>
+          <div class="proj-card-title" data-i18n="projects.abcTrainerize.title">ABC Trainerize</div>
+          <div class="proj-card-sub" data-i18n="projects.abcTrainerize.subtitle">Fitness coaching · 1M+ users · Android</div>
+          <p class="proj-card-desc" data-i18n="projects.abcTrainerize.desc">World's leading fitness coaching platform. Critical Android performance improvements reducing startup time and improving reliability for 1M+ active users.</p>
           <div class="proj-card-tags">
             <span class="project-tag">Kotlin</span><span class="project-tag">Java</span>
             <span class="project-tag">Android SDK</span><span class="project-tag">Jetpack</span>
           </div>
-          <a href="https://play.google.com/store/apps/details?id=com.trainerize.Trainerize" target="_blank" rel="noopener" class="proj-card-link">
-            Google Play <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <a href="https://play.google.com/store/apps/details?id=com.trainerize.Trainerize" target="_blank" rel="noopener" class="proj-card-link" data-i18n="projects.googlePlay">
+            Google Play &rarr;
           </a>
         </div>
       </div>
@@ -576,8 +576,8 @@
 
     <!-- Bottom CTA -->
     <div style="text-align:center; margin-top: 80px;">
-      <p style="color:var(--text-muted); margin-bottom: 24px; font-size: 16px;">Interested in working together?</p>
-      <a href="index.html#contact" class="btn btn-primary btn-large">
+      <p style="color:var(--text-muted); margin-bottom: 24px; font-size: 16px;" data-i18n="contact.desc">Interested in working together?</p>
+      <a href="index.html#contact" class="btn btn-primary btn-large" data-i18n="nav.bookCall">
         Book a call &rarr;
       </a>
     </div>
@@ -586,7 +586,7 @@
   <!-- FOOTER -->
   <footer id="footer" role="contentinfo">
     <div class="footer-inner">
-      <div>&copy; <span id="footer-year">2026</span> Alireza Nezami. All rights reserved.</div>
+      <div>&copy; <span id="footer-year">2026</span> Alireza Nezami. <span data-i18n="footer.rights">All rights reserved.</span></div>
       <div><a href="index.html" style="color:var(--kotlin)">← Back to Portfolio</a></div>
     </div>
   </footer>
