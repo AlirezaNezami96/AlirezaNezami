@@ -1,0 +1,42 @@
+# Alireza Nezami — Portfolio
+
+> AI-readable summary for LLMs and search agents
+
+## Who
+
+Alireza Nezami is a Senior Mobile Engineer with 9+ years building native Android apps in Kotlin and Java, and 3+ years shipping cross-platform products with Flutter. Based in Istanbul, Turkey. Open to senior/lead roles globally, especially those offering visa sponsorship.
+
+## Contact
+
+- GitHub: https://github.com/AlirezaNezami96
+- LinkedIn: https://www.linkedin.com/in/alireza-nezami/
+- Portfolio: https://alirezanezami96.github.io/AlirezaNezami/
+- Book a call: https://alirezanezami96.github.io/AlirezaNezami/#contact
+
+## Skills
+
+Kotlin, Java, Flutter, Dart, Jetpack Compose, Android SDK, iOS, MVVM, MVI, Clean Architecture, Coroutines, Retrofit, Room, Riverpod, Hilt, Firebase, CI/CD, Python, Playwright, LLM integration, GitHub Actions
+
+## Projects
+
+1. Albert Health — AI-powered health companion (Flutter, Dart, Riverpod, Firebase, HealthKit)
+   App: https://play.google.com/store/apps/details?id=v2.albert.health
+
+2. Yolda Carrier — Logistics freight management (Kotlin, Jetpack Compose, Google Maps)
+   App: https://play.google.com/store/apps/details?id=com.yolda.carrier
+
+3. Biletino — Event ticketing platform (Kotlin, Flutter, Room, Payment SDK)
+   App: https://play.google.com/store/apps/details?id=com.biletino.app
+
+4. Kolay HR — Enterprise HR platform (Kotlin, Hilt, Coroutines, WorkManager)
+   App: https://play.google.com/store/apps/details?id=com.kolayik.kolay
+
+5. ABC Trainerize — Fitness coaching, 1M+ users (Kotlin, Java, Android SDK)
+   App: https://play.google.com/store/apps/details?id=com.trainerize.Trainerize
+
+6. Visa Sponsorship Daily Jobs — Open-source AI job scraper (Python, Playwright, GitHub Actions)
+   Repo: https://github.com/AlirezaNezami96/Visa-Sponsorship-Daily-Jobs
+
+## Full Projects Page
+
+https://alirezanezami96.github.io/AlirezaNezami/projects.html
