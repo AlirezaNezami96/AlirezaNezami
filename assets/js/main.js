@@ -114,15 +114,19 @@ let lenis;
 function initLenis() {
   if (typeof Lenis === 'undefined') return;
   lenis = new Lenis({
-    lerp: isCoarsePointer ? 0.12 : 0.09,
+    lerp: isCoarsePointer ? 0.12 : 0.08,
     smoothWheel: !isCoarsePointer,
-    touchMultiplier: 1.8,
+    touchMultiplier: 1.4,
     infinite: false,
   });
 
+  if (typeof ScrollTrigger !== 'undefined') {
+    lenis.on('scroll', ScrollTrigger.update);
+  }
+
   if (typeof gsap !== 'undefined') {
     gsap.ticker.add((time) => { lenis.raf(time * 1000); });
-    gsap.ticker.lagSmoothing(0);
+    gsap.ticker.lagSmoothing(500, 33);
   } else {
     function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
     requestAnimationFrame(raf);
@@ -151,15 +155,14 @@ function initHeroReveal() {
     return;
   }
 
-  /* GSAP animates — but starts immediately at DOMContentLoaded */
+  /* GSAP animates — starts immediately at DOMContentLoaded */
   const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
   tl.to('.hero-headline .word', { opacity: 1, y: 0, duration: 0.9, stagger: 0.10 }, 0.05);
   tl.to('.hero-subtitle', { opacity: 1, duration: 0.7 }, 0.45);
   tl.to('.hero-actions', { opacity: 1, y: 0, duration: 0.6 }, 0.65);
 
-  /* Scroll-driven fade-out only after window.load (non-critical) */
-  window.addEventListener('load', () => {
-    if (typeof ScrollTrigger === 'undefined') return;
+  /* Scroll-driven parallax setup immediately so first scroll is buttery smooth */
+  if (typeof ScrollTrigger !== 'undefined') {
     gsap.to('#hero-content', {
       opacity: 0, y: -50, ease: 'power2.in',
       scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 1.2 }
@@ -168,8 +171,7 @@ function initHeroReveal() {
       y: 80, ease: 'none',
       scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 1.8 }
     });
-    setTimeout(() => ScrollTrigger.refresh(), 300);
-  });
+  }
 }
 
 /* ─── SCROLL REVEALS (IntersectionObserver) ──────────
@@ -314,20 +316,16 @@ function initRipple() {
   window.addEventListener('resize', resize);
 
   const dispMap = qs('#liquid-glass-filter feDisplacementMap');
+  let isRunning = false;
 
-  document.addEventListener('click', e => {
-    if (prefersReducedMotion) return;
-    ripples.push({
-      x: e.clientX,
-      y: e.clientY,
-      r: 4,
-      maxR: 110,
-      startTime: performance.now(),
-      duration: 700
-    });
-  });
+  function loop(now) {
+    if (ripples.length === 0) {
+      ctx.clearRect(0, 0, W, H);
+      if (dispMap) dispMap.setAttribute('scale', 5);
+      isRunning = false;
+      return;
+    }
 
-  (function loop(now) {
     ctx.clearRect(0, 0, W, H);
     let activeDisplacement = 0;
 
@@ -373,8 +371,30 @@ function initRipple() {
       dispMap.setAttribute('scale', 5 + activeDisplacement);
     }
 
-    requestAnimationFrame(loop);
-  })(performance.now());
+    if (ripples.length > 0) {
+      requestAnimationFrame(loop);
+    } else {
+      ctx.clearRect(0, 0, W, H);
+      if (dispMap) dispMap.setAttribute('scale', 5);
+      isRunning = false;
+    }
+  }
+
+  document.addEventListener('click', e => {
+    if (prefersReducedMotion) return;
+    ripples.push({
+      x: e.clientX,
+      y: e.clientY,
+      r: 4,
+      maxR: 110,
+      startTime: performance.now(),
+      duration: 700
+    });
+    if (!isRunning) {
+      isRunning = true;
+      requestAnimationFrame(loop);
+    }
+  });
 }
 
 /* ─── HERO VIDEO YO-YO LOOP (Forward & Reverse) ───────── */
@@ -566,19 +586,22 @@ function initChallengeArrow() {
 
   if (!gameLink || !challengeBox || !svg || !pathLine || !pathHead) return;
 
-  function updateArrow() {
+  let ticking = false;
+
+  function renderArrow() {
+    ticking = false;
     if (window.innerWidth < 768) {
       svg.style.display = 'none';
       return;
     }
 
-    const linkRect = gameLink.getBoundingClientRect();
     const boxRect = challengeBox.getBoundingClientRect();
-
     if (boxRect.bottom < 0 || boxRect.top > window.innerHeight) {
       svg.style.display = 'none';
       return;
     }
+
+    const linkRect = gameLink.getBoundingClientRect();
     svg.style.display = 'block';
 
     // Start: Bottom-Center of Challenge Box
@@ -617,12 +640,20 @@ function initChallengeArrow() {
     pathHead.setAttribute('d', headD);
   }
 
-  updateArrow();
-  window.addEventListener('resize', updateArrow);
-  window.addEventListener('scroll', updateArrow, { passive: true });
+  function requestUpdate() {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(renderArrow);
+    }
+  }
+
+  renderArrow();
+  window.addEventListener('resize', requestUpdate, { passive: true });
+  window.addEventListener('scroll', requestUpdate, { passive: true });
 }
 
 function boot() {
+  initLenis();
   initThemeSwitcher();
   initLangSwitcher();
   initRipple();
@@ -642,10 +673,8 @@ function boot() {
 
 window.addEventListener('DOMContentLoaded', boot);
 
-/* ─── THREE.JS 3D SPHERE HERO ────────────────────────── */
-/* Defer heavy 3D and smooth-scroll libs to after page is interactive */
+/* ─── THREE.JS 3D SPHERE HERO & SWIPERS ─────────────── */
 window.addEventListener('load', () => {
-  initLenis();
   initHeroBg();
   initSwipers();
 });

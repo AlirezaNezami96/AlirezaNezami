@@ -1042,15 +1042,53 @@ submitBtn.addEventListener("click", async () => {
   const scoreMs = Math.round(survivalMs);
 
   try {
+    const prevRecordMs = highestRecordMs;
+    const isNewRecord = (prevRecordMs > 0 && scoreMs > prevRecordMs);
+
     await submitScore(name, scoreMs);
+
+    // Track score submission & new record in Firebase Analytics
     if (typeof window.trackEvent === 'function') {
-      window.trackEvent('game_score_submit', { score_ms: scoreMs, player_name: name });
+      window.trackEvent('game_score_submit', {
+        score_ms: scoreMs,
+        score_seconds: Number((scoreMs / 1000).toFixed(1)),
+        player_name: name,
+        is_new_record: isNewRecord
+      });
+
+      if (isNewRecord) {
+        window.trackEvent('new_record_submitted', {
+          player_name: name,
+          score_ms: scoreMs,
+          score_seconds: Number((scoreMs / 1000).toFixed(1)),
+          previous_record_ms: prevRecordMs,
+          previous_record_seconds: Number((prevRecordMs / 1000).toFixed(1))
+        });
+        window.trackEvent('game_new_record', {
+          player_name: name,
+          score: Number((scoreMs / 1000).toFixed(1))
+        });
+      }
     }
-    statusMsg.textContent = "Score submitted! 🎉";
+
+    statusMsg.textContent = isNewRecord ? "New Global Record submitted! 👑🏆" : "Score submitted! 🎉";
     statusMsg.className   = "success";
 
     if (leaderboardPanel) leaderboardPanel.style.display = "block";
     const data = await fetchLeaderboardFullData(scoreMs);
+
+    // Also check if user reached rank #1 in the global table
+    if (data && data.userRank === 1 && !isNewRecord) {
+      if (typeof window.trackEvent === 'function') {
+        window.trackEvent('new_record_submitted', {
+          player_name: name,
+          score_ms: scoreMs,
+          score_seconds: Number((scoreMs / 1000).toFixed(1)),
+          rank: 1
+        });
+      }
+    }
+
     renderLeaderboardTable(data, scoreMs, true);
   } catch (err) {
     console.warn("Leaderboard error:", err);
