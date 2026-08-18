@@ -1,8 +1,8 @@
 /**
  * ═══════════════════════════════════════════════════════════════════
- *  THE PATH — Journey CSS Stylesheet (v2 - High Performance)
- *  Fluffy Cloud Nodes · 5-Resource Dropdowns · Owner Access Controls
- *  GPU Memory Optimization & Week 7+ Razor-Sharp Rendering
+ *  THE PATH — Journey CSS Stylesheet (v3 - Vivid Gradients & Clear UI)
+ *  Pixel-Perfect SVG Cloud Silhouettes · Rich Cosmic Gradients
+ *  Large High-Visibility Typography · 5-Resource Dropdowns · Owner Auth
  * ═══════════════════════════════════════════════════════════════════
  */
 
@@ -11,19 +11,19 @@
   --twilight-bg-mid: #120D22;
   --twilight-bg-bot: #1A1030;
   
-  --cloud-completed-glow: rgba(245, 158, 11, 0.5);
+  --cloud-completed-glow: rgba(245, 158, 11, 0.55);
   --cloud-completed-border: #F59E0B;
-  --cloud-completed-bg: #1B1528;
+  --cloud-completed-bg: linear-gradient(145deg, #2A152E 0%, #1B1028 50%, #291508 100%);
   --cloud-completed-text: #FDE68A;
 
   --cloud-current-glow: rgba(56, 189, 248, 0.65);
   --cloud-current-border: #38BDF8;
-  --cloud-current-bg: #131A33;
+  --cloud-current-bg: linear-gradient(145deg, #0E274A 0%, #19183E 50%, #1A1138 100%);
   --cloud-current-text: #BAE6FD;
 
-  --cloud-future-border: rgba(255, 255, 255, 0.14);
-  --cloud-future-bg: #110E21;
-  --cloud-future-text: rgba(255, 255, 255, 0.5);
+  --cloud-future-border: rgba(255, 255, 255, 0.16);
+  --cloud-future-bg: linear-gradient(145deg, #18122E 0%, #110D24 100%);
+  --cloud-future-text: rgba(255, 255, 255, 0.6);
 
   --path-lit-gradient-start: #F59E0B;
   --path-lit-gradient-end: #38BDF8;
@@ -438,18 +438,15 @@ body.journey-page {
 .shape-cloud {
   position: relative;
   width: 100%;
-  min-width: 300px;
+  min-width: 320px;
   max-width: 440px;
   aspect-ratio: 5 / 3;
-  clip-path: url(#cloud-clip);
-  padding: 26% 18% 16% 18%;   /* top right bottom left — keeps text clear of every lobe */
-  box-sizing: border-box;
-  background: var(--cloud-bg, #160F28);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  filter: drop-shadow(0 14px 25px var(--cloud-shadow, rgba(0, 0, 0, 0.4)));
+  padding: 44px 34px 28px 34px;
+  box-sizing: border-box;
   margin: 20px auto;
   transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.3s ease;
   user-select: none;
@@ -461,19 +458,31 @@ body.journey-page {
 .shape-cloud::before {
   content: "";
   position: absolute;
+  inset: -2.5px;
+  clip-path: url(#cloud-clip);
+  background: var(--cloud-border, rgba(255, 255, 255, 0.16));
+  z-index: 1;
+  pointer-events: none;
+  transition: background 0.3s ease;
+}
+
+/* Background gradient layer */
+.cloud-block::after,
+.shape-cloud::after {
+  content: "";
+  position: absolute;
   inset: 0;
   clip-path: url(#cloud-clip);
-  background: var(--cloud-border, rgba(255, 255, 255, 0.14));
-  transform: scale(1.03);
-  z-index: -1;
+  background: var(--cloud-bg, linear-gradient(145deg, #18122E 0%, #110D24 100%));
+  z-index: 2;
   pointer-events: none;
-  transition: background 0.3s ease, transform 0.3s ease;
+  transition: background 0.3s ease;
 }
 
 /* Content container */
 .cloud-content {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   width: 100%;
   height: 100%;
   display: flex;
@@ -490,53 +499,49 @@ body.journey-page {
   transform: translateY(-6px);
 }
 
-/* ── STATE: COMPLETED (Glowing Warm Amber Cloud) ─────────────── */
+/* ── STATE: COMPLETED (Glowing Warm Amber Cosmic Lantern) ──────── */
 .cloud-block.state-completed,
 .journey-node-card.state-completed {
-  --cloud-bg: #1F162A;
-  --cloud-border: #F59E0B;
-  --cloud-shadow: rgba(245, 158, 11, 0.4);
-  background: var(--cloud-bg);
-  filter: drop-shadow(0 0 2px var(--cloud-border)) drop-shadow(0 14px 28px var(--cloud-shadow));
+  --cloud-bg: linear-gradient(145deg, #2E1534 0%, #1B0E2A 50%, #2A1408 100%);
+  --cloud-border: linear-gradient(135deg, #F59E0B, #FBBF24);
+  --cloud-shadow: rgba(245, 158, 11, 0.45);
+  filter: drop-shadow(0 0 3px #F59E0B) drop-shadow(0 16px 32px var(--cloud-shadow));
 }
 .cloud-block.state-completed:hover {
-  filter: drop-shadow(0 0 4px #FDE68A) drop-shadow(0 18px 36px rgba(245, 158, 11, 0.65));
+  filter: drop-shadow(0 0 6px #FDE68A) drop-shadow(0 20px 42px rgba(245, 158, 11, 0.7));
 }
 
-/* ── STATE: CURRENT (TODAY) — Active Breathing Pulse Cloud ───── */
+/* ── STATE: CURRENT (TODAY) — Active Cyan/Violet Breathing Halo ── */
 .cloud-block.state-current,
 .journey-node-card.state-current {
-  --cloud-bg: #131B38;
-  --cloud-border: #38BDF8;
-  --cloud-shadow: rgba(56, 189, 248, 0.5);
-  background: var(--cloud-bg);
+  --cloud-bg: linear-gradient(145deg, #0C2346 0%, #16173E 50%, #1C1138 100%);
+  --cloud-border: linear-gradient(135deg, #38BDF8, #818CF8);
+  --cloud-shadow: rgba(56, 189, 248, 0.55);
+  filter: drop-shadow(0 0 4px #38BDF8) drop-shadow(0 16px 32px var(--cloud-shadow));
   animation: cloud-floating-pulse 2.8s ease-in-out infinite;
 }
 
 @keyframes cloud-floating-pulse {
   0%, 100% {
-    filter: drop-shadow(0 0 2px #38BDF8) drop-shadow(0 12px 24px rgba(56, 189, 248, 0.45));
-    --cloud-border: #38BDF8;
+    filter: drop-shadow(0 0 3px #38BDF8) drop-shadow(0 14px 28px rgba(56, 189, 248, 0.5));
   }
   50% {
-    filter: drop-shadow(0 0 4px #BAE6FD) drop-shadow(0 18px 36px rgba(56, 189, 248, 0.8));
-    --cloud-border: #BAE6FD;
+    filter: drop-shadow(0 0 6px #BAE6FD) drop-shadow(0 22px 45px rgba(56, 189, 248, 0.85)) drop-shadow(0 0 20px rgba(129, 140, 248, 0.6));
   }
 }
 
-/* ── STATE: FUTURE (Pale Unlit Cloud) ────────────────────────── */
+/* ── STATE: FUTURE (Deep Twilight Glass Cloud) ─────────────────── */
 .cloud-block.state-future,
 .journey-node-card.state-future {
-  --cloud-bg: #100D20;
+  --cloud-bg: linear-gradient(145deg, #18112E 0%, #100C22 100%);
   --cloud-border: rgba(255, 255, 255, 0.16);
-  --cloud-shadow: rgba(0, 0, 0, 0.3);
-  background: var(--cloud-bg);
-  opacity: 0.85;
-  filter: drop-shadow(0 0 1px var(--cloud-border)) drop-shadow(0 8px 18px var(--cloud-shadow));
+  --cloud-shadow: rgba(0, 0, 0, 0.35);
+  filter: drop-shadow(0 0 1px var(--cloud-border)) drop-shadow(0 10px 22px var(--cloud-shadow));
+  opacity: 0.92;
 }
 .cloud-block.state-future:hover {
   opacity: 1;
-  --cloud-border: rgba(255, 255, 255, 0.35);
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.4)) drop-shadow(0 12px 26px var(--cloud-shadow));
 }
 
 /* ─── NODE HEADER & CONTENT ───────────────────────────────────── */
@@ -544,83 +549,113 @@ body.journey-page {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   width: 100%;
 }
 
 .node-icon-badge {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  font-size: 13px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  font-size: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 .state-completed .node-icon-badge {
-  background: rgba(245, 158, 11, 0.25);
+  background: rgba(245, 158, 11, 0.3);
   border-color: #F59E0B;
   color: #FDE68A;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
 }
 .state-current .node-icon-badge {
-  background: rgba(56, 189, 248, 0.25);
+  background: rgba(56, 189, 248, 0.3);
   border-color: #38BDF8;
   color: #BAE6FD;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
 }
 
 .node-day-tag {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  font-weight: 700;
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
   color: var(--text-muted);
 }
-.state-completed .node-day-tag { color: #F59E0B; }
-.state-current .node-day-tag { color: #38BDF8; }
+.state-completed .node-day-tag { color: #FDE68A; }
+.state-current .node-day-tag { color: #BAE6FD; }
 
 .node-date-tag {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  color: rgba(255, 255, 255, 0.45);
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
 }
 
+.node-state-pill {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text-muted);
+}
+.state-completed .node-state-pill {
+  background: rgba(245, 158, 11, 0.2);
+  border-color: rgba(245, 158, 11, 0.4);
+  color: #FDE68A;
+}
+.state-current .node-state-pill {
+  background: rgba(56, 189, 248, 0.2);
+  border-color: rgba(56, 189, 248, 0.4);
+  color: #BAE6FD;
+}
+
+/* Main Content Title — Big, Bold, and Prominent */
 .node-title {
   font-family: 'Sora', sans-serif;
-  font-size: 13.5px;
-  font-weight: 700;
+  font-size: clamp(15px, 2.2vw, 17.5px);
+  font-weight: 800;
   color: #FFFFFF;
-  line-height: 1.25;
+  line-height: 1.3;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  max-width: 90%;
-  margin: 0 auto;
+  max-width: 92%;
+  margin: 4px auto;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
 }
 .state-future .node-title {
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .node-deliverable-chip {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  color: #C084FC;
-  background: rgba(192, 132, 252, 0.12);
-  border: 1px solid rgba(192, 132, 252, 0.25);
-  padding: 3px 8px;
-  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #E9D5FF;
+  background: rgba(192, 132, 252, 0.18);
+  border: 1px solid rgba(192, 132, 252, 0.35);
+  padding: 4px 10px;
+  border-radius: 6px;
   max-width: 90%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* ─── 5-RESOURCE DROPDOWN ACCORDION ON CLOUD CARDS ───────────── */
+/* ─── TOP PICK RESOURCE PILL (HIGH VISIBILITY) ───────────────── */
 .node-resources-dropdown-wrap {
   margin-top: 2px;
   width: 100%;
@@ -630,98 +665,68 @@ body.journey-page {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  padding: 3px 10px;
-  border-radius: 5px;
-  background: rgba(245, 158, 11, 0.15);
-  border: 1px solid rgba(245, 158, 11, 0.35);
-  font-size: 10.5px;
+  gap: 8px;
+  padding: 5px 12px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.22) 0%, rgba(217, 119, 6, 0.15) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.45);
+  font-size: 11.5px;
+  font-weight: 600;
   color: #FDE68A;
   text-decoration: none;
   max-width: 90%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   transition: all 0.2s ease;
 }
-.top-pick-pill:hover {
-  background: rgba(245, 158, 11, 0.28);
-  border-color: #F59E0B;
+.state-current .top-pick-pill {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.22) 0%, rgba(129, 140, 248, 0.18) 100%);
+  border-color: rgba(56, 189, 248, 0.45);
+  color: #BAE6FD;
 }
+.state-future .top-pick-pill {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #E2E8F0;
+}
+.top-pick-pill:hover {
+  background: rgba(245, 158, 11, 0.35);
+  border-color: #F59E0B;
+  transform: translateY(-1px);
+}
+.state-current .top-pick-pill:hover {
+  background: rgba(56, 189, 248, 0.35);
+  border-color: #38BDF8;
+}
+
 .top-pick-badge {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
-  font-weight: 700;
+  font-size: 9.5px;
+  font-weight: 800;
   color: #F59E0B;
-  background: rgba(0, 0, 0, 0.4);
-  padding: 1px 4px;
-  border-radius: 3px;
-}
-
-.btn-resources-dropdown-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  background: none;
-  border: none;
-  padding: 6px 4px 0;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  color: var(--text-muted);
-  cursor: pointer;
-  transition: color 0.2s ease;
-}
-.btn-resources-dropdown-toggle:hover {
-  color: #BAE6FD;
-}
-
-.node-resources-dropdown-list {
-  display: none;
-  flex-direction: column;
-  gap: 6px;
-  margin-top: 8px;
-  padding: 8px;
-  background: rgba(0, 0, 0, 0.35);
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-.node-resources-dropdown-list.open {
-  display: flex;
-}
-
-.node-dropdown-link {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 6px;
-  padding: 5px 8px;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 2px 6px;
   border-radius: 4px;
-  font-size: 11.5px;
-  color: #BAE6FD;
-  text-decoration: none;
-  transition: background 0.15s ease;
 }
-.node-dropdown-link:hover {
-  background: rgba(56, 189, 248, 0.15);
-  color: #fff;
+.state-current .top-pick-badge {
+  color: #38BDF8;
 }
-.node-domain-tag {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  color: var(--text-muted);
+.state-future .top-pick-badge {
+  color: #CBD5E1;
 }
 
 /* ─── MILESTONE CALLOUT BADGE ─────────────────────────────────── */
 .node-milestone-flag {
   position: absolute;
-  top: -14px;
-  inset-inline-end: 18px;
+  top: 14px;
+  inset-inline-end: 22px;
   background: linear-gradient(135deg, #7F52FF, #13B9FD);
   color: #FFFFFF;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  font-weight: 700;
+  font-size: 10.5px;
+  font-weight: 800;
   padding: 4px 12px;
   border-radius: 999px;
-  box-shadow: 0 4px 15px rgba(127, 82, 255, 0.5);
+  box-shadow: 0 4px 15px rgba(127, 82, 255, 0.6);
   letter-spacing: 0.05em;
   text-transform: uppercase;
   z-index: 5;
@@ -973,8 +978,8 @@ body.journey-page {
 
 .journey-widget-window-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
   position: relative;
 }
 
@@ -985,48 +990,51 @@ body.journey-page {
 }
 
 .widget-node-card.state-completed {
-  --cloud-bg: #1F162A;
+  --cloud-bg: linear-gradient(145deg, #2E1632 0%, #1D112B 50%, #2C1608 100%);
   --cloud-border: #F59E0B;
-  --cloud-shadow: rgba(245, 158, 11, 0.35);
-  filter: drop-shadow(0 10px 20px var(--cloud-shadow));
+  --cloud-shadow: rgba(245, 158, 11, 0.45);
+  filter: drop-shadow(0 0 2.5px var(--cloud-border)) drop-shadow(0 14px 28px var(--cloud-shadow));
 }
 .widget-node-card.state-current {
-  --cloud-bg: #131B38;
+  --cloud-bg: linear-gradient(145deg, #0D264D 0%, #191842 50%, #1E123C 100%);
   --cloud-border: #38BDF8;
-  --cloud-shadow: rgba(56, 189, 248, 0.45);
-  filter: drop-shadow(0 12px 24px var(--cloud-shadow));
+  --cloud-shadow: rgba(56, 189, 248, 0.55);
+  filter: drop-shadow(0 0 3px var(--cloud-border)) drop-shadow(0 16px 30px var(--cloud-shadow));
+  animation: cloud-floating-pulse 2.8s infinite;
 }
 .widget-node-card.state-future {
-  --cloud-bg: #100D20;
-  --cloud-border: rgba(255, 255, 255, 0.14);
-  --cloud-shadow: rgba(0, 0, 0, 0.3);
-  opacity: 0.85;
-  filter: drop-shadow(0 8px 16px var(--cloud-shadow));
+  --cloud-bg: linear-gradient(145deg, #191230 0%, #110D25 100%);
+  --cloud-border: rgba(255, 255, 255, 0.16);
+  --cloud-shadow: rgba(0, 0, 0, 0.35);
+  opacity: 0.9;
+  filter: drop-shadow(0 0 1px var(--cloud-border)) drop-shadow(0 10px 20px var(--cloud-shadow));
 }
 
 .widget-node-badge {
   display: inline-flex;
   justify-content: center;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  font-weight: 700;
-  margin-bottom: 4px;
+  font-size: 12px;
+  font-weight: 800;
+  margin-bottom: 2px;
   text-transform: uppercase;
 }
-.widget-node-card.state-completed .widget-node-badge { color: #F59E0B; }
-.widget-node-card.state-current .widget-node-badge { color: #38BDF8; }
+.widget-node-card.state-completed .widget-node-badge { color: #FDE68A; }
+.widget-node-card.state-current .widget-node-badge { color: #BAE6FD; }
 .widget-node-card.state-future .widget-node-badge { color: var(--text-muted); }
 
 .widget-node-title {
   font-family: 'Sora', sans-serif;
-  font-size: 13.5px;
-  font-weight: 700;
+  font-size: 15.5px;
+  font-weight: 800;
   color: #FFFFFF;
   line-height: 1.3;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  margin: 2px 0;
 }
 
 .widget-node-desc {
-  font-size: 11.5px;
+  font-size: 12px;
   color: var(--text-muted);
   line-height: 1.4;
   display: -webkit-box;
@@ -1044,20 +1052,36 @@ body.journey-page {
 [data-theme="light"] .journey-widget-title-group h3 {
   color: #0F172A;
 }
-[data-theme="light"] .widget-node-card {
-  background: #FFFFFF;
-  border-color: rgba(0, 0, 0, 0.1);
+[data-theme="light"] .widget-node-card.cloud-block {
+  --cloud-bg: linear-gradient(145deg, #FFFFFF 0%, #F1F5F9 100%);
+  --cloud-border: rgba(0, 0, 0, 0.14);
+  --cloud-shadow: rgba(0, 0, 0, 0.08);
 }
-[data-theme="light"] .widget-node-title {
+[data-theme="light"] .widget-node-card.cloud-block .widget-node-title {
   color: #0F172A;
+  text-shadow: none;
 }
-[data-theme="light"] .widget-node-card.state-completed {
-  background: rgba(245, 158, 11, 0.08);
-  border-color: #F59E0B;
+[data-theme="light"] .widget-node-card.cloud-block .widget-node-desc {
+  color: #475569;
 }
-[data-theme="light"] .widget-node-card.state-current {
-  background: rgba(56, 189, 248, 0.08);
-  border-color: #0284C7;
+[data-theme="light"] .widget-node-card.cloud-block.state-completed {
+  --cloud-bg: linear-gradient(145deg, #FFFBEB 0%, #FEF3C7 100%);
+  --cloud-border: #F59E0B;
+  --cloud-shadow: rgba(245, 158, 11, 0.25);
+}
+[data-theme="light"] .widget-node-card.cloud-block.state-completed .widget-node-badge {
+  color: #B45309;
+}
+[data-theme="light"] .widget-node-card.cloud-block.state-current {
+  --cloud-bg: linear-gradient(145deg, #F0F9FF 0%, #E0F2FE 100%);
+  --cloud-border: #0284C7;
+  --cloud-shadow: rgba(2, 132, 199, 0.3);
+}
+[data-theme="light"] .widget-node-card.cloud-block.state-current .widget-node-badge {
+  color: #0284C7;
+}
+[data-theme="light"] .widget-node-card.cloud-block.state-future .widget-node-badge {
+  color: #64748B;
 }
 
 /* ─── RESPONSIVE BREAKPOINTS ─────────────────────────────────── */
@@ -1071,37 +1095,33 @@ body.journey-page {
   .cloud-block,
   .journey-node-card,
   .widget-node-card {
-    max-width: 360px;
-    min-width: 260px;
+    max-width: 380px;
+    min-width: 290px;
     aspect-ratio: 5 / 3;
-    clip-path: url(#cloud-clip);
-    padding: 26% 18% 16% 18%;
+    padding: 36px 26px 20px 26px;
     box-sizing: border-box;
   }
   .cloud-block::before,
   .journey-node-card::before,
   .widget-node-card::before {
-    content: "";
-    position: absolute;
+    inset: -2px;
+  }
+  .cloud-block::after,
+  .journey-node-card::after,
+  .widget-node-card::after {
     inset: 0;
-    clip-path: url(#cloud-clip);
-    background: var(--cloud-border, rgba(255, 255, 255, 0.14));
-    transform: scale(1.03);
-    z-index: -1;
-    pointer-events: none;
-    display: block;
   }
   .node-title {
-    font-size: 12.5px;
+    font-size: 14.5px;
     line-height: 1.25;
   }
   .node-day-tag {
-    font-size: 10px;
+    font-size: 11.5px;
   }
   .node-icon-badge {
     width: 28px;
     height: 28px;
-    font-size: 12px;
+    font-size: 13px;
   }
   .journey-hud-stats {
     width: 100%;

@@ -137,8 +137,17 @@
         centerIdx = targetDate < days[0].date ? 0 : days.length - 1;
       }
 
-      const startIdx = Math.max(0, centerIdx - 1);
-      const endIdx = Math.min(days.length, centerIdx + 2);
+      let startIdx = centerIdx - 1;
+      let endIdx = centerIdx + 2;
+
+      if (startIdx < 0) {
+        startIdx = 0;
+        endIdx = Math.min(days.length, 3);
+      } else if (endIdx > days.length) {
+        endIdx = days.length;
+        startIdx = Math.max(0, days.length - 3);
+      }
+
       return days.slice(startIdx, endIdx);
     },
 

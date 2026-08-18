@@ -398,16 +398,14 @@
             const topRow = document.createElement('div');
             topRow.className = 'node-top-row';
             topRow.innerHTML = `
-              <div style="display:flex;align-items:center;gap:6px;">
+              <div style="display:flex;align-items:center;gap:8px;">
                 <div class="node-icon-badge">${iconSymbol}</div>
                 <div style="text-align:left;">
                   <div class="node-day-tag">Day ${day.day_number} · W${day.week_number}</div>
                   <div class="node-date-tag">${formatDateLabel(day.date)}</div>
                 </div>
               </div>
-              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,0.45);text-transform:uppercase;">
-                ${day.state}
-              </div>
+              <div class="node-state-pill">${day.state}</div>
             `;
             cloudContent.appendChild(topRow);
 
