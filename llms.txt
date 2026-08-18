@@ -35,8 +35,11 @@ Kotlin, Java, Flutter, Dart, Jetpack Compose, Android SDK, iOS, MVVM, MVI, Clean
    App: https://play.google.com/store/apps/details?id=com.trainerize.Trainerize
 
 6. Visa Sponsorship Daily Jobs — Open-source AI job scraper (Python, Playwright, GitHub Actions)
-   Repo: https://github.com/AlirezaNezami96/Visa-Sponsorship-Daily-Jobs
+7. The Path — 6-Month Applied AI Engineering Progress Tracker (LLM apps, RAG, multi-agent systems, MCP, evals, and deployment)
+   Journey: https://alirezanezami96.github.io/AlirezaNezami/journey.html
 
-## Full Projects Page
+## Full Projects & Journey Pages
 
-https://alirezanezami96.github.io/AlirezaNezami/projects.html
+- Projects: https://alirezanezami96.github.io/AlirezaNezami/projects.html
+- AI Engineering Journey: https://alirezanezami96.github.io/AlirezaNezami/journey.html
+

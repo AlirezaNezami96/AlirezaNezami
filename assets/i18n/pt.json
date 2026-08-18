@@ -7,7 +7,8 @@
     "resume": "Currículo",
     "contact": "Contato",
     "game": "Jogo 🎮",
-    "bookCall": "Agendar chamada"
+    "bookCall": "Agendar chamada",
+    "journey": "Jornada 🧭"
   },
   "hero": {
     "challengeBadge": "DESAFIO ESPECIAL",
@@ -122,5 +123,14 @@
   "footer": {
     "rights": "Todos os direitos reservados.",
     "tagline": "Projetado e desenvolvido com precisão no nível do Kotlin."
+  },
+  "journey": {
+    "widgetTag": "roteiro de ia",
+    "widgetTitle": "A Jornada — Roteiro de IA de 6 Meses",
+    "widgetSub": "Acompanhamento de 182 metas diárias em Engenharia de IA Aplicada (LLMs, RAG, Agentes e MCP).",
+    "viewFull": "Ver jornada completa &rarr;",
+    "backPortfolio": "Portfólio",
+    "heroTitle": "A Jornada",
+    "heroDesc": "Um currículo de 182 dias em Engenharia de IA Aplicada — Aplicações LLM, RAG Avançado e Multi-Agentes."
   }
 }

@@ -7,7 +7,8 @@
     "resume": "CV",
     "contact": "Contact",
     "game": "Jeu 🎮",
-    "bookCall": "Prendre RDV"
+    "bookCall": "Prendre RDV",
+    "journey": "Parcours 🧭"
   },
   "hero": {
     "challengeBadge": "DÉFI EXCLUSIF",
@@ -122,5 +123,14 @@
   "footer": {
     "rights": "Tous droits réservés.",
     "tagline": "Conçu et développé avec la précision et la rigueur de Kotlin."
+  },
+  "journey": {
+    "widgetTag": "feuille de route ia",
+    "widgetTitle": "Le Parcours — Feuille de Route IA 6 Mois",
+    "widgetSub": "Suivi de 182 étapes quotidiennes en Ingénierie de l'IA Appliquée (LLM, RAG, Agents et MCP).",
+    "viewFull": "Voir le parcours complet &rarr;",
+    "backPortfolio": "Portfolio",
+    "heroTitle": "Le Parcours",
+    "heroDesc": "Un programme de 182 jours en Ingénierie de l'IA Appliquée — Applications LLM, RAG Avancé, Systèmes Multi-Agents et Déploiements."
   }
 }

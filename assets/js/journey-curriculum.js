@@ -1,0 +1,2840 @@
+/**
+ * The Path — 6-Month AI Engineering Progress Tracker Dataset
+ * Generated for 182-Day Curriculum starting 2026-08-18
+ */
+window.JOURNEY_CURRICULUM = [
+  {
+    "day_number": 1,
+    "date": "2026-08-18",
+    "week_number": 1,
+    "day_in_week": 1,
+    "day_type": "study",
+    "title": "Set up the toolkit",
+    "description": "Install Python 3.11+, VS Code, and create a venv. Create the GitHub repository that will hold all projects and code throughout this 6-month journey.",
+    "resources": [
+      {
+        "label": "Python Official Docs",
+        "url": "https://docs.python.org/3/tutorial/venv.html"
+      }
+    ],
+    "deliverable": "GitHub repository initialized with README and Python 3.11 virtual environment",
+    "completed_override": null
+  },
+  {
+    "day_number": 2,
+    "date": "2026-08-19",
+    "week_number": 1,
+    "day_in_week": 2,
+    "day_type": "study",
+    "title": "Learn async/await",
+    "description": "Work through the official Python asyncio docs; write three small practice async functions demonstrating concurrent fetching, task gathering, and timeouts.",
+    "resources": [
+      {
+        "label": "Python asyncio Documentation",
+        "url": "https://docs.python.org/3/library/asyncio.html"
+      }
+    ],
+    "deliverable": "3 functional asyncio scripts demonstrating concurrency patterns",
+    "completed_override": null
+  },
+  {
+    "day_number": 3,
+    "date": "2026-08-20",
+    "week_number": 1,
+    "day_in_week": 3,
+    "day_type": "study",
+    "title": "Learn Pydantic + type hints",
+    "description": "Master Pydantic v2 data validation and strict typing. Model a complex sample API response as a Pydantic class with custom validators.",
+    "resources": [
+      {
+        "label": "Pydantic v2 Docs",
+        "url": "https://docs.pydantic.dev/latest/"
+      }
+    ],
+    "deliverable": "Pydantic models with validation schemas for nested API payloads",
+    "completed_override": null
+  },
+  {
+    "day_number": 4,
+    "date": "2026-08-21",
+    "week_number": 1,
+    "day_in_week": 4,
+    "day_type": "study",
+    "title": "Build an Async CLI tool",
+    "description": "Build an async command-line tool that concurrently calls a public REST API, parses and validates the JSON response with Pydantic, and outputs formatted results.",
+    "resources": [
+      {
+        "label": "HTTPX Async Client",
+        "url": "https://www.python-httpx.org/async/"
+      }
+    ],
+    "deliverable": "Working async CLI utility in Python with error handling",
+    "completed_override": null
+  },
+  {
+    "day_number": 5,
+    "date": "2026-08-22",
+    "week_number": 1,
+    "day_in_week": 5,
+    "day_type": "study",
+    "title": "Polish & commit",
+    "description": "Clean up the CLI tool, write a concise and informative README with usage examples, and push the first verified commit of the roadmap.",
+    "resources": [
+      {
+        "label": "Conventional Commits",
+        "url": "https://www.conventionalcommits.org/"
+      }
+    ],
+    "deliverable": "Cleaned repo with documentation and passing CLI tests",
+    "completed_override": null
+  },
+  {
+    "day_number": 6,
+    "date": "2026-08-23",
+    "week_number": 1,
+    "day_in_week": 6,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 7,
+    "date": "2026-08-24",
+    "week_number": 1,
+    "day_in_week": 7,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 8,
+    "date": "2026-08-25",
+    "week_number": 2,
+    "day_in_week": 1,
+    "day_type": "study",
+    "title": "ChatGPT Prompt Engineering for Developers (Part 1)",
+    "description": "Complete the first half of DeepLearning.AI's 'ChatGPT Prompt Engineering for Developers' taught by Andrew Ng and Isa Fulford.",
+    "resources": [
+      {
+        "label": "DeepLearning.AI Prompt Engineering",
+        "url": "https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/"
+      }
+    ],
+    "deliverable": "Course notebook with prompting principles 1 & 2 exercises",
+    "completed_override": null
+  },
+  {
+    "day_number": 9,
+    "date": "2026-08-26",
+    "week_number": 2,
+    "day_in_week": 2,
+    "day_type": "study",
+    "title": "ChatGPT Prompt Engineering for Developers (Part 2)",
+    "description": "Finish the course. Implement each technique (summarizing, inferring, transforming, expanding) in a standalone Jupyter notebook.",
+    "resources": [
+      {
+        "label": "OpenAI Prompt Engineering Guide",
+        "url": "https://platform.openai.com/docs/guides/prompt-engineering"
+      }
+    ],
+    "deliverable": "Complete interactive Jupyter notebook covering all core prompting strategies",
+    "completed_override": null
+  },
+  {
+    "day_number": 10,
+    "date": "2026-08-27",
+    "week_number": 2,
+    "day_in_week": 3,
+    "day_type": "study",
+    "title": "Chip Huyen's AI Engineering \u2014 Intro Chapter",
+    "description": "Start Chip Huyen's book 'AI Engineering' (O'Reilly, 2025). Read the introduction chapter and explore the companion code repository.",
+    "resources": [
+      {
+        "label": "Chip Huyen AI Engineering Companion",
+        "url": "https://github.com/chiphuyen/aie-book"
+      }
+    ],
+    "deliverable": "Reading notes and environment setup for book companion code",
+    "completed_override": null
+  },
+  {
+    "day_number": 11,
+    "date": "2026-08-28",
+    "week_number": 2,
+    "day_in_week": 4,
+    "day_type": "study",
+    "title": "AI Engineering \u2014 Prompting Chapter",
+    "description": "Continue Chip Huyen's book, studying the in-depth prompting chapter. Analyze prompt optimization, token budgets, and prompt compression.",
+    "resources": [
+      {
+        "label": "AI Engineering Book",
+        "url": "https://huyenchip.com/"
+      }
+    ],
+    "deliverable": "Summary of prompt engineering trade-offs and token optimization rules",
+    "completed_override": null
+  },
+  {
+    "day_number": 12,
+    "date": "2026-08-29",
+    "week_number": 2,
+    "day_in_week": 5,
+    "day_type": "study",
+    "title": "Prompting Strategy Comparison",
+    "description": "Write a short benchmark comparison comparing few-shot vs. chain-of-thought (CoT) vs. structured-output prompting on a non-trivial classification/extraction task.",
+    "resources": [
+      {
+        "label": "Chain-of-Thought Paper (Wei et al.)",
+        "url": "https://arxiv.org/abs/2201.11903"
+      }
+    ],
+    "deliverable": "Markdown report with sample prompts, outputs, and cost/accuracy comparison",
+    "completed_override": null
+  },
+  {
+    "day_number": 13,
+    "date": "2026-08-30",
+    "week_number": 2,
+    "day_in_week": 6,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 14,
+    "date": "2026-08-31",
+    "week_number": 2,
+    "day_in_week": 7,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 15,
+    "date": "2026-09-01",
+    "week_number": 3,
+    "day_in_week": 1,
+    "day_type": "study",
+    "title": "Claude 101",
+    "description": "Sign up at anthropic.skilljar.com; complete the 'Claude 101' foundational course covering model capabilities, system prompts, and context windows.",
+    "resources": [
+      {
+        "label": "Anthropic Educational Academy",
+        "url": "https://anthropic.skilljar.com"
+      }
+    ],
+    "deliverable": "Course completion badge & initial Anthropic SDK script",
+    "completed_override": null
+  },
+  {
+    "day_number": 16,
+    "date": "2026-09-02",
+    "week_number": 3,
+    "day_in_week": 2,
+    "day_type": "study",
+    "title": "Building with the Claude API \u2014 Auth & Requests",
+    "description": "Work through 'Building with the Claude API' modules on authentication, client setup, basic message requests, and parameter tuning (temperature, max_tokens).",
+    "resources": [
+      {
+        "label": "Anthropic API Quickstart",
+        "url": "https://docs.anthropic.com/en/api/getting-started"
+      }
+    ],
+    "deliverable": "Python script with robust Anthropic client initialization and request wrappers",
+    "completed_override": null
+  },
+  {
+    "day_number": 17,
+    "date": "2026-09-03",
+    "week_number": 3,
+    "day_in_week": 3,
+    "day_type": "study",
+    "title": "Streaming & Tool Use Modules",
+    "description": "Complete the streaming responses and tool use (function calling) modules in Anthropic Academy. Implement real-time SSE token streaming.",
+    "resources": [
+      {
+        "label": "Claude Tool Use Guide",
+        "url": "https://docs.anthropic.com/en/docs/tool-use"
+      }
+    ],
+    "deliverable": "Streaming terminal chat client using Claude API with JSON schema tool definitions",
+    "completed_override": null
+  },
+  {
+    "day_number": 18,
+    "date": "2026-09-04",
+    "week_number": 3,
+    "day_in_week": 4,
+    "day_type": "study",
+    "title": "Prompt Caching & Error Handling",
+    "description": "Master Claude's Prompt Caching to slash latency and cost by up to 90%. Implement exponential backoff, rate limit handling, and API error categorization.",
+    "resources": [
+      {
+        "label": "Prompt Caching Documentation",
+        "url": "https://docs.anthropic.com/en/docs/prompt-caching"
+      }
+    ],
+    "deliverable": "Cached prompt pipeline with verified cache_read_input_tokens reduction",
+    "completed_override": null
+  },
+  {
+    "day_number": 19,
+    "date": "2026-09-05",
+    "week_number": 3,
+    "day_in_week": 5,
+    "day_type": "study",
+    "title": "Production Deployment Patterns",
+    "description": "Study production deployment patterns module: secret management, latency optimizations, batch API requests, and monitoring token consumption.",
+    "resources": [
+      {
+        "label": "Anthropic Production Best Practices",
+        "url": "https://docs.anthropic.com/en/docs/production-readiness"
+      }
+    ],
+    "deliverable": "Production-ready Claude client class with telemetry logging",
+    "completed_override": null
+  },
+  {
+    "day_number": 20,
+    "date": "2026-09-06",
+    "week_number": 3,
+    "day_in_week": 6,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 21,
+    "date": "2026-09-07",
+    "week_number": 3,
+    "day_in_week": 7,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 22,
+    "date": "2026-09-08",
+    "week_number": 4,
+    "day_in_week": 1,
+    "day_type": "study",
+    "title": "Finish Anthropic Academy Certification",
+    "description": "Finish any remaining modules in 'Building with the Claude API' and review the consolidated architecture patterns.",
+    "resources": [
+      {
+        "label": "Anthropic Interactive Tutorials",
+        "url": "https://github.com/anthropics/anthropic-sdk-python"
+      }
+    ],
+    "deliverable": "Complete course certification and cheat-sheet summary",
+    "completed_override": null
+  },
+  {
+    "day_number": 23,
+    "date": "2026-09-09",
+    "week_number": 4,
+    "day_in_week": 2,
+    "day_type": "study",
+    "title": "Design Project #0: CLI Chatbot with Memory",
+    "description": "Design Project #0 (CLI chatbot with structured conversation memory). Sketch the memory buffer architecture and message trimming strategy.",
+    "resources": [
+      {
+        "label": "System Architecture Sketching",
+        "url": "https://github.com/AlirezaNezami96"
+      }
+    ],
+    "deliverable": "Architecture diagram and technical specification document",
+    "completed_override": null
+  },
+  {
+    "day_number": 24,
+    "date": "2026-09-10",
+    "week_number": 4,
+    "day_in_week": 3,
+    "day_type": "study",
+    "title": "Build Core Chat Loop & Memory Buffer",
+    "description": "Build the core conversational loop in Python. Implement sliding-window memory with token counting to maintain context without overflowing limits.",
+    "resources": [
+      {
+        "label": "Tiktoken / Anthropic Tokenizer",
+        "url": "https://github.com/openai/tiktoken"
+      }
+    ],
+    "deliverable": "Working stateful chat engine with memory persistence across sessions",
+    "completed_override": null
+  },
+  {
+    "day_number": 25,
+    "date": "2026-09-11",
+    "week_number": 4,
+    "day_in_week": 4,
+    "day_type": "study",
+    "title": "Add Error Handling & Retry Logic",
+    "description": "Add graceful connection loss handling, network retry backoff, graceful interruption (Ctrl+C), and formatted markdown terminal output with Rich.",
+    "resources": [
+      {
+        "label": "Rich Terminal Library",
+        "url": "https://rich.readthedocs.io/"
+      }
+    ],
+    "deliverable": "Beautiful terminal UI with streaming markdown and resilient exception handling",
+    "completed_override": null
+  },
+  {
+    "day_number": 26,
+    "date": "2026-09-12",
+    "week_number": 4,
+    "day_in_week": 5,
+    "day_type": "study",
+    "title": "Project #0 Done \u2014 Polish, README & Commit",
+    "description": "Polish the CLI chatbot, write comprehensive README with setup instructions and architecture breakdown, and tag release. Project #0 completed!",
+    "resources": [
+      {
+        "label": "Project #0 GitHub Repo",
+        "url": "https://github.com/AlirezaNezami96"
+      }
+    ],
+    "deliverable": "\u2b50 Project #0 ('CLI AI Assistant with Context Memory') published to GitHub",
+    "completed_override": null
+  },
+  {
+    "day_number": 27,
+    "date": "2026-09-13",
+    "week_number": 4,
+    "day_in_week": 6,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 28,
+    "date": "2026-09-14",
+    "week_number": 4,
+    "day_in_week": 7,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 29,
+    "date": "2026-09-15",
+    "week_number": 5,
+    "day_in_week": 1,
+    "day_type": "study",
+    "title": "Understanding & Applying Text Embeddings",
+    "description": "Complete DeepLearning.AI's 'Understanding and Applying Text Embeddings'. Study vector spaces, cosine similarity, and semantic search fundamentals.",
+    "resources": [
+      {
+        "label": "DeepLearning.AI Text Embeddings",
+        "url": "https://www.deeplearning.ai/short-courses/google-cloud-vertex-ai/"
+      }
+    ],
+    "deliverable": "Cosine similarity calculator and embedding visualization script",
+    "completed_override": null
+  },
+  {
+    "day_number": 30,
+    "date": "2026-09-16",
+    "week_number": 5,
+    "day_in_week": 2,
+    "day_type": "study",
+    "title": "Vector Databases: From Embeddings to Applications (Part 1)",
+    "description": "Work through the first half of DeepLearning.AI's 'Vector Databases: from Embeddings to Applications' covering ANN algorithms (HNSW, IVF).",
+    "resources": [
+      {
+        "label": "DeepLearning.AI Vector Databases",
+        "url": "https://www.deeplearning.ai/short-courses/vector-databases-embeddings-applications/"
+      }
+    ],
+    "deliverable": "Notes on HNSW graph indexing vs Flat search complexity",
+    "completed_override": null
+  },
+  {
+    "day_number": 31,
+    "date": "2026-09-17",
+    "week_number": 5,
+    "day_in_week": 3,
+    "day_type": "study",
+    "title": "Vector Databases (Part 2)",
+    "description": "Finish the vector database course. Practice filtered search, metadata payload indexing, and multi-tenant namespace isolation.",
+    "resources": [
+      {
+        "label": "Qdrant Vector Database Docs",
+        "url": "https://qdrant.tech/documentation/"
+      }
+    ],
+    "deliverable": "Course completion exercises and benchmark comparisons",
+    "completed_override": null
+  },
+  {
+    "day_number": 32,
+    "date": "2026-09-18",
+    "week_number": 5,
+    "day_in_week": 4,
+    "day_type": "study",
+    "title": "Set up Local Qdrant / Chroma",
+    "description": "Install and run Qdrant or Chroma locally via Docker or in-memory Python client. Index a small test dataset and execute top-k semantic similarity queries.",
+    "resources": [
+      {
+        "label": "Chroma DB Quickstart",
+        "url": "https://docs.trychroma.com/"
+      }
+    ],
+    "deliverable": "Local vector store instance running with automated collection initialization",
+    "completed_override": null
+  },
+  {
+    "day_number": 33,
+    "date": "2026-09-19",
+    "week_number": 5,
+    "day_in_week": 5,
+    "day_type": "study",
+    "title": "Index Personal Knowledge Corpus",
+    "description": "Chunk, embed, and index a real personal corpus \u2014 your r\u00e9sum\u00e9, cover letters, and project READMEs. Validate chunk overlap and embedding consistency.",
+    "resources": [
+      {
+        "label": "Chunking Strategies Guide",
+        "url": "https://www.pinecone.io/learn/chunking-strategies/"
+      }
+    ],
+    "deliverable": "Fully indexed personal knowledge vector collection with metadata tags",
+    "completed_override": null
+  },
+  {
+    "day_number": 34,
+    "date": "2026-09-20",
+    "week_number": 5,
+    "day_in_week": 6,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 35,
+    "date": "2026-09-21",
+    "week_number": 5,
+    "day_in_week": 7,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 36,
+    "date": "2026-09-22",
+    "week_number": 6,
+    "day_in_week": 1,
+    "day_type": "study",
+    "title": "LangChain / LlamaIndex: Chat with Your Data (Part 1)",
+    "description": "Start DeepLearning.AI's 'LangChain: Chat with Your Data' / LlamaIndex quickstart. Study document loaders, text splitters, and vector store retrievers.",
+    "resources": [
+      {
+        "label": "LangChain Chat with Data",
+        "url": "https://www.deeplearning.ai/short-courses/langchain-chat-with-your-data/"
+      }
+    ],
+    "deliverable": "Document ingestion script with semantic sentence-splitting",
+    "completed_override": null
+  },
+  {
+    "day_number": 37,
+    "date": "2026-09-23",
+    "week_number": 6,
+    "day_in_week": 2,
+    "day_type": "study",
+    "title": "LangChain / LlamaIndex (Part 2)",
+    "description": "Finish the course. Master retrieval augmentation chains, question-answering with sources, and conversational retrieval with chat history.",
+    "resources": [
+      {
+        "label": "LlamaIndex Documentation",
+        "url": "https://docs.llamaindex.ai/"
+      }
+    ],
+    "deliverable": "End-to-end RAG chain combining query rewriting and context assembly",
+    "completed_override": null
+  },
+  {
+    "day_number": 38,
+    "date": "2026-09-24",
+    "week_number": 6,
+    "day_in_week": 3,
+    "day_type": "study",
+    "title": "Scaffold RAG Pipeline v1",
+    "description": "Scaffold a clean Python RAG architecture: query processing \u2192 similarity retrieval \u2192 prompt injection \u2192 grounded generation.",
+    "resources": [
+      {
+        "label": "RAG Architecture Blueprint",
+        "url": "https://github.com/AlirezaNezami96"
+      }
+    ],
+    "deliverable": "Modular RAG v1 pipeline with clean separation of retriever and generator",
+    "completed_override": null
+  },
+  {
+    "day_number": 39,
+    "date": "2026-09-25",
+    "week_number": 6,
+    "day_in_week": 4,
+    "day_type": "study",
+    "title": "Connect Personal Career Corpus",
+    "description": "Connect the RAG pipeline to the personal corpus indexed in Week 5. Tune prompt templates to cite source documents with exact line/section references.",
+    "resources": [
+      {
+        "label": "Grounding and Citation Prompts",
+        "url": "https://docs.anthropic.com"
+      }
+    ],
+    "deliverable": "Interactive Q&A assistant answering questions about Alireza's career and projects",
+    "completed_override": null
+  },
+  {
+    "day_number": 40,
+    "date": "2026-09-26",
+    "week_number": 6,
+    "day_in_week": 5,
+    "day_type": "study",
+    "title": "Test RAG v1 & Document Failure Cases",
+    "description": "Test with 10 challenging sample questions. Document failure cases: hallucinated details, missing context, and chunk boundary truncations.",
+    "resources": [
+      {
+        "label": "RAG Failure Modes Analysis",
+        "url": "https://arxiv.org/abs/2312.10997"
+      }
+    ],
+    "deliverable": "Evaluation log of 10 test queries with identified retrieval bottlenecks",
+    "completed_override": null
+  },
+  {
+    "day_number": 41,
+    "date": "2026-09-27",
+    "week_number": 6,
+    "day_in_week": 6,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 42,
+    "date": "2026-09-28",
+    "week_number": 6,
+    "day_in_week": 7,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 43,
+    "date": "2026-09-29",
+    "week_number": 7,
+    "day_in_week": 1,
+    "day_type": "study",
+    "title": "Advanced Retrieval for AI (Part 1)",
+    "description": "Start DeepLearning.AI's 'Advanced Retrieval for AI with Chroma'. Study query expansion, cross-encoder rerankers, and dense + sparse hybrid search.",
+    "resources": [
+      {
+        "label": "DeepLearning.AI Advanced Retrieval",
+        "url": "https://www.deeplearning.ai/short-courses/advanced-retrieval-for-ai/"
+      }
+    ],
+    "deliverable": "Course notebook with cross-encoder re-ranking experiments",
+    "completed_override": null
+  },
+  {
+    "day_number": 44,
+    "date": "2026-09-30",
+    "week_number": 7,
+    "day_in_week": 2,
+    "day_type": "study",
+    "title": "Advanced Retrieval for AI (Part 2)",
+    "description": "Finish the advanced retrieval course. Learn Reciprocal Rank Fusion (RRF) and contextual compression techniques.",
+    "resources": [
+      {
+        "label": "FlashRank / Cohere Rerank",
+        "url": "https://github.com/PrithivirajDamodaran/FlashRank"
+      }
+    ],
+    "deliverable": "RRF fusion implementation script combining BM25 and vector scores",
+    "completed_override": null
+  },
+  {
+    "day_number": 45,
+    "date": "2026-10-01",
+    "week_number": 7,
+    "day_in_week": 3,
+    "day_type": "study",
+    "title": "Implement Hybrid Retrieval (BM25 + Vector)",
+    "description": "Add BM25 keyword search alongside vector embeddings (hybrid retrieval). Combine scores with rank fusion to handle exact keywords & acronyms.",
+    "resources": [
+      {
+        "label": "Rank-BM25 Python Package",
+        "url": "https://github.com/dorianbrown/rank_bm25"
+      }
+    ],
+    "deliverable": "Hybrid retriever returning balanced semantic and keyword search hits",
+    "completed_override": null
+  },
+  {
+    "day_number": 46,
+    "date": "2026-10-02",
+    "week_number": 7,
+    "day_in_week": 4,
+    "day_type": "study",
+    "title": "Add FlashRank / Cohere Reranking Step",
+    "description": "Integrate a neural re-ranking step (FlashRank for local or Cohere Rerank API). Filter top-25 candidate chunks down to top-5 high-relevance chunks.",
+    "resources": [
+      {
+        "label": "Cohere Rerank Docs",
+        "url": "https://docs.cohere.com/docs/reranking"
+      }
+    ],
+    "deliverable": "Re-ranking module integrated into retrieval pipeline with latency benchmarks",
+    "completed_override": null
+  },
+  {
+    "day_number": 47,
+    "date": "2026-10-03",
+    "week_number": 7,
+    "day_in_week": 5,
+    "day_type": "study",
+    "title": "Benchmark RAG v1 vs. RAG v2",
+    "description": "Run the 10 sample questions from Week 6 against RAG v2. Compare answer precision, citation accuracy, and hallucination reduction.",
+    "resources": [
+      {
+        "label": "RAG v1 vs v2 Benchmark",
+        "url": "https://github.com/AlirezaNezami96"
+      }
+    ],
+    "deliverable": "Side-by-side comparative evaluation sheet highlighting v2 improvements",
+    "completed_override": null
+  },
+  {
+    "day_number": 48,
+    "date": "2026-10-04",
+    "week_number": 7,
+    "day_in_week": 6,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 49,
+    "date": "2026-10-05",
+    "week_number": 7,
+    "day_in_week": 7,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 50,
+    "date": "2026-10-06",
+    "week_number": 8,
+    "day_in_week": 1,
+    "day_type": "study",
+    "title": "RAGAS Framework Setup",
+    "description": "Study the RAGAS (Retrieval Augmented Generation Assessment) documentation. Install and configure the RAGAS Python evaluation suite.",
+    "resources": [
+      {
+        "label": "RAGAS Documentation",
+        "url": "https://docs.ragas.io/en/latest/"
+      }
+    ],
+    "deliverable": "RAGAS environment configured with automated evaluation metrics",
+    "completed_override": null
+  },
+  {
+    "day_number": 51,
+    "date": "2026-10-07",
+    "week_number": 8,
+    "day_in_week": 2,
+    "day_type": "study",
+    "title": "Create 20-Pair Golden Q&A Test Set",
+    "description": "Author a 20-pair golden ground-truth test dataset: question, ground-truth context, and expected answer covering edge cases and complex queries.",
+    "resources": [
+      {
+        "label": "Synthetic Test Data Generation",
+        "url": "https://docs.ragas.io/en/stable/concepts/test_data_generation/"
+      }
+    ],
+    "deliverable": "JSON golden dataset containing 20 curated query-answer validation pairs",
+    "completed_override": null
+  },
+  {
+    "day_number": 52,
+    "date": "2026-10-08",
+    "week_number": 8,
+    "day_in_week": 3,
+    "day_type": "study",
+    "title": "Execute Faithfulness & Answer Relevance Scoring",
+    "description": "Run automated RAGAS evaluation: measure context precision, context recall, faithfulness, and answer relevance across the test set.",
+    "resources": [
+      {
+        "label": "RAGAS Metrics Guide",
+        "url": "https://docs.ragas.io/en/latest/concepts/metrics/"
+      }
+    ],
+    "deliverable": "Evaluation report with numerical scores for Faithfulness and Relevance",
+    "completed_override": null
+  },
+  {
+    "day_number": 53,
+    "date": "2026-10-09",
+    "week_number": 8,
+    "day_in_week": 4,
+    "day_type": "study",
+    "title": "Remediate Retrieval Weaknesses",
+    "description": "Address weaknesses identified by RAGAS scores: tune chunk size/overlap, refine re-ranking thresholds, and enhance grounding prompt constraints.",
+    "resources": [
+      {
+        "label": "Prompt Optimization for RAG",
+        "url": "https://docs.anthropic.com"
+      }
+    ],
+    "deliverable": "Optimized RAG pipeline achieving >0.85 faithfulness score",
+    "completed_override": null
+  },
+  {
+    "day_number": 54,
+    "date": "2026-10-10",
+    "week_number": 8,
+    "day_in_week": 5,
+    "day_type": "study",
+    "title": "Project #1 Done \u2014 RAG Knowledge Assistant",
+    "description": "Write a comprehensive README showcasing architecture, hybrid retrieval, and RAGAS eval metrics. Project #1 ('RAG Knowledge Assistant') completed!",
+    "resources": [
+      {
+        "label": "Project #1 GitHub Repo",
+        "url": "https://github.com/AlirezaNezami96"
+      }
+    ],
+    "deliverable": "\u2b50 Project #1 ('RAG Knowledge Assistant') completed, documented, and pushed",
+    "completed_override": null
+  },
+  {
+    "day_number": 55,
+    "date": "2026-10-11",
+    "week_number": 8,
+    "day_in_week": 6,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 56,
+    "date": "2026-10-12",
+    "week_number": 8,
+    "day_in_week": 7,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 57,
+    "date": "2026-10-13",
+    "week_number": 9,
+    "day_in_week": 1,
+    "day_type": "study",
+    "title": "Functions, Tools and Agents with LangChain (Part 1)",
+    "description": "Complete the first half of DeepLearning.AI's 'Functions, Tools and Agents with LangChain'. Study OpenAI and Anthropic tool schema definitions.",
+    "resources": [
+      {
+        "label": "DeepLearning.AI Tools and Agents",
+        "url": "https://www.deeplearning.ai/short-courses/functions-tools-agents-langchain/"
+      }
+    ],
+    "deliverable": "Course notebook with basic tool definitions and schema generation",
+    "completed_override": null
+  },
+  {
+    "day_number": 58,
+    "date": "2026-10-14",
+    "week_number": 9,
+    "day_in_week": 2,
+    "day_type": "study",
+    "title": "Functions, Tools and Agents (Part 2)",
+    "description": "Finish the course. Build tool-calling loops that parse tool arguments, invoke Python functions safely, and return results to the LLM.",
+    "resources": [
+      {
+        "label": "Anthropic Tool Calling Tutorial",
+        "url": "https://docs.anthropic.com/en/docs/tool-use"
+      }
+    ],
+    "deliverable": "Robust function-calling dispatcher supporting multiple registered tools",
+    "completed_override": null
+  },
+  {
+    "day_number": 59,
+    "date": "2026-10-15",
+    "week_number": 9,
+    "day_in_week": 3,
+    "day_type": "study",
+    "title": "Build Calculator & Weather Tools",
+    "description": "Implement two concrete tools: a safe mathematical calculator tool (using AST parsing) and a real-time weather API integration tool.",
+    "resources": [
+      {
+        "label": "Open-Meteo Free API",
+        "url": "https://open-meteo.com/"
+      }
+    ],
+    "deliverable": "Validated Python tool modules with Pydantic argument schemas",
+    "completed_override": null
+  },
+  {
+    "day_number": 60,
+    "date": "2026-10-16",
+    "week_number": 9,
+    "day_in_week": 4,
+    "day_type": "study",
+    "title": "Connect Vector DB as a Third Tool",
+    "description": "Wrap the Week 5\u20138 RAG vector knowledge base as an agent tool (`query_career_knowledge`), allowing the LLM to decide dynamically when to retrieve context.",
+    "resources": [
+      {
+        "label": "Tool as a Retriever Pattern",
+        "url": "https://python.langchain.com/docs/how_to/tools_as_retrievers/"
+      }
+    ],
+    "deliverable": "Knowledge retrieval tool callable by LLM agent with structured search args",
+    "completed_override": null
+  },
+  {
+    "day_number": 61,
+    "date": "2026-10-17",
+    "week_number": 9,
+    "day_in_week": 5,
+    "day_type": "study",
+    "title": "Test Multi-Tool Agent Loop",
+    "description": "Test all three tools together with complex multi-intent questions requiring math, weather, and career facts in single conversations. Commit codebase.",
+    "resources": [
+      {
+        "label": "Multi-Tool Agent Repo",
+        "url": "https://github.com/AlirezaNezami96"
+      }
+    ],
+    "deliverable": "Interactive agent capable of multi-step tool routing and synthesis",
+    "completed_override": null
+  },
+  {
+    "day_number": 62,
+    "date": "2026-10-18",
+    "week_number": 9,
+    "day_in_week": 6,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 63,
+    "date": "2026-10-19",
+    "week_number": 9,
+    "day_in_week": 7,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 64,
+    "date": "2026-10-20",
+    "week_number": 10,
+    "day_in_week": 1,
+    "day_type": "study",
+    "title": "AI Agents in LangGraph (Part 1)",
+    "description": "Start DeepLearning.AI's 'AI Agents in LangGraph' taught by Harrison Chase and Rotem Weiss. Understand StateGraph, nodes, and edges.",
+    "resources": [
+      {
+        "label": "DeepLearning.AI LangGraph Course",
+        "url": "https://www.deeplearning.ai/short-courses/ai-agents-in-langgraph/"
+      }
+    ],
+    "deliverable": "First minimal LangGraph state graph executing conditional branching",
+    "completed_override": null
+  },
+  {
+    "day_number": 65,
+    "date": "2026-10-21",
+    "week_number": 10,
+    "day_in_week": 2,
+    "day_type": "study",
+    "title": "AI Agents in LangGraph (Part 2)",
+    "description": "Finish the LangGraph course. Master cyclic graphs, memory persistence, time-travel debugging, and state schema inheritance.",
+    "resources": [
+      {
+        "label": "LangGraph Official Docs",
+        "url": "https://langchain-ai.github.io/langgraph/"
+      }
+    ],
+    "deliverable": "Stateful agent graph with persistent checkpointer backend",
+    "completed_override": null
+  },
+  {
+    "day_number": 66,
+    "date": "2026-10-22",
+    "week_number": 10,
+    "day_in_week": 3,
+    "day_type": "study",
+    "title": "LangChain Academy: Graphs & Routers",
+    "description": "Complete the LangChain Academy LangGraph module on dynamic routing, subgraphs, and map-reduce agentic workflows.",
+    "resources": [
+      {
+        "label": "LangChain Academy",
+        "url": "https://academy.langchain.com/"
+      }
+    ],
+    "deliverable": "Router subgraph directing tasks between specialized worker nodes",
+    "completed_override": null
+  },
+  {
+    "day_number": 67,
+    "date": "2026-10-23",
+    "week_number": 10,
+    "day_in_week": 4,
+    "day_type": "study",
+    "title": "Rebuild Multi-Tool Agent in LangGraph",
+    "description": "Refactor the Week 9 multi-tool agent into a proper LangGraph state machine with explicit message state, agent node, and tool execution node.",
+    "resources": [
+      {
+        "label": "LangGraph ToolNode Pattern",
+        "url": "https://langchain-ai.github.io/langgraph/how-tos/tool-calling/"
+      }
+    ],
+    "deliverable": "LangGraph implementation of multi-tool assistant with clear visualization graph",
+    "completed_override": null
+  },
+  {
+    "day_number": 68,
+    "date": "2026-10-24",
+    "week_number": 10,
+    "day_in_week": 5,
+    "day_type": "study",
+    "title": "Add Human-in-the-Loop Checkpoint Node",
+    "description": "Add an interrupt/human-approval checkpoint node before executing destructive or high-cost tool actions. Verify state resumption.",
+    "resources": [
+      {
+        "label": "LangGraph Human-in-the-Loop Guide",
+        "url": "https://langchain-ai.github.io/langgraph/how-tos/human-in-the-loop/"
+      }
+    ],
+    "deliverable": "Interactive approval flow pausing graph execution until user approval",
+    "completed_override": null
+  },
+  {
+    "day_number": 69,
+    "date": "2026-10-25",
+    "week_number": 10,
+    "day_in_week": 6,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 70,
+    "date": "2026-10-26",
+    "week_number": 10,
+    "day_in_week": 7,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 71,
+    "date": "2026-10-27",
+    "week_number": 11,
+    "day_in_week": 1,
+    "day_type": "study",
+    "title": "Hugging Face Agents Course (Unit 1)",
+    "description": "Start the Hugging Face Agents Course (huggingface.co/learn/agents-course). Study agent reasoning loops (ReAct, CodeAgents) and open-weight models.",
+    "resources": [
+      {
+        "label": "Hugging Face Agents Course",
+        "url": "https://huggingface.co/learn/agents-course"
+      }
+    ],
+    "deliverable": "Smolagents notebook running open-weights tool calling locally",
+    "completed_override": null
+  },
+  {
+    "day_number": 72,
+    "date": "2026-10-28",
+    "week_number": 11,
+    "day_in_week": 2,
+    "day_type": "study",
+    "title": "Multi AI Agent Systems with CrewAI",
+    "description": "Complete DeepLearning.AI's 'Multi AI Agent Systems with crewAI' or Hugging Face Unit 2. Learn role-playing agents, delegation, and sequential pipelines.",
+    "resources": [
+      {
+        "label": "DeepLearning.AI CrewAI Course",
+        "url": "https://www.deeplearning.ai/short-courses/multi-ai-agent-systems-with-crewai/"
+      }
+    ],
+    "deliverable": "CrewAI 3-agent team (Researcher, Writer, Reviewer) producing collaborative output",
+    "completed_override": null
+  },
+  {
+    "day_number": 73,
+    "date": "2026-10-29",
+    "week_number": 11,
+    "day_in_week": 3,
+    "day_type": "study",
+    "title": "Introduction to MCP (Part 1)",
+    "description": "Start Anthropic Academy's 'Introduction to Model Context Protocol (MCP)'. Understand the MCP client-host-server architecture specification.",
+    "resources": [
+      {
+        "label": "Model Context Protocol Docs",
+        "url": "https://modelcontextprotocol.io"
+      }
+    ],
+    "deliverable": "Notes on MCP primitives: Tools, Resources, and Prompts",
+    "completed_override": null
+  },
+  {
+    "day_number": 74,
+    "date": "2026-10-30",
+    "week_number": 11,
+    "day_in_week": 4,
+    "day_type": "study",
+    "title": "Introduction to MCP (Part 2)",
+    "description": "Finish 'Introduction to MCP'. Inspect stdio and SSE transport protocols. Test connecting Claude Desktop to standard reference MCP servers.",
+    "resources": [
+      {
+        "label": "Anthropic Academy MCP Course",
+        "url": "https://anthropic.skilljar.com"
+      }
+    ],
+    "deliverable": "Claude Desktop configured with local filesystem and SQLite MCP servers",
+    "completed_override": null
+  },
+  {
+    "day_number": 75,
+    "date": "2026-10-31",
+    "week_number": 11,
+    "day_in_week": 5,
+    "day_type": "study",
+    "title": "Weekly Synthesis & Architecture Review",
+    "description": "Review and consolidate notes from Weeks 9\u201311. Compare LangGraph vs CrewAI vs Smolagents vs MCP. Prepare for Project #2 build.",
+    "resources": [
+      {
+        "label": "Agent Frameworks Comparison Matrix",
+        "url": "https://github.com/AlirezaNezami96"
+      }
+    ],
+    "deliverable": "Comparative technical matrix of leading AI agent orchestration frameworks",
+    "completed_override": null
+  },
+  {
+    "day_number": 76,
+    "date": "2026-11-01",
+    "week_number": 11,
+    "day_in_week": 6,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 77,
+    "date": "2026-11-02",
+    "week_number": 11,
+    "day_in_week": 7,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 78,
+    "date": "2026-11-03",
+    "week_number": 12,
+    "day_in_week": 1,
+    "day_type": "study",
+    "title": "Design Project #2: Job-Search Intelligence Agent",
+    "description": "Design an autonomous job-search agent: 1. Fetch live posting -> 2. Extract technical requirements -> 3. Compare with r\u00e9sum\u00e9 -> 4. Draft personalized outreach note.",
+    "resources": [
+      {
+        "label": "Project #2 Architecture Spec",
+        "url": "https://github.com/AlirezaNezami96"
+      }
+    ],
+    "deliverable": "Detailed flowchart and LangGraph state schema for the job-search agent",
+    "completed_override": null
+  },
+  {
+    "day_number": 79,
+    "date": "2026-11-04",
+    "week_number": 12,
+    "day_in_week": 2,
+    "day_type": "study",
+    "title": "Build Steps 1 & 2 (Fetch & Extract Requirements)",
+    "description": "Build pipeline steps 1 & 2: async job scraping from Greenhouse/Lever/Ashby URLs, followed by structured extraction of requirements using Claude.",
+    "resources": [
+      {
+        "label": "BeautifulSoup & Pydantic Extraction",
+        "url": "https://docs.pydantic.dev"
+      }
+    ],
+    "deliverable": "Job posting parser outputting typed requirements and qualifications",
+    "completed_override": null
+  },
+  {
+    "day_number": 80,
+    "date": "2026-11-05",
+    "week_number": 12,
+    "day_in_week": 3,
+    "day_type": "study",
+    "title": "Build Step 3 (Semantic R\u00e9sum\u00e9 Gap Analysis)",
+    "description": "Build step 3: query the career vector database to evaluate candidate fit, highlighting matched strengths and missing technical gaps.",
+    "resources": [
+      {
+        "label": "Semantic Gap Analysis Module",
+        "url": "https://github.com/AlirezaNezami96"
+      }
+    ],
+    "deliverable": "Fit scoring module generating evidence-backed match analysis",
+    "completed_override": null
+  },
+  {
+    "day_number": 81,
+    "date": "2026-11-06",
+    "week_number": 12,
+    "day_in_week": 4,
+    "day_type": "study",
+    "title": "Build Step 4 (Draft Outreach) & Wire into LangGraph",
+    "description": "Build step 4: generate tailored outreach emails and cover notes addressing specific company needs. Wire all 4 stages into a robust LangGraph state machine.",
+    "resources": [
+      {
+        "label": "LangGraph StateGraph Builder",
+        "url": "https://langchain-ai.github.io/langgraph/"
+      }
+    ],
+    "deliverable": "End-to-end LangGraph job application assistant executing full 4-stage pipeline",
+    "completed_override": null
+  },
+  {
+    "day_number": 82,
+    "date": "2026-11-07",
+    "week_number": 12,
+    "day_in_week": 5,
+    "day_type": "study",
+    "title": "Project #2 Done \u2014 Test, Document & Tag",
+    "description": "Run comprehensive end-to-end tests across 5 real job postings. Write README with sample outputs and architecture diagrams. Project #2 completed!",
+    "resources": [
+      {
+        "label": "Project #2 GitHub Repo",
+        "url": "https://github.com/AlirezaNezami96"
+      }
+    ],
+    "deliverable": "\u2b50 Project #2 ('Autonomous Job-Search Agent') completed and published",
+    "completed_override": null
+  },
+  {
+    "day_number": 83,
+    "date": "2026-11-08",
+    "week_number": 12,
+    "day_in_week": 6,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 84,
+    "date": "2026-11-09",
+    "week_number": 12,
+    "day_in_week": 7,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 85,
+    "date": "2026-11-10",
+    "week_number": 13,
+    "day_in_week": 1,
+    "day_type": "study",
+    "title": "Langfuse Evaluation Guide",
+    "description": "Study the Langfuse evaluation guide. Set up a free Langfuse cloud account (or local Docker self-host) and generate API keys.",
+    "resources": [
+      {
+        "label": "Langfuse Documentation",
+        "url": "https://langfuse.com/docs"
+      }
+    ],
+    "deliverable": "Langfuse project created and connected to local development environment",
+    "completed_override": null
+  },
+  {
+    "day_number": 86,
+    "date": "2026-11-11",
+    "week_number": 13,
+    "day_in_week": 2,
+    "day_type": "study",
+    "title": "Connect Langfuse Tracing to Project #2",
+    "description": "Instrument the LangGraph job-search agent with Langfuse callbacks. Verify automated capture of prompts, responses, latencies, and token counts.",
+    "resources": [
+      {
+        "label": "Langfuse LangGraph Integration",
+        "url": "https://langfuse.com/docs/integrations/langchain"
+      }
+    ],
+    "deliverable": "Live Langfuse dashboard populating spans and traces for agent runs",
+    "completed_override": null
+  },
+  {
+    "day_number": 87,
+    "date": "2026-11-12",
+    "week_number": 13,
+    "day_in_week": 3,
+    "day_type": "study",
+    "title": "Design LLM-as-a-Judge Evaluation Pipeline",
+    "description": "Design an LLM-as-a-Judge evaluation prompt to evaluate the requirements extraction step on criteria: completeness, accuracy, and hallucination absence.",
+    "resources": [
+      {
+        "label": "LLM-as-a-Judge Research (Zheng et al.)",
+        "url": "https://arxiv.org/abs/2306.05685"
+      }
+    ],
+    "deliverable": "Structured judge prompt with few-shot calibration rubrics",
+    "completed_override": null
+  },
+  {
+    "day_number": 88,
+    "date": "2026-11-13",
+    "week_number": 13,
+    "day_in_week": 4,
+    "day_type": "study",
+    "title": "Build Golden Dataset for Extraction Step",
+    "description": "Construct a golden validation dataset of 15 diverse job descriptions paired with expert-annotated required skills and qualifications.",
+    "resources": [
+      {
+        "label": "Langfuse Datasets Guide",
+        "url": "https://langfuse.com/docs/datasets"
+      }
+    ],
+    "deliverable": "Versioned Langfuse evaluation dataset with 15 ground-truth records",
+    "completed_override": null
+  },
+  {
+    "day_number": 89,
+    "date": "2026-11-14",
+    "week_number": 13,
+    "day_in_week": 5,
+    "day_type": "study",
+    "title": "Run Eval Pipeline & Review Scores",
+    "description": "Execute the evaluation pipeline against the golden dataset in Langfuse. Analyze precision scores, iterate on extractor prompt, and commit improvements.",
+    "resources": [
+      {
+        "label": "Evaluation Run Results",
+        "url": "https://langfuse.com"
+      }
+    ],
+    "deliverable": "Evaluation summary report demonstrating measurable prompt performance gains",
+    "completed_override": null
+  },
+  {
+    "day_number": 90,
+    "date": "2026-11-15",
+    "week_number": 13,
+    "day_in_week": 6,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 91,
+    "date": "2026-11-16",
+    "week_number": 13,
+    "day_in_week": 7,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 92,
+    "date": "2026-11-17",
+    "week_number": 14,
+    "day_in_week": 1,
+    "day_type": "study",
+    "title": "Langfuse Tracing Deep-Dive",
+    "description": "Study Langfuse tracing primitives: traces, spans, generations, and events. Implement custom span contexts for granular latency profiling.",
+    "resources": [
+      {
+        "label": "Langfuse Tracing SDK",
+        "url": "https://langfuse.com/docs/tracing"
+      }
+    ],
+    "deliverable": "Hierarchical tracing helper module for custom Python agent functions",
+    "completed_override": null
+  },
+  {
+    "day_number": 93,
+    "date": "2026-11-18",
+    "week_number": 14,
+    "day_in_week": 2,
+    "day_type": "study",
+    "title": "Instrument All LLM Calls in Project #2",
+    "description": "Ensure 100% of LLM calls across all agent stages carry model metadata, temperature parameters, and session tags for user tracking.",
+    "resources": [
+      {
+        "label": "Observability Best Practices",
+        "url": "https://langfuse.com/docs/analytics"
+      }
+    ],
+    "deliverable": "Fully instrumented agent pipeline with comprehensive session analytics",
+    "completed_override": null
+  },
+  {
+    "day_number": 94,
+    "date": "2026-11-19",
+    "week_number": 14,
+    "day_in_week": 3,
+    "day_type": "study",
+    "title": "Instrument Tool Calls & Retrieval Spans",
+    "description": "Instrument web scraper tool calls, vector DB similarity queries, and re-ranking steps as discrete child spans with duration logging.",
+    "resources": [
+      {
+        "label": "Custom Span Monitoring",
+        "url": "https://langfuse.com/docs/sdk/python/low-level-sdk"
+      }
+    ],
+    "deliverable": "Full trace tree reflecting both LLM generations and external I/O actions",
+    "completed_override": null
+  },
+  {
+    "day_number": 95,
+    "date": "2026-11-20",
+    "week_number": 14,
+    "day_in_week": 4,
+    "day_type": "study",
+    "title": "Add Cost & Latency Dashboard Tracking",
+    "description": "Configure token pricing models in Langfuse to track cost per run, cumulative expenditures, p50/p95 latency distributions, and error rates.",
+    "resources": [
+      {
+        "label": "Cost Tracking Documentation",
+        "url": "https://langfuse.com/docs/analytics/metrics"
+      }
+    ],
+    "deliverable": "Live analytics view tracking real-time API dollar spend and latency curves",
+    "completed_override": null
+  },
+  {
+    "day_number": 96,
+    "date": "2026-11-21",
+    "week_number": 14,
+    "day_in_week": 5,
+    "day_type": "study",
+    "title": "End-to-End Trace Audit & Remediation",
+    "description": "Review a complete agent trace end-to-end. Identify and resolve any bottlenecks (e.g. redundant queries, bloated system prompts). Commit changes.",
+    "resources": [
+      {
+        "label": "Trace Audit Report",
+        "url": "https://github.com/AlirezaNezami96"
+      }
+    ],
+    "deliverable": "Optimized codebase with 25% lower latency and verified clean traces",
+    "completed_override": null
+  },
+  {
+    "day_number": 97,
+    "date": "2026-11-22",
+    "week_number": 14,
+    "day_in_week": 6,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 98,
+    "date": "2026-11-23",
+    "week_number": 14,
+    "day_in_week": 7,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 99,
+    "date": "2026-11-24",
+    "week_number": 15,
+    "day_in_week": 1,
+    "day_type": "study",
+    "title": "Official FastAPI Tutorial (Part 1)",
+    "description": "Work through the official FastAPI tutorial: path parameters, query parameters, request bodies with Pydantic, and automatic Swagger docs.",
+    "resources": [
+      {
+        "label": "FastAPI Official Tutorial",
+        "url": "https://fastapi.tiangolo.com/tutorial/"
+      }
+    ],
+    "deliverable": "Basic FastAPI server running with interactive /docs UI",
+    "completed_override": null
+  },
+  {
+    "day_number": 100,
+    "date": "2026-11-25",
+    "week_number": 15,
+    "day_in_week": 2,
+    "day_type": "study",
+    "title": "Official FastAPI Tutorial (Part 2)",
+    "description": "Finish the FastAPI tutorial: dependency injection, async route handlers, background tasks, CORS configuration, and exception handlers.",
+    "resources": [
+      {
+        "label": "FastAPI Dependencies",
+        "url": "https://fastapi.tiangolo.com/tutorial/dependencies/"
+      }
+    ],
+    "deliverable": "Production-patterned FastAPI structure with modular APIRouters",
+    "completed_override": null
+  },
+  {
+    "day_number": 101,
+    "date": "2026-11-26",
+    "week_number": 15,
+    "day_in_week": 3,
+    "day_type": "study",
+    "title": "Wrap Project #1 in a FastAPI Service",
+    "description": "Wrap Project #1 (RAG Knowledge Assistant) in clean FastAPI endpoints: `POST /api/chat`, `POST /api/query`, and `GET /api/health`.",
+    "resources": [
+      {
+        "label": "Streaming Responses in FastAPI",
+        "url": "https://fastapi.tiangolo.com/advanced/custom-response/#streamingresponse"
+      }
+    ],
+    "deliverable": "RESTful API service exposing RAG assistant with streaming SSE support",
+    "completed_override": null
+  },
+  {
+    "day_number": 102,
+    "date": "2026-11-27",
+    "week_number": 15,
+    "day_in_week": 4,
+    "day_type": "study",
+    "title": "Docker Setup & Containerization",
+    "description": "Review Docker fundamentals. Author an optimized multi-stage `Dockerfile` with slim Python base, non-root user, and cached pip layers.",
+    "resources": [
+      {
+        "label": "Docker Python Best Practices",
+        "url": "https://docs.docker.com/language/python/build-images/"
+      }
+    ],
+    "deliverable": "Production Dockerfile and .dockerignore for the FastAPI AI application",
+    "completed_override": null
+  },
+  {
+    "day_number": 103,
+    "date": "2026-11-28",
+    "week_number": 15,
+    "day_in_week": 5,
+    "day_type": "study",
+    "title": "Build & Validate Local Container",
+    "description": "Build the Docker image locally, run the container, test API endpoints via curl, and confirm memory and startup performance. Commit Dockerfile.",
+    "resources": [
+      {
+        "label": "Container Testing Checklist",
+        "url": "https://docs.docker.com"
+      }
+    ],
+    "deliverable": "Verified lightweight container image (<250MB) passing healthcheck endpoints",
+    "completed_override": null
+  },
+  {
+    "day_number": 104,
+    "date": "2026-11-29",
+    "week_number": 15,
+    "day_in_week": 6,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 105,
+    "date": "2026-11-30",
+    "week_number": 15,
+    "day_in_week": 7,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 106,
+    "date": "2026-12-01",
+    "week_number": 16,
+    "day_in_week": 1,
+    "day_type": "study",
+    "title": "Prompt Injection Defense & Input Validation",
+    "description": "Study prompt injection attack vectors (direct injection, indirect injection). Implement strict input length caps and delimiter sanitization.",
+    "resources": [
+      {
+        "label": "OWASP Top 10 for LLMs",
+        "url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/"
+      }
+    ],
+    "deliverable": "Input validation guardrail intercepting prompt injection payloads",
+    "completed_override": null
+  },
+  {
+    "day_number": 107,
+    "date": "2026-12-02",
+    "week_number": 16,
+    "day_in_week": 2,
+    "day_type": "study",
+    "title": "Output Filtering & Content Safety",
+    "description": "Add output filtering guardrails to prevent PII leakage, system prompt extraction, and unintended role assumptions in API responses.",
+    "resources": [
+      {
+        "label": "Guardrails AI Documentation",
+        "url": "https://www.guardrailsai.com/docs"
+      }
+    ],
+    "deliverable": "Output verification middleware scanning LLM outputs before client delivery",
+    "completed_override": null
+  },
+  {
+    "day_number": 108,
+    "date": "2026-12-03",
+    "week_number": 16,
+    "day_in_week": 3,
+    "day_type": "study",
+    "title": "Implement Sliding-Window Rate Limiting",
+    "description": "Add IP and API-key rate limiting (slowapi / Redis token-bucket) to protect backend endpoints from abuse and runaway costs.",
+    "resources": [
+      {
+        "label": "Slowapi Rate Limiter",
+        "url": "https://slowapi.readthedocs.io/"
+      }
+    ],
+    "deliverable": "Rate-limited API endpoints returning HTTP 429 upon threshold breach",
+    "completed_override": null
+  },
+  {
+    "day_number": 109,
+    "date": "2026-12-04",
+    "week_number": 16,
+    "day_in_week": 4,
+    "day_type": "study",
+    "title": "Wire Langfuse Telemetry into Production API",
+    "description": "Integrate the Week 13\u201314 Langfuse observability and evaluation hooks into the FastAPI application middleware.",
+    "resources": [
+      {
+        "label": "Langfuse FastAPI Integration",
+        "url": "https://langfuse.com"
+      }
+    ],
+    "deliverable": "Unified production service with automated tracing and guardrail metrics",
+    "completed_override": null
+  },
+  {
+    "day_number": 110,
+    "date": "2026-12-05",
+    "week_number": 16,
+    "day_in_week": 5,
+    "day_type": "study",
+    "title": "Project #3 Done \u2014 Enterprise Production Service",
+    "description": "Deploy containerized service to free-tier cloud host (e.g. Render / Railway), write API documentation. Project #3 completed!",
+    "resources": [
+      {
+        "label": "Project #3 GitHub Repo",
+        "url": "https://github.com/AlirezaNezami96"
+      }
+    ],
+    "deliverable": "\u2b50 Project #3 ('Production AI Assistant API with Guardrails') deployed and live",
+    "completed_override": null
+  },
+  {
+    "day_number": 111,
+    "date": "2026-12-06",
+    "week_number": 16,
+    "day_in_week": 6,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 112,
+    "date": "2026-12-07",
+    "week_number": 16,
+    "day_in_week": 7,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 113,
+    "date": "2026-12-08",
+    "week_number": 17,
+    "day_in_week": 1,
+    "day_type": "study",
+    "title": "MCP: Advanced Topics (Part 1)",
+    "description": "Complete the first half of Anthropic Academy's 'MCP: Advanced Topics'. Learn dynamic resource templates, notifications, and sampling.",
+    "resources": [
+      {
+        "label": "Anthropic Academy MCP Advanced",
+        "url": "https://anthropic.skilljar.com"
+      }
+    ],
+    "deliverable": "Notes on advanced MCP server architectures and subscription protocols",
+    "completed_override": null
+  },
+  {
+    "day_number": 114,
+    "date": "2026-12-09",
+    "week_number": 17,
+    "day_in_week": 2,
+    "day_type": "study",
+    "title": "MCP: Advanced Topics (Part 2)",
+    "description": "Finish the advanced MCP course. Master bi-directional sampling, roots, security sandboxing, and enterprise client connections.",
+    "resources": [
+      {
+        "label": "MCP Specification",
+        "url": "https://spec.modelcontextprotocol.io"
+      }
+    ],
+    "deliverable": "Course completion certificate and reference MCP client script",
+    "completed_override": null
+  },
+  {
+    "day_number": 115,
+    "date": "2026-12-10",
+    "week_number": 17,
+    "day_in_week": 3,
+    "day_type": "study",
+    "title": "Build Rich-Context AI Apps with MCP (Part 1)",
+    "description": "Start DeepLearning.AI's 'MCP: Build Rich-Context AI Apps with Anthropic'. Study MCP server design for enterprise workflows.",
+    "resources": [
+      {
+        "label": "DeepLearning.AI MCP Course",
+        "url": "https://www.deeplearning.ai/courses/mcp-build-rich-context-ai-apps-with-anthropic"
+      }
+    ],
+    "deliverable": "Course implementation notebook with multi-resource MCP server",
+    "completed_override": null
+  },
+  {
+    "day_number": 116,
+    "date": "2026-12-11",
+    "week_number": 17,
+    "day_in_week": 4,
+    "day_type": "study",
+    "title": "Build Rich-Context AI Apps with MCP (Part 2)",
+    "description": "Finish the DeepLearning.AI MCP course. Build MCP servers exposing custom tools and live context to Claude Desktop and AI IDEs.",
+    "resources": [
+      {
+        "label": "FastMCP Python SDK",
+        "url": "https://github.com/jlowin/fastmcp"
+      }
+    ],
+    "deliverable": "Functional FastMCP server exposing system tools and dynamic resources",
+    "completed_override": null
+  },
+  {
+    "day_number": 117,
+    "date": "2026-12-12",
+    "week_number": 17,
+    "day_in_week": 5,
+    "day_type": "study",
+    "title": "Design Custom Domain MCP Server",
+    "description": "Design a bespoke MCP server exposing real domain tools (e.g. mobile app-store analytics API, GitHub CI/CD build inspector, or Flutter diagnostic engine).",
+    "resources": [
+      {
+        "label": "Custom MCP Server Spec",
+        "url": "https://github.com/AlirezaNezami96"
+      }
+    ],
+    "deliverable": "Architecture specification defining tools, schemas, and resource URIs",
+    "completed_override": null
+  },
+  {
+    "day_number": 118,
+    "date": "2026-12-13",
+    "week_number": 17,
+    "day_in_week": 6,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 119,
+    "date": "2026-12-14",
+    "week_number": 17,
+    "day_in_week": 7,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 120,
+    "date": "2026-12-15",
+    "week_number": 18,
+    "day_in_week": 1,
+    "day_type": "study",
+    "title": "Scaffold Custom MCP Server with FastMCP",
+    "description": "Scaffold the server using FastMCP / official MCP Python SDK. Implement core tool primitives with strict Pydantic parameter schemas.",
+    "resources": [
+      {
+        "label": "Model Context Protocol Python SDK",
+        "url": "https://github.com/modelcontextprotocol/python-sdk"
+      }
+    ],
+    "deliverable": "Clean server codebase with registered tools and stdio transport entrypoint",
+    "completed_override": null
+  },
+  {
+    "day_number": 121,
+    "date": "2026-12-16",
+    "week_number": 18,
+    "day_in_week": 2,
+    "day_type": "study",
+    "title": "Implement Core Tool Business Logic",
+    "description": "Implement the core tool business logic: async external API querying, response transformation, error formatting, and resource subscriptions.",
+    "resources": [
+      {
+        "label": "Async Python Tool Logic",
+        "url": "https://docs.python.org/3/library/asyncio.html"
+      }
+    ],
+    "deliverable": "Fully implemented MCP tools with unit tests for each action",
+    "completed_override": null
+  },
+  {
+    "day_number": 122,
+    "date": "2026-12-17",
+    "week_number": 18,
+    "day_in_week": 3,
+    "day_type": "study",
+    "title": "Test with Claude Desktop & Cursor / Antigravity",
+    "description": "Configure Claude Desktop, Cursor, and Antigravity IDE to connect to the custom MCP server. Verify interactive tool calls in live chat.",
+    "resources": [
+      {
+        "label": "Claude Desktop MCP Configuration",
+        "url": "https://docs.anthropic.com"
+      }
+    ],
+    "deliverable": "Verified live demonstration of Claude executing custom MCP tools",
+    "completed_override": null
+  },
+  {
+    "day_number": 123,
+    "date": "2026-12-18",
+    "week_number": 18,
+    "day_in_week": 4,
+    "day_type": "study",
+    "title": "Handle Edge Cases, Rate Limits & Exceptions",
+    "description": "Add defensive error handling: formatted MCP tool error messages, timeout safety, credential validation, and logging.",
+    "resources": [
+      {
+        "label": "MCP Error Handling Best Practices",
+        "url": "https://modelcontextprotocol.io"
+      }
+    ],
+    "deliverable": "Robust MCP server handling network timeouts and malformed parameters gracefully",
+    "completed_override": null
+  },
+  {
+    "day_number": 124,
+    "date": "2026-12-19",
+    "week_number": 18,
+    "day_in_week": 5,
+    "day_type": "study",
+    "title": "Custom MCP Server Done \u2014 Package & Publish",
+    "description": "Package the MCP server, write comprehensive installation and usage documentation in README, tag release. MCP Server completed!",
+    "resources": [
+      {
+        "label": "MCP Server GitHub Repo",
+        "url": "https://github.com/AlirezaNezami96"
+      }
+    ],
+    "deliverable": "\u2b50 Custom MCP Server published and open-sourced on GitHub",
+    "completed_override": null
+  },
+  {
+    "day_number": 125,
+    "date": "2026-12-20",
+    "week_number": 18,
+    "day_in_week": 6,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 126,
+    "date": "2026-12-21",
+    "week_number": 18,
+    "day_in_week": 7,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 127,
+    "date": "2026-12-22",
+    "week_number": 19,
+    "day_in_week": 1,
+    "day_type": "study",
+    "title": "Select Cloud Target & Study Deployment Architecture",
+    "description": "Select target cloud platform (GCP Cloud Run / AWS Lambda / Azure Container Apps). Study serverless container hosting, IAM, and scale-to-zero.",
+    "resources": [
+      {
+        "label": "GCP Cloud Run Quickstart",
+        "url": "https://cloud.google.com/run/docs/quickstarts"
+      }
+    ],
+    "deliverable": "Cloud architecture diagram with environment variable and secret topology",
+    "completed_override": null
+  },
+  {
+    "day_number": 128,
+    "date": "2026-12-23",
+    "week_number": 19,
+    "day_in_week": 2,
+    "day_type": "study",
+    "title": "Set Up Cloud Account & CLI Tooling",
+    "description": "Configure cloud provider CLI (`gcloud` / `aws`), authenticate credentials, and set up a dedicated project container registry (Artifact Registry).",
+    "resources": [
+      {
+        "label": "GCP Artifact Registry Docs",
+        "url": "https://cloud.google.com/artifact-registry/docs"
+      }
+    ],
+    "deliverable": "Authenticated CLI toolchain configured for automated image push",
+    "completed_override": null
+  },
+  {
+    "day_number": 129,
+    "date": "2026-12-24",
+    "week_number": 19,
+    "day_in_week": 3,
+    "day_type": "study",
+    "title": "Deploy Project #3 to Cloud Run / Lambda",
+    "description": "Build container image, push to cloud registry, and deploy to Cloud Run / Container Apps with HTTPS, custom domain, and auto-scaling configured.",
+    "resources": [
+      {
+        "label": "Cloud Run Deploy Guide",
+        "url": "https://cloud.google.com/run/docs/deploying"
+      }
+    ],
+    "deliverable": "Live production service running on managed serverless container cloud",
+    "completed_override": null
+  },
+  {
+    "day_number": 130,
+    "date": "2026-12-25",
+    "week_number": 19,
+    "day_in_week": 4,
+    "day_type": "study",
+    "title": "Verify Public SSL Endpoint & Latency",
+    "description": "Verify public endpoint health, test SSL certificate, measure cold-start vs warm latency, and confirm CORS compatibility with web frontends.",
+    "resources": [
+      {
+        "label": "HTTP Load Benchmarking",
+        "url": "https://github.com/rakyll/hey"
+      }
+    ],
+    "deliverable": "Performance benchmark report verifying public URL uptime and SLA",
+    "completed_override": null
+  },
+  {
+    "day_number": 131,
+    "date": "2026-12-26",
+    "week_number": 19,
+    "day_in_week": 5,
+    "day_type": "study",
+    "title": "Document Cloud Deployment Pipeline",
+    "description": "Document complete cloud provisioning and deployment workflow with step-by-step shell scripts in repo README. Commit deployment files.",
+    "resources": [
+      {
+        "label": "Cloud Deployment Guide",
+        "url": "https://github.com/AlirezaNezami96"
+      }
+    ],
+    "deliverable": "Reproducible cloud deployment scripts and infrastructure documentation",
+    "completed_override": null
+  },
+  {
+    "day_number": 132,
+    "date": "2026-12-27",
+    "week_number": 19,
+    "day_in_week": 6,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 133,
+    "date": "2026-12-28",
+    "week_number": 19,
+    "day_in_week": 7,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 134,
+    "date": "2026-12-29",
+    "week_number": 20,
+    "day_in_week": 1,
+    "day_type": "study",
+    "title": "Capstone Ideation: RAG + Agents + MCP + Evals",
+    "description": "Brainstorm ambitious capstone project ideas combining Advanced RAG + LangGraph multi-agent orchestration + MCP tools + Langfuse evals + Cloud deployment.",
+    "resources": [
+      {
+        "label": "Capstone Project Brainstorming",
+        "url": "https://github.com/AlirezaNezami96"
+      }
+    ],
+    "deliverable": "3 distinct capstone concept pitches with pros/cons and complexity analysis",
+    "completed_override": null
+  },
+  {
+    "day_number": 135,
+    "date": "2026-12-30",
+    "week_number": 20,
+    "day_in_week": 2,
+    "day_type": "study",
+    "title": "Select Concept & Author System Architecture Diagram",
+    "description": "Select the final capstone concept. Author a detailed end-to-end system architecture diagram specifying data flow, agents, tools, and UI.",
+    "resources": [
+      {
+        "label": "Mermaid.js Architecture Diagram",
+        "url": "https://mermaid.js.org"
+      }
+    ],
+    "deliverable": "Comprehensive system architecture diagram and component interaction map",
+    "completed_override": null
+  },
+  {
+    "day_number": 136,
+    "date": "2026-12-31",
+    "week_number": 20,
+    "day_in_week": 3,
+    "day_type": "study",
+    "title": "Author Detailed Day-by-Day Capstone Roadmap",
+    "description": "Draft concrete modular build milestones and day-by-day task breakdown for Weeks 21 & 22 build phase. Define acceptance criteria.",
+    "resources": [
+      {
+        "label": "Capstone Technical Spec",
+        "url": "https://github.com/AlirezaNezami96"
+      }
+    ],
+    "deliverable": "Written technical roadmap with interface definitions and deliverables",
+    "completed_override": null
+  },
+  {
+    "day_number": 137,
+    "date": "2027-01-01",
+    "week_number": 20,
+    "day_in_week": 4,
+    "day_type": "study",
+    "title": "Initialize Capstone Repository & Project Skeleton",
+    "description": "Initialize dedicated GitHub repository with mono-repo structure: `/backend`, `/frontend`, `/evals`, `/mcp`, and configure pre-commit hooks.",
+    "resources": [
+      {
+        "label": "Clean Architecture Project Template",
+        "url": "https://github.com/AlirezaNezami96"
+      }
+    ],
+    "deliverable": "Scaffolded repository with dependencies, linting, and CI workflow",
+    "completed_override": null
+  },
+  {
+    "day_number": 138,
+    "date": "2027-01-02",
+    "week_number": 20,
+    "day_in_week": 5,
+    "day_type": "study",
+    "title": "Commence First Capstone Build Step",
+    "description": "Implement core domain data models, configuration loader, and database connectivity. First foundational commit of the capstone project.",
+    "resources": [
+      {
+        "label": "Pydantic Settings Management",
+        "url": "https://docs.pydantic.dev/latest/concepts/pydantic_settings/"
+      }
+    ],
+    "deliverable": "Working baseline domain layer with passing configuration tests",
+    "completed_override": null
+  },
+  {
+    "day_number": 139,
+    "date": "2027-01-03",
+    "week_number": 20,
+    "day_in_week": 6,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 140,
+    "date": "2027-01-04",
+    "week_number": 20,
+    "day_in_week": 7,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 141,
+    "date": "2027-01-05",
+    "week_number": 21,
+    "day_in_week": 1,
+    "day_type": "study",
+    "title": "Build Capstone Hybrid Retrieval / RAG Engine",
+    "description": "Build the advanced retrieval layer: contextual chunking, dense vector indexing, BM25 sparse index, and cross-encoder re-ranking pipeline.",
+    "resources": [
+      {
+        "label": "Advanced RAG Pipeline",
+        "url": "https://docs.llamaindex.ai"
+      }
+    ],
+    "deliverable": "High-accuracy retrieval engine returning grounded context with confidence scores",
+    "completed_override": null
+  },
+  {
+    "day_number": 142,
+    "date": "2027-01-06",
+    "week_number": 21,
+    "day_in_week": 2,
+    "day_type": "study",
+    "title": "Build Multi-Agent LangGraph Orchestration Layer",
+    "description": "Construct the core LangGraph state machine: supervisor router agent coordinating specialized worker agents with shared memory.",
+    "resources": [
+      {
+        "label": "LangGraph Multi-Agent Architecture",
+        "url": "https://langchain-ai.github.io/langgraph/concepts/multi_agent/"
+      }
+    ],
+    "deliverable": "Orchestrator graph coordinating multi-step planning and synthesis",
+    "completed_override": null
+  },
+  {
+    "day_number": 143,
+    "date": "2027-01-07",
+    "week_number": 21,
+    "day_in_week": 3,
+    "day_type": "study",
+    "title": "Integrate Custom MCP Server into Capstone",
+    "description": "Connect the custom MCP server built in Week 18 to the capstone agent graph as a primary external tool provider.",
+    "resources": [
+      {
+        "label": "MCP Client-Server Bridge",
+        "url": "https://modelcontextprotocol.io"
+      }
+    ],
+    "deliverable": "Agent successfully querying live external tools through MCP protocol",
+    "completed_override": null
+  },
+  {
+    "day_number": 144,
+    "date": "2027-01-08",
+    "week_number": 21,
+    "day_in_week": 4,
+    "day_type": "study",
+    "title": "Wire Langfuse Automated Evaluation Suite",
+    "description": "Integrate automated LLM-as-a-judge evaluation scoring into the capstone pipeline, assessing answer accuracy and tool selection correctness.",
+    "resources": [
+      {
+        "label": "Continuous LLM Evaluation",
+        "url": "https://langfuse.com"
+      }
+    ],
+    "deliverable": "Automated evaluation hooks logging quality metrics to Langfuse on each run",
+    "completed_override": null
+  },
+  {
+    "day_number": 145,
+    "date": "2027-01-09",
+    "week_number": 21,
+    "day_in_week": 5,
+    "day_type": "study",
+    "title": "Wire Production Observability & Tracing",
+    "description": "Implement complete distributed tracing, token cost accounting, and user feedback capture loops in the capstone backend.",
+    "resources": [
+      {
+        "label": "Langfuse User Feedback Capture",
+        "url": "https://langfuse.com/docs/scores"
+      }
+    ],
+    "deliverable": "Full observability dashboard capturing live agent execution telemetry",
+    "completed_override": null
+  },
+  {
+    "day_number": 146,
+    "date": "2027-01-10",
+    "week_number": 21,
+    "day_in_week": 6,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 147,
+    "date": "2027-01-11",
+    "week_number": 21,
+    "day_in_week": 7,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 148,
+    "date": "2027-01-12",
+    "week_number": 22,
+    "day_in_week": 1,
+    "day_type": "study",
+    "title": "End-to-End System Integration Testing",
+    "description": "Execute comprehensive end-to-end integration tests covering complex multi-turn workflows, tool failures, and edge-case inputs.",
+    "resources": [
+      {
+        "label": "Pytest Asyncio Testing",
+        "url": "https://pytest-asyncio.readthedocs.io/"
+      }
+    ],
+    "deliverable": "Comprehensive integration test suite with >80% code coverage",
+    "completed_override": null
+  },
+  {
+    "day_number": 149,
+    "date": "2027-01-13",
+    "week_number": 22,
+    "day_in_week": 2,
+    "day_type": "study",
+    "title": "Remediate Bugs & Polish Output Quality",
+    "description": "Address integration edge cases: optimize prompt reasoning instructions, tune tool retry parameters, and polish response formatting.",
+    "resources": [
+      {
+        "label": "Prompt Optimization Loop",
+        "url": "https://docs.anthropic.com"
+      }
+    ],
+    "deliverable": "Rock-solid agent pipeline generating crisp, formatted, cited responses",
+    "completed_override": null
+  },
+  {
+    "day_number": 150,
+    "date": "2027-01-14",
+    "week_number": 22,
+    "day_in_week": 3,
+    "day_type": "study",
+    "title": "Deploy Capstone to Production Cloud",
+    "description": "Deploy capstone containerized backend and interactive web interface to production cloud infrastructure with HTTPS and telemetry enabled.",
+    "resources": [
+      {
+        "label": "Serverless Cloud Deployment",
+        "url": "https://cloud.google.com/run"
+      }
+    ],
+    "deliverable": "Live public URL of the complete deployed capstone AI application",
+    "completed_override": null
+  },
+  {
+    "day_number": 151,
+    "date": "2027-01-15",
+    "week_number": 22,
+    "day_in_week": 4,
+    "day_type": "study",
+    "title": "Author Technical README & Architecture Diagram",
+    "description": "Draft comprehensive technical documentation: high-res architecture diagrams, setup guide, eval benchmarks, and API documentation.",
+    "resources": [
+      {
+        "label": "Technical Documentation Standards",
+        "url": "https://github.com/AlirezaNezami96"
+      }
+    ],
+    "deliverable": "Polished README with demo GIF, architecture breakdown, and live link",
+    "completed_override": null
+  },
+  {
+    "day_number": 152,
+    "date": "2027-01-16",
+    "week_number": 22,
+    "day_in_week": 5,
+    "day_type": "study",
+    "title": "Project #4 Done \u2014 Capstone Retrospective",
+    "description": "Write a reflective 'How I built this / what I learned / what I'd change' technical post. Capstone Project #4 officially completed!",
+    "resources": [
+      {
+        "label": "Capstone Project GitHub Repo",
+        "url": "https://github.com/AlirezaNezami96"
+      }
+    ],
+    "deliverable": "\u2b50 Project #4 ('Production Multi-Agent Capstone') completed & published",
+    "completed_override": null
+  },
+  {
+    "day_number": 153,
+    "date": "2027-01-17",
+    "week_number": 22,
+    "day_in_week": 6,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 154,
+    "date": "2027-01-18",
+    "week_number": 22,
+    "day_in_week": 7,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 155,
+    "date": "2027-01-19",
+    "week_number": 23,
+    "day_in_week": 1,
+    "day_type": "study",
+    "title": "Rewrite R\u00e9sum\u00e9 Summary for Senior AI Engineer",
+    "description": "Rewrite r\u00e9sum\u00e9 headline & summary: Senior Mobile Engineer (9+ yrs) with deep Applied AI/LLM engineering expertise (LangGraph, RAG, MCP, Evals).",
+    "resources": [
+      {
+        "label": "AI Engineer R\u00e9sum\u00e9 Guidelines",
+        "url": "https://huyenchip.com"
+      }
+    ],
+    "deliverable": "Compelling, impact-driven r\u00e9sum\u00e9 summary positioning mobile + AI strengths",
+    "completed_override": null
+  },
+  {
+    "day_number": 156,
+    "date": "2027-01-20",
+    "week_number": 23,
+    "day_in_week": 2,
+    "day_type": "study",
+    "title": "Add 4 AI Projects to R\u00e9sum\u00e9 Experience",
+    "description": "Update r\u00e9sum\u00e9 experience with all four flagship AI projects, detailing exact technologies, architecture decisions, and evaluation metrics.",
+    "resources": [
+      {
+        "label": "Alireza Nezami R\u00e9sum\u00e9 PDF",
+        "url": "https://alirezanezami96.github.io/AlirezaNezami/"
+      }
+    ],
+    "deliverable": "Updated 2-page PDF r\u00e9sum\u00e9 featuring production mobile and AI achievements",
+    "completed_override": null
+  },
+  {
+    "day_number": 157,
+    "date": "2027-01-21",
+    "week_number": 23,
+    "day_in_week": 3,
+    "day_type": "study",
+    "title": "Update LinkedIn Headline & About Section",
+    "description": "Update LinkedIn profile: headline, about section, and featured skills (LLM Application Development, LangGraph, RAG, MCP, Python, Kotlin).",
+    "resources": [
+      {
+        "label": "Alireza Nezami LinkedIn",
+        "url": "https://www.linkedin.com/in/alireza-nezami/"
+      }
+    ],
+    "deliverable": "Refreshed LinkedIn profile aligning with Senior Mobile + AI Engineering roles",
+    "completed_override": null
+  },
+  {
+    "day_number": 158,
+    "date": "2027-01-22",
+    "week_number": 23,
+    "day_in_week": 4,
+    "day_type": "study",
+    "title": "Design GitHub Profile Showcase",
+    "description": "Author a beautiful GitHub profile README pinning all 4 portfolio projects with architecture badges, live links, and evaluation highlights.",
+    "resources": [
+      {
+        "label": "GitHub Profile README Guide",
+        "url": "https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile"
+      }
+    ],
+    "deliverable": "Polished GitHub profile landing page showcasing all portfolio repos",
+    "completed_override": null
+  },
+  {
+    "day_number": 159,
+    "date": "2027-01-23",
+    "week_number": 23,
+    "day_in_week": 5,
+    "day_type": "study",
+    "title": "Peer Review & Iteration",
+    "description": "Have one trusted mentor, peer, or technical recruiter review the updated r\u00e9sum\u00e9 and profile materials. Incorporate feedback and finalize.",
+    "resources": [
+      {
+        "label": "Resume Feedback Checklist",
+        "url": "https://github.com/AlirezaNezami96"
+      }
+    ],
+    "deliverable": "Final polished portfolio package ready for global application pipeline",
+    "completed_override": null
+  },
+  {
+    "day_number": 160,
+    "date": "2027-01-24",
+    "week_number": 23,
+    "day_in_week": 6,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 161,
+    "date": "2027-01-25",
+    "week_number": 23,
+    "day_in_week": 7,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 162,
+    "date": "2027-01-26",
+    "week_number": 24,
+    "day_in_week": 1,
+    "day_type": "study",
+    "title": "Analyze 5 Target Job Postings",
+    "description": "Deeply analyze 3\u20135 real job postings for Senior AI / LLM / Mobile AI roles. Catalog recurring technical topics and required system design patterns.",
+    "resources": [
+      {
+        "label": "AI Engineering Job Boards",
+        "url": "https://github.com/AlirezaNezami96/Visa-Sponsorship-Daily-Jobs"
+      }
+    ],
+    "deliverable": "Catalog of 25 core interview questions and company-specific requirements",
+    "completed_override": null
+  },
+  {
+    "day_number": 163,
+    "date": "2027-01-27",
+    "week_number": 24,
+    "day_in_week": 2,
+    "day_type": "study",
+    "title": "System Design Trade-offs for Projects #1 & #2",
+    "description": "Write out detailed technical architecture decisions and trade-offs for Project #1 (RAG) and Project #2 (LangGraph Agent) in STAR format.",
+    "resources": [
+      {
+        "label": "STAR Interview Method Guide",
+        "url": "https://en.wikipedia.org/wiki/Situation,_task,_action_and_result"
+      }
+    ],
+    "deliverable": "Written interview study guide with architecture diagrams and failure analysis",
+    "completed_override": null
+  },
+  {
+    "day_number": 164,
+    "date": "2027-01-28",
+    "week_number": 24,
+    "day_in_week": 3,
+    "day_type": "study",
+    "title": "System Design Trade-offs for Projects #3 & #4",
+    "description": "Write out detailed technical architecture decisions, scalability limits, and security trade-offs for Project #3 (API) and Project #4 (Capstone).",
+    "resources": [
+      {
+        "label": "LLM System Design Patterns",
+        "url": "https://github.com/chiphuyen/aie-book"
+      }
+    ],
+    "deliverable": "Comprehensive system design interview cheat-sheet covering all 4 projects",
+    "completed_override": null
+  },
+  {
+    "day_number": 165,
+    "date": "2027-01-29",
+    "week_number": 24,
+    "day_in_week": 4,
+    "day_type": "study",
+    "title": "Mock Technical Interview: Project #2 (Agent)",
+    "description": "Conduct a mock technical interview (with an AI partner or peer) specifically grilling architecture, state management, and error handling of Project #2.",
+    "resources": [
+      {
+        "label": "Mock Interview Framework",
+        "url": "https://github.com/AlirezaNezami96"
+      }
+    ],
+    "deliverable": "Recorded interview transcript and self-critique notes on communication clarity",
+    "completed_override": null
+  },
+  {
+    "day_number": 166,
+    "date": "2027-01-30",
+    "week_number": 24,
+    "day_in_week": 5,
+    "day_type": "study",
+    "title": "Mock System Design: Project #4 (Capstone)",
+    "description": "Conduct an intensive mock system design interview on Project #4 (Capstone): scaling, latency minimization, cost boundaries, and eval metrics.",
+    "resources": [
+      {
+        "label": "System Design Rubric",
+        "url": "https://github.com/AlirezaNezami96"
+      }
+    ],
+    "deliverable": "Refined whiteboard explanation of enterprise multi-agent architectures",
+    "completed_override": null
+  },
+  {
+    "day_number": 167,
+    "date": "2027-01-31",
+    "week_number": 24,
+    "day_in_week": 6,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 168,
+    "date": "2027-02-01",
+    "week_number": 24,
+    "day_in_week": 7,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 169,
+    "date": "2027-02-02",
+    "week_number": 25,
+    "day_in_week": 1,
+    "day_type": "study",
+    "title": "Batch 1 Applications Submission",
+    "description": "Submit personalized applications to first batch of 5 top-tier companies offering visa sponsorship / remote senior engineering roles.",
+    "resources": [
+      {
+        "label": "Visa Sponsorship Daily Jobs Tool",
+        "url": "https://github.com/AlirezaNezami96/Visa-Sponsorship-Daily-Jobs"
+      }
+    ],
+    "deliverable": "5 submitted applications logged in job tracking spreadsheet",
+    "completed_override": null
+  },
+  {
+    "day_number": 170,
+    "date": "2027-02-03",
+    "week_number": 25,
+    "day_in_week": 2,
+    "day_type": "study",
+    "title": "Batch 2 Applications & Outreach",
+    "description": "Submit Batch 2 applications; send direct personalized connection notes to engineering managers and technical recruiters on LinkedIn.",
+    "resources": [
+      {
+        "label": "Direct Outreach Templates",
+        "url": "https://github.com/AlirezaNezami96"
+      }
+    ],
+    "deliverable": "5 additional applications submitted and 5 personalized recruiter messages sent",
+    "completed_override": null
+  },
+  {
+    "day_number": 171,
+    "date": "2027-02-04",
+    "week_number": 25,
+    "day_in_week": 3,
+    "day_type": "study",
+    "title": "Follow-Up & Pipeline Maintenance",
+    "description": "Follow up on any applications and outreach messages sent 7+ days ago with polite, value-adding updates showcasing latest project evals.",
+    "resources": [
+      {
+        "label": "Pipeline Tracking Sheet",
+        "url": "https://github.com/AlirezaNezami96"
+      }
+    ],
+    "deliverable": "Application tracker updated with response rates and interview dates",
+    "completed_override": null
+  },
+  {
+    "day_number": 172,
+    "date": "2027-02-05",
+    "week_number": 25,
+    "day_in_week": 4,
+    "day_type": "study",
+    "title": "Batch 3 Applications Submission",
+    "description": "Submit Batch 3 applications targeting high-growth AI startups and established tech scale-ups building agentic platforms.",
+    "resources": [
+      {
+        "label": "Hiring Thread & Job Portals",
+        "url": "https://news.ycombinator.com"
+      }
+    ],
+    "deliverable": "5 additional tailored applications submitted with project links",
+    "completed_override": null
+  },
+  {
+    "day_number": 173,
+    "date": "2027-02-06",
+    "week_number": 25,
+    "day_in_week": 5,
+    "day_type": "study",
+    "title": "Weekly Application Retro & Strategy Tuning",
+    "description": "Review the week's response metrics: identify what messaging resonates best with hiring managers, and adjust r\u00e9sum\u00e9 highlights accordingly.",
+    "resources": [
+      {
+        "label": "Application Funnel Metrics",
+        "url": "https://github.com/AlirezaNezami96"
+      }
+    ],
+    "deliverable": "Weekly retrospective notes with strategic resume and portfolio tweaks",
+    "completed_override": null
+  },
+  {
+    "day_number": 174,
+    "date": "2027-02-07",
+    "week_number": 25,
+    "day_in_week": 6,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 175,
+    "date": "2027-02-08",
+    "week_number": 25,
+    "day_in_week": 7,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 176,
+    "date": "2027-02-09",
+    "week_number": 26,
+    "day_in_week": 1,
+    "day_type": "study",
+    "title": "Continue Active Application Submissions",
+    "description": "Continue steady application outreach, tailoring cover notes to specific company tech stacks (e.g. Claude tool calling, LangGraph, vector search).",
+    "resources": [
+      {
+        "label": "Application Tracker",
+        "url": "https://github.com/AlirezaNezami96"
+      }
+    ],
+    "deliverable": "Daily application submissions logged with status notes",
+    "completed_override": null
+  },
+  {
+    "day_number": 177,
+    "date": "2027-02-10",
+    "week_number": 26,
+    "day_in_week": 2,
+    "day_type": "study",
+    "title": "Project Enhancements from Interview Feedback",
+    "description": "Incorporate any technical feedback or challenging interview questions back into the project codebases (e.g. adding additional eval metrics).",
+    "resources": [
+      {
+        "label": "Continuous Code Improvement",
+        "url": "https://github.com/AlirezaNezami96"
+      }
+    ],
+    "deliverable": "Codebase commits addressing real interview technical prompts",
+    "completed_override": null
+  },
+  {
+    "day_number": 178,
+    "date": "2027-02-11",
+    "week_number": 26,
+    "day_in_week": 3,
+    "day_type": "study",
+    "title": "Active Interviewing & Take-Home Execution",
+    "description": "Execute active interview rounds, technical coding screens, and take-home engineering assignments with senior-level polish.",
+    "resources": [
+      {
+        "label": "Technical Screen Best Practices",
+        "url": "https://github.com/AlirezaNezami96"
+      }
+    ],
+    "deliverable": "Completed technical screen solutions and follow-up debriefs",
+    "completed_override": null
+  },
+  {
+    "day_number": 179,
+    "date": "2027-02-12",
+    "week_number": 26,
+    "day_in_week": 4,
+    "day_type": "study",
+    "title": "Pipeline Expansion & Offer Evaluation",
+    "description": "Continue application momentum, evaluate incoming opportunities, and conduct reverse-interviewing on engineering culture and roadmap.",
+    "resources": [
+      {
+        "label": "Offer Evaluation Matrix",
+        "url": "https://github.com/AlirezaNezami96"
+      }
+    ],
+    "deliverable": "Comparative offer and opportunity evaluation spreadsheet",
+    "completed_override": null
+  },
+  {
+    "day_number": 180,
+    "date": "2027-02-13",
+    "week_number": 26,
+    "day_in_week": 5,
+    "day_type": "study",
+    "title": "6-Month Retrospective & Roadmap Complete",
+    "description": "Write a comprehensive 6-month retrospective: lessons learned, key architectural insights, and advice for the journey ahead. Roadmap complete!",
+    "resources": [
+      {
+        "label": "Alireza Nezami AI Engineering Journey",
+        "url": "https://alirezanezami96.github.io/AlirezaNezami/journey.html"
+      }
+    ],
+    "deliverable": "\ud83c\udf89 6-Month Applied AI Engineering Roadmap officially completed!",
+    "completed_override": null
+  },
+  {
+    "day_number": 181,
+    "date": "2027-02-14",
+    "week_number": 26,
+    "day_in_week": 6,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  },
+  {
+    "day_number": 182,
+    "date": "2027-02-15",
+    "week_number": 26,
+    "day_in_week": 7,
+    "day_type": "rest",
+    "title": "Rest & buffer",
+    "description": "Catch up on anything from this week, or take the day off \u2014 both are the plan working correctly.",
+    "resources": [],
+    "deliverable": "Rest, reflection, or backlog catch-up",
+    "completed_override": null
+  }
+];

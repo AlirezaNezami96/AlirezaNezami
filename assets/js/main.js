@@ -652,6 +652,39 @@ function initChallengeArrow() {
   window.addEventListener('scroll', requestUpdate, { passive: true });
 }
 
+/* ─── JOURNEY LANDING WIDGET ─────────────────────────── */
+function initJourneyWidget() {
+  const container = document.getElementById('journey-landing-window');
+  if (!container || typeof window.JourneyData === 'undefined') return;
+
+  function renderWidget() {
+    const windowDays = window.JourneyData.getWindow();
+    container.innerHTML = '';
+
+    windowDays.forEach(day => {
+      const card = document.createElement('a');
+      card.href = 'journey.html';
+      card.className = `widget-node-card state-${day.state}`;
+      card.setAttribute('aria-label', `Day ${day.day_number}: ${day.title} (${day.state})`);
+
+      let badgeLabel = `Day ${day.day_number}`;
+      if (day.is_today) badgeLabel = `⚡ Today · Day ${day.day_number}`;
+      else if (day.state === 'completed') badgeLabel = `✨ Completed · Day ${day.day_number}`;
+      else badgeLabel = `Day ${day.day_number}`;
+
+      card.innerHTML = `
+        <div class="widget-node-badge">${badgeLabel}</div>
+        <div class="widget-node-title">${day.title}</div>
+        <div class="widget-node-desc">${day.description}</div>
+      `;
+      container.appendChild(card);
+    });
+  }
+
+  renderWidget();
+  window.JourneyData.subscribe(renderWidget);
+}
+
 function boot() {
   initLenis();
   initThemeSwitcher();
@@ -667,6 +700,7 @@ function boot() {
   initTilt();
   initMagnetic();
   initAIWidget();
+  initJourneyWidget();
   initChallengeArrow();
   initYear();
 }

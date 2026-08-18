@@ -7,7 +7,8 @@
     "resume": "Currículum",
     "contact": "Contacto",
     "game": "Juego 🎮",
-    "bookCall": "Reservar llamada"
+    "bookCall": "Reservar llamada",
+    "journey": "Camino 🧭"
   },
   "hero": {
     "challengeBadge": "OFERTA DE RETO",
@@ -122,5 +123,14 @@
   "footer": {
     "rights": "Todos los derechos reservados.",
     "tagline": "Diseñado e implementado con precisión al nivel de Kotlin."
+  },
+  "journey": {
+    "widgetTag": "ruta de ia",
+    "widgetTitle": "El Camino — Plan de IA de 6 Meses",
+    "widgetSub": "Seguimiento de 182 hitos diarios en Ingeniería de IA Aplicada (LLMs, RAG, Agentes y MCP).",
+    "viewFull": "Ver camino completo &rarr;",
+    "backPortfolio": "Portafolio",
+    "heroTitle": "El Camino",
+    "heroDesc": "Un currículo de 182 días en Ingeniería de IA Aplicada — Aplicaciones LLM, RAG Avanzado, Sistemas Multi-Agente y Despliegues."
   }
 }

@@ -7,7 +7,8 @@
     "resume": "Resume",
     "contact": "Contact",
     "game": "Game 🎮",
-    "bookCall": "Book a call"
+    "bookCall": "Book a call",
+    "journey": "Journey 🧭"
   },
   "hero": {
     "challengeBadge": "CHALLENGE OFFER",
@@ -122,5 +123,14 @@
   "footer": {
     "rights": "All rights reserved.",
     "tagline": "Designed & Engineered with Kotlin-level precision."
+  },
+  "journey": {
+    "widgetTag": "ai roadmap",
+    "widgetTitle": "The Path — 6-Month AI Roadmap",
+    "widgetSub": "Tracking 182 daily milestones in Applied AI Engineering (LLMs, RAG, Multi-Agent Systems & MCP).",
+    "viewFull": "View full journey &rarr;",
+    "backPortfolio": "Portfolio",
+    "heroTitle": "The Path",
+    "heroDesc": "A winding 182-day curriculum through Applied AI Engineering — LLM Applications, Advanced RAG, Autonomous Multi-Agent Systems, MCP, and Cloud Deployments."
   }
 }

@@ -81,6 +81,7 @@
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
 
   <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/journey.css" />
 </head>
 
 <body>
@@ -133,8 +134,7 @@
           <line x1="13" y1="17" x2="23" y2="17" stroke="url(#logoGrad)" stroke-width="1.5" stroke-linecap="round" />
           <line x1="13" y1="21" x2="18" y2="21" stroke="url(#logoGrad)" stroke-width="1.5" stroke-linecap="round" />
           <!-- Home indicator -->
-          <line x1="16" y1="31" x2="22" y2="31" stroke="url(#logoGrad)" stroke-width="2" stroke-linecap="round" />
-          <!-- Kotlin diamond accent -->
+                  <!-- Kotlin diamond accent -->
           <circle cx="31" cy="7" r="4" fill="#7F52FF" opacity="0.9" />
           <path d="M29.5 7L31 5L32.5 7L31 9Z" fill="white" opacity="0.9" />
         </svg>
@@ -145,6 +145,7 @@
 
     <div class="nav-links" role="list">
       <a href="#about" class="nav-link" role="listitem" data-i18n="nav.about">About</a>
+      <a href="journey.html" class="nav-link" role="listitem" style="color:#F59E0B;font-weight:600" data-i18n="nav.journey">Journey 🧭</a>
       <a href="#projects" class="nav-link" role="listitem" data-i18n="nav.projects">Projects</a>
       <a href="#reviews" class="nav-link" role="listitem" data-i18n="nav.reviews">Reviews</a>
       <a href="#resume" class="nav-link" role="listitem" data-i18n="nav.resume">Resume</a>
@@ -158,7 +159,7 @@
           height="15" aria-hidden="true">
           <circle cx="12" cy="12" r="10" />
           <path
-            d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+            d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z" />
         </svg>
         <select id="lang-select" class="lang-select" aria-label="Select language">
           <option value="en">English</option>
@@ -187,6 +188,7 @@
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
     <a href="#about" class="mobile-link" data-i18n="nav.about">About</a>
+    <a href="journey.html" class="mobile-link" style="color:#F59E0B;font-weight:600" data-i18n="nav.journey">Journey 🧭</a>
     <a href="#projects" class="mobile-link" data-i18n="nav.projects">Projects</a>
     <a href="#reviews" class="mobile-link" data-i18n="nav.reviews">Reviews</a>
     <a href="#resume" class="mobile-link" data-i18n="nav.resume">Resume</a>
@@ -329,6 +331,29 @@
           <div class="stat-number-wrap"><span class="stat-number" data-target="1">1</span><span>M+</span></div>
           <div class="stat-label" data-i18n="about.stats.users">USERS REACHED</div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ THE PATH (JOURNEY WIDGET) ═══════════════════════ -->
+  <section id="journey-widget-section" aria-label="AI Engineering Journey Tracker">
+    <div class="journey-widget-card reveal-block">
+      <div class="journey-widget-header">
+        <div class="journey-widget-title-group">
+          <div class="section-label" style="margin-bottom:8px;">
+            <span class="comment" data-i18n="journey.widgetTag">ai roadmap</span>
+          </div>
+          <h3 data-i18n="journey.widgetTitle">The Path — 6-Month AI Roadmap</h3>
+          <p data-i18n="journey.widgetSub">Tracking 182 daily milestones in Applied AI Engineering (LLMs, RAG, Multi-Agent Systems &amp; MCP).</p>
+        </div>
+        <a href="journey.html" class="btn btn-primary" style="align-self:center;" data-i18n="journey.viewFull">
+          View full journey &rarr;
+        </a>
+      </div>
+
+      <!-- 3-Node Interactive Window Grid (Yesterday, Today, Tomorrow) -->
+      <div id="journey-landing-window" class="journey-widget-window-grid">
+        <!-- Injected dynamically via journey-data.js -->
       </div>
     </div>
   </section>
@@ -967,6 +992,8 @@
     </div>
   </aside>
 
+  <script src="assets/js/journey-curriculum.js"></script>
+  <script src="assets/js/journey-data.js"></script>
   <script src="assets/js/main.js" defer></script>
   <script src="assets/js/firebase-config.js"></script>
   <script src="assets/js/analytics.js" defer></script>

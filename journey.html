@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Path — 6-Month AI Engineering Progress Tracker · Alireza Nezami</title>
+  <meta name="description" content="182-day journey mastering Applied AI Engineering — LLM Applications, Advanced RAG, Autonomous Multi-Agent Systems, MCP, and Cloud Deployments." />
+  <meta name="robots" content="index, follow" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png" />
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://alirezanezami96.github.io/AlirezaNezami/journey.html" />
+
+  <!-- OpenGraph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://alirezanezami96.github.io/AlirezaNezami/journey.html" />
+  <meta property="og:title" content="The Path — 6-Month AI Engineering Progress Tracker · Alireza Nezami" />
+  <meta property="og:description" content="182-day winding path mastering Applied AI Engineering, LLM agents, RAG, and production systems." />
+  <meta property="og:image" content="https://alirezanezami96.github.io/AlirezaNezami/assets/images/og-image.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The Path — 6-Month AI Engineering Progress Tracker · Alireza Nezami" />
+  <meta name="twitter:description" content="182-day winding path mastering Applied AI Engineering, LLM agents, RAG, and production systems." />
+  <meta name="twitter:image" content="https://alirezanezami96.github.io/AlirezaNezami/assets/images/og-image.png" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Applied AI Engineering 6-Month Roadmap",
+    "description": "182-day structured self-study curriculum mastering LLM applications, RAG, agents, MCP, and evaluations.",
+    "provider": {
+      "@type": "Person",
+      "name": "Alireza Nezami",
+      "url": "https://alirezanezami96.github.io/AlirezaNezami/"
+    }
+  }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Base & Journey Styles -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/journey.css" />
+</head>
+
+<body class="journey-page">
+  <!-- Atmospheric star dust -->
+  <div class="journey-stars" aria-hidden="true"></div>
+
+  <!-- ═══════════════════════ STICKY HUD BAR ═══════════════════════ -->
+  <header class="journey-sticky-header" role="banner">
+    <div class="journey-hud-inner">
+      <div class="journey-brand-group">
+        <a href="index.html" class="journey-back-link" aria-label="Return to portfolio homepage">
+          &larr; <span data-i18n="journey.backPortfolio">Portfolio</span>
+        </a>
+        <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:15px;color:#fff;">
+          The Path 🧭
+        </div>
+      </div>
+
+      <div class="journey-hud-stats">
+        <div id="hud-day-badge" class="journey-progress-badge">
+          <span id="hud-day-text">Day 1 of 182 · Week 1</span>
+        </div>
+
+        <div class="journey-progress-bar-wrap" title="Program Completion Progress">
+          <div id="hud-progress-fill" class="journey-progress-bar-fill"></div>
+        </div>
+
+        <select id="hud-week-select" class="journey-week-select" aria-label="Jump to week">
+          <option value="all">All Weeks (1–26)</option>
+          <!-- Injected dynamically -->
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════ HERO SECTION ═══════════════════════ -->
+  <main id="main-content">
+    <section class="journey-hero-section">
+      <div class="journey-hero-tag">// 6-MONTH AI-ENGINEERING ROADMAP</div>
+      <h1 class="journey-hero-title" data-i18n="journey.heroTitle">The Path</h1>
+      <p class="journey-hero-desc" data-i18n="journey.heroDesc">
+        A winding 182-day curriculum through Applied AI Engineering — LLM Applications, Advanced RAG, Autonomous Multi-Agent Systems, MCP, and Cloud Deployments. The trail automatically illuminates with each passing day.
+      </p>
+
+      <!-- Visual Legend -->
+      <div class="journey-legend" aria-label="Roadmap node state legend">
+        <div class="legend-item">
+          <div class="legend-dot completed"></div>
+          <span>Completed (Lit Lantern)</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot current"></div>
+          <span>Today (Active Pulse)</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot future"></div>
+          <span>Future (Unlit Trail)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════ THE WINDING TRACK ═══════════════════════ -->
+    <section class="journey-track-container" id="journey-track">
+      <!-- SVG Connecting Path Canvas -->
+      <svg id="journey-svg" class="journey-svg-overlay" aria-hidden="true">
+        <defs>
+          <linearGradient id="journeyLitGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#F59E0B" />
+            <stop offset="60%" stop-color="#FBBF24" />
+            <stop offset="100%" stop-color="#38BDF8" />
+          </linearGradient>
+        </defs>
+        <!-- Unlit background path -->
+        <path id="svg-unlit-path" class="journey-svg-path-unlit" d="" />
+        <!-- Lit foreground trail -->
+        <path id="svg-lit-path" class="journey-svg-path-lit" d="" />
+      </svg>
+
+      <!-- Injected 182 Nodes grouped by Week -->
+      <div id="journey-nodes-container" class="journey-nodes-list"></div>
+    </section>
+  </main>
+
+  <!-- ═══════════════════════ DETAIL MODAL ═══════════════════════ -->
+  <div id="journey-modal" class="journey-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-day-title">
+    <div class="journey-modal-card">
+      <button id="modal-close" class="modal-close-btn" aria-label="Close modal">&times;</button>
+      
+      <div class="modal-tag-row">
+        <span id="modal-day-badge" class="node-day-tag" style="font-size:12px;">Day 1 · Week 1</span>
+        <span id="modal-date-badge" class="node-date-tag" style="font-size:12px;">2026-08-18</span>
+        <span id="modal-state-badge" class="journey-progress-badge" style="font-size:11px;padding:3px 10px;">Today</span>
+      </div>
+
+      <h2 id="modal-day-title" class="modal-title">Title</h2>
+      <p id="modal-day-desc" class="modal-desc">Description</p>
+
+      <div id="modal-deliverable-wrap">
+        <div class="modal-section-title">🎯 Deliverable</div>
+        <div id="modal-deliverable-text" class="modal-deliverable-box"></div>
+      </div>
+
+      <div id="modal-resources-wrap">
+        <div class="modal-section-title">📚 Recommended Resources</div>
+        <div id="modal-resources-list" class="modal-resources-list"></div>
+      </div>
+
+      <div class="modal-actions">
+        <button id="modal-toggle-btn" class="btn-toggle-complete not-done">
+          <span id="modal-toggle-icon">○</span>
+          <span id="modal-toggle-text">Mark as Completed</span>
+        </button>
+        <button id="modal-done-btn" class="btn btn-ghost" style="font-size:13px;padding:8px 16px;">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ SCRIPTS ═══════════════════════ -->
+  <script src="assets/js/journey-curriculum.js"></script>
+  <script src="assets/js/journey-data.js"></script>
+  <script src="assets/js/ai-widget.js" defer></script>
+  <script src="assets/js/firebase-config.js"></script>
+  <script src="assets/js/analytics.js" defer></script>
+
+  <!-- Interactive Rendering Script -->
+  <script>
+    (function () {
+      'use strict';
+
+      let currentSelectedDay = null;
+      let activeWeekFilter = 'all';
+
+      // ── Render Week Select Options ───────────────────────────
+      function populateWeekSelect() {
+        const sel = document.getElementById('hud-week-select');
+        if (!sel) return;
+        sel.innerHTML = '<option value="all">All Weeks (1–26)</option>';
+        for (let w = 1; w <= 26; w++) {
+          const opt = document.createElement('option');
+          opt.value = String(w);
+          opt.textContent = `Week ${w}`;
+          sel.appendChild(opt);
+        }
+
+        sel.addEventListener('change', e => {
+          activeWeekFilter = e.target.value;
+          renderJourneyPath();
+          if (activeWeekFilter !== 'all') {
+            const el = document.getElementById(`week-group-${activeWeekFilter}`);
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      }
+
+      // ── Update HUD Stats ────────────────────────────────────
+      function updateHUD() {
+        const stats = window.JourneyData.getStats();
+        const hudDayText = document.getElementById('hud-day-text');
+        const hudFill = document.getElementById('hud-progress-fill');
+
+        if (hudDayText) {
+          hudDayText.textContent = `Day ${stats.currentDayNumber} of ${stats.total} · Week ${stats.currentWeekNumber}`;
+        }
+        if (hudFill) {
+          hudFill.style.width = `${Math.max(stats.percent, 2)}%`;
+        }
+      }
+
+      // ── Render 182 Nodes & Winding HTML ─────────────────────
+      function renderJourneyPath() {
+        const container = document.getElementById('journey-nodes-container');
+        if (!container) return;
+        container.innerHTML = '';
+
+        const allDays = window.JourneyData.getDays();
+        
+        // Group by Week
+        const weeksMap = {};
+        allDays.forEach(d => {
+          if (!weeksMap[d.week_number]) weeksMap[d.week_number] = [];
+          weeksMap[d.week_number].push(d);
+        });
+
+        // Alternating pattern positions for natural winding curve
+        const POS_PATTERN = ['pos-center', 'pos-right', 'pos-right', 'pos-center', 'pos-left', 'pos-left', 'pos-center'];
+
+        Object.keys(weeksMap).forEach(wNum => {
+          const weekDays = weeksMap[wNum];
+          if (activeWeekFilter !== 'all' && String(wNum) !== activeWeekFilter) return;
+
+          const weekGroup = document.createElement('div');
+          weekGroup.className = 'journey-week-group';
+          weekGroup.id = `week-group-${wNum}`;
+
+          // Week Header
+          const firstDay = weekDays[0];
+          const weekHeader = document.createElement('div');
+          weekHeader.className = 'journey-week-header';
+          weekHeader.innerHTML = `
+            <div class="journey-week-title">
+              <span class="journey-week-num">Week ${wNum}</span>
+              <span>— ${getWeekTheme(Number(wNum))}</span>
+            </div>
+            <div class="journey-week-badge">Days ${(wNum - 1) * 7 + 1}–${wNum * 7}</div>
+          `;
+          weekGroup.appendChild(weekHeader);
+
+          // Node Rows
+          weekDays.forEach(day => {
+            const row = document.createElement('div');
+            const posClass = POS_PATTERN[(day.day_in_week - 1) % POS_PATTERN.length];
+            row.className = `journey-node-row ${posClass}`;
+
+            const shapeIndex = (day.day_number) % 7;
+            const nodeCard = document.createElement('div');
+            nodeCard.className = `journey-node-card shape-${shapeIndex} state-${day.state}`;
+            nodeCard.setAttribute('tabindex', '0');
+            nodeCard.setAttribute('role', 'button');
+            nodeCard.setAttribute('aria-label', `Day ${day.day_number}: ${day.title} (${day.state})`);
+            nodeCard.dataset.date = day.date;
+            nodeCard.id = `node-day-${day.day_number}`;
+
+            // Milestone Callout Flag
+            if (day.milestone) {
+              const flag = document.createElement('div');
+              flag.className = 'node-milestone-flag';
+              flag.textContent = `★ ${day.milestone.label}`;
+              nodeCard.appendChild(flag);
+            }
+
+            // Icon Badge
+            let iconSymbol = day.day_type === 'rest' ? '☕' : '📖';
+            if (day.state === 'completed') iconSymbol = '✨';
+            if (day.state === 'current') iconSymbol = '⚡';
+
+            const iconWrap = document.createElement('div');
+            iconWrap.className = 'node-icon-badge';
+            iconWrap.textContent = iconSymbol;
+            nodeCard.appendChild(iconWrap);
+
+            // Body
+            const body = document.createElement('div');
+            body.className = 'node-body';
+            body.innerHTML = `
+              <div class="node-meta">
+                <span class="node-day-tag">Day ${day.day_number}</span>
+                <span class="node-date-tag">${formatDateLabel(day.date)}</span>
+              </div>
+              <div class="node-title">${day.title}</div>
+              ${day.deliverable ? `<div class="node-deliverable-chip">🎯 ${day.deliverable}</div>` : ''}
+            `;
+            nodeCard.appendChild(body);
+
+            // Click & Keyboard Event
+            const openModal = () => showModal(day);
+            nodeCard.addEventListener('click', openModal);
+            nodeCard.addEventListener('keydown', e => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openModal();
+              }
+            });
+
+            row.appendChild(nodeCard);
+            weekGroup.appendChild(row);
+          });
+
+          container.appendChild(weekGroup);
+        });
+
+        // Request SVG Path redraw after layout renders
+        requestAnimationFrame(() => drawSvgPath());
+      }
+
+      function getWeekTheme(w) {
+        const themes = {
+          1: "Environment & Python Toolkit",
+          2: "How LLMs Actually Work",
+          3: "Anthropic Academy Core",
+          4: "First Real API App (Project #0)",
+          5: "Embeddings & Vector Databases",
+          6: "RAG Architecture v1",
+          7: "RAG v2: Hybrid Search & Reranking",
+          8: "Evaluation (Project #1 Done)",
+          9: "Tool & Function Calling",
+          10: "LangGraph State Machines",
+          11: "Multi-Agent Systems & MCP Intro",
+          12: "Autonomous Job Agent (Project #2 Done)",
+          13: "Real Evals & LLM-as-Judge",
+          14: "Observability & Latency Tracing",
+          15: "FastAPI & Docker Deployment",
+          16: "Guardrails & Safety (Project #3 Done)",
+          17: "MCP Server Architecture",
+          18: "Custom MCP Server Build",
+          19: "Serverless Cloud Deployment",
+          20: "Capstone Project Architecture",
+          21: "Capstone Build: RAG & Agents",
+          22: "Capstone Complete (Project #4 Done)",
+          23: "Senior AI Engineer Résumé & GitHub",
+          24: "System Design & Interview Prep",
+          25: "Active Applications & Outreach",
+          26: "Roadmap Complete & Retrospective"
+        };
+        return themes[w] || "Applied AI Engineering";
+      }
+
+      function formatDateLabel(dateStr) {
+        const parts = dateStr.split('-');
+        const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        const m = months[parseInt(parts[1], 10) - 1];
+        return `${m} ${parseInt(parts[2], 10)}`;
+      }
+
+      // ── Draw Smooth SVG Curved Path ─────────────────────────
+      function drawSvgPath() {
+        const track = document.getElementById('journey-track');
+        const svg = document.getElementById('journey-svg');
+        const unlitPath = document.getElementById('svg-unlit-path');
+        const litPath = document.getElementById('svg-lit-path');
+
+        if (!track || !svg || !unlitPath || !litPath) return;
+
+        const trackRect = track.getBoundingClientRect();
+        const nodes = Array.from(track.querySelectorAll('.journey-node-card'));
+
+        if (nodes.length < 2) {
+          unlitPath.setAttribute('d', '');
+          litPath.setAttribute('d', '');
+          return;
+        }
+
+        svg.setAttribute('width', track.clientWidth);
+        svg.setAttribute('height', track.clientHeight);
+
+        const points = nodes.map(n => {
+          const rect = n.getBoundingClientRect();
+          return {
+            x: rect.left - trackRect.left + rect.width / 2,
+            y: rect.top - trackRect.top + rect.height / 2,
+            isLit: n.classList.contains('state-completed') || n.classList.contains('state-current')
+          };
+        });
+
+        // Compute smooth cubic bezier path through all points
+        let fullD = `M ${points[0].x} ${points[0].y}`;
+        let litD = `M ${points[0].x} ${points[0].y}`;
+        let hasLitSegment = points[0].isLit;
+
+        for (let i = 0; i < points.length - 1; i++) {
+          const p0 = points[i];
+          const p1 = points[i + 1];
+
+          // Smooth vertical S-curve
+          const deltaY = p1.y - p0.y;
+          const cp1x = p0.x;
+          const cp1y = p0.y + deltaY * 0.5;
+          const cp2x = p1.x;
+          const cp2y = p1.y - deltaY * 0.5;
+
+          const seg = ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${p1.x} ${p1.y}`;
+          fullD += seg;
+
+          if (p0.isLit && p1.isLit) {
+            litD += seg;
+          }
+        }
+
+        unlitPath.setAttribute('d', fullD);
+        litPath.setAttribute('d', litD.length > 20 ? litD : '');
+      }
+
+      // ── Modal Handling ──────────────────────────────────────
+      function showModal(day) {
+        currentSelectedDay = day;
+        const modal = document.getElementById('journey-modal');
+        if (!modal) return;
+
+        document.getElementById('modal-day-badge').textContent = `Day ${day.day_number} · Week ${day.week_number}`;
+        document.getElementById('modal-date-badge').textContent = day.date;
+        
+        const stateBadge = document.getElementById('modal-state-badge');
+        stateBadge.textContent = day.state.toUpperCase();
+        stateBadge.className = `journey-progress-badge ${day.state}`;
+
+        document.getElementById('modal-day-title').textContent = day.title;
+        document.getElementById('modal-day-desc').textContent = day.description;
+
+        // Deliverables
+        const delivWrap = document.getElementById('modal-deliverable-wrap');
+        const delivText = document.getElementById('modal-deliverable-text');
+        if (day.deliverable) {
+          delivWrap.style.display = 'block';
+          delivText.textContent = day.deliverable;
+        } else {
+          delivWrap.style.display = 'none';
+        }
+
+        // Resources
+        const resWrap = document.getElementById('modal-resources-wrap');
+        const resList = document.getElementById('modal-resources-list');
+        resList.innerHTML = '';
+        if (day.resources && day.resources.length > 0) {
+          resWrap.style.display = 'block';
+          day.resources.forEach(r => {
+            const link = document.createElement('a');
+            link.className = 'modal-resource-link';
+            link.href = r.url || '#';
+            link.target = r.url ? '_blank' : '_self';
+            link.rel = 'noopener noreferrer';
+            link.innerHTML = `<span>${r.label}</span> <span>&nearr;</span>`;
+            resList.appendChild(link);
+          });
+        } else {
+          resWrap.style.display = 'none';
+        }
+
+        // Toggle Button
+        updateModalToggleButton(day);
+
+        modal.classList.add('open');
+      }
+
+      function updateModalToggleButton(day) {
+        const btn = document.getElementById('modal-toggle-btn');
+        const icon = document.getElementById('modal-toggle-icon');
+        const txt = document.getElementById('modal-toggle-text');
+        if (!btn || !icon || !txt) return;
+
+        const isDone = day.state === 'completed';
+        if (isDone) {
+          btn.className = 'btn-toggle-complete is-done';
+          icon.textContent = '✓';
+          txt.textContent = 'Completed (Click to Unmark)';
+        } else {
+          btn.className = 'btn-toggle-complete not-done';
+          icon.textContent = '○';
+          txt.textContent = 'Mark as Completed';
+        }
+      }
+
+      function closeModal() {
+        const modal = document.getElementById('journey-modal');
+        if (modal) modal.classList.remove('open');
+      }
+
+      // ── Event Listeners ─────────────────────────────────────
+      function initEvents() {
+        const closeBtn = document.getElementById('modal-close');
+        const doneBtn = document.getElementById('modal-done-btn');
+        const modal = document.getElementById('journey-modal');
+        const toggleBtn = document.getElementById('modal-toggle-btn');
+
+        if (closeBtn) closeBtn.addEventListener('click', closeModal);
+        if (doneBtn) doneBtn.addEventListener('click', closeModal);
+
+        if (modal) {
+          modal.addEventListener('click', e => {
+            if (e.target === modal) closeModal();
+          });
+        }
+
+        document.addEventListener('keydown', e => {
+          if (e.key === 'Escape') closeModal();
+        });
+
+        if (toggleBtn) {
+          toggleBtn.addEventListener('click', async () => {
+            if (!currentSelectedDay) return;
+            const newStatus = currentSelectedDay.state !== 'completed';
+            await window.JourneyData.toggleCompletion(currentSelectedDay.date, newStatus);
+            
+            // Re-fetch day and update modal UI
+            const updated = window.JourneyData.getDay(currentSelectedDay.date);
+            if (updated) {
+              currentSelectedDay = updated;
+              updateModalToggleButton(updated);
+            }
+          });
+        }
+
+        window.addEventListener('resize', () => drawSvgPath());
+
+        // Subscribe to data changes
+        window.JourneyData.subscribe(() => {
+          updateHUD();
+          renderJourneyPath();
+        });
+      }
+
+      // ── Scroll to Today Node on First Load ─────────────────
+      function scrollToToday() {
+        const allDays = window.JourneyData.getDays();
+        const todayDay = allDays.find(d => d.is_today);
+        if (todayDay) {
+          const el = document.getElementById(`node-day-${todayDay.day_number}`);
+          if (el) {
+            setTimeout(() => {
+              el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 300);
+          }
+        }
+      }
+
+      // ── Boot ────────────────────────────────────────────────
+      function boot() {
+        populateWeekSelect();
+        updateHUD();
+        renderJourneyPath();
+        initEvents();
+        scrollToToday();
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', boot);
+      } else {
+        boot();
+      }
+    })();
+  </script>
+</body>
+</html>

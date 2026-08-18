@@ -7,7 +7,8 @@
     "resume": "个人简历",
     "contact": "联系我",
     "game": "互动游戏 🎮",
-    "bookCall": "预约咨询"
+    "bookCall": "预约咨询",
+    "journey": "进阶之路 🧭"
   },
   "hero": {
     "challengeBadge": "挑战特惠",
@@ -122,5 +123,14 @@
   "footer": {
     "rights": "版权所有，保留所有权利。",
     "tagline": "以 Kotlin 级别的严谨与精准精心构建。"
+  },
+  "journey": {
+    "widgetTag": "ai 学习路线",
+    "widgetTitle": "进阶之路 — 6个月 AI 工程路线图",
+    "widgetSub": "记录应用 AI 工程（大模型应用、RAG、智能体与 MCP）的 182 天每日里程碑。",
+    "viewFull": "查看完整路线 &rarr;",
+    "backPortfolio": "返回主页",
+    "heroTitle": "进阶之路",
+    "heroDesc": "为期 182 天的应用 AI 工程体系化学习路线 — 大语言模型应用开发、高级 RAG 检索、多智能体协作与云端部署。"
   }
 }
