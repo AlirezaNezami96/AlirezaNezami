@@ -81,6 +81,11 @@
           <option value="all">All Weeks (1–26)</option>
           <!-- Injected dynamically -->
         </select>
+
+        <button id="btn-owner-auth" class="journey-auth-badge" aria-label="Roadmap Owner Authentication">
+          <span id="auth-icon">🔒</span>
+          <span id="auth-text">Visitor Mode</span>
+        </button>
       </div>
     </div>
   </header>
@@ -94,6 +99,14 @@
         A winding 182-day curriculum through Applied AI Engineering — LLM Applications, Advanced RAG, Autonomous Multi-Agent Systems, MCP, and Cloud Deployments. The trail automatically illuminates with each passing day.
       </p>
 
+      <!-- View Controls & Collapsible Week Toggles -->
+      <div class="journey-view-controls">
+        <button id="btn-filter-all" class="btn-view-toggle active">All Weeks</button>
+        <button id="btn-filter-current" class="btn-view-toggle">Current Week Only</button>
+        <button id="btn-collapse-all" class="btn-view-toggle">Collapse All</button>
+        <button id="btn-expand-all" class="btn-view-toggle">Expand All</button>
+      </div>
+
       <!-- Visual Legend -->
       <div class="journey-legend" aria-label="Roadmap node state legend">
         <div class="legend-item">
@@ -102,11 +115,11 @@
         </div>
         <div class="legend-item">
           <div class="legend-dot current"></div>
-          <span>Today (Active Pulse)</span>
+          <span>Today (Active Halo)</span>
         </div>
         <div class="legend-item">
           <div class="legend-dot future"></div>
-          <span>Future (Unlit Trail)</span>
+          <span>Future (Unlit Cloud)</span>
         </div>
       </div>
     </section>
@@ -128,7 +141,7 @@
         <path id="svg-lit-path" class="journey-svg-path-lit" d="" />
       </svg>
 
-      <!-- Injected 182 Nodes grouped by Week -->
+      <!-- Injected 182 Cloud Nodes grouped by Week -->
       <div id="journey-nodes-container" class="journey-nodes-list"></div>
     </section>
   </main>
@@ -153,7 +166,7 @@
       </div>
 
       <div id="modal-resources-wrap">
-        <div class="modal-section-title">📚 Recommended Resources</div>
+        <div class="modal-section-title">📚 5 Curated Resources from 5 Websites</div>
         <div id="modal-resources-list" class="modal-resources-list"></div>
       </div>
 
@@ -166,6 +179,36 @@
           Close
         </button>
       </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ OWNER AUTH MODAL ═══════════════════════ -->
+  <div id="owner-auth-modal" class="journey-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
+    <div class="journey-modal-card" style="max-width:440px;">
+      <button id="auth-modal-close" class="modal-close-btn" aria-label="Close auth modal">&times;</button>
+      
+      <div style="font-size:28px;margin-bottom:12px;">👑</div>
+      <h2 id="auth-modal-title" class="modal-title" style="font-size:1.25rem;">Owner Access Passcode</h2>
+      <p class="modal-desc" style="font-size:13.5px;">
+        To prevent unauthorized updates to Alireza's roadmap progress, please enter the Owner Passcode.
+      </p>
+
+      <form id="owner-auth-form">
+        <input 
+          type="password" 
+          id="owner-passcode-input" 
+          class="owner-passcode-input" 
+          placeholder="Enter Owner Passcode..." 
+          autocomplete="current-password"
+          required 
+        />
+        <div id="auth-error-msg" style="color:#FCA5A5;font-size:12.5px;margin-bottom:12px;display:none;"></div>
+        
+        <div style="display:flex;gap:10px;justify-content:flex-end;">
+          <button type="button" id="auth-cancel-btn" class="btn btn-ghost" style="font-size:13px;padding:8px 14px;">Cancel</button>
+          <button type="submit" class="btn btn-primary" style="font-size:13px;padding:8px 18px;">Unlock</button>
+        </div>
+      </form>
     </div>
   </div>
 
@@ -201,16 +244,22 @@
           renderJourneyPath();
           if (activeWeekFilter !== 'all') {
             const el = document.getElementById(`week-group-${activeWeekFilter}`);
-            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (el) {
+              el.classList.remove('collapsed');
+              el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
           }
         });
       }
 
-      // ── Update HUD Stats ────────────────────────────────────
+      // ── Update HUD Stats & Auth Badge ───────────────────────
       function updateHUD() {
         const stats = window.JourneyData.getStats();
         const hudDayText = document.getElementById('hud-day-text');
         const hudFill = document.getElementById('hud-progress-fill');
+        const authBadge = document.getElementById('btn-owner-auth');
+        const authIcon = document.getElementById('auth-icon');
+        const authText = document.getElementById('auth-text');
 
         if (hudDayText) {
           hudDayText.textContent = `Day ${stats.currentDayNumber} of ${stats.total} · Week ${stats.currentWeekNumber}`;
@@ -218,15 +267,28 @@
         if (hudFill) {
           hudFill.style.width = `${Math.max(stats.percent, 2)}%`;
         }
+
+        if (authBadge && authIcon && authText) {
+          if (stats.isOwner) {
+            authBadge.className = 'journey-auth-badge is-owner';
+            authIcon.textContent = '👑';
+            authText.textContent = 'Owner Mode';
+          } else {
+            authBadge.className = 'journey-auth-badge';
+            authIcon.textContent = '🔒';
+            authText.textContent = 'Visitor View';
+          }
+        }
       }
 
-      // ── Render 182 Nodes & Winding HTML ─────────────────────
+      // ── Render 182 Cloud Nodes & 5-Resource Dropdowns ───────
       function renderJourneyPath() {
         const container = document.getElementById('journey-nodes-container');
         if (!container) return;
         container.innerHTML = '';
 
         const allDays = window.JourneyData.getDays();
+        const stats = window.JourneyData.getStats();
         
         // Group by Week
         const weeksMap = {};
@@ -238,36 +300,52 @@
         // Alternating pattern positions for natural winding curve
         const POS_PATTERN = ['pos-center', 'pos-right', 'pos-right', 'pos-center', 'pos-left', 'pos-left', 'pos-center'];
 
-        Object.keys(weeksMap).forEach(wNum => {
+        Object.keys(weeksMap).forEach(wNumStr => {
+          const wNum = Number(wNumStr);
           const weekDays = weeksMap[wNum];
+          
           if (activeWeekFilter !== 'all' && String(wNum) !== activeWeekFilter) return;
 
           const weekGroup = document.createElement('div');
           weekGroup.className = 'journey-week-group';
           weekGroup.id = `week-group-${wNum}`;
 
-          // Week Header
-          const firstDay = weekDays[0];
+          // Week Header with Collapsible Toggle
           const weekHeader = document.createElement('div');
           weekHeader.className = 'journey-week-header';
+          weekHeader.setAttribute('role', 'button');
+          weekHeader.setAttribute('aria-expanded', 'true');
           weekHeader.innerHTML = `
             <div class="journey-week-title">
               <span class="journey-week-num">Week ${wNum}</span>
-              <span>— ${getWeekTheme(Number(wNum))}</span>
+              <span>— ${getWeekTheme(wNum)}</span>
             </div>
-            <div class="journey-week-badge">Days ${(wNum - 1) * 7 + 1}–${wNum * 7}</div>
+            <div class="journey-week-controls">
+              <span class="journey-week-badge">Days ${(wNum - 1) * 7 + 1}–${wNum * 7}</span>
+              <span class="journey-week-toggle-icon">▾</span>
+            </div>
           `;
+
+          weekHeader.addEventListener('click', () => {
+            weekGroup.classList.toggle('collapsed');
+            const isCollapsed = weekGroup.classList.contains('collapsed');
+            weekHeader.setAttribute('aria-expanded', !isCollapsed);
+            requestAnimationFrame(() => drawSvgPath());
+          });
+
           weekGroup.appendChild(weekHeader);
 
-          // Node Rows
+          // Node Rows Container
+          const nodesList = document.createElement('div');
+          nodesList.className = 'journey-nodes-list';
+
           weekDays.forEach(day => {
             const row = document.createElement('div');
             const posClass = POS_PATTERN[(day.day_in_week - 1) % POS_PATTERN.length];
             row.className = `journey-node-row ${posClass}`;
 
-            const shapeIndex = (day.day_number) % 7;
             const nodeCard = document.createElement('div');
-            nodeCard.className = `journey-node-card shape-${shapeIndex} state-${day.state}`;
+            nodeCard.className = `journey-node-card state-${day.state}`;
             nodeCard.setAttribute('tabindex', '0');
             nodeCard.setAttribute('role', 'button');
             nodeCard.setAttribute('aria-label', `Day ${day.day_number}: ${day.title} (${day.state})`);
@@ -282,28 +360,102 @@
               nodeCard.appendChild(flag);
             }
 
-            // Icon Badge
+            // Top Row
             let iconSymbol = day.day_type === 'rest' ? '☕' : '📖';
             if (day.state === 'completed') iconSymbol = '✨';
             if (day.state === 'current') iconSymbol = '⚡';
 
-            const iconWrap = document.createElement('div');
-            iconWrap.className = 'node-icon-badge';
-            iconWrap.textContent = iconSymbol;
-            nodeCard.appendChild(iconWrap);
-
-            // Body
-            const body = document.createElement('div');
-            body.className = 'node-body';
-            body.innerHTML = `
-              <div class="node-meta">
-                <span class="node-day-tag">Day ${day.day_number}</span>
-                <span class="node-date-tag">${formatDateLabel(day.date)}</span>
+            const topRow = document.createElement('div');
+            topRow.className = 'node-top-row';
+            topRow.innerHTML = `
+              <div style="display:flex;align-items:center;gap:10px;">
+                <div class="node-icon-badge">${iconSymbol}</div>
+                <div>
+                  <div class="node-day-tag">Day ${day.day_number} · Week ${day.week_number}</div>
+                  <div class="node-date-tag">${formatDateLabel(day.date)}</div>
+                </div>
               </div>
-              <div class="node-title">${day.title}</div>
-              ${day.deliverable ? `<div class="node-deliverable-chip">🎯 ${day.deliverable}</div>` : ''}
+              <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,0.4);">
+                ${day.state.toUpperCase()}
+              </div>
             `;
-            nodeCard.appendChild(body);
+            nodeCard.appendChild(topRow);
+
+            // Title & Deliverable
+            const titleEl = document.createElement('div');
+            titleEl.className = 'node-title';
+            titleEl.textContent = day.title;
+            nodeCard.appendChild(titleEl);
+
+            if (day.deliverable) {
+              const delivEl = document.createElement('div');
+              delivEl.className = 'node-deliverable-chip';
+              delivEl.innerHTML = `🎯 <span>${day.deliverable}</span>`;
+              nodeCard.appendChild(delivEl);
+            }
+
+            // 5-Resources Interactive Dropdown
+            if (day.resources && day.resources.length > 0) {
+              const resWrap = document.createElement('div');
+              resWrap.className = 'node-resources-dropdown-wrap';
+
+              const topPick = day.resources[0];
+              const remaining = day.resources.slice(1);
+
+              // Top pick pill
+              const topPickLink = document.createElement('a');
+              topPickLink.className = 'top-pick-pill';
+              topPickLink.href = topPick.url || '#';
+              topPickLink.target = topPick.url ? '_blank' : '_self';
+              topPickLink.rel = 'noopener noreferrer';
+              topPickLink.innerHTML = `
+                <div style="display:flex;align-items:center;gap:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
+                  <span class="top-pick-badge">★ TOP PICK</span>
+                  <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${topPick.label}</span>
+                </div>
+                <span style="font-size:12px;">&nearr;</span>
+              `;
+              topPickLink.addEventListener('click', e => e.stopPropagation());
+              resWrap.appendChild(topPickLink);
+
+              // Dropdown Toggle
+              if (remaining.length > 0) {
+                const dropBtn = document.createElement('button');
+                dropBtn.className = 'btn-resources-dropdown-toggle';
+                dropBtn.type = 'button';
+                dropBtn.innerHTML = `<span>▾ View 4 More Resources (5 Total)</span> <span class="drop-arrow">↓</span>`;
+
+                const dropList = document.createElement('div');
+                dropList.className = 'node-resources-dropdown-list';
+
+                remaining.forEach(r => {
+                  const rLink = document.createElement('a');
+                  rLink.className = 'node-dropdown-link';
+                  rLink.href = r.url || '#';
+                  rLink.target = r.url ? '_blank' : '_self';
+                  rLink.rel = 'noopener noreferrer';
+                  rLink.innerHTML = `
+                    <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${r.label}</span>
+                    <span class="node-domain-tag">${r.domain || ''} &nearr;</span>
+                  `;
+                  rLink.addEventListener('click', e => e.stopPropagation());
+                  dropList.appendChild(rLink);
+                });
+
+                dropBtn.addEventListener('click', e => {
+                  e.stopPropagation();
+                  dropList.classList.toggle('open');
+                  const isOpen = dropList.classList.contains('open');
+                  dropBtn.querySelector('.drop-arrow').textContent = isOpen ? '↑' : '↓';
+                  requestAnimationFrame(() => drawSvgPath());
+                });
+
+                resWrap.appendChild(dropBtn);
+                resWrap.appendChild(dropList);
+              }
+
+              nodeCard.appendChild(resWrap);
+            }
 
             // Click & Keyboard Event
             const openModal = () => showModal(day);
@@ -316,13 +468,14 @@
             });
 
             row.appendChild(nodeCard);
-            weekGroup.appendChild(row);
+            nodesList.appendChild(row);
           });
 
+          weekGroup.appendChild(nodesList);
           container.appendChild(weekGroup);
         });
 
-        // Request SVG Path redraw after layout renders
+        // Redraw smooth SVG path after layout
         requestAnimationFrame(() => drawSvgPath());
       }
 
@@ -375,7 +528,7 @@
         if (!track || !svg || !unlitPath || !litPath) return;
 
         const trackRect = track.getBoundingClientRect();
-        const nodes = Array.from(track.querySelectorAll('.journey-node-card'));
+        const nodes = Array.from(track.querySelectorAll('.journey-node-card:not(.collapsed *)'));
 
         if (nodes.length < 2) {
           unlitPath.setAttribute('d', '');
@@ -398,7 +551,6 @@
         // Compute smooth cubic bezier path through all points
         let fullD = `M ${points[0].x} ${points[0].y}`;
         let litD = `M ${points[0].x} ${points[0].y}`;
-        let hasLitSegment = points[0].isLit;
 
         for (let i = 0; i < points.length - 1; i++) {
           const p0 = points[i];
@@ -423,7 +575,7 @@
         litPath.setAttribute('d', litD.length > 20 ? litD : '');
       }
 
-      // ── Modal Handling ──────────────────────────────────────
+      // ── Detail Modal Handling ───────────────────────────────
       function showModal(day) {
         currentSelectedDay = day;
         const modal = document.getElementById('journey-modal');
@@ -449,19 +601,28 @@
           delivWrap.style.display = 'none';
         }
 
-        // Resources
+        // 5 Resources
         const resWrap = document.getElementById('modal-resources-wrap');
         const resList = document.getElementById('modal-resources-list');
         resList.innerHTML = '';
         if (day.resources && day.resources.length > 0) {
           resWrap.style.display = 'block';
-          day.resources.forEach(r => {
+          day.resources.forEach((r, idx) => {
             const link = document.createElement('a');
-            link.className = 'modal-resource-link';
+            link.className = `modal-resource-link ${r.is_top_pick ? 'top-pick' : ''}`;
             link.href = r.url || '#';
             link.target = r.url ? '_blank' : '_self';
             link.rel = 'noopener noreferrer';
-            link.innerHTML = `<span>${r.label}</span> <span>&nearr;</span>`;
+            link.innerHTML = `
+              <div style="display:flex;align-items:center;gap:8px;">
+                ${r.is_top_pick ? '<span class="top-pick-badge">★ TOP PICK</span>' : `<span style="font-family:'JetBrains Mono';font-size:11px;color:var(--text-muted);">#${idx + 1}</span>`}
+                <span style="font-weight:600;">${r.label}</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <span class="node-domain-tag">${r.domain || ''}</span>
+                <span>&nearr;</span>
+              </div>
+            `;
             resList.appendChild(link);
           });
         } else {
@@ -497,12 +658,31 @@
         if (modal) modal.classList.remove('open');
       }
 
+      // ── Owner Auth Modal ────────────────────────────────────
+      function openAuthModal() {
+        const authModal = document.getElementById('owner-auth-modal');
+        const errMsg = document.getElementById('auth-error-msg');
+        const input = document.getElementById('owner-passcode-input');
+        if (errMsg) errMsg.style.display = 'none';
+        if (input) input.value = '';
+        if (authModal) authModal.classList.add('open');
+      }
+
+      function closeAuthModal() {
+        const authModal = document.getElementById('owner-auth-modal');
+        if (authModal) authModal.classList.remove('open');
+      }
+
       // ── Event Listeners ─────────────────────────────────────
       function initEvents() {
         const closeBtn = document.getElementById('modal-close');
         const doneBtn = document.getElementById('modal-done-btn');
         const modal = document.getElementById('journey-modal');
         const toggleBtn = document.getElementById('modal-toggle-btn');
+        const authBadge = document.getElementById('btn-owner-auth');
+        const authCloseBtn = document.getElementById('auth-modal-close');
+        const authCancelBtn = document.getElementById('auth-cancel-btn');
+        const authForm = document.getElementById('owner-auth-form');
 
         if (closeBtn) closeBtn.addEventListener('click', closeModal);
         if (doneBtn) doneBtn.addEventListener('click', closeModal);
@@ -513,22 +693,83 @@
           });
         }
 
+        if (authBadge) authBadge.addEventListener('click', openAuthModal);
+        if (authCloseBtn) authCloseBtn.addEventListener('click', closeAuthModal);
+        if (authCancelBtn) authCancelBtn.addEventListener('click', closeAuthModal);
+
+        if (authForm) {
+          authForm.addEventListener('submit', e => {
+            e.preventDefault();
+            const input = document.getElementById('owner-passcode-input');
+            const errMsg = document.getElementById('auth-error-msg');
+            const res = window.JourneyData.authenticateOwner(input.value);
+
+            if (res.success) {
+              closeAuthModal();
+              updateHUD();
+              // If modal is open, trigger toggle
+              if (currentSelectedDay) {
+                toggleCompletionWithAuth(currentSelectedDay);
+              }
+            } else {
+              if (errMsg) {
+                errMsg.textContent = res.message;
+                errMsg.style.display = 'block';
+              }
+            }
+          });
+        }
+
         document.addEventListener('keydown', e => {
-          if (e.key === 'Escape') closeModal();
+          if (e.key === 'Escape') {
+            closeModal();
+            closeAuthModal();
+          }
         });
 
         if (toggleBtn) {
           toggleBtn.addEventListener('click', async () => {
             if (!currentSelectedDay) return;
-            const newStatus = currentSelectedDay.state !== 'completed';
-            await window.JourneyData.toggleCompletion(currentSelectedDay.date, newStatus);
-            
-            // Re-fetch day and update modal UI
-            const updated = window.JourneyData.getDay(currentSelectedDay.date);
-            if (updated) {
-              currentSelectedDay = updated;
-              updateModalToggleButton(updated);
-            }
+            toggleCompletionWithAuth(currentSelectedDay);
+          });
+        }
+
+        // View Controls Filters
+        const btnFilterAll = document.getElementById('btn-filter-all');
+        const btnFilterCur = document.getElementById('btn-filter-current');
+        const btnCollapse = document.getElementById('btn-collapse-all');
+        const btnExpand = document.getElementById('btn-expand-all');
+
+        if (btnFilterAll) {
+          btnFilterAll.addEventListener('click', () => {
+            activeWeekFilter = 'all';
+            document.querySelectorAll('.btn-view-toggle').forEach(b => b.classList.remove('active'));
+            btnFilterAll.classList.add('active');
+            renderJourneyPath();
+          });
+        }
+
+        if (btnFilterCur) {
+          btnFilterCur.addEventListener('click', () => {
+            const stats = window.JourneyData.getStats();
+            activeWeekFilter = String(stats.currentWeekNumber);
+            document.querySelectorAll('.btn-view-toggle').forEach(b => b.classList.remove('active'));
+            btnFilterCur.classList.add('active');
+            renderJourneyPath();
+          });
+        }
+
+        if (btnCollapse) {
+          btnCollapse.addEventListener('click', () => {
+            document.querySelectorAll('.journey-week-group').forEach(g => g.classList.add('collapsed'));
+            requestAnimationFrame(() => drawSvgPath());
+          });
+        }
+
+        if (btnExpand) {
+          btnExpand.addEventListener('click', () => {
+            document.querySelectorAll('.journey-week-group').forEach(g => g.classList.remove('collapsed'));
+            requestAnimationFrame(() => drawSvgPath());
           });
         }
 
@@ -539,6 +780,22 @@
           updateHUD();
           renderJourneyPath();
         });
+      }
+
+      async function toggleCompletionWithAuth(day) {
+        const newStatus = day.state !== 'completed';
+        const res = await window.JourneyData.toggleCompletion(day.date, newStatus);
+        
+        if (res && res.needs_auth) {
+          openAuthModal();
+          return;
+        }
+
+        const updated = window.JourneyData.getDay(day.date);
+        if (updated) {
+          currentSelectedDay = updated;
+          updateModalToggleButton(updated);
+        }
       }
 
       // ── Scroll to Today Node on First Load ─────────────────

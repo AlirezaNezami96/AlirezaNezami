@@ -13,7 +13,7 @@ from datetime import date, datetime
 from typing import List, Optional, Literal, Dict, Any
 from pathlib import Path
 
-from fastapi import FastAPI, HTTPException, Query, status
+from fastapi import FastAPI, HTTPException, Query, Header, status
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 import httpx
@@ -258,9 +258,21 @@ async def get_single_day(day_date: str):
             )
     raise HTTPException(status_code=404, detail=f"Day with date {day_date} not found.")
 
+OWNER_PASSCODE = os.getenv("OWNER_PASSCODE", "alireza-ai-2026")
+
 @app.patch("/api/days/{day_date}/complete")
-async def update_day_completion(day_date: str, payload: CompleteOverridePayload):
-    """Toggles completed_override for a specific date."""
+async def update_day_completion(
+    day_date: str, 
+    payload: CompleteOverridePayload,
+    x_owner_key: Optional[str] = Header(None, description="Secret Owner Passcode")
+):
+    """Toggles completed_override for a specific date (Requires Owner Passcode)."""
+    if x_owner_key != OWNER_PASSCODE:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Unauthorized: Valid Owner Passcode required to modify completion status."
+        )
+        
     override_val = payload.completed
     _local_overrides[day_date] = override_val
     
@@ -269,7 +281,7 @@ async def update_day_completion(day_date: str, payload: CompleteOverridePayload)
         try:
             async with httpx.AsyncClient(timeout=3.0) as client:
                 await client.patch(
-                    f"{SUPABASE_URL}/rest/v1/learning_days?date=eq.{day_date}",
+                    f"{SUPABASE_URL}/rest/v1/learning_days?date=eq.${day_date}",
                     headers={
                         "apikey": SUPABASE_ANON_KEY,
                         "Authorization": f"Bearer {SUPABASE_ANON_KEY}",
@@ -284,7 +296,8 @@ async def update_day_completion(day_date: str, payload: CompleteOverridePayload)
     return {
         "date": day_date,
         "completed_override": override_val,
-        "status": "updated"
+        "status": "updated",
+        "authorized_by": "owner"
     }
 
 if __name__ == "__main__":

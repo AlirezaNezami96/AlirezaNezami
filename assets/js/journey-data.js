@@ -1,7 +1,8 @@
 /**
  * ═══════════════════════════════════════════════════════════════════
- *  THE PATH — Journey Data Engine
- *  Client-side state calculator, PostgREST sync & LocalStorage fallback
+ *  THE PATH — Journey Data Engine (v2)
+ *  Client-side state calculator, 5-Resource Manager, PostgREST sync,
+ *  & Owner-Only Passcode Authentication Access Control
  * ═══════════════════════════════════════════════════════════════════
  */
 
@@ -10,6 +11,8 @@
 
   const PROGRAM_START_DATE = '2026-08-18';
   const STORAGE_KEY_OVERRIDES = 'an_journey_overrides_v1';
+  const STORAGE_KEY_AUTH = 'an_journey_owner_authenticated_v1';
+  const DEFAULT_OWNER_PASSCODE = 'alireza-ai-2026';
   
   const SUPABASE_URL = (typeof window.SUPABASE_URL !== 'undefined') ? window.SUPABASE_URL : 'https://odjcvmuqepwowoptgikn.supabase.co';
   const SUPABASE_ANON_KEY = (typeof window.SUPABASE_ANON_KEY !== 'undefined') ? window.SUPABASE_ANON_KEY : 'sb_publishable_6-uNgp-L2jeyzHxvsxy1uQ_2U-7pZ6A';
@@ -26,6 +29,19 @@
   };
 
   let subscribers = [];
+
+  function isOwnerAuthenticated() {
+    return localStorage.getItem(STORAGE_KEY_AUTH) === 'true';
+  }
+
+  function setOwnerAuthenticated(status) {
+    if (status) {
+      localStorage.setItem(STORAGE_KEY_AUTH, 'true');
+    } else {
+      localStorage.removeItem(STORAGE_KEY_AUTH);
+    }
+    notifySubscribers();
+  }
 
   function getLocalOverrides() {
     try {
@@ -67,6 +83,22 @@
   const JourneyData = {
     PROGRAM_START_DATE,
     MILESTONES,
+
+    isOwner: function () {
+      return isOwnerAuthenticated();
+    },
+
+    authenticateOwner: function (passcode) {
+      if (passcode && passcode.trim() === DEFAULT_OWNER_PASSCODE) {
+        setOwnerAuthenticated(true);
+        return { success: true, message: "Authenticated as Roadmap Owner!" };
+      }
+      return { success: false, message: "Invalid Owner Passcode. Please try again." };
+    },
+
+    logoutOwner: function () {
+      setOwnerAuthenticated(false);
+    },
 
     getDays: function () {
       const curriculum = window.JOURNEY_CURRICULUM || [];
@@ -124,11 +156,25 @@
         percent,
         currentDayNumber: todayDay ? todayDay.day_number : 1,
         currentWeekNumber: todayDay ? todayDay.week_number : 1,
-        todayDate: getTodayDateStr()
+        todayDate: getTodayDateStr(),
+        isOwner: isOwnerAuthenticated()
       };
     },
 
-    toggleCompletion: async function (dateStr, isCompleted) {
+    toggleCompletion: async function (dateStr, isCompleted, optPasscode) {
+      // Check Owner Authentication
+      if (!isOwnerAuthenticated()) {
+        if (optPasscode && optPasscode.trim() === DEFAULT_OWNER_PASSCODE) {
+          setOwnerAuthenticated(true);
+        } else {
+          return {
+            success: false,
+            needs_auth: true,
+            message: "Owner Passcode required to modify completion status."
+          };
+        }
+      }
+
       setLocalOverride(dateStr, isCompleted);
 
       // Dual sync with Supabase PostgREST & Local API if available
@@ -147,13 +193,16 @@
         } catch {}
       }
 
-      // Track Firebase event
+      // Track Firebase telemetry event
       if (typeof window.trackEvent === 'function') {
         window.trackEvent('journey_node_toggle', {
           date: dateStr,
-          completed: isCompleted
+          completed: isCompleted,
+          is_owner: true
         });
       }
+
+      return { success: true, date: dateStr, completed: isCompleted };
     },
 
     subscribe: function (callback) {

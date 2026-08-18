@@ -62,7 +62,16 @@ def test_completion_override_logic():
     assert compute_node_state("2026-08-18", False, today) == "future"
 
 def test_patch_completion():
-    res = client.patch("/api/days/2026-08-18/complete", json={"completed": True})
+    # Unauthorized attempt without key should fail with 401
+    unauth = client.patch("/api/days/2026-08-18/complete", json={"completed": True})
+    assert unauth.status_code == 401
+
+    # Authorized attempt with X-Owner-Key should succeed
+    res = client.patch(
+        "/api/days/2026-08-18/complete", 
+        json={"completed": True},
+        headers={"X-Owner-Key": "alireza-ai-2026"}
+    )
     assert res.status_code == 200
     assert res.json()["completed_override"] is True
     
