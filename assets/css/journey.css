@@ -438,55 +438,36 @@ body.journey-page {
 .shape-cloud {
   position: relative;
   width: 100%;
-  min-width: 320px;
+  min-width: 300px;
   max-width: 440px;
-  min-height: 130px;
+  aspect-ratio: 5 / 3;
+  clip-path: url(#cloud-clip);
+  padding: 26% 18% 16% 18%;   /* top right bottom left — keeps text clear of every lobe */
+  box-sizing: border-box;
   background: var(--cloud-bg, #160F28);
-  border: 1.5px solid var(--cloud-border, rgba(255, 255, 255, 0.14));
-  border-radius: 100px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   filter: drop-shadow(0 14px 25px var(--cloud-shadow, rgba(0, 0, 0, 0.4)));
-  margin: 30px auto 15px;
-  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.3s ease, border-color 0.3s ease;
+  margin: 20px auto;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.3s ease;
   user-select: none;
   cursor: pointer;
 }
 
-.cloud-block::before,
-.cloud-block::after,
-.shape-cloud::before,
-.shape-cloud::after {
-  content: "";
-  position: absolute;
-  background: var(--cloud-bg, #160F28);
-  border: 1.5px solid var(--cloud-border, rgba(255, 255, 255, 0.14));
-  border-bottom: none;
-  border-radius: 50%;
-  z-index: 1;
-  pointer-events: none;
-  transition: background 0.3s ease, border-color 0.3s ease;
-}
-
-/* Left puff */
+/* Scaled duplicate ::before for crisp cloud-shaped outline border */
 .cloud-block::before,
 .shape-cloud::before {
-  width: 110px;
-  height: 110px;
-  top: -46px;
-  left: 45px;
-  border-right: none;
-}
-
-/* Right puff */
-.cloud-block::after,
-.shape-cloud::after {
-  width: 135px;
-  height: 135px;
-  top: -58px;
-  right: 50px;
-  border-left: none;
+  content: "";
+  position: absolute;
+  inset: 0;
+  clip-path: url(#cloud-clip);
+  background: var(--cloud-border, rgba(255, 255, 255, 0.14));
+  transform: scale(1.03);
+  z-index: -1;
+  pointer-events: none;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
 /* Content container */
@@ -494,17 +475,19 @@ body.journey-page {
   position: relative;
   z-index: 2;
   width: 100%;
-  padding: 24px 28px;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  text-align: left;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
 }
 
 /* Hover floating effect */
 .cloud-block:hover,
 .shape-cloud:hover {
-  transform: translateY(-6px) scale(1.02);
+  transform: translateY(-6px);
 }
 
 /* ── STATE: COMPLETED (Glowing Warm Amber Cloud) ─────────────── */
@@ -512,11 +495,12 @@ body.journey-page {
 .journey-node-card.state-completed {
   --cloud-bg: #1F162A;
   --cloud-border: #F59E0B;
-  --cloud-shadow: rgba(245, 158, 11, 0.35);
-  filter: drop-shadow(0 14px 28px var(--cloud-shadow));
+  --cloud-shadow: rgba(245, 158, 11, 0.4);
+  background: var(--cloud-bg);
+  filter: drop-shadow(0 0 2px var(--cloud-border)) drop-shadow(0 14px 28px var(--cloud-shadow));
 }
 .cloud-block.state-completed:hover {
-  filter: drop-shadow(0 18px 36px rgba(245, 158, 11, 0.6));
+  filter: drop-shadow(0 0 4px #FDE68A) drop-shadow(0 18px 36px rgba(245, 158, 11, 0.65));
 }
 
 /* ── STATE: CURRENT (TODAY) — Active Breathing Pulse Cloud ───── */
@@ -524,17 +508,18 @@ body.journey-page {
 .journey-node-card.state-current {
   --cloud-bg: #131B38;
   --cloud-border: #38BDF8;
-  --cloud-shadow: rgba(56, 189, 248, 0.45);
+  --cloud-shadow: rgba(56, 189, 248, 0.5);
+  background: var(--cloud-bg);
   animation: cloud-floating-pulse 2.8s ease-in-out infinite;
 }
 
 @keyframes cloud-floating-pulse {
   0%, 100% {
-    filter: drop-shadow(0 12px 24px rgba(56, 189, 248, 0.4)) drop-shadow(0 0 15px rgba(129, 140, 248, 0.25));
+    filter: drop-shadow(0 0 2px #38BDF8) drop-shadow(0 12px 24px rgba(56, 189, 248, 0.45));
     --cloud-border: #38BDF8;
   }
   50% {
-    filter: drop-shadow(0 18px 36px rgba(56, 189, 248, 0.75)) drop-shadow(0 0 30px rgba(192, 132, 252, 0.5));
+    filter: drop-shadow(0 0 4px #BAE6FD) drop-shadow(0 18px 36px rgba(56, 189, 248, 0.8));
     --cloud-border: #BAE6FD;
   }
 }
@@ -543,32 +528,35 @@ body.journey-page {
 .cloud-block.state-future,
 .journey-node-card.state-future {
   --cloud-bg: #100D20;
-  --cloud-border: rgba(255, 255, 255, 0.14);
+  --cloud-border: rgba(255, 255, 255, 0.16);
   --cloud-shadow: rgba(0, 0, 0, 0.3);
-  opacity: 0.82;
+  background: var(--cloud-bg);
+  opacity: 0.85;
+  filter: drop-shadow(0 0 1px var(--cloud-border)) drop-shadow(0 8px 18px var(--cloud-shadow));
 }
 .cloud-block.state-future:hover {
   opacity: 1;
-  --cloud-border: rgba(255, 255, 255, 0.3);
+  --cloud-border: rgba(255, 255, 255, 0.35);
 }
 
 /* ─── NODE HEADER & CONTENT ───────────────────────────────────── */
 .node-top-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
 }
 
 .node-icon-badge {
-  width: 40px;
-  height: 40px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  font-size: 17px;
+  font-size: 13px;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.14);
 }
@@ -585,7 +573,7 @@ body.journey-page {
 
 .node-day-tag {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   color: var(--text-muted);
 }
@@ -594,33 +582,39 @@ body.journey-page {
 
 .node-date-tag {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: 10px;
   color: rgba(255, 255, 255, 0.45);
 }
 
 .node-title {
   font-family: 'Sora', sans-serif;
-  font-size: 15px;
+  font-size: 13.5px;
   font-weight: 700;
   color: #FFFFFF;
-  line-height: 1.35;
+  line-height: 1.25;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  max-width: 90%;
+  margin: 0 auto;
 }
 .state-future .node-title {
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .node-deliverable-chip {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: 10px;
   color: #C084FC;
   background: rgba(192, 132, 252, 0.12);
   border: 1px solid rgba(192, 132, 252, 0.25);
-  padding: 4px 10px;
-  border-radius: 6px;
-  max-width: 100%;
+  padding: 3px 8px;
+  border-radius: 5px;
+  max-width: 90%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -628,37 +622,37 @@ body.journey-page {
 
 /* ─── 5-RESOURCE DROPDOWN ACCORDION ON CLOUD CARDS ───────────── */
 .node-resources-dropdown-wrap {
-  margin-top: 4px;
-  padding-top: 10px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 2px;
+  width: 100%;
 }
 
 .top-pick-pill {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  padding: 6px 10px;
-  border-radius: 6px;
-  background: rgba(245, 158, 11, 0.12);
-  border: 1px solid rgba(245, 158, 11, 0.28);
-  font-size: 12px;
+  justify-content: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 5px;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  font-size: 10.5px;
   color: #FDE68A;
   text-decoration: none;
+  max-width: 90%;
   transition: all 0.2s ease;
 }
 .top-pick-pill:hover {
-  background: rgba(245, 158, 11, 0.22);
+  background: rgba(245, 158, 11, 0.28);
   border-color: #F59E0B;
 }
 .top-pick-badge {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 700;
   color: #F59E0B;
-  background: rgba(0, 0, 0, 0.35);
-  padding: 2px 6px;
-  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 1px 4px;
+  border-radius: 3px;
 }
 
 .btn-resources-dropdown-toggle {
@@ -985,45 +979,38 @@ body.journey-page {
 }
 
 .widget-node-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1.5px solid rgba(255, 255, 255, 0.1);
-  border-radius: 28px 36px 28px 36px / 32px 28px 36px 30px;
-  padding: 22px;
-  cursor: pointer;
   text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: all 0.25s ease;
+  cursor: pointer;
   position: relative;
 }
+
 .widget-node-card.state-completed {
-  border-color: rgba(245, 158, 11, 0.5);
-  background: rgba(245, 158, 11, 0.08);
-  box-shadow: 0 8px 25px rgba(245, 158, 11, 0.2);
+  --cloud-bg: #1F162A;
+  --cloud-border: #F59E0B;
+  --cloud-shadow: rgba(245, 158, 11, 0.35);
+  filter: drop-shadow(0 10px 20px var(--cloud-shadow));
 }
 .widget-node-card.state-current {
-  border-color: #38BDF8;
-  background: rgba(56, 189, 248, 0.12);
-  box-shadow: 0 0 25px rgba(56, 189, 248, 0.35);
-  animation: cloud-breathing 2.8s infinite;
+  --cloud-bg: #131B38;
+  --cloud-border: #38BDF8;
+  --cloud-shadow: rgba(56, 189, 248, 0.45);
+  filter: drop-shadow(0 12px 24px var(--cloud-shadow));
 }
 .widget-node-card.state-future {
-  border-style: dashed;
+  --cloud-bg: #100D20;
+  --cloud-border: rgba(255, 255, 255, 0.14);
+  --cloud-shadow: rgba(0, 0, 0, 0.3);
   opacity: 0.85;
-}
-.widget-node-card:hover {
-  transform: translateY(-4px);
-  border-color: #BAE6FD;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+  filter: drop-shadow(0 8px 16px var(--cloud-shadow));
 }
 
 .widget-node-badge {
   display: inline-flex;
+  justify-content: center;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 4px;
   text-transform: uppercase;
 }
 .widget-node-card.state-completed .widget-node-badge { color: #F59E0B; }
@@ -1032,17 +1019,16 @@ body.journey-page {
 
 .widget-node-title {
   font-family: 'Sora', sans-serif;
-  font-size: 15px;
+  font-size: 13.5px;
   font-weight: 700;
   color: #FFFFFF;
-  margin-bottom: 8px;
-  line-height: 1.35;
+  line-height: 1.3;
 }
 
 .widget-node-desc {
-  font-size: 13px;
+  font-size: 11.5px;
   color: var(--text-muted);
-  line-height: 1.5;
+  line-height: 1.4;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -1082,14 +1068,40 @@ body.journey-page {
     padding-right: 5px;
     justify-content: center;
   }
-  .journey-node-card {
-    max-width: 100%;
+  .cloud-block,
+  .journey-node-card,
+  .widget-node-card {
+    max-width: 360px;
     min-width: 260px;
-    padding: 20px 22px;
+    aspect-ratio: 5 / 3;
+    clip-path: url(#cloud-clip);
+    padding: 26% 18% 16% 18%;
+    box-sizing: border-box;
   }
+  .cloud-block::before,
   .journey-node-card::before,
-  .journey-node-card::after {
-    display: none; /* Keep clean on small mobile viewports */
+  .widget-node-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    clip-path: url(#cloud-clip);
+    background: var(--cloud-border, rgba(255, 255, 255, 0.14));
+    transform: scale(1.03);
+    z-index: -1;
+    pointer-events: none;
+    display: block;
+  }
+  .node-title {
+    font-size: 12.5px;
+    line-height: 1.25;
+  }
+  .node-day-tag {
+    font-size: 10px;
+  }
+  .node-icon-badge {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
   }
   .journey-hud-stats {
     width: 100%;

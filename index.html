@@ -113,6 +113,20 @@
   <!-- Ripple canvas overlay -->
   <canvas id="ripple-canvas" aria-hidden="true"></canvas>
 
+  <!-- Seamless SVG Cloud Clip-Path Definition -->
+  <svg width="0" height="0" style="position:absolute;pointer-events:none;" aria-hidden="true">
+    <defs>
+      <clipPath id="cloud-clip" clipPathUnits="objectBoundingBox">
+        <ellipse cx="0.5"  cy="0.65"  rx="0.39" ry="0.25"/>
+        <ellipse cx="0.2"  cy="0.5"   rx="0.14" ry="0.233"/>
+        <ellipse cx="0.36" cy="0.367" rx="0.17" ry="0.283"/>
+        <ellipse cx="0.54" cy="0.317" rx="0.18" ry="0.3"/>
+        <ellipse cx="0.71" cy="0.383" rx="0.16" ry="0.267"/>
+        <ellipse cx="0.86" cy="0.517" rx="0.13" ry="0.217"/>
+      </clipPath>
+    </defs>
+  </svg>
+
   <!-- ═══════════════════════ NAV ═══════════════════════ -->
   <nav id="nav" role="navigation" aria-label="Main navigation">
     <a href="#" class="nav-mark" aria-label="Alireza Nezami home">

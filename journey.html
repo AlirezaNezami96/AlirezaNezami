@@ -53,6 +53,20 @@
 </head>
 
 <body class="journey-page">
+  <!-- Seamless SVG Cloud Clip-Path Definition -->
+  <svg width="0" height="0" style="position:absolute;pointer-events:none;" aria-hidden="true">
+    <defs>
+      <clipPath id="cloud-clip" clipPathUnits="objectBoundingBox">
+        <ellipse cx="0.5"  cy="0.65"  rx="0.39" ry="0.25"/>
+        <ellipse cx="0.2"  cy="0.5"   rx="0.14" ry="0.233"/>
+        <ellipse cx="0.36" cy="0.367" rx="0.17" ry="0.283"/>
+        <ellipse cx="0.54" cy="0.317" rx="0.18" ry="0.3"/>
+        <ellipse cx="0.71" cy="0.383" rx="0.16" ry="0.267"/>
+        <ellipse cx="0.86" cy="0.517" rx="0.13" ry="0.217"/>
+      </clipPath>
+    </defs>
+  </svg>
+
   <!-- Atmospheric star dust -->
   <div class="journey-stars" aria-hidden="true"></div>
 
@@ -384,93 +398,47 @@
             const topRow = document.createElement('div');
             topRow.className = 'node-top-row';
             topRow.innerHTML = `
-              <div style="display:flex;align-items:center;gap:10px;">
+              <div style="display:flex;align-items:center;gap:6px;">
                 <div class="node-icon-badge">${iconSymbol}</div>
-                <div>
-                  <div class="node-day-tag">Day ${day.day_number} · Week ${day.week_number}</div>
+                <div style="text-align:left;">
+                  <div class="node-day-tag">Day ${day.day_number} · W${day.week_number}</div>
                   <div class="node-date-tag">${formatDateLabel(day.date)}</div>
                 </div>
               </div>
-              <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,0.4);">
-                ${day.state.toUpperCase()}
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,0.45);text-transform:uppercase;">
+                ${day.state}
               </div>
             `;
             cloudContent.appendChild(topRow);
 
-            // Title & Deliverable
+            // Title
             const titleEl = document.createElement('div');
             titleEl.className = 'node-title';
             titleEl.textContent = day.title;
             cloudContent.appendChild(titleEl);
 
-            if (day.deliverable) {
-              const delivEl = document.createElement('div');
-              delivEl.className = 'node-deliverable-chip';
-              delivEl.innerHTML = `🎯 <span>${day.deliverable}</span>`;
-              cloudContent.appendChild(delivEl);
-            }
-
-            // 5-Resources Interactive Dropdown
+            // Top Pick Resource / Deliverable Pill
             if (day.resources && day.resources.length > 0) {
-              const resWrap = document.createElement('div');
-              resWrap.className = 'node-resources-dropdown-wrap';
-
               const topPick = day.resources[0];
-              const remaining = day.resources.slice(1);
-
-              // Top pick pill
               const topPickLink = document.createElement('a');
               topPickLink.className = 'top-pick-pill';
               topPickLink.href = topPick.url || '#';
               topPickLink.target = topPick.url ? '_blank' : '_self';
               topPickLink.rel = 'noopener noreferrer';
               topPickLink.innerHTML = `
-                <div style="display:flex;align-items:center;gap:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
+                <div style="display:flex;align-items:center;gap:5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
                   <span class="top-pick-badge">★ TOP PICK</span>
-                  <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${topPick.label}</span>
+                  <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:10.5px;">${topPick.label}</span>
                 </div>
-                <span style="font-size:12px;">&nearr;</span>
+                <span style="font-size:10px;flex-shrink:0;">&nearr;</span>
               `;
               topPickLink.addEventListener('click', e => e.stopPropagation());
-              resWrap.appendChild(topPickLink);
-
-              // Dropdown Toggle
-              if (remaining.length > 0) {
-                const dropBtn = document.createElement('button');
-                dropBtn.className = 'btn-resources-dropdown-toggle';
-                dropBtn.type = 'button';
-                dropBtn.innerHTML = `<span>▾ View 4 More Resources (5 Total)</span> <span class="drop-arrow">↓</span>`;
-
-                const dropList = document.createElement('div');
-                dropList.className = 'node-resources-dropdown-list';
-
-                remaining.forEach(r => {
-                  const rLink = document.createElement('a');
-                  rLink.className = 'node-dropdown-link';
-                  rLink.href = r.url || '#';
-                  rLink.target = r.url ? '_blank' : '_self';
-                  rLink.rel = 'noopener noreferrer';
-                  rLink.innerHTML = `
-                    <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${r.label}</span>
-                    <span class="node-domain-tag">${r.domain || ''} &nearr;</span>
-                  `;
-                  rLink.addEventListener('click', e => e.stopPropagation());
-                  dropList.appendChild(rLink);
-                });
-
-                dropBtn.addEventListener('click', e => {
-                  e.stopPropagation();
-                  dropList.classList.toggle('open');
-                  const isOpen = dropList.classList.contains('open');
-                  dropBtn.querySelector('.drop-arrow').textContent = isOpen ? '↑' : '↓';
-                  requestAnimationFrame(() => drawSvgPath());
-                });
-
-                resWrap.appendChild(dropBtn);
-                resWrap.appendChild(dropList);
-              }
-
-              cloudContent.appendChild(resWrap);
+              cloudContent.appendChild(topPickLink);
+            } else if (day.deliverable) {
+              const delivEl = document.createElement('div');
+              delivEl.className = 'node-deliverable-chip';
+              delivEl.innerHTML = `🎯 <span>${day.deliverable}</span>`;
+              cloudContent.appendChild(delivEl);
             }
 
             nodeCard.appendChild(cloudContent);
