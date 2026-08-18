@@ -652,6 +652,18 @@ function initChallengeArrow() {
   window.addEventListener('scroll', requestUpdate, { passive: true });
 }
 
+/* ─── CLOUD TRANSFORMATION UTILITY ───────────────────── */
+window.transformToCloud = function(selector) {
+  const elements = document.querySelectorAll(selector);
+  elements.forEach((el) => {
+    if (!el.classList.contains("cloud-block")) {
+      const originalContent = el.innerHTML;
+      el.classList.add("cloud-block");
+      el.innerHTML = `<div class="cloud-content">${originalContent}</div>`;
+    }
+  });
+};
+
 /* ─── JOURNEY LANDING WIDGET ─────────────────────────── */
 function initJourneyWidget() {
   const container = document.getElementById('journey-landing-window');
@@ -664,7 +676,7 @@ function initJourneyWidget() {
     windowDays.forEach(day => {
       const card = document.createElement('a');
       card.href = 'journey.html';
-      card.className = `widget-node-card state-${day.state}`;
+      card.className = `cloud-block widget-node-card state-${day.state}`;
       card.setAttribute('aria-label', `Day ${day.day_number}: ${day.title} (${day.state})`);
 
       let badgeLabel = `Day ${day.day_number}`;
@@ -675,15 +687,17 @@ function initJourneyWidget() {
       const topResource = (day.resources && day.resources.length > 0) ? day.resources[0] : null;
 
       card.innerHTML = `
-        <div class="widget-node-badge">${badgeLabel}</div>
-        <div class="widget-node-title">${day.title}</div>
-        <div class="widget-node-desc">${day.description}</div>
-        ${topResource ? `
-          <div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;font-size:11px;color:#FDE68A;">
-            <span>★ ${topResource.label}</span>
-            <span style="color:var(--text-muted);font-family:'JetBrains Mono';font-size:10px;">${topResource.domain || ''} &nearr;</span>
-          </div>
-        ` : ''}
+        <div class="cloud-content">
+          <div class="widget-node-badge">${badgeLabel}</div>
+          <div class="widget-node-title">${day.title}</div>
+          <div class="widget-node-desc">${day.description}</div>
+          ${topResource ? `
+            <div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;font-size:11px;color:#FDE68A;">
+              <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">★ ${topResource.label}</span>
+              <span style="color:var(--text-muted);font-family:'JetBrains Mono';font-size:10px;flex-shrink:0;">${topResource.domain || ''} &nearr;</span>
+            </div>
+          ` : ''}
+        </div>
       `;
       container.appendChild(card);
     });

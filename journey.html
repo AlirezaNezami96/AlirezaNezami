@@ -227,6 +227,18 @@
       let currentSelectedDay = null;
       let activeWeekFilter = 'all';
 
+      // ── Cloud Transformation Utility Helper ──────────────────
+      window.transformToCloud = function (selector) {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(el => {
+          if (!el.classList.contains('cloud-block')) {
+            const originalContent = el.innerHTML;
+            el.classList.add('cloud-block');
+            el.innerHTML = `<div class="cloud-content">${originalContent}</div>`;
+          }
+        });
+      };
+
       // ── Render Week Select Options ───────────────────────────
       function populateWeekSelect() {
         const sel = document.getElementById('hud-week-select');
@@ -345,7 +357,7 @@
             row.className = `journey-node-row ${posClass}`;
 
             const nodeCard = document.createElement('div');
-            nodeCard.className = `journey-node-card state-${day.state}`;
+            nodeCard.className = `cloud-block journey-node-card state-${day.state}`;
             nodeCard.setAttribute('tabindex', '0');
             nodeCard.setAttribute('role', 'button');
             nodeCard.setAttribute('aria-label', `Day ${day.day_number}: ${day.title} (${day.state})`);
@@ -359,6 +371,10 @@
               flag.textContent = `★ ${day.milestone.label}`;
               nodeCard.appendChild(flag);
             }
+
+            // Cloud Content Container
+            const cloudContent = document.createElement('div');
+            cloudContent.className = 'cloud-content';
 
             // Top Row
             let iconSymbol = day.day_type === 'rest' ? '☕' : '📖';
@@ -379,19 +395,19 @@
                 ${day.state.toUpperCase()}
               </div>
             `;
-            nodeCard.appendChild(topRow);
+            cloudContent.appendChild(topRow);
 
             // Title & Deliverable
             const titleEl = document.createElement('div');
             titleEl.className = 'node-title';
             titleEl.textContent = day.title;
-            nodeCard.appendChild(titleEl);
+            cloudContent.appendChild(titleEl);
 
             if (day.deliverable) {
               const delivEl = document.createElement('div');
               delivEl.className = 'node-deliverable-chip';
               delivEl.innerHTML = `🎯 <span>${day.deliverable}</span>`;
-              nodeCard.appendChild(delivEl);
+              cloudContent.appendChild(delivEl);
             }
 
             // 5-Resources Interactive Dropdown
@@ -454,8 +470,10 @@
                 resWrap.appendChild(dropList);
               }
 
-              nodeCard.appendChild(resWrap);
+              cloudContent.appendChild(resWrap);
             }
+
+            nodeCard.appendChild(cloudContent);
 
             // Click & Keyboard Event
             const openModal = () => showModal(day);

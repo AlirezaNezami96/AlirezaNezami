@@ -433,120 +433,123 @@ body.journey-page {
   padding-right: clamp(15px, 8vw, 100px);
 }
 
-/* ─── AUTHENTIC CLOUD NODE ELEMENT (FLUFFY SILHOUETTE) ───────── */
-.journey-node-card {
+/* ─── UNIVERSAL CLOUD CONTAINER UTILITY (.cloud-block / .shape-cloud) ─ */
+.cloud-block,
+.shape-cloud {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 22px 28px;
+  width: 100%;
   min-width: 320px;
   max-width: 440px;
-  width: 100%;
-  cursor: pointer;
+  min-height: 130px;
+  background: var(--cloud-bg, #160F28);
+  border: 1.5px solid var(--cloud-border, rgba(255, 255, 255, 0.14));
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 14px 25px var(--cloud-shadow, rgba(0, 0, 0, 0.4)));
+  margin: 30px auto 15px;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.3s ease, border-color 0.3s ease;
   user-select: none;
-  outline: none;
-  /* Authentic scalloped cloud border-radius */
-  border-radius: 54px 72px 58px 76px / 62px 78px 56px 70px;
-  will-change: transform;
-  transform: translateZ(0);
-  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease;
-  z-index: 3;
+  cursor: pointer;
 }
 
-/* Cloud Puffs (Pseudo-elements for authentic fluffy cloud lobes) */
-.journey-node-card::before,
-.journey-node-card::after {
-  content: '';
+.cloud-block::before,
+.cloud-block::after,
+.shape-cloud::before,
+.shape-cloud::after {
+  content: "";
   position: absolute;
-  pointer-events: none;
+  background: var(--cloud-bg, #160F28);
+  border: 1.5px solid var(--cloud-border, rgba(255, 255, 255, 0.14));
+  border-bottom: none;
   border-radius: 50%;
-  z-index: -1;
-  transition: all 0.25s ease;
+  z-index: 1;
+  pointer-events: none;
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
-/* Left Cloud Puff */
-.journey-node-card::before {
-  width: 64px;
-  height: 64px;
-  top: -20px;
-  left: 36px;
+/* Left puff */
+.cloud-block::before,
+.shape-cloud::before {
+  width: 110px;
+  height: 110px;
+  top: -46px;
+  left: 45px;
+  border-right: none;
 }
 
-/* Right Cloud Puff */
-.journey-node-card::after {
-  width: 80px;
-  height: 80px;
-  top: -28px;
+/* Right puff */
+.cloud-block::after,
+.shape-cloud::after {
+  width: 135px;
+  height: 135px;
+  top: -58px;
   right: 50px;
+  border-left: none;
 }
 
-/* ── STATE: COMPLETED (Glowing Warm Amber Lantern) ────────────── */
+/* Content container */
+.cloud-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+}
+
+/* Hover floating effect */
+.cloud-block:hover,
+.shape-cloud:hover {
+  transform: translateY(-6px) scale(1.02);
+}
+
+/* ── STATE: COMPLETED (Glowing Warm Amber Cloud) ─────────────── */
+.cloud-block.state-completed,
 .journey-node-card.state-completed {
-  background: var(--cloud-completed-bg);
-  border: 2px solid var(--cloud-completed-border);
-  box-shadow: 0 10px 35px var(--cloud-completed-glow), inset 0 0 18px rgba(245, 158, 11, 0.2);
+  --cloud-bg: #1F162A;
+  --cloud-border: #F59E0B;
+  --cloud-shadow: rgba(245, 158, 11, 0.35);
+  filter: drop-shadow(0 14px 28px var(--cloud-shadow));
 }
-.journey-node-card.state-completed::before,
-.journey-node-card.state-completed::after {
-  background: var(--cloud-completed-bg);
-  border-top: 2px solid var(--cloud-completed-border);
-  box-shadow: 0 -8px 25px rgba(245, 158, 11, 0.35);
-}
-.journey-node-card.state-completed:hover,
-.journey-node-card.state-completed:focus-visible {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 14px 45px rgba(245, 158, 11, 0.75), inset 0 0 24px rgba(245, 158, 11, 0.3);
-  border-color: #FDE68A;
+.cloud-block.state-completed:hover {
+  filter: drop-shadow(0 18px 36px rgba(245, 158, 11, 0.6));
 }
 
-/* ── STATE: CURRENT (TODAY) — Active Breathing Halo ──────────── */
+/* ── STATE: CURRENT (TODAY) — Active Breathing Pulse Cloud ───── */
+.cloud-block.state-current,
 .journey-node-card.state-current {
-  background: var(--cloud-current-bg);
-  border: 2px solid var(--cloud-current-border);
-  box-shadow: 0 12px 40px var(--cloud-current-glow), inset 0 0 20px rgba(56, 189, 248, 0.25);
-  animation: cloud-breathing 2.8s ease-in-out infinite;
-}
-.journey-node-card.state-current::before,
-.journey-node-card.state-current::after {
-  background: var(--cloud-current-bg);
-  border-top: 2px solid var(--cloud-current-border);
-  box-shadow: 0 -10px 30px rgba(56, 189, 248, 0.45);
-}
-.journey-node-card.state-current:hover,
-.journey-node-card.state-current:focus-visible {
-  transform: translateY(-5px) scale(1.03);
+  --cloud-bg: #131B38;
+  --cloud-border: #38BDF8;
+  --cloud-shadow: rgba(56, 189, 248, 0.45);
+  animation: cloud-floating-pulse 2.8s ease-in-out infinite;
 }
 
-@keyframes cloud-breathing {
+@keyframes cloud-floating-pulse {
   0%, 100% {
-    box-shadow: 0 10px 30px rgba(56, 189, 248, 0.45), 0 0 50px rgba(129, 140, 248, 0.3);
-    border-color: #38BDF8;
+    filter: drop-shadow(0 12px 24px rgba(56, 189, 248, 0.4)) drop-shadow(0 0 15px rgba(129, 140, 248, 0.25));
+    --cloud-border: #38BDF8;
   }
   50% {
-    box-shadow: 0 16px 55px rgba(56, 189, 248, 0.85), 0 0 80px rgba(192, 132, 252, 0.55);
-    border-color: #BAE6FD;
+    filter: drop-shadow(0 18px 36px rgba(56, 189, 248, 0.75)) drop-shadow(0 0 30px rgba(192, 132, 252, 0.5));
+    --cloud-border: #BAE6FD;
   }
 }
 
-/* ── STATE: FUTURE (Unlit Cloud Outline) ──────────────────────── */
+/* ── STATE: FUTURE (Pale Unlit Cloud) ────────────────────────── */
+.cloud-block.state-future,
 .journey-node-card.state-future {
-  background: var(--cloud-future-bg);
-  border: 1.5px dashed var(--cloud-future-border);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  --cloud-bg: #100D20;
+  --cloud-border: rgba(255, 255, 255, 0.14);
+  --cloud-shadow: rgba(0, 0, 0, 0.3);
   opacity: 0.82;
 }
-.journey-node-card.state-future::before,
-.journey-node-card.state-future::after {
-  background: var(--cloud-future-bg);
-  border-top: 1.5px dashed var(--cloud-future-border);
-}
-.journey-node-card.state-future:hover,
-.journey-node-card.state-future:focus-visible {
+.cloud-block.state-future:hover {
   opacity: 1;
-  border-color: rgba(255, 255, 255, 0.35);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  --cloud-border: rgba(255, 255, 255, 0.3);
 }
 
 /* ─── NODE HEADER & CONTENT ───────────────────────────────────── */
