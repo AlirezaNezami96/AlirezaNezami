@@ -140,17 +140,6 @@
 
     <!-- ═══════════════════════ THE WINDING TRACK ═══════════════════════ -->
     <section class="journey-track-container" id="journey-track">
-      <!-- Minimal Ocean / Water Progress Fill Layer -->
-      <div id="journey-ocean-fill" class="journey-ocean-fill" aria-hidden="true">
-        <div class="journey-ocean-glow"></div>
-        <div class="journey-ocean-wave-surface">
-          <svg viewBox="0 0 1440 60" preserveAspectRatio="none" class="ocean-wave-svg">
-            <path class="ocean-wave-path-1" d="M0,28 C240,48 480,8 720,30 C960,52 1200,12 1440,28 L1440,60 L0,60 Z" />
-            <path class="ocean-wave-path-2" d="M0,35 C320,12 640,50 960,22 C1200,4 1360,38 1440,24 L1440,60 L0,60 Z" />
-          </svg>
-        </div>
-      </div>
-
       <!-- SVG Connecting Path Canvas -->
       <svg id="journey-svg" class="journey-svg-overlay" aria-hidden="true">
         <defs>
@@ -572,26 +561,6 @@
 
         unlitPath.setAttribute('d', unlitSegments);
         litPath.setAttribute('d', litSegments);
-
-        // Update ocean progress fluid fill to align with current cloud
-        updateOceanProgress();
-      }
-
-      // ── Update Minimal Ocean / Water Progress Fill Level ─────
-      function updateOceanProgress() {
-        const oceanFill = document.getElementById('journey-ocean-fill');
-        const track = document.getElementById('journey-track');
-        if (!oceanFill || !track) return;
-
-        const currentNode = track.querySelector('.journey-node-card.state-current') ||
-                            track.querySelector('.journey-node-card.state-completed:last-of-type') ||
-                            track.querySelector('.journey-node-card');
-        if (currentNode) {
-          const trackRect = track.getBoundingClientRect();
-          const nodeRect = currentNode.getBoundingClientRect();
-          const fillHeight = Math.max(0, (nodeRect.top - trackRect.top) + nodeRect.height * 0.5);
-          oceanFill.style.height = `${fillHeight.toFixed(0)}px`;
-        }
       }
 
       // ── Detail Modal Handling ───────────────────────────────
@@ -817,18 +786,18 @@
         }
       }
 
-      // ── Smooth Scroll to Current Cloud on Page Load ─────────
-      function scrollToCurrentCloud() {
-        requestAnimationFrame(() => {
-          setTimeout(() => {
-            const target = document.querySelector('.journey-node-card.state-current') ||
-                           document.querySelector('.journey-node-card.state-completed:last-of-type') ||
-                           document.querySelector('.journey-node-card');
-            if (target) {
-              target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-          }, 450);
-        });
+      // ── Scroll to Today Node on First Load ─────────────────
+      function scrollToToday() {
+        const allDays = window.JourneyData.getDays();
+        const todayDay = allDays.find(d => d.is_today);
+        if (todayDay) {
+          const el = document.getElementById(`node-day-${todayDay.day_number}`);
+          if (el) {
+            setTimeout(() => {
+              el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 300);
+          }
+        }
       }
 
       // ── Boot ────────────────────────────────────────────────
@@ -837,7 +806,7 @@
         updateHUD();
         renderJourneyPath();
         initEvents();
-        scrollToCurrentCloud();
+        scrollToToday();
       }
 
       if (document.readyState === 'loading') {
