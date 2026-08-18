@@ -502,7 +502,7 @@
         return `${m} ${parseInt(parts[2], 10)}`;
       }
 
-      // ── Draw Smooth SVG Curved Path ─────────────────────────
+      // ── Draw Smooth SVG Curved Path (Strictly 1 Clean Line Between Clouds) ──
       function drawSvgPath() {
         const track = document.getElementById('journey-track');
         const svg = document.getElementById('journey-svg');
@@ -523,40 +523,44 @@
         svg.setAttribute('width', track.clientWidth);
         svg.setAttribute('height', track.clientHeight);
 
-        const points = nodes.map(n => {
-          const rect = n.getBoundingClientRect();
-          return {
-            x: rect.left - trackRect.left + rect.width / 2,
-            y: rect.top - trackRect.top + rect.height / 2,
-            isLit: n.classList.contains('state-completed') || n.classList.contains('state-current')
-          };
-        });
+        let litSegments = '';
+        let unlitSegments = '';
 
-        // Compute smooth cubic bezier path through all points
-        let fullD = `M ${points[0].x} ${points[0].y}`;
-        let litD = `M ${points[0].x} ${points[0].y}`;
+        for (let i = 0; i < nodes.length - 1; i++) {
+          const n0 = nodes[i];
+          const n1 = nodes[i + 1];
 
-        for (let i = 0; i < points.length - 1; i++) {
-          const p0 = points[i];
-          const p1 = points[i + 1];
+          const r0 = n0.getBoundingClientRect();
+          const r1 = n1.getBoundingClientRect();
 
-          // Smooth vertical S-curve
-          const deltaY = p1.y - p0.y;
-          const cp1x = p0.x;
-          const cp1y = p0.y + deltaY * 0.5;
-          const cp2x = p1.x;
-          const cp2y = p1.y - deltaY * 0.5;
+          // Connect from the bottom edge of cloud i to the top edge of cloud i+1
+          const startX = r0.left - trackRect.left + r0.width * 0.5;
+          const startY = r0.bottom - trackRect.top - 8;
 
-          const seg = ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${p1.x} ${p1.y}`;
-          fullD += seg;
+          const endX = r1.left - trackRect.left + r1.width * 0.5;
+          const endY = r1.top - trackRect.top + 8;
 
-          if (p0.isLit && p1.isLit) {
-            litD += seg;
+          const dy = endY - startY;
+          const cp1x = startX;
+          const cp1y = startY + dy * 0.5;
+          const cp2x = endX;
+          const cp2y = endY - dy * 0.5;
+
+          const seg = `M ${startX.toFixed(1)} ${startY.toFixed(1)} C ${cp1x.toFixed(1)} ${cp1y.toFixed(1)}, ${cp2x.toFixed(1)} ${cp2y.toFixed(1)}, ${endX.toFixed(1)} ${endY.toFixed(1)}`;
+
+          const isNode0Lit = n0.classList.contains('state-completed') || n0.classList.contains('state-current');
+          const isNode1Lit = n1.classList.contains('state-completed') || n1.classList.contains('state-current');
+
+          // Segment is lit only if passing through lit nodes
+          if (isNode0Lit && (isNode1Lit || n0.classList.contains('state-current'))) {
+            litSegments += (litSegments ? ' ' : '') + seg;
+          } else {
+            unlitSegments += (unlitSegments ? ' ' : '') + seg;
           }
         }
 
-        unlitPath.setAttribute('d', fullD);
-        litPath.setAttribute('d', litD.length > 20 ? litD : '');
+        unlitPath.setAttribute('d', unlitSegments);
+        litPath.setAttribute('d', litSegments);
       }
 
       // ── Detail Modal Handling ───────────────────────────────
