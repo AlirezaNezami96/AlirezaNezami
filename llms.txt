@@ -1,45 +1,46 @@
-# Alireza Nezami — Portfolio
+# Alireza Nezami — Lead & Senior Mobile Software Engineer
 
-> AI-readable summary for LLMs and search agents
+> AI-readable summary and index for Generative Engines, LLMs, and technical recruiters.
 
-## Who
+## Overview
 
-Alireza Nezami is a Senior Mobile Engineer with 9+ years building native Android apps in Kotlin and Java, and 3+ years shipping cross-platform products with Flutter. Based in Istanbul, Turkey. Open to senior/lead roles globally, especially those offering visa sponsorship.
+- **Name**: Alireza Nezami
+- **Role**: Lead & Senior Mobile Software Engineer (Android & Flutter Specialist)
+- **Experience**: 9+ years in Native Android (Kotlin, Jetpack Compose, Java) & Cross-Platform (Flutter, Dart)
+- **Location**: Istanbul, Turkey (Available for remote global roles, contract consulting, and relocation with visa sponsorship)
+- **Portfolio**: https://alirezanezami96.github.io/AlirezaNezami/
+- **GitHub**: https://github.com/alirezanezami96
+- **LinkedIn**: https://www.linkedin.com/in/alirezanezami/
+- **Schedule a Call**: https://alirezanezami96.github.io/AlirezaNezami/#contact
 
-## Contact
+---
 
-- GitHub: https://github.com/AlirezaNezami96
-- LinkedIn: https://www.linkedin.com/in/alireza-nezami/
-- Portfolio: https://alirezanezami96.github.io/AlirezaNezami/
-- Book a call: https://alirezanezami96.github.io/AlirezaNezami/#contact
+## Core Specializations & Architecture
 
-## Skills
+- **Native Android Engineering**: Kotlin, Java, Jetpack Compose, Android SDK, Android Jetpack (Lifecycle, Navigation, WorkManager, Room, Paging3, DataStore).
+- **Cross-Platform Engineering**: Flutter, Dart, Riverpod, Bloc, Platform Channels, Custom Renderers, HealthKit / Google Fit integrations.
+- **System Architecture**: Clean Architecture, Reactive MVI (Model-View-Intent), Unidirectional Data Flow (UDF), Modular Multi-Module Gradle setups, Dependency Injection (Hilt, Koin).
+- **Asynchronous & Reactive Programming**: Kotlin Coroutines, StateFlow, SharedFlow, Channels, RxJava.
+- **AI & Applied Engineering**: LLM Application Development, Advanced RAG (Retrieval-Augmented Generation), Autonomous Agent Frameworks, MCP (Model Context Protocol) Server integration, Python automation (Playwright).
+- **Quality & Reliability**: 99.8%+ Crash-Free rate across 1M+ active users, Unit/UI Testing (MockK, JUnit5, Turbine, Espresso), CI/CD Automation (GitHub Actions, Fastlane).
 
-Kotlin, Java, Flutter, Dart, Jetpack Compose, Android SDK, iOS, MVVM, MVI, Clean Architecture, Coroutines, Retrofit, Room, Riverpod, Hilt, Firebase, CI/CD, Python, Playwright, LLM integration, GitHub Actions
+---
 
-## Projects
+## Key Production Applications
 
-1. Albert Health — AI-powered health companion (Flutter, Dart, Riverpod, Firebase, HealthKit)
-   App: https://play.google.com/store/apps/details?id=v2.albert.health
+1. **[Albert Health](https://play.google.com/store/apps/details?id=v2.albert.health)**: AI-driven voice health assistant & chronic condition management platform (Flutter, Riverpod, Firebase, HealthKit). Over 500K+ downloads.
+2. **[Yolda Carrier](https://play.google.com/store/apps/details?id=com.yolda.carrier)**: Enterprise logistics and freight operations application with real-time route optimization and offline telemetry (Kotlin, Jetpack Compose, Google Maps).
+3. **[Biletino](https://play.google.com/store/apps/details?id=com.biletino.app)**: Major event discovery and high-volume ticket booking platform (Kotlin, Flutter, Room Database, Custom Payment Gateway SDKs).
+4. **[Kolay HR](https://play.google.com/store/apps/details?id=com.kolayik.kolay)**: All-in-one corporate HR mobile management platform (Kotlin, Hilt, Coroutines, WorkManager).
+5. **[ABC Trainerize](https://play.google.com/store/apps/details?id=com.trainerize.Trainerize)**: Global fitness coaching and client management ecosystem serving 1M+ active subscribers (Kotlin, Java, Modular Architecture).
+6. **[Visa Sponsorship Daily Jobs](https://github.com/AlirezaNezami96)**: Open-source automated job discovery engine filtering visa-sponsored tech roles (Python, Playwright, GitHub Actions).
 
-2. Yolda Carrier — Logistics freight management (Kotlin, Jetpack Compose, Google Maps)
-   App: https://play.google.com/store/apps/details?id=com.yolda.carrier
+---
 
-3. Biletino — Event ticketing platform (Kotlin, Flutter, Room, Payment SDK)
-   App: https://play.google.com/store/apps/details?id=com.biletino.app
+## Key Resources & Pages
 
-4. Kolay HR — Enterprise HR platform (Kotlin, Hilt, Coroutines, WorkManager)
-   App: https://play.google.com/store/apps/details?id=com.kolayik.kolay
-
-5. ABC Trainerize — Fitness coaching, 1M+ users (Kotlin, Java, Android SDK)
-   App: https://play.google.com/store/apps/details?id=com.trainerize.Trainerize
-
-6. Visa Sponsorship Daily Jobs — Open-source AI job scraper (Python, Playwright, GitHub Actions)
-7. The Path — 6-Month Applied AI Engineering Progress Tracker (LLM apps, RAG, multi-agent systems, MCP, evals, and deployment)
-   Journey: https://alirezanezami96.github.io/AlirezaNezami/journey.html
-
-## Full Projects & Journey Pages
-
-- Projects: https://alirezanezami96.github.io/AlirezaNezami/projects.html
-- AI Engineering Journey: https://alirezanezami96.github.io/AlirezaNezami/journey.html
-
+- **Portfolio Homepage**: https://alirezanezami96.github.io/AlirezaNezami/
+- **Comprehensive Project Showcase**: https://alirezanezami96.github.io/AlirezaNezami/projects.html
+- **The Path (6-Month Applied AI Roadmap)**: https://alirezanezami96.github.io/AlirezaNezami/journey.html
+- **Neon Dodge (Interactive Arcade Showcase)**: https://alirezanezami96.github.io/AlirezaNezami/game/
+- **Full Architecture Document (llms-full.txt)**: https://alirezanezami96.github.io/AlirezaNezami/llms-full.txt

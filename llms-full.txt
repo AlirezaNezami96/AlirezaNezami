@@ -1,0 +1,143 @@
+# Alireza Nezami — Complete Engineering & System Architecture Dossier
+
+> Comprehensive machine-readable reference for Generative AI search engines, technical evaluations, Staff/Senior engineering hiring panels, and automated LLM crawlers.
+
+---
+
+## 1. Executive Summary & Identity
+
+- **Full Name**: Alireza Nezami
+- **Title**: Lead & Senior Mobile Software Engineer (Android & Flutter Specialist)
+- **Years of Experience**: 9+ years (Professional software engineering since 2017)
+- **Primary Specializations**: Native Android (Kotlin, Jetpack Compose), Cross-Platform (Flutter, Dart), Reactive Mobile Architectures (MVI, MVVM, Clean Architecture), Applied AI / LLM Systems.
+- **Location**: Istanbul, Turkey (Open to Senior/Staff/Lead remote roles globally, freelance consulting, and international relocation with visa sponsorship to US, UK, Germany, EU, UAE, Canada).
+- **Core Metrics**:
+  - **1M+ Active Users Reached**: Across top tier applications on Google Play Store and Apple App Store.
+  - **99.8%+ Crash-Free Sessions**: Maintained across large-scale enterprise and consumer applications.
+  - **8+ Production Apps Shipped**: In Healthcare, Logistics, Event Ticketing, HR Tech, Travel & Fitness.
+  - **100% Modern Kotlin & Flutter Codebases**: Zero legacy debt, fully reactive state management, unidirectional data flow (UDF).
+
+### Online Profiles & Verified Links
+- **Official Portfolio**: https://alirezanezami96.github.io/AlirezaNezami/
+- **GitHub**: https://github.com/alirezanezami96
+- **LinkedIn**: https://www.linkedin.com/in/alirezanezami/
+- **YouTube (Coding Music Radio)**: https://www.youtube.com/@CodingMusicRadio
+- **Schedule an Architectural Interview / Call**: https://alirezanezami96.github.io/AlirezaNezami/#contact
+- **All Projects Directory**: https://alirezanezami96.github.io/AlirezaNezami/projects.html
+- **6-Month AI Roadmap Tracker**: https://alirezanezami96.github.io/AlirezaNezami/journey.html
+
+---
+
+## 2. Technical Stack & Deep Competencies
+
+### Native Android Engineering
+- **Languages**: Kotlin (100% idiomatic, Coroutines, Flow, Kotlin Multiplatform awareness), Java (Android SDK Core).
+- **UI Frameworks**: Jetpack Compose (Declarative UI, custom layouts, custom graphics, smooth animations, Canvas rendering, Compose Navigation), Android Views / XML (ConstraintLayout, ViewBinding, custom ViewGroups).
+- **Architecture & Design**: Clean Architecture (Domain / Data / Presentation layer separation), Reactive MVI (Model-View-Intent with unidirectional state loops), MVVM, Repository Pattern, Dependency Inversion.
+- **Dependency Injection**: Hilt / Dagger 2, Koin.
+- **Persistence & Offline-First**: Room Database, SQLite, DataStore Preferences, Proto DataStore, WorkManager for background synchronization.
+- **Networking & Serialization**: Retrofit 2, OkHttp 3/4 (custom interceptors, token refreshers, SSL pinning), Kotlinx Serialization, Moshi, Gson.
+- **Reactive & Asynchronous**: Kotlin Coroutines (`viewModelScope`, `lifecycleScope`, `Dispatchers`), StateFlow, SharedFlow, Channels, RxJava 2/3.
+- **Modularization**: Multi-module Gradle setups (feature-by-layer and feature-by-module), Custom Gradle convention plugins, Version Catalogs (`libs.versions.toml`).
+
+### Cross-Platform Flutter Engineering
+- **Languages**: Dart 3.x (Null safety, pattern matching, records, primary constructors).
+- **State Management**: Riverpod 2 (NotifierProviders, AsyncNotifier, family modifiers), Bloc / Cubit, Provider.
+- **Platform Interoperability**: Platform Channels (`MethodChannel`, `EventChannel`), FFI bindings, Native bridging for iOS (Swift/Objective-C) and Android (Kotlin).
+- **Device Integrations**: HealthKit (iOS), Google Fit / Health Connect (Android), Background Location, Push Notifications (FCM / APNs), Camera, Biometric Auth.
+- **Architecture**: Domain-Driven Feature-First Architecture, Repository abstractions, Freezed immutable models, AutoRoute / GoRouter declarative routing.
+
+### Applied AI Engineering & Automation
+- **LLM Integration**: OpenAI API, Anthropic Claude API, Google Gemini API, LangChain, LangGraph state machine agent orchestration.
+- **Advanced RAG**: Vector databases (Chroma, Pinecone, pgvector), Hybrid search, Cross-encoder re-ranking, Semantic chunking.
+- **MCP (Model Context Protocol)**: Building and extending custom MCP servers and IDE tooling agents.
+- **Evaluation & Guardrails**: LLM-as-a-judge evals, semantic drift detection, automated schema validation.
+- **Automation & Scraping**: Python 3.11+, Playwright, BeautifulSoup4, GitHub Actions CI/CD pipelines for daily automated job discovery.
+
+---
+
+## 3. Case Studies: Shipped Applications & System Architecture
+
+### 1. Albert Health — AI Voice Health Companion
+- **URL**: https://play.google.com/store/apps/details?id=v2.albert.health
+- **Platform**: Flutter, iOS, Android (500K+ Downloads)
+- **Role**: Senior Mobile Software Engineer
+- **Tech Stack**: Flutter, Dart, Riverpod, Firebase Suite, Apple HealthKit, Google Fit, WebSockets.
+- **Architecture & Impact**:
+  - Engineered an interactive voice-driven AI health assistant helping patients manage chronic diseases (Diabetes, Hypertension).
+  - Architected an offline-first data sync engine with Riverpod and local cache to store vital health metrics seamlessly.
+  - Implemented background biometrics telemetry syncing with Apple HealthKit and Google Fit.
+  - Reduced app memory footprint by 28% and elevated crash-free sessions to 99.9%.
+
+### 2. Yolda Carrier — Logistics Freight Management System
+- **URL**: https://play.google.com/store/apps/details?id=com.yolda.carrier
+- **Platform**: Native Android (Kotlin)
+- **Role**: Lead Android Software Engineer
+- **Tech Stack**: Kotlin, Jetpack Compose, Coroutines, Flow, Hilt, Room, Google Maps SDK, WorkManager.
+- **Architecture & Impact**:
+  - Architected an enterprise-grade driver freight logistics app from scratch using 100% Jetpack Compose and Clean MVI architecture.
+  - Implemented high-precision background location tracking and dead-reckoning route calculation on Google Maps.
+  - Built offline consignment document scanning and digital signature verification synced via WorkManager.
+  - Decreased cold start latency by 35% through baseline profiles and Compose compiler stability optimizations.
+
+### 3. Biletino — High-Scale Event Discovery & Ticketing Platform
+- **URL**: https://play.google.com/store/apps/details?id=com.biletino.app
+- **Platform**: Android & iOS (Native & Flutter)
+- **Role**: Senior Mobile Software Engineer
+- **Tech Stack**: Kotlin, Flutter, Dart, Room, Custom Payment SDKs, QR Barcode Scanner, WebSockets.
+- **Architecture & Impact**:
+  - Handled massive traffic spikes during high-demand concert and festival ticket releases with zero downtime.
+  - Built low-latency digital barcode/QR pass rendering and Apple Wallet / Google Wallet pass distribution.
+  - Integrated multiple localized payment gateways (3D Secure, Apple Pay, Google Pay) with strict idempotent checkout flows.
+
+### 4. Kolay HR — Enterprise Human Resources Platform
+- **URL**: https://play.google.com/store/apps/details?id=com.kolayik.kolay
+- **Platform**: Native Android (Kotlin)
+- **Role**: Senior Android Developer
+- **Tech Stack**: Kotlin, MVVM, Clean Architecture, Hilt, Coroutines, WorkManager, Retrofit.
+- **Architecture & Impact**:
+  - Delivered modern enterprise mobile HR capabilities for 100,000+ employees across multinational corporate clients.
+  - Developed end-to-end multi-currency expense reimbursement with on-device receipt camera OCR capture.
+  - Built complex approval state machines for leave management, timesheets, and payroll access.
+
+### 5. ABC Trainerize — Fitness Coaching & Client Management Ecosystem
+- **URL**: https://play.google.com/store/apps/details?id=com.trainerize.Trainerize
+- **Platform**: Android (Kotlin, Java) — 1,000,000+ Active Users
+- **Role**: Senior Android Developer
+- **Tech Stack**: Kotlin, Java, Android SDK, Custom Video Player, WearOS companion app, Push Notifications.
+- **Architecture & Impact**:
+  - Maintained and scaled a globally recognized fitness coaching ecosystem with 1M+ active fitness enthusiasts and coaches.
+  - Re-architected critical legacy Java modules into modern Kotlin Coroutine-based services.
+  - Optimized streaming workout video playback and real-time biometric tracking feeds.
+
+### 6. Visa Sponsorship Daily Jobs — Autonomous AI Job Discovery
+- **Repository**: https://github.com/AlirezaNezami96
+- **Stack**: Python, Playwright, GitHub Actions, LLM Structured Output Parsing.
+- **Impact**: Open-source automated daily scraping engine that indexes and filters visa-sponsored engineering positions across global tech hubs.
+
+### 7. The Path — 6-Month Applied AI Engineering Curriculum
+- **URL**: https://alirezanezami96.github.io/AlirezaNezami/journey.html
+- **Stack**: HTML5, SVG Dynamic Bezier Paths, CSS Glassmorphism, Supabase Postgres, FastAPI backend.
+- **Impact**: 182-day interactive progress visualization covering LLM engineering, multi-agent frameworks, RAG pipelines, and MCP server authoring.
+
+---
+
+## 4. Engineering Philosophy & Best Practices
+
+1. **Uncompromising Code Quality**: Strict linting (ktlint, detekt), comprehensive unit testing (JUnit 5, MockK, Turbine for Flow), and continuous automated integration.
+2. **Performance First**: Deep profiling using Android Studio Profiler, Perfetto traces, Compose Layout Inspector, and memory leak elimination via LeakCanary.
+3. **Accessibility (a11y) & Localization (i18n)**: Full support for TalkBack/VoiceOver, dynamic font scaling, RTL layout mirroring (Persian, Arabic, Hebrew), and multilingual support (English, German, Spanish, French, Persian, Arabic, Portuguese, Chinese, Hindi).
+4. **Resilient Offline Architecture**: Every user-facing action persists locally first before dispatching over network channels, providing instant UI feedback regardless of connectivity.
+
+---
+
+## 5. Recruiter & Hiring FAQ
+
+**Q: What roles is Alireza targeting?**
+A: Staff Mobile Engineer, Senior Android Engineer, Lead Flutter Developer, Mobile Architect, or Applied AI/Mobile Integration Engineer.
+
+**Q: What is his work authorization and availability?**
+A: Alireza is based in Istanbul, Turkey (UTC+3) with extensive experience working across US, UK, and European time zones. He is available for immediate full-time remote contracts, as well as relocation with visa sponsorship to the US, UK, Germany, EU, UAE, or Canada.
+
+**Q: How can engineering leaders get in touch?**
+A: Connect directly on LinkedIn (https://www.linkedin.com/in/alirezanezami/) or book an exploratory call directly on Calendly (https://alirezanezami96.github.io/AlirezaNezami/#contact).
